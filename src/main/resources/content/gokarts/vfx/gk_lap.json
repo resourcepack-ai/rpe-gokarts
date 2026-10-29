@@ -1,0 +1,254 @@
+{
+ "v": 1,
+ "duration": 24,
+ "palettes": {
+  "gold": {
+   "deep": "#b37713",
+   "mid": "#ffcd48",
+   "bright": "#fff3b0"
+  },
+  "white": {
+   "deep": "#c5cddd",
+   "mid": "#f4f6ff",
+   "bright": "#ffffff"
+  }
+ },
+ "layers": [
+  {
+   "type": "sprite",
+   "name": "lap ring",
+   "start": 0,
+   "end": 22,
+   "palette": "gold",
+   "sprite": "shock",
+   "pos": [
+    0,
+    0.08,
+    0
+   ],
+   "scale": [
+    [
+     0,
+     [
+      2.5,
+      1,
+      2.5
+     ]
+    ],
+    [
+     5,
+     [
+      4.5,
+      1,
+      4.5
+     ],
+     "out"
+    ],
+    [
+     22,
+     [
+      9,
+      1,
+      9
+     ],
+     "out"
+    ]
+   ],
+   "fade": [
+    [
+     0,
+     0.12
+    ],
+    [
+     6,
+     0.25
+    ],
+    [
+     14,
+     0.55
+    ],
+    [
+     22,
+     1
+    ]
+   ]
+  },
+  {
+   "type": "sprite",
+   "name": "soft ground shimmer",
+   "start": 0,
+   "end": 12,
+   "palette": "gold",
+   "sprite": "glow",
+   "pos": [
+    0,
+    0.06,
+    0
+   ],
+   "rot": [
+    -90,
+    0,
+    0
+   ],
+   "scale": [
+    [
+     0,
+     2.8
+    ],
+    [
+     4,
+     4.6,
+     "out"
+    ],
+    [
+     12,
+     5.4
+    ]
+   ],
+   "fade": [
+    [
+     0,
+     0.6
+    ],
+    [
+     4,
+     0.7
+    ],
+    [
+     12,
+     1
+    ]
+   ]
+  },
+  {
+   "type": "motes",
+   "name": "rising golden sparkles",
+   "start": 1,
+   "end": 8,
+   "palette": "gold",
+   "kind": "glow",
+   "burst": 20,
+   "rate": 1.5,
+   "at": [
+    0,
+    0.25,
+    0
+   ],
+   "shape": "ring",
+   "size": 2.1,
+   "dir": [
+    0,
+    1,
+    0
+   ],
+   "spread": 0.18,
+   "speed": [
+    0.11,
+    0.2
+   ],
+   "gravity": -0.001,
+   "drag": 0.98,
+   "scale": [
+    0.19,
+    0.32
+   ],
+   "life": [
+    12,
+    16
+   ]
+  },
+  {
+   "type": "sprite",
+   "name": "white star glints",
+   "start": 3,
+   "end": 14,
+   "palette": "white",
+   "copies": {
+    "count": 5,
+    "arc": [
+     20,
+     380
+    ],
+    "radius": 2.2,
+    "scatter": [
+     0.15,
+     0.25,
+     0.15
+    ],
+    "stagger": 2,
+    "seed": 12
+   },
+   "sprite": "flare",
+   "billboard": true,
+   "pos": [
+    [
+     0,
+     [
+      0,
+      0.8,
+      0
+     ]
+    ],
+    [
+     11,
+     [
+      0,
+      2,
+      0
+     ]
+    ]
+   ],
+   "scale": [
+    [
+     0,
+     0.08
+    ],
+    [
+     2,
+     1.25,
+     "out"
+    ],
+    [
+     5,
+     0.9
+    ],
+    [
+     11,
+     0.03
+    ]
+   ],
+   "fade": [
+    [
+     0,
+     0.35
+    ],
+    [
+     2,
+     0
+    ],
+    [
+     5,
+     0.15
+    ],
+    [
+     11,
+     1
+    ]
+   ]
+  }
+ ],
+ "sounds": [
+  {
+   "t": 0,
+   "sound": "block.amethyst_block.chime",
+   "volume": 0.75,
+   "pitch": 1.65
+  },
+  {
+   "t": 2,
+   "sound": "entity.experience_orb.pickup",
+   "volume": 0.45,
+   "pitch": 1.5
+  }
+ ]
+}

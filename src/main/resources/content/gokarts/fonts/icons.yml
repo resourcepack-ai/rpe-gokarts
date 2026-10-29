@@ -3,4090 +3,6892 @@
 
 # ---- The HUD's art, from tools/hud_art.py ----
 
-# Lettering, centred on the line: t_<colour><scale>_<char>, e.g. t_gold4_1.
+# Lettering, hung from the line's top: t_<colour><scale>_<char>.
 
 t_white1_0:
   file: type_white
   grid: { rows: 6, columns: 7, cell: 1 }
   height: 13
-  ascent: 9
+  ascent: 7
 
 t_white1_1:
   file: type_white
   grid: { rows: 6, columns: 7, cell: 2 }
   height: 13
-  ascent: 9
+  ascent: 7
 
 t_white1_2:
   file: type_white
   grid: { rows: 6, columns: 7, cell: 3 }
   height: 13
-  ascent: 9
+  ascent: 7
 
 t_white1_3:
   file: type_white
   grid: { rows: 6, columns: 7, cell: 4 }
   height: 13
-  ascent: 9
+  ascent: 7
 
 t_white1_4:
   file: type_white
   grid: { rows: 6, columns: 7, cell: 5 }
   height: 13
-  ascent: 9
+  ascent: 7
 
 t_white1_5:
   file: type_white
   grid: { rows: 6, columns: 7, cell: 6 }
   height: 13
-  ascent: 9
+  ascent: 7
 
 t_white1_6:
   file: type_white
   grid: { rows: 6, columns: 7, cell: 7 }
   height: 13
-  ascent: 9
+  ascent: 7
 
 t_white1_7:
   file: type_white
   grid: { rows: 6, columns: 7, cell: 8 }
   height: 13
-  ascent: 9
+  ascent: 7
 
 t_white1_8:
   file: type_white
   grid: { rows: 6, columns: 7, cell: 9 }
   height: 13
-  ascent: 9
+  ascent: 7
 
 t_white1_9:
   file: type_white
   grid: { rows: 6, columns: 7, cell: 10 }
   height: 13
-  ascent: 9
+  ascent: 7
 
 t_white1_a:
   file: type_white
   grid: { rows: 6, columns: 7, cell: 11 }
   height: 13
-  ascent: 9
+  ascent: 7
 
 t_white1_b:
   file: type_white
   grid: { rows: 6, columns: 7, cell: 12 }
   height: 13
-  ascent: 9
+  ascent: 7
 
 t_white1_c:
   file: type_white
   grid: { rows: 6, columns: 7, cell: 13 }
   height: 13
-  ascent: 9
+  ascent: 7
 
 t_white1_d:
   file: type_white
   grid: { rows: 6, columns: 7, cell: 14 }
   height: 13
-  ascent: 9
+  ascent: 7
 
 t_white1_e:
   file: type_white
   grid: { rows: 6, columns: 7, cell: 15 }
   height: 13
-  ascent: 9
+  ascent: 7
 
 t_white1_f:
   file: type_white
   grid: { rows: 6, columns: 7, cell: 16 }
   height: 13
-  ascent: 9
+  ascent: 7
 
 t_white1_g:
   file: type_white
   grid: { rows: 6, columns: 7, cell: 17 }
   height: 13
-  ascent: 9
+  ascent: 7
 
 t_white1_h:
   file: type_white
   grid: { rows: 6, columns: 7, cell: 18 }
   height: 13
-  ascent: 9
+  ascent: 7
 
 t_white1_i:
   file: type_white
   grid: { rows: 6, columns: 7, cell: 19 }
   height: 13
-  ascent: 9
+  ascent: 7
 
 t_white1_j:
   file: type_white
   grid: { rows: 6, columns: 7, cell: 20 }
   height: 13
-  ascent: 9
+  ascent: 7
 
 t_white1_k:
   file: type_white
   grid: { rows: 6, columns: 7, cell: 21 }
   height: 13
-  ascent: 9
+  ascent: 7
 
 t_white1_l:
   file: type_white
   grid: { rows: 6, columns: 7, cell: 22 }
   height: 13
-  ascent: 9
+  ascent: 7
 
 t_white1_m:
   file: type_white
   grid: { rows: 6, columns: 7, cell: 23 }
   height: 13
-  ascent: 9
+  ascent: 7
 
 t_white1_n:
   file: type_white
   grid: { rows: 6, columns: 7, cell: 24 }
   height: 13
-  ascent: 9
+  ascent: 7
 
 t_white1_o:
   file: type_white
   grid: { rows: 6, columns: 7, cell: 25 }
   height: 13
-  ascent: 9
+  ascent: 7
 
 t_white1_p:
   file: type_white
   grid: { rows: 6, columns: 7, cell: 26 }
   height: 13
-  ascent: 9
+  ascent: 7
 
 t_white1_q:
   file: type_white
   grid: { rows: 6, columns: 7, cell: 27 }
   height: 13
-  ascent: 9
+  ascent: 7
 
 t_white1_r:
   file: type_white
   grid: { rows: 6, columns: 7, cell: 28 }
   height: 13
-  ascent: 9
+  ascent: 7
 
 t_white1_s:
   file: type_white
   grid: { rows: 6, columns: 7, cell: 29 }
   height: 13
-  ascent: 9
+  ascent: 7
 
 t_white1_t:
   file: type_white
   grid: { rows: 6, columns: 7, cell: 30 }
   height: 13
-  ascent: 9
+  ascent: 7
 
 t_white1_u:
   file: type_white
   grid: { rows: 6, columns: 7, cell: 31 }
   height: 13
-  ascent: 9
+  ascent: 7
 
 t_white1_v:
   file: type_white
   grid: { rows: 6, columns: 7, cell: 32 }
   height: 13
-  ascent: 9
+  ascent: 7
 
 t_white1_w:
   file: type_white
   grid: { rows: 6, columns: 7, cell: 33 }
   height: 13
-  ascent: 9
+  ascent: 7
 
 t_white1_x:
   file: type_white
   grid: { rows: 6, columns: 7, cell: 34 }
   height: 13
-  ascent: 9
+  ascent: 7
 
 t_white1_y:
   file: type_white
   grid: { rows: 6, columns: 7, cell: 35 }
   height: 13
-  ascent: 9
+  ascent: 7
 
 t_white1_z:
   file: type_white
   grid: { rows: 6, columns: 7, cell: 36 }
   height: 13
-  ascent: 9
+  ascent: 7
 
 t_white1_bang:
   file: type_white
   grid: { rows: 6, columns: 7, cell: 37 }
   height: 13
-  ascent: 9
+  ascent: 7
 
 t_white1_dash:
   file: type_white
   grid: { rows: 6, columns: 7, cell: 38 }
   height: 13
-  ascent: 9
+  ascent: 7
 
 t_white1_apos:
   file: type_white
   grid: { rows: 6, columns: 7, cell: 39 }
   height: 13
-  ascent: 9
+  ascent: 7
 
 t_white1_slash:
   file: type_white
   grid: { rows: 6, columns: 7, cell: 40 }
   height: 13
-  ascent: 9
+  ascent: 7
 
 t_white1_colon:
   file: type_white
   grid: { rows: 6, columns: 7, cell: 41 }
   height: 13
-  ascent: 9
+  ascent: 7
 
 t_white1_dot:
   file: type_white
   grid: { rows: 6, columns: 7, cell: 42 }
   height: 13
-  ascent: 9
+  ascent: 7
 
 t_white2_0:
   file: type_white
   grid: { rows: 6, columns: 7, cell: 1 }
   height: 26
-  ascent: 16
+  ascent: 7
 
 t_white2_1:
   file: type_white
   grid: { rows: 6, columns: 7, cell: 2 }
   height: 26
-  ascent: 16
+  ascent: 7
 
 t_white2_2:
   file: type_white
   grid: { rows: 6, columns: 7, cell: 3 }
   height: 26
-  ascent: 16
+  ascent: 7
 
 t_white2_3:
   file: type_white
   grid: { rows: 6, columns: 7, cell: 4 }
   height: 26
-  ascent: 16
+  ascent: 7
 
 t_white2_4:
   file: type_white
   grid: { rows: 6, columns: 7, cell: 5 }
   height: 26
-  ascent: 16
+  ascent: 7
 
 t_white2_5:
   file: type_white
   grid: { rows: 6, columns: 7, cell: 6 }
   height: 26
-  ascent: 16
+  ascent: 7
 
 t_white2_6:
   file: type_white
   grid: { rows: 6, columns: 7, cell: 7 }
   height: 26
-  ascent: 16
+  ascent: 7
 
 t_white2_7:
   file: type_white
   grid: { rows: 6, columns: 7, cell: 8 }
   height: 26
-  ascent: 16
+  ascent: 7
 
 t_white2_8:
   file: type_white
   grid: { rows: 6, columns: 7, cell: 9 }
   height: 26
-  ascent: 16
+  ascent: 7
 
 t_white2_9:
   file: type_white
   grid: { rows: 6, columns: 7, cell: 10 }
   height: 26
-  ascent: 16
+  ascent: 7
 
 t_white2_a:
   file: type_white
   grid: { rows: 6, columns: 7, cell: 11 }
   height: 26
-  ascent: 16
+  ascent: 7
 
 t_white2_b:
   file: type_white
   grid: { rows: 6, columns: 7, cell: 12 }
   height: 26
-  ascent: 16
+  ascent: 7
 
 t_white2_c:
   file: type_white
   grid: { rows: 6, columns: 7, cell: 13 }
   height: 26
-  ascent: 16
+  ascent: 7
 
 t_white2_d:
   file: type_white
   grid: { rows: 6, columns: 7, cell: 14 }
   height: 26
-  ascent: 16
+  ascent: 7
 
 t_white2_e:
   file: type_white
   grid: { rows: 6, columns: 7, cell: 15 }
   height: 26
-  ascent: 16
+  ascent: 7
 
 t_white2_f:
   file: type_white
   grid: { rows: 6, columns: 7, cell: 16 }
   height: 26
-  ascent: 16
+  ascent: 7
 
 t_white2_g:
   file: type_white
   grid: { rows: 6, columns: 7, cell: 17 }
   height: 26
-  ascent: 16
+  ascent: 7
 
 t_white2_h:
   file: type_white
   grid: { rows: 6, columns: 7, cell: 18 }
   height: 26
-  ascent: 16
+  ascent: 7
 
 t_white2_i:
   file: type_white
   grid: { rows: 6, columns: 7, cell: 19 }
   height: 26
-  ascent: 16
+  ascent: 7
 
 t_white2_j:
   file: type_white
   grid: { rows: 6, columns: 7, cell: 20 }
   height: 26
-  ascent: 16
+  ascent: 7
 
 t_white2_k:
   file: type_white
   grid: { rows: 6, columns: 7, cell: 21 }
   height: 26
-  ascent: 16
+  ascent: 7
 
 t_white2_l:
   file: type_white
   grid: { rows: 6, columns: 7, cell: 22 }
   height: 26
-  ascent: 16
+  ascent: 7
 
 t_white2_m:
   file: type_white
   grid: { rows: 6, columns: 7, cell: 23 }
   height: 26
-  ascent: 16
+  ascent: 7
 
 t_white2_n:
   file: type_white
   grid: { rows: 6, columns: 7, cell: 24 }
   height: 26
-  ascent: 16
+  ascent: 7
 
 t_white2_o:
   file: type_white
   grid: { rows: 6, columns: 7, cell: 25 }
   height: 26
-  ascent: 16
+  ascent: 7
 
 t_white2_p:
   file: type_white
   grid: { rows: 6, columns: 7, cell: 26 }
   height: 26
-  ascent: 16
+  ascent: 7
 
 t_white2_q:
   file: type_white
   grid: { rows: 6, columns: 7, cell: 27 }
   height: 26
-  ascent: 16
+  ascent: 7
 
 t_white2_r:
   file: type_white
   grid: { rows: 6, columns: 7, cell: 28 }
   height: 26
-  ascent: 16
+  ascent: 7
 
 t_white2_s:
   file: type_white
   grid: { rows: 6, columns: 7, cell: 29 }
   height: 26
-  ascent: 16
+  ascent: 7
 
 t_white2_t:
   file: type_white
   grid: { rows: 6, columns: 7, cell: 30 }
   height: 26
-  ascent: 16
+  ascent: 7
 
 t_white2_u:
   file: type_white
   grid: { rows: 6, columns: 7, cell: 31 }
   height: 26
-  ascent: 16
+  ascent: 7
 
 t_white2_v:
   file: type_white
   grid: { rows: 6, columns: 7, cell: 32 }
   height: 26
-  ascent: 16
+  ascent: 7
 
 t_white2_w:
   file: type_white
   grid: { rows: 6, columns: 7, cell: 33 }
   height: 26
-  ascent: 16
+  ascent: 7
 
 t_white2_x:
   file: type_white
   grid: { rows: 6, columns: 7, cell: 34 }
   height: 26
-  ascent: 16
+  ascent: 7
 
 t_white2_y:
   file: type_white
   grid: { rows: 6, columns: 7, cell: 35 }
   height: 26
-  ascent: 16
+  ascent: 7
 
 t_white2_z:
   file: type_white
   grid: { rows: 6, columns: 7, cell: 36 }
   height: 26
-  ascent: 16
+  ascent: 7
 
 t_white2_bang:
   file: type_white
   grid: { rows: 6, columns: 7, cell: 37 }
   height: 26
-  ascent: 16
+  ascent: 7
 
 t_white2_dash:
   file: type_white
   grid: { rows: 6, columns: 7, cell: 38 }
   height: 26
-  ascent: 16
+  ascent: 7
 
 t_white2_apos:
   file: type_white
   grid: { rows: 6, columns: 7, cell: 39 }
   height: 26
-  ascent: 16
+  ascent: 7
 
 t_white2_slash:
   file: type_white
   grid: { rows: 6, columns: 7, cell: 40 }
   height: 26
-  ascent: 16
+  ascent: 7
 
 t_white2_colon:
   file: type_white
   grid: { rows: 6, columns: 7, cell: 41 }
   height: 26
-  ascent: 16
+  ascent: 7
 
 t_white2_dot:
   file: type_white
   grid: { rows: 6, columns: 7, cell: 42 }
   height: 26
-  ascent: 16
+  ascent: 7
 
 t_white3_0:
   file: type_white
   grid: { rows: 6, columns: 7, cell: 1 }
   height: 39
-  ascent: 22
+  ascent: 7
 
 t_white3_1:
   file: type_white
   grid: { rows: 6, columns: 7, cell: 2 }
   height: 39
-  ascent: 22
+  ascent: 7
 
 t_white3_2:
   file: type_white
   grid: { rows: 6, columns: 7, cell: 3 }
   height: 39
-  ascent: 22
+  ascent: 7
 
 t_white3_3:
   file: type_white
   grid: { rows: 6, columns: 7, cell: 4 }
   height: 39
-  ascent: 22
+  ascent: 7
 
 t_white3_4:
   file: type_white
   grid: { rows: 6, columns: 7, cell: 5 }
   height: 39
-  ascent: 22
+  ascent: 7
 
 t_white3_5:
   file: type_white
   grid: { rows: 6, columns: 7, cell: 6 }
   height: 39
-  ascent: 22
+  ascent: 7
 
 t_white3_6:
   file: type_white
   grid: { rows: 6, columns: 7, cell: 7 }
   height: 39
-  ascent: 22
+  ascent: 7
 
 t_white3_7:
   file: type_white
   grid: { rows: 6, columns: 7, cell: 8 }
   height: 39
-  ascent: 22
+  ascent: 7
 
 t_white3_8:
   file: type_white
   grid: { rows: 6, columns: 7, cell: 9 }
   height: 39
-  ascent: 22
+  ascent: 7
 
 t_white3_9:
   file: type_white
   grid: { rows: 6, columns: 7, cell: 10 }
   height: 39
-  ascent: 22
+  ascent: 7
 
 t_white3_a:
   file: type_white
   grid: { rows: 6, columns: 7, cell: 11 }
   height: 39
-  ascent: 22
+  ascent: 7
 
 t_white3_b:
   file: type_white
   grid: { rows: 6, columns: 7, cell: 12 }
   height: 39
-  ascent: 22
+  ascent: 7
 
 t_white3_c:
   file: type_white
   grid: { rows: 6, columns: 7, cell: 13 }
   height: 39
-  ascent: 22
+  ascent: 7
 
 t_white3_d:
   file: type_white
   grid: { rows: 6, columns: 7, cell: 14 }
   height: 39
-  ascent: 22
+  ascent: 7
 
 t_white3_e:
   file: type_white
   grid: { rows: 6, columns: 7, cell: 15 }
   height: 39
-  ascent: 22
+  ascent: 7
 
 t_white3_f:
   file: type_white
   grid: { rows: 6, columns: 7, cell: 16 }
   height: 39
-  ascent: 22
+  ascent: 7
 
 t_white3_g:
   file: type_white
   grid: { rows: 6, columns: 7, cell: 17 }
   height: 39
-  ascent: 22
+  ascent: 7
 
 t_white3_h:
   file: type_white
   grid: { rows: 6, columns: 7, cell: 18 }
   height: 39
-  ascent: 22
+  ascent: 7
 
 t_white3_i:
   file: type_white
   grid: { rows: 6, columns: 7, cell: 19 }
   height: 39
-  ascent: 22
+  ascent: 7
 
 t_white3_j:
   file: type_white
   grid: { rows: 6, columns: 7, cell: 20 }
   height: 39
-  ascent: 22
+  ascent: 7
 
 t_white3_k:
   file: type_white
   grid: { rows: 6, columns: 7, cell: 21 }
   height: 39
-  ascent: 22
+  ascent: 7
 
 t_white3_l:
   file: type_white
   grid: { rows: 6, columns: 7, cell: 22 }
   height: 39
-  ascent: 22
+  ascent: 7
 
 t_white3_m:
   file: type_white
   grid: { rows: 6, columns: 7, cell: 23 }
   height: 39
-  ascent: 22
+  ascent: 7
 
 t_white3_n:
   file: type_white
   grid: { rows: 6, columns: 7, cell: 24 }
   height: 39
-  ascent: 22
+  ascent: 7
 
 t_white3_o:
   file: type_white
   grid: { rows: 6, columns: 7, cell: 25 }
   height: 39
-  ascent: 22
+  ascent: 7
 
 t_white3_p:
   file: type_white
   grid: { rows: 6, columns: 7, cell: 26 }
   height: 39
-  ascent: 22
+  ascent: 7
 
 t_white3_q:
   file: type_white
   grid: { rows: 6, columns: 7, cell: 27 }
   height: 39
-  ascent: 22
+  ascent: 7
 
 t_white3_r:
   file: type_white
   grid: { rows: 6, columns: 7, cell: 28 }
   height: 39
-  ascent: 22
+  ascent: 7
 
 t_white3_s:
   file: type_white
   grid: { rows: 6, columns: 7, cell: 29 }
   height: 39
-  ascent: 22
+  ascent: 7
 
 t_white3_t:
   file: type_white
   grid: { rows: 6, columns: 7, cell: 30 }
   height: 39
-  ascent: 22
+  ascent: 7
 
 t_white3_u:
   file: type_white
   grid: { rows: 6, columns: 7, cell: 31 }
   height: 39
-  ascent: 22
+  ascent: 7
 
 t_white3_v:
   file: type_white
   grid: { rows: 6, columns: 7, cell: 32 }
   height: 39
-  ascent: 22
+  ascent: 7
 
 t_white3_w:
   file: type_white
   grid: { rows: 6, columns: 7, cell: 33 }
   height: 39
-  ascent: 22
+  ascent: 7
 
 t_white3_x:
   file: type_white
   grid: { rows: 6, columns: 7, cell: 34 }
   height: 39
-  ascent: 22
+  ascent: 7
 
 t_white3_y:
   file: type_white
   grid: { rows: 6, columns: 7, cell: 35 }
   height: 39
-  ascent: 22
+  ascent: 7
 
 t_white3_z:
   file: type_white
   grid: { rows: 6, columns: 7, cell: 36 }
   height: 39
-  ascent: 22
+  ascent: 7
 
 t_white3_bang:
   file: type_white
   grid: { rows: 6, columns: 7, cell: 37 }
   height: 39
-  ascent: 22
+  ascent: 7
 
 t_white3_dash:
   file: type_white
   grid: { rows: 6, columns: 7, cell: 38 }
   height: 39
-  ascent: 22
+  ascent: 7
 
 t_white3_apos:
   file: type_white
   grid: { rows: 6, columns: 7, cell: 39 }
   height: 39
-  ascent: 22
+  ascent: 7
 
 t_white3_slash:
   file: type_white
   grid: { rows: 6, columns: 7, cell: 40 }
   height: 39
-  ascent: 22
+  ascent: 7
 
 t_white3_colon:
   file: type_white
   grid: { rows: 6, columns: 7, cell: 41 }
   height: 39
-  ascent: 22
+  ascent: 7
 
 t_white3_dot:
   file: type_white
   grid: { rows: 6, columns: 7, cell: 42 }
   height: 39
-  ascent: 22
-
-t_white4_0:
-  file: type_white
-  grid: { rows: 6, columns: 7, cell: 1 }
-  height: 52
-  ascent: 29
-
-t_white4_1:
-  file: type_white
-  grid: { rows: 6, columns: 7, cell: 2 }
-  height: 52
-  ascent: 29
-
-t_white4_2:
-  file: type_white
-  grid: { rows: 6, columns: 7, cell: 3 }
-  height: 52
-  ascent: 29
-
-t_white4_3:
-  file: type_white
-  grid: { rows: 6, columns: 7, cell: 4 }
-  height: 52
-  ascent: 29
-
-t_white4_4:
-  file: type_white
-  grid: { rows: 6, columns: 7, cell: 5 }
-  height: 52
-  ascent: 29
-
-t_white4_5:
-  file: type_white
-  grid: { rows: 6, columns: 7, cell: 6 }
-  height: 52
-  ascent: 29
-
-t_white4_6:
-  file: type_white
-  grid: { rows: 6, columns: 7, cell: 7 }
-  height: 52
-  ascent: 29
-
-t_white4_7:
-  file: type_white
-  grid: { rows: 6, columns: 7, cell: 8 }
-  height: 52
-  ascent: 29
-
-t_white4_8:
-  file: type_white
-  grid: { rows: 6, columns: 7, cell: 9 }
-  height: 52
-  ascent: 29
-
-t_white4_9:
-  file: type_white
-  grid: { rows: 6, columns: 7, cell: 10 }
-  height: 52
-  ascent: 29
-
-t_white4_a:
-  file: type_white
-  grid: { rows: 6, columns: 7, cell: 11 }
-  height: 52
-  ascent: 29
-
-t_white4_b:
-  file: type_white
-  grid: { rows: 6, columns: 7, cell: 12 }
-  height: 52
-  ascent: 29
-
-t_white4_c:
-  file: type_white
-  grid: { rows: 6, columns: 7, cell: 13 }
-  height: 52
-  ascent: 29
-
-t_white4_d:
-  file: type_white
-  grid: { rows: 6, columns: 7, cell: 14 }
-  height: 52
-  ascent: 29
-
-t_white4_e:
-  file: type_white
-  grid: { rows: 6, columns: 7, cell: 15 }
-  height: 52
-  ascent: 29
-
-t_white4_f:
-  file: type_white
-  grid: { rows: 6, columns: 7, cell: 16 }
-  height: 52
-  ascent: 29
-
-t_white4_g:
-  file: type_white
-  grid: { rows: 6, columns: 7, cell: 17 }
-  height: 52
-  ascent: 29
-
-t_white4_h:
-  file: type_white
-  grid: { rows: 6, columns: 7, cell: 18 }
-  height: 52
-  ascent: 29
-
-t_white4_i:
-  file: type_white
-  grid: { rows: 6, columns: 7, cell: 19 }
-  height: 52
-  ascent: 29
-
-t_white4_j:
-  file: type_white
-  grid: { rows: 6, columns: 7, cell: 20 }
-  height: 52
-  ascent: 29
-
-t_white4_k:
-  file: type_white
-  grid: { rows: 6, columns: 7, cell: 21 }
-  height: 52
-  ascent: 29
-
-t_white4_l:
-  file: type_white
-  grid: { rows: 6, columns: 7, cell: 22 }
-  height: 52
-  ascent: 29
-
-t_white4_m:
-  file: type_white
-  grid: { rows: 6, columns: 7, cell: 23 }
-  height: 52
-  ascent: 29
-
-t_white4_n:
-  file: type_white
-  grid: { rows: 6, columns: 7, cell: 24 }
-  height: 52
-  ascent: 29
-
-t_white4_o:
-  file: type_white
-  grid: { rows: 6, columns: 7, cell: 25 }
-  height: 52
-  ascent: 29
-
-t_white4_p:
-  file: type_white
-  grid: { rows: 6, columns: 7, cell: 26 }
-  height: 52
-  ascent: 29
-
-t_white4_q:
-  file: type_white
-  grid: { rows: 6, columns: 7, cell: 27 }
-  height: 52
-  ascent: 29
-
-t_white4_r:
-  file: type_white
-  grid: { rows: 6, columns: 7, cell: 28 }
-  height: 52
-  ascent: 29
-
-t_white4_s:
-  file: type_white
-  grid: { rows: 6, columns: 7, cell: 29 }
-  height: 52
-  ascent: 29
-
-t_white4_t:
-  file: type_white
-  grid: { rows: 6, columns: 7, cell: 30 }
-  height: 52
-  ascent: 29
-
-t_white4_u:
-  file: type_white
-  grid: { rows: 6, columns: 7, cell: 31 }
-  height: 52
-  ascent: 29
-
-t_white4_v:
-  file: type_white
-  grid: { rows: 6, columns: 7, cell: 32 }
-  height: 52
-  ascent: 29
-
-t_white4_w:
-  file: type_white
-  grid: { rows: 6, columns: 7, cell: 33 }
-  height: 52
-  ascent: 29
-
-t_white4_x:
-  file: type_white
-  grid: { rows: 6, columns: 7, cell: 34 }
-  height: 52
-  ascent: 29
-
-t_white4_y:
-  file: type_white
-  grid: { rows: 6, columns: 7, cell: 35 }
-  height: 52
-  ascent: 29
-
-t_white4_z:
-  file: type_white
-  grid: { rows: 6, columns: 7, cell: 36 }
-  height: 52
-  ascent: 29
-
-t_white4_bang:
-  file: type_white
-  grid: { rows: 6, columns: 7, cell: 37 }
-  height: 52
-  ascent: 29
-
-t_white4_dash:
-  file: type_white
-  grid: { rows: 6, columns: 7, cell: 38 }
-  height: 52
-  ascent: 29
-
-t_white4_apos:
-  file: type_white
-  grid: { rows: 6, columns: 7, cell: 39 }
-  height: 52
-  ascent: 29
-
-t_white4_slash:
-  file: type_white
-  grid: { rows: 6, columns: 7, cell: 40 }
-  height: 52
-  ascent: 29
-
-t_white4_colon:
-  file: type_white
-  grid: { rows: 6, columns: 7, cell: 41 }
-  height: 52
-  ascent: 29
-
-t_white4_dot:
-  file: type_white
-  grid: { rows: 6, columns: 7, cell: 42 }
-  height: 52
-  ascent: 29
-
-t_gold2_0:
-  file: type_gold
-  grid: { rows: 6, columns: 7, cell: 1 }
-  height: 26
-  ascent: 16
-
-t_gold2_1:
-  file: type_gold
-  grid: { rows: 6, columns: 7, cell: 2 }
-  height: 26
-  ascent: 16
-
-t_gold2_2:
-  file: type_gold
-  grid: { rows: 6, columns: 7, cell: 3 }
-  height: 26
-  ascent: 16
-
-t_gold2_3:
-  file: type_gold
-  grid: { rows: 6, columns: 7, cell: 4 }
-  height: 26
-  ascent: 16
-
-t_gold2_4:
-  file: type_gold
-  grid: { rows: 6, columns: 7, cell: 5 }
-  height: 26
-  ascent: 16
-
-t_gold2_5:
-  file: type_gold
-  grid: { rows: 6, columns: 7, cell: 6 }
-  height: 26
-  ascent: 16
-
-t_gold2_6:
-  file: type_gold
-  grid: { rows: 6, columns: 7, cell: 7 }
-  height: 26
-  ascent: 16
-
-t_gold2_7:
-  file: type_gold
-  grid: { rows: 6, columns: 7, cell: 8 }
-  height: 26
-  ascent: 16
-
-t_gold2_8:
-  file: type_gold
-  grid: { rows: 6, columns: 7, cell: 9 }
-  height: 26
-  ascent: 16
-
-t_gold2_9:
-  file: type_gold
-  grid: { rows: 6, columns: 7, cell: 10 }
-  height: 26
-  ascent: 16
-
-t_gold2_a:
-  file: type_gold
-  grid: { rows: 6, columns: 7, cell: 11 }
-  height: 26
-  ascent: 16
-
-t_gold2_b:
-  file: type_gold
-  grid: { rows: 6, columns: 7, cell: 12 }
-  height: 26
-  ascent: 16
-
-t_gold2_c:
-  file: type_gold
-  grid: { rows: 6, columns: 7, cell: 13 }
-  height: 26
-  ascent: 16
-
-t_gold2_d:
-  file: type_gold
-  grid: { rows: 6, columns: 7, cell: 14 }
-  height: 26
-  ascent: 16
-
-t_gold2_e:
-  file: type_gold
-  grid: { rows: 6, columns: 7, cell: 15 }
-  height: 26
-  ascent: 16
-
-t_gold2_f:
-  file: type_gold
-  grid: { rows: 6, columns: 7, cell: 16 }
-  height: 26
-  ascent: 16
-
-t_gold2_g:
-  file: type_gold
-  grid: { rows: 6, columns: 7, cell: 17 }
-  height: 26
-  ascent: 16
-
-t_gold2_h:
-  file: type_gold
-  grid: { rows: 6, columns: 7, cell: 18 }
-  height: 26
-  ascent: 16
-
-t_gold2_i:
-  file: type_gold
-  grid: { rows: 6, columns: 7, cell: 19 }
-  height: 26
-  ascent: 16
-
-t_gold2_j:
-  file: type_gold
-  grid: { rows: 6, columns: 7, cell: 20 }
-  height: 26
-  ascent: 16
-
-t_gold2_k:
-  file: type_gold
-  grid: { rows: 6, columns: 7, cell: 21 }
-  height: 26
-  ascent: 16
-
-t_gold2_l:
-  file: type_gold
-  grid: { rows: 6, columns: 7, cell: 22 }
-  height: 26
-  ascent: 16
-
-t_gold2_m:
-  file: type_gold
-  grid: { rows: 6, columns: 7, cell: 23 }
-  height: 26
-  ascent: 16
-
-t_gold2_n:
-  file: type_gold
-  grid: { rows: 6, columns: 7, cell: 24 }
-  height: 26
-  ascent: 16
-
-t_gold2_o:
-  file: type_gold
-  grid: { rows: 6, columns: 7, cell: 25 }
-  height: 26
-  ascent: 16
-
-t_gold2_p:
-  file: type_gold
-  grid: { rows: 6, columns: 7, cell: 26 }
-  height: 26
-  ascent: 16
-
-t_gold2_q:
-  file: type_gold
-  grid: { rows: 6, columns: 7, cell: 27 }
-  height: 26
-  ascent: 16
-
-t_gold2_r:
-  file: type_gold
-  grid: { rows: 6, columns: 7, cell: 28 }
-  height: 26
-  ascent: 16
-
-t_gold2_s:
-  file: type_gold
-  grid: { rows: 6, columns: 7, cell: 29 }
-  height: 26
-  ascent: 16
-
-t_gold2_t:
-  file: type_gold
-  grid: { rows: 6, columns: 7, cell: 30 }
-  height: 26
-  ascent: 16
-
-t_gold2_u:
-  file: type_gold
-  grid: { rows: 6, columns: 7, cell: 31 }
-  height: 26
-  ascent: 16
-
-t_gold2_v:
-  file: type_gold
-  grid: { rows: 6, columns: 7, cell: 32 }
-  height: 26
-  ascent: 16
-
-t_gold2_w:
-  file: type_gold
-  grid: { rows: 6, columns: 7, cell: 33 }
-  height: 26
-  ascent: 16
-
-t_gold2_x:
-  file: type_gold
-  grid: { rows: 6, columns: 7, cell: 34 }
-  height: 26
-  ascent: 16
-
-t_gold2_y:
-  file: type_gold
-  grid: { rows: 6, columns: 7, cell: 35 }
-  height: 26
-  ascent: 16
-
-t_gold2_z:
-  file: type_gold
-  grid: { rows: 6, columns: 7, cell: 36 }
-  height: 26
-  ascent: 16
-
-t_gold2_bang:
-  file: type_gold
-  grid: { rows: 6, columns: 7, cell: 37 }
-  height: 26
-  ascent: 16
-
-t_gold2_dash:
-  file: type_gold
-  grid: { rows: 6, columns: 7, cell: 38 }
-  height: 26
-  ascent: 16
-
-t_gold2_apos:
-  file: type_gold
-  grid: { rows: 6, columns: 7, cell: 39 }
-  height: 26
-  ascent: 16
-
-t_gold2_slash:
-  file: type_gold
-  grid: { rows: 6, columns: 7, cell: 40 }
-  height: 26
-  ascent: 16
-
-t_gold2_colon:
-  file: type_gold
-  grid: { rows: 6, columns: 7, cell: 41 }
-  height: 26
-  ascent: 16
-
-t_gold2_dot:
-  file: type_gold
-  grid: { rows: 6, columns: 7, cell: 42 }
-  height: 26
-  ascent: 16
-
-t_gold3_0:
-  file: type_gold
-  grid: { rows: 6, columns: 7, cell: 1 }
-  height: 39
-  ascent: 22
-
-t_gold3_1:
-  file: type_gold
-  grid: { rows: 6, columns: 7, cell: 2 }
-  height: 39
-  ascent: 22
-
-t_gold3_2:
-  file: type_gold
-  grid: { rows: 6, columns: 7, cell: 3 }
-  height: 39
-  ascent: 22
-
-t_gold3_3:
-  file: type_gold
-  grid: { rows: 6, columns: 7, cell: 4 }
-  height: 39
-  ascent: 22
-
-t_gold3_4:
-  file: type_gold
-  grid: { rows: 6, columns: 7, cell: 5 }
-  height: 39
-  ascent: 22
-
-t_gold3_5:
-  file: type_gold
-  grid: { rows: 6, columns: 7, cell: 6 }
-  height: 39
-  ascent: 22
-
-t_gold3_6:
-  file: type_gold
-  grid: { rows: 6, columns: 7, cell: 7 }
-  height: 39
-  ascent: 22
-
-t_gold3_7:
-  file: type_gold
-  grid: { rows: 6, columns: 7, cell: 8 }
-  height: 39
-  ascent: 22
-
-t_gold3_8:
-  file: type_gold
-  grid: { rows: 6, columns: 7, cell: 9 }
-  height: 39
-  ascent: 22
-
-t_gold3_9:
-  file: type_gold
-  grid: { rows: 6, columns: 7, cell: 10 }
-  height: 39
-  ascent: 22
-
-t_gold3_a:
-  file: type_gold
-  grid: { rows: 6, columns: 7, cell: 11 }
-  height: 39
-  ascent: 22
-
-t_gold3_b:
-  file: type_gold
-  grid: { rows: 6, columns: 7, cell: 12 }
-  height: 39
-  ascent: 22
-
-t_gold3_c:
-  file: type_gold
-  grid: { rows: 6, columns: 7, cell: 13 }
-  height: 39
-  ascent: 22
-
-t_gold3_d:
-  file: type_gold
-  grid: { rows: 6, columns: 7, cell: 14 }
-  height: 39
-  ascent: 22
-
-t_gold3_e:
-  file: type_gold
-  grid: { rows: 6, columns: 7, cell: 15 }
-  height: 39
-  ascent: 22
-
-t_gold3_f:
-  file: type_gold
-  grid: { rows: 6, columns: 7, cell: 16 }
-  height: 39
-  ascent: 22
-
-t_gold3_g:
-  file: type_gold
-  grid: { rows: 6, columns: 7, cell: 17 }
-  height: 39
-  ascent: 22
-
-t_gold3_h:
-  file: type_gold
-  grid: { rows: 6, columns: 7, cell: 18 }
-  height: 39
-  ascent: 22
-
-t_gold3_i:
-  file: type_gold
-  grid: { rows: 6, columns: 7, cell: 19 }
-  height: 39
-  ascent: 22
-
-t_gold3_j:
-  file: type_gold
-  grid: { rows: 6, columns: 7, cell: 20 }
-  height: 39
-  ascent: 22
-
-t_gold3_k:
-  file: type_gold
-  grid: { rows: 6, columns: 7, cell: 21 }
-  height: 39
-  ascent: 22
-
-t_gold3_l:
-  file: type_gold
-  grid: { rows: 6, columns: 7, cell: 22 }
-  height: 39
-  ascent: 22
-
-t_gold3_m:
-  file: type_gold
-  grid: { rows: 6, columns: 7, cell: 23 }
-  height: 39
-  ascent: 22
-
-t_gold3_n:
-  file: type_gold
-  grid: { rows: 6, columns: 7, cell: 24 }
-  height: 39
-  ascent: 22
-
-t_gold3_o:
-  file: type_gold
-  grid: { rows: 6, columns: 7, cell: 25 }
-  height: 39
-  ascent: 22
-
-t_gold3_p:
-  file: type_gold
-  grid: { rows: 6, columns: 7, cell: 26 }
-  height: 39
-  ascent: 22
-
-t_gold3_q:
-  file: type_gold
-  grid: { rows: 6, columns: 7, cell: 27 }
-  height: 39
-  ascent: 22
-
-t_gold3_r:
-  file: type_gold
-  grid: { rows: 6, columns: 7, cell: 28 }
-  height: 39
-  ascent: 22
-
-t_gold3_s:
-  file: type_gold
-  grid: { rows: 6, columns: 7, cell: 29 }
-  height: 39
-  ascent: 22
-
-t_gold3_t:
-  file: type_gold
-  grid: { rows: 6, columns: 7, cell: 30 }
-  height: 39
-  ascent: 22
-
-t_gold3_u:
-  file: type_gold
-  grid: { rows: 6, columns: 7, cell: 31 }
-  height: 39
-  ascent: 22
-
-t_gold3_v:
-  file: type_gold
-  grid: { rows: 6, columns: 7, cell: 32 }
-  height: 39
-  ascent: 22
-
-t_gold3_w:
-  file: type_gold
-  grid: { rows: 6, columns: 7, cell: 33 }
-  height: 39
-  ascent: 22
-
-t_gold3_x:
-  file: type_gold
-  grid: { rows: 6, columns: 7, cell: 34 }
-  height: 39
-  ascent: 22
-
-t_gold3_y:
-  file: type_gold
-  grid: { rows: 6, columns: 7, cell: 35 }
-  height: 39
-  ascent: 22
-
-t_gold3_z:
-  file: type_gold
-  grid: { rows: 6, columns: 7, cell: 36 }
-  height: 39
-  ascent: 22
-
-t_gold3_bang:
-  file: type_gold
-  grid: { rows: 6, columns: 7, cell: 37 }
-  height: 39
-  ascent: 22
-
-t_gold3_dash:
-  file: type_gold
-  grid: { rows: 6, columns: 7, cell: 38 }
-  height: 39
-  ascent: 22
-
-t_gold3_apos:
-  file: type_gold
-  grid: { rows: 6, columns: 7, cell: 39 }
-  height: 39
-  ascent: 22
-
-t_gold3_slash:
-  file: type_gold
-  grid: { rows: 6, columns: 7, cell: 40 }
-  height: 39
-  ascent: 22
-
-t_gold3_colon:
-  file: type_gold
-  grid: { rows: 6, columns: 7, cell: 41 }
-  height: 39
-  ascent: 22
-
-t_gold3_dot:
-  file: type_gold
-  grid: { rows: 6, columns: 7, cell: 42 }
-  height: 39
-  ascent: 22
-
-t_gold4_0:
-  file: type_gold
-  grid: { rows: 6, columns: 7, cell: 1 }
-  height: 52
-  ascent: 29
-
-t_gold4_1:
-  file: type_gold
-  grid: { rows: 6, columns: 7, cell: 2 }
-  height: 52
-  ascent: 29
-
-t_gold4_2:
-  file: type_gold
-  grid: { rows: 6, columns: 7, cell: 3 }
-  height: 52
-  ascent: 29
-
-t_gold4_3:
-  file: type_gold
-  grid: { rows: 6, columns: 7, cell: 4 }
-  height: 52
-  ascent: 29
-
-t_gold4_4:
-  file: type_gold
-  grid: { rows: 6, columns: 7, cell: 5 }
-  height: 52
-  ascent: 29
-
-t_gold4_5:
-  file: type_gold
-  grid: { rows: 6, columns: 7, cell: 6 }
-  height: 52
-  ascent: 29
-
-t_gold4_6:
-  file: type_gold
-  grid: { rows: 6, columns: 7, cell: 7 }
-  height: 52
-  ascent: 29
-
-t_gold4_7:
-  file: type_gold
-  grid: { rows: 6, columns: 7, cell: 8 }
-  height: 52
-  ascent: 29
-
-t_gold4_8:
-  file: type_gold
-  grid: { rows: 6, columns: 7, cell: 9 }
-  height: 52
-  ascent: 29
-
-t_gold4_9:
-  file: type_gold
-  grid: { rows: 6, columns: 7, cell: 10 }
-  height: 52
-  ascent: 29
-
-t_gold4_a:
-  file: type_gold
-  grid: { rows: 6, columns: 7, cell: 11 }
-  height: 52
-  ascent: 29
-
-t_gold4_b:
-  file: type_gold
-  grid: { rows: 6, columns: 7, cell: 12 }
-  height: 52
-  ascent: 29
-
-t_gold4_c:
-  file: type_gold
-  grid: { rows: 6, columns: 7, cell: 13 }
-  height: 52
-  ascent: 29
-
-t_gold4_d:
-  file: type_gold
-  grid: { rows: 6, columns: 7, cell: 14 }
-  height: 52
-  ascent: 29
-
-t_gold4_e:
-  file: type_gold
-  grid: { rows: 6, columns: 7, cell: 15 }
-  height: 52
-  ascent: 29
-
-t_gold4_f:
-  file: type_gold
-  grid: { rows: 6, columns: 7, cell: 16 }
-  height: 52
-  ascent: 29
-
-t_gold4_g:
-  file: type_gold
-  grid: { rows: 6, columns: 7, cell: 17 }
-  height: 52
-  ascent: 29
-
-t_gold4_h:
-  file: type_gold
-  grid: { rows: 6, columns: 7, cell: 18 }
-  height: 52
-  ascent: 29
-
-t_gold4_i:
-  file: type_gold
-  grid: { rows: 6, columns: 7, cell: 19 }
-  height: 52
-  ascent: 29
-
-t_gold4_j:
-  file: type_gold
-  grid: { rows: 6, columns: 7, cell: 20 }
-  height: 52
-  ascent: 29
-
-t_gold4_k:
-  file: type_gold
-  grid: { rows: 6, columns: 7, cell: 21 }
-  height: 52
-  ascent: 29
-
-t_gold4_l:
-  file: type_gold
-  grid: { rows: 6, columns: 7, cell: 22 }
-  height: 52
-  ascent: 29
-
-t_gold4_m:
-  file: type_gold
-  grid: { rows: 6, columns: 7, cell: 23 }
-  height: 52
-  ascent: 29
-
-t_gold4_n:
-  file: type_gold
-  grid: { rows: 6, columns: 7, cell: 24 }
-  height: 52
-  ascent: 29
-
-t_gold4_o:
-  file: type_gold
-  grid: { rows: 6, columns: 7, cell: 25 }
-  height: 52
-  ascent: 29
-
-t_gold4_p:
-  file: type_gold
-  grid: { rows: 6, columns: 7, cell: 26 }
-  height: 52
-  ascent: 29
-
-t_gold4_q:
-  file: type_gold
-  grid: { rows: 6, columns: 7, cell: 27 }
-  height: 52
-  ascent: 29
-
-t_gold4_r:
-  file: type_gold
-  grid: { rows: 6, columns: 7, cell: 28 }
-  height: 52
-  ascent: 29
-
-t_gold4_s:
-  file: type_gold
-  grid: { rows: 6, columns: 7, cell: 29 }
-  height: 52
-  ascent: 29
-
-t_gold4_t:
-  file: type_gold
-  grid: { rows: 6, columns: 7, cell: 30 }
-  height: 52
-  ascent: 29
-
-t_gold4_u:
-  file: type_gold
-  grid: { rows: 6, columns: 7, cell: 31 }
-  height: 52
-  ascent: 29
-
-t_gold4_v:
-  file: type_gold
-  grid: { rows: 6, columns: 7, cell: 32 }
-  height: 52
-  ascent: 29
-
-t_gold4_w:
-  file: type_gold
-  grid: { rows: 6, columns: 7, cell: 33 }
-  height: 52
-  ascent: 29
-
-t_gold4_x:
-  file: type_gold
-  grid: { rows: 6, columns: 7, cell: 34 }
-  height: 52
-  ascent: 29
-
-t_gold4_y:
-  file: type_gold
-  grid: { rows: 6, columns: 7, cell: 35 }
-  height: 52
-  ascent: 29
-
-t_gold4_z:
-  file: type_gold
-  grid: { rows: 6, columns: 7, cell: 36 }
-  height: 52
-  ascent: 29
-
-t_gold4_bang:
-  file: type_gold
-  grid: { rows: 6, columns: 7, cell: 37 }
-  height: 52
-  ascent: 29
-
-t_gold4_dash:
-  file: type_gold
-  grid: { rows: 6, columns: 7, cell: 38 }
-  height: 52
-  ascent: 29
-
-t_gold4_apos:
-  file: type_gold
-  grid: { rows: 6, columns: 7, cell: 39 }
-  height: 52
-  ascent: 29
-
-t_gold4_slash:
-  file: type_gold
-  grid: { rows: 6, columns: 7, cell: 40 }
-  height: 52
-  ascent: 29
-
-t_gold4_colon:
-  file: type_gold
-  grid: { rows: 6, columns: 7, cell: 41 }
-  height: 52
-  ascent: 29
-
-t_gold4_dot:
-  file: type_gold
-  grid: { rows: 6, columns: 7, cell: 42 }
-  height: 52
-  ascent: 29
-
-t_silver4_0:
-  file: type_silver
-  grid: { rows: 6, columns: 7, cell: 1 }
-  height: 52
-  ascent: 29
-
-t_silver4_1:
-  file: type_silver
-  grid: { rows: 6, columns: 7, cell: 2 }
-  height: 52
-  ascent: 29
-
-t_silver4_2:
-  file: type_silver
-  grid: { rows: 6, columns: 7, cell: 3 }
-  height: 52
-  ascent: 29
-
-t_silver4_3:
-  file: type_silver
-  grid: { rows: 6, columns: 7, cell: 4 }
-  height: 52
-  ascent: 29
-
-t_silver4_4:
-  file: type_silver
-  grid: { rows: 6, columns: 7, cell: 5 }
-  height: 52
-  ascent: 29
-
-t_silver4_5:
-  file: type_silver
-  grid: { rows: 6, columns: 7, cell: 6 }
-  height: 52
-  ascent: 29
-
-t_silver4_6:
-  file: type_silver
-  grid: { rows: 6, columns: 7, cell: 7 }
-  height: 52
-  ascent: 29
-
-t_silver4_7:
-  file: type_silver
-  grid: { rows: 6, columns: 7, cell: 8 }
-  height: 52
-  ascent: 29
-
-t_silver4_8:
-  file: type_silver
-  grid: { rows: 6, columns: 7, cell: 9 }
-  height: 52
-  ascent: 29
-
-t_silver4_9:
-  file: type_silver
-  grid: { rows: 6, columns: 7, cell: 10 }
-  height: 52
-  ascent: 29
-
-t_silver4_a:
-  file: type_silver
-  grid: { rows: 6, columns: 7, cell: 11 }
-  height: 52
-  ascent: 29
-
-t_silver4_b:
-  file: type_silver
-  grid: { rows: 6, columns: 7, cell: 12 }
-  height: 52
-  ascent: 29
-
-t_silver4_c:
-  file: type_silver
-  grid: { rows: 6, columns: 7, cell: 13 }
-  height: 52
-  ascent: 29
-
-t_silver4_d:
-  file: type_silver
-  grid: { rows: 6, columns: 7, cell: 14 }
-  height: 52
-  ascent: 29
-
-t_silver4_e:
-  file: type_silver
-  grid: { rows: 6, columns: 7, cell: 15 }
-  height: 52
-  ascent: 29
-
-t_silver4_f:
-  file: type_silver
-  grid: { rows: 6, columns: 7, cell: 16 }
-  height: 52
-  ascent: 29
-
-t_silver4_g:
-  file: type_silver
-  grid: { rows: 6, columns: 7, cell: 17 }
-  height: 52
-  ascent: 29
-
-t_silver4_h:
-  file: type_silver
-  grid: { rows: 6, columns: 7, cell: 18 }
-  height: 52
-  ascent: 29
-
-t_silver4_i:
-  file: type_silver
-  grid: { rows: 6, columns: 7, cell: 19 }
-  height: 52
-  ascent: 29
-
-t_silver4_j:
-  file: type_silver
-  grid: { rows: 6, columns: 7, cell: 20 }
-  height: 52
-  ascent: 29
-
-t_silver4_k:
-  file: type_silver
-  grid: { rows: 6, columns: 7, cell: 21 }
-  height: 52
-  ascent: 29
-
-t_silver4_l:
-  file: type_silver
-  grid: { rows: 6, columns: 7, cell: 22 }
-  height: 52
-  ascent: 29
-
-t_silver4_m:
-  file: type_silver
-  grid: { rows: 6, columns: 7, cell: 23 }
-  height: 52
-  ascent: 29
-
-t_silver4_n:
-  file: type_silver
-  grid: { rows: 6, columns: 7, cell: 24 }
-  height: 52
-  ascent: 29
-
-t_silver4_o:
-  file: type_silver
-  grid: { rows: 6, columns: 7, cell: 25 }
-  height: 52
-  ascent: 29
-
-t_silver4_p:
-  file: type_silver
-  grid: { rows: 6, columns: 7, cell: 26 }
-  height: 52
-  ascent: 29
-
-t_silver4_q:
-  file: type_silver
-  grid: { rows: 6, columns: 7, cell: 27 }
-  height: 52
-  ascent: 29
-
-t_silver4_r:
-  file: type_silver
-  grid: { rows: 6, columns: 7, cell: 28 }
-  height: 52
-  ascent: 29
-
-t_silver4_s:
-  file: type_silver
-  grid: { rows: 6, columns: 7, cell: 29 }
-  height: 52
-  ascent: 29
-
-t_silver4_t:
-  file: type_silver
-  grid: { rows: 6, columns: 7, cell: 30 }
-  height: 52
-  ascent: 29
-
-t_silver4_u:
-  file: type_silver
-  grid: { rows: 6, columns: 7, cell: 31 }
-  height: 52
-  ascent: 29
-
-t_silver4_v:
-  file: type_silver
-  grid: { rows: 6, columns: 7, cell: 32 }
-  height: 52
-  ascent: 29
-
-t_silver4_w:
-  file: type_silver
-  grid: { rows: 6, columns: 7, cell: 33 }
-  height: 52
-  ascent: 29
-
-t_silver4_x:
-  file: type_silver
-  grid: { rows: 6, columns: 7, cell: 34 }
-  height: 52
-  ascent: 29
-
-t_silver4_y:
-  file: type_silver
-  grid: { rows: 6, columns: 7, cell: 35 }
-  height: 52
-  ascent: 29
-
-t_silver4_z:
-  file: type_silver
-  grid: { rows: 6, columns: 7, cell: 36 }
-  height: 52
-  ascent: 29
-
-t_silver4_bang:
-  file: type_silver
-  grid: { rows: 6, columns: 7, cell: 37 }
-  height: 52
-  ascent: 29
-
-t_silver4_dash:
-  file: type_silver
-  grid: { rows: 6, columns: 7, cell: 38 }
-  height: 52
-  ascent: 29
-
-t_silver4_apos:
-  file: type_silver
-  grid: { rows: 6, columns: 7, cell: 39 }
-  height: 52
-  ascent: 29
-
-t_silver4_slash:
-  file: type_silver
-  grid: { rows: 6, columns: 7, cell: 40 }
-  height: 52
-  ascent: 29
-
-t_silver4_colon:
-  file: type_silver
-  grid: { rows: 6, columns: 7, cell: 41 }
-  height: 52
-  ascent: 29
-
-t_silver4_dot:
-  file: type_silver
-  grid: { rows: 6, columns: 7, cell: 42 }
-  height: 52
-  ascent: 29
-
-t_bronze4_0:
-  file: type_bronze
-  grid: { rows: 6, columns: 7, cell: 1 }
-  height: 52
-  ascent: 29
-
-t_bronze4_1:
-  file: type_bronze
-  grid: { rows: 6, columns: 7, cell: 2 }
-  height: 52
-  ascent: 29
-
-t_bronze4_2:
-  file: type_bronze
-  grid: { rows: 6, columns: 7, cell: 3 }
-  height: 52
-  ascent: 29
-
-t_bronze4_3:
-  file: type_bronze
-  grid: { rows: 6, columns: 7, cell: 4 }
-  height: 52
-  ascent: 29
-
-t_bronze4_4:
-  file: type_bronze
-  grid: { rows: 6, columns: 7, cell: 5 }
-  height: 52
-  ascent: 29
-
-t_bronze4_5:
-  file: type_bronze
-  grid: { rows: 6, columns: 7, cell: 6 }
-  height: 52
-  ascent: 29
-
-t_bronze4_6:
-  file: type_bronze
-  grid: { rows: 6, columns: 7, cell: 7 }
-  height: 52
-  ascent: 29
-
-t_bronze4_7:
-  file: type_bronze
-  grid: { rows: 6, columns: 7, cell: 8 }
-  height: 52
-  ascent: 29
-
-t_bronze4_8:
-  file: type_bronze
-  grid: { rows: 6, columns: 7, cell: 9 }
-  height: 52
-  ascent: 29
-
-t_bronze4_9:
-  file: type_bronze
-  grid: { rows: 6, columns: 7, cell: 10 }
-  height: 52
-  ascent: 29
-
-t_bronze4_a:
-  file: type_bronze
-  grid: { rows: 6, columns: 7, cell: 11 }
-  height: 52
-  ascent: 29
-
-t_bronze4_b:
-  file: type_bronze
-  grid: { rows: 6, columns: 7, cell: 12 }
-  height: 52
-  ascent: 29
-
-t_bronze4_c:
-  file: type_bronze
-  grid: { rows: 6, columns: 7, cell: 13 }
-  height: 52
-  ascent: 29
-
-t_bronze4_d:
-  file: type_bronze
-  grid: { rows: 6, columns: 7, cell: 14 }
-  height: 52
-  ascent: 29
-
-t_bronze4_e:
-  file: type_bronze
-  grid: { rows: 6, columns: 7, cell: 15 }
-  height: 52
-  ascent: 29
-
-t_bronze4_f:
-  file: type_bronze
-  grid: { rows: 6, columns: 7, cell: 16 }
-  height: 52
-  ascent: 29
-
-t_bronze4_g:
-  file: type_bronze
-  grid: { rows: 6, columns: 7, cell: 17 }
-  height: 52
-  ascent: 29
-
-t_bronze4_h:
-  file: type_bronze
-  grid: { rows: 6, columns: 7, cell: 18 }
-  height: 52
-  ascent: 29
-
-t_bronze4_i:
-  file: type_bronze
-  grid: { rows: 6, columns: 7, cell: 19 }
-  height: 52
-  ascent: 29
-
-t_bronze4_j:
-  file: type_bronze
-  grid: { rows: 6, columns: 7, cell: 20 }
-  height: 52
-  ascent: 29
-
-t_bronze4_k:
-  file: type_bronze
-  grid: { rows: 6, columns: 7, cell: 21 }
-  height: 52
-  ascent: 29
-
-t_bronze4_l:
-  file: type_bronze
-  grid: { rows: 6, columns: 7, cell: 22 }
-  height: 52
-  ascent: 29
-
-t_bronze4_m:
-  file: type_bronze
-  grid: { rows: 6, columns: 7, cell: 23 }
-  height: 52
-  ascent: 29
-
-t_bronze4_n:
-  file: type_bronze
-  grid: { rows: 6, columns: 7, cell: 24 }
-  height: 52
-  ascent: 29
-
-t_bronze4_o:
-  file: type_bronze
-  grid: { rows: 6, columns: 7, cell: 25 }
-  height: 52
-  ascent: 29
-
-t_bronze4_p:
-  file: type_bronze
-  grid: { rows: 6, columns: 7, cell: 26 }
-  height: 52
-  ascent: 29
-
-t_bronze4_q:
-  file: type_bronze
-  grid: { rows: 6, columns: 7, cell: 27 }
-  height: 52
-  ascent: 29
-
-t_bronze4_r:
-  file: type_bronze
-  grid: { rows: 6, columns: 7, cell: 28 }
-  height: 52
-  ascent: 29
-
-t_bronze4_s:
-  file: type_bronze
-  grid: { rows: 6, columns: 7, cell: 29 }
-  height: 52
-  ascent: 29
-
-t_bronze4_t:
-  file: type_bronze
-  grid: { rows: 6, columns: 7, cell: 30 }
-  height: 52
-  ascent: 29
-
-t_bronze4_u:
-  file: type_bronze
-  grid: { rows: 6, columns: 7, cell: 31 }
-  height: 52
-  ascent: 29
-
-t_bronze4_v:
-  file: type_bronze
-  grid: { rows: 6, columns: 7, cell: 32 }
-  height: 52
-  ascent: 29
-
-t_bronze4_w:
-  file: type_bronze
-  grid: { rows: 6, columns: 7, cell: 33 }
-  height: 52
-  ascent: 29
-
-t_bronze4_x:
-  file: type_bronze
-  grid: { rows: 6, columns: 7, cell: 34 }
-  height: 52
-  ascent: 29
-
-t_bronze4_y:
-  file: type_bronze
-  grid: { rows: 6, columns: 7, cell: 35 }
-  height: 52
-  ascent: 29
-
-t_bronze4_z:
-  file: type_bronze
-  grid: { rows: 6, columns: 7, cell: 36 }
-  height: 52
-  ascent: 29
-
-t_bronze4_bang:
-  file: type_bronze
-  grid: { rows: 6, columns: 7, cell: 37 }
-  height: 52
-  ascent: 29
-
-t_bronze4_dash:
-  file: type_bronze
-  grid: { rows: 6, columns: 7, cell: 38 }
-  height: 52
-  ascent: 29
-
-t_bronze4_apos:
-  file: type_bronze
-  grid: { rows: 6, columns: 7, cell: 39 }
-  height: 52
-  ascent: 29
-
-t_bronze4_slash:
-  file: type_bronze
-  grid: { rows: 6, columns: 7, cell: 40 }
-  height: 52
-  ascent: 29
-
-t_bronze4_colon:
-  file: type_bronze
-  grid: { rows: 6, columns: 7, cell: 41 }
-  height: 52
-  ascent: 29
-
-t_bronze4_dot:
-  file: type_bronze
-  grid: { rows: 6, columns: 7, cell: 42 }
-  height: 52
-  ascent: 29
-
-t_green3_0:
-  file: type_green
-  grid: { rows: 6, columns: 7, cell: 1 }
-  height: 39
-  ascent: 22
-
-t_green3_1:
-  file: type_green
-  grid: { rows: 6, columns: 7, cell: 2 }
-  height: 39
-  ascent: 22
-
-t_green3_2:
-  file: type_green
-  grid: { rows: 6, columns: 7, cell: 3 }
-  height: 39
-  ascent: 22
-
-t_green3_3:
-  file: type_green
-  grid: { rows: 6, columns: 7, cell: 4 }
-  height: 39
-  ascent: 22
-
-t_green3_4:
-  file: type_green
-  grid: { rows: 6, columns: 7, cell: 5 }
-  height: 39
-  ascent: 22
-
-t_green3_5:
-  file: type_green
-  grid: { rows: 6, columns: 7, cell: 6 }
-  height: 39
-  ascent: 22
-
-t_green3_6:
-  file: type_green
-  grid: { rows: 6, columns: 7, cell: 7 }
-  height: 39
-  ascent: 22
-
-t_green3_7:
-  file: type_green
-  grid: { rows: 6, columns: 7, cell: 8 }
-  height: 39
-  ascent: 22
-
-t_green3_8:
-  file: type_green
-  grid: { rows: 6, columns: 7, cell: 9 }
-  height: 39
-  ascent: 22
-
-t_green3_9:
-  file: type_green
-  grid: { rows: 6, columns: 7, cell: 10 }
-  height: 39
-  ascent: 22
-
-t_green3_a:
-  file: type_green
-  grid: { rows: 6, columns: 7, cell: 11 }
-  height: 39
-  ascent: 22
-
-t_green3_b:
-  file: type_green
-  grid: { rows: 6, columns: 7, cell: 12 }
-  height: 39
-  ascent: 22
-
-t_green3_c:
-  file: type_green
-  grid: { rows: 6, columns: 7, cell: 13 }
-  height: 39
-  ascent: 22
-
-t_green3_d:
-  file: type_green
-  grid: { rows: 6, columns: 7, cell: 14 }
-  height: 39
-  ascent: 22
-
-t_green3_e:
-  file: type_green
-  grid: { rows: 6, columns: 7, cell: 15 }
-  height: 39
-  ascent: 22
-
-t_green3_f:
-  file: type_green
-  grid: { rows: 6, columns: 7, cell: 16 }
-  height: 39
-  ascent: 22
-
-t_green3_g:
-  file: type_green
-  grid: { rows: 6, columns: 7, cell: 17 }
-  height: 39
-  ascent: 22
-
-t_green3_h:
-  file: type_green
-  grid: { rows: 6, columns: 7, cell: 18 }
-  height: 39
-  ascent: 22
-
-t_green3_i:
-  file: type_green
-  grid: { rows: 6, columns: 7, cell: 19 }
-  height: 39
-  ascent: 22
-
-t_green3_j:
-  file: type_green
-  grid: { rows: 6, columns: 7, cell: 20 }
-  height: 39
-  ascent: 22
-
-t_green3_k:
-  file: type_green
-  grid: { rows: 6, columns: 7, cell: 21 }
-  height: 39
-  ascent: 22
-
-t_green3_l:
-  file: type_green
-  grid: { rows: 6, columns: 7, cell: 22 }
-  height: 39
-  ascent: 22
-
-t_green3_m:
-  file: type_green
-  grid: { rows: 6, columns: 7, cell: 23 }
-  height: 39
-  ascent: 22
-
-t_green3_n:
-  file: type_green
-  grid: { rows: 6, columns: 7, cell: 24 }
-  height: 39
-  ascent: 22
-
-t_green3_o:
-  file: type_green
-  grid: { rows: 6, columns: 7, cell: 25 }
-  height: 39
-  ascent: 22
-
-t_green3_p:
-  file: type_green
-  grid: { rows: 6, columns: 7, cell: 26 }
-  height: 39
-  ascent: 22
-
-t_green3_q:
-  file: type_green
-  grid: { rows: 6, columns: 7, cell: 27 }
-  height: 39
-  ascent: 22
-
-t_green3_r:
-  file: type_green
-  grid: { rows: 6, columns: 7, cell: 28 }
-  height: 39
-  ascent: 22
-
-t_green3_s:
-  file: type_green
-  grid: { rows: 6, columns: 7, cell: 29 }
-  height: 39
-  ascent: 22
-
-t_green3_t:
-  file: type_green
-  grid: { rows: 6, columns: 7, cell: 30 }
-  height: 39
-  ascent: 22
-
-t_green3_u:
-  file: type_green
-  grid: { rows: 6, columns: 7, cell: 31 }
-  height: 39
-  ascent: 22
-
-t_green3_v:
-  file: type_green
-  grid: { rows: 6, columns: 7, cell: 32 }
-  height: 39
-  ascent: 22
-
-t_green3_w:
-  file: type_green
-  grid: { rows: 6, columns: 7, cell: 33 }
-  height: 39
-  ascent: 22
-
-t_green3_x:
-  file: type_green
-  grid: { rows: 6, columns: 7, cell: 34 }
-  height: 39
-  ascent: 22
-
-t_green3_y:
-  file: type_green
-  grid: { rows: 6, columns: 7, cell: 35 }
-  height: 39
-  ascent: 22
-
-t_green3_z:
-  file: type_green
-  grid: { rows: 6, columns: 7, cell: 36 }
-  height: 39
-  ascent: 22
-
-t_green3_bang:
-  file: type_green
-  grid: { rows: 6, columns: 7, cell: 37 }
-  height: 39
-  ascent: 22
-
-t_green3_dash:
-  file: type_green
-  grid: { rows: 6, columns: 7, cell: 38 }
-  height: 39
-  ascent: 22
-
-t_green3_apos:
-  file: type_green
-  grid: { rows: 6, columns: 7, cell: 39 }
-  height: 39
-  ascent: 22
-
-t_green3_slash:
-  file: type_green
-  grid: { rows: 6, columns: 7, cell: 40 }
-  height: 39
-  ascent: 22
-
-t_green3_colon:
-  file: type_green
-  grid: { rows: 6, columns: 7, cell: 41 }
-  height: 39
-  ascent: 22
-
-t_green3_dot:
-  file: type_green
-  grid: { rows: 6, columns: 7, cell: 42 }
-  height: 39
-  ascent: 22
-
-t_green4_0:
-  file: type_green
-  grid: { rows: 6, columns: 7, cell: 1 }
-  height: 52
-  ascent: 29
-
-t_green4_1:
-  file: type_green
-  grid: { rows: 6, columns: 7, cell: 2 }
-  height: 52
-  ascent: 29
-
-t_green4_2:
-  file: type_green
-  grid: { rows: 6, columns: 7, cell: 3 }
-  height: 52
-  ascent: 29
-
-t_green4_3:
-  file: type_green
-  grid: { rows: 6, columns: 7, cell: 4 }
-  height: 52
-  ascent: 29
-
-t_green4_4:
-  file: type_green
-  grid: { rows: 6, columns: 7, cell: 5 }
-  height: 52
-  ascent: 29
-
-t_green4_5:
-  file: type_green
-  grid: { rows: 6, columns: 7, cell: 6 }
-  height: 52
-  ascent: 29
-
-t_green4_6:
-  file: type_green
-  grid: { rows: 6, columns: 7, cell: 7 }
-  height: 52
-  ascent: 29
-
-t_green4_7:
-  file: type_green
-  grid: { rows: 6, columns: 7, cell: 8 }
-  height: 52
-  ascent: 29
-
-t_green4_8:
-  file: type_green
-  grid: { rows: 6, columns: 7, cell: 9 }
-  height: 52
-  ascent: 29
-
-t_green4_9:
-  file: type_green
-  grid: { rows: 6, columns: 7, cell: 10 }
-  height: 52
-  ascent: 29
-
-t_green4_a:
-  file: type_green
-  grid: { rows: 6, columns: 7, cell: 11 }
-  height: 52
-  ascent: 29
-
-t_green4_b:
-  file: type_green
-  grid: { rows: 6, columns: 7, cell: 12 }
-  height: 52
-  ascent: 29
-
-t_green4_c:
-  file: type_green
-  grid: { rows: 6, columns: 7, cell: 13 }
-  height: 52
-  ascent: 29
-
-t_green4_d:
-  file: type_green
-  grid: { rows: 6, columns: 7, cell: 14 }
-  height: 52
-  ascent: 29
-
-t_green4_e:
-  file: type_green
-  grid: { rows: 6, columns: 7, cell: 15 }
-  height: 52
-  ascent: 29
-
-t_green4_f:
-  file: type_green
-  grid: { rows: 6, columns: 7, cell: 16 }
-  height: 52
-  ascent: 29
-
-t_green4_g:
-  file: type_green
-  grid: { rows: 6, columns: 7, cell: 17 }
-  height: 52
-  ascent: 29
-
-t_green4_h:
-  file: type_green
-  grid: { rows: 6, columns: 7, cell: 18 }
-  height: 52
-  ascent: 29
-
-t_green4_i:
-  file: type_green
-  grid: { rows: 6, columns: 7, cell: 19 }
-  height: 52
-  ascent: 29
-
-t_green4_j:
-  file: type_green
-  grid: { rows: 6, columns: 7, cell: 20 }
-  height: 52
-  ascent: 29
-
-t_green4_k:
-  file: type_green
-  grid: { rows: 6, columns: 7, cell: 21 }
-  height: 52
-  ascent: 29
-
-t_green4_l:
-  file: type_green
-  grid: { rows: 6, columns: 7, cell: 22 }
-  height: 52
-  ascent: 29
-
-t_green4_m:
-  file: type_green
-  grid: { rows: 6, columns: 7, cell: 23 }
-  height: 52
-  ascent: 29
-
-t_green4_n:
-  file: type_green
-  grid: { rows: 6, columns: 7, cell: 24 }
-  height: 52
-  ascent: 29
-
-t_green4_o:
-  file: type_green
-  grid: { rows: 6, columns: 7, cell: 25 }
-  height: 52
-  ascent: 29
-
-t_green4_p:
-  file: type_green
-  grid: { rows: 6, columns: 7, cell: 26 }
-  height: 52
-  ascent: 29
-
-t_green4_q:
-  file: type_green
-  grid: { rows: 6, columns: 7, cell: 27 }
-  height: 52
-  ascent: 29
-
-t_green4_r:
-  file: type_green
-  grid: { rows: 6, columns: 7, cell: 28 }
-  height: 52
-  ascent: 29
-
-t_green4_s:
-  file: type_green
-  grid: { rows: 6, columns: 7, cell: 29 }
-  height: 52
-  ascent: 29
-
-t_green4_t:
-  file: type_green
-  grid: { rows: 6, columns: 7, cell: 30 }
-  height: 52
-  ascent: 29
-
-t_green4_u:
-  file: type_green
-  grid: { rows: 6, columns: 7, cell: 31 }
-  height: 52
-  ascent: 29
-
-t_green4_v:
-  file: type_green
-  grid: { rows: 6, columns: 7, cell: 32 }
-  height: 52
-  ascent: 29
-
-t_green4_w:
-  file: type_green
-  grid: { rows: 6, columns: 7, cell: 33 }
-  height: 52
-  ascent: 29
-
-t_green4_x:
-  file: type_green
-  grid: { rows: 6, columns: 7, cell: 34 }
-  height: 52
-  ascent: 29
-
-t_green4_y:
-  file: type_green
-  grid: { rows: 6, columns: 7, cell: 35 }
-  height: 52
-  ascent: 29
-
-t_green4_z:
-  file: type_green
-  grid: { rows: 6, columns: 7, cell: 36 }
-  height: 52
-  ascent: 29
-
-t_green4_bang:
-  file: type_green
-  grid: { rows: 6, columns: 7, cell: 37 }
-  height: 52
-  ascent: 29
-
-t_green4_dash:
-  file: type_green
-  grid: { rows: 6, columns: 7, cell: 38 }
-  height: 52
-  ascent: 29
-
-t_green4_apos:
-  file: type_green
-  grid: { rows: 6, columns: 7, cell: 39 }
-  height: 52
-  ascent: 29
-
-t_green4_slash:
-  file: type_green
-  grid: { rows: 6, columns: 7, cell: 40 }
-  height: 52
-  ascent: 29
-
-t_green4_colon:
-  file: type_green
-  grid: { rows: 6, columns: 7, cell: 41 }
-  height: 52
-  ascent: 29
-
-t_green4_dot:
-  file: type_green
-  grid: { rows: 6, columns: 7, cell: 42 }
-  height: 52
-  ascent: 29
-
-t_green5_0:
-  file: type_green
-  grid: { rows: 6, columns: 7, cell: 1 }
-  height: 65
-  ascent: 35
-
-t_green5_1:
-  file: type_green
-  grid: { rows: 6, columns: 7, cell: 2 }
-  height: 65
-  ascent: 35
-
-t_green5_2:
-  file: type_green
-  grid: { rows: 6, columns: 7, cell: 3 }
-  height: 65
-  ascent: 35
-
-t_green5_3:
-  file: type_green
-  grid: { rows: 6, columns: 7, cell: 4 }
-  height: 65
-  ascent: 35
-
-t_green5_4:
-  file: type_green
-  grid: { rows: 6, columns: 7, cell: 5 }
-  height: 65
-  ascent: 35
-
-t_green5_5:
-  file: type_green
-  grid: { rows: 6, columns: 7, cell: 6 }
-  height: 65
-  ascent: 35
-
-t_green5_6:
-  file: type_green
-  grid: { rows: 6, columns: 7, cell: 7 }
-  height: 65
-  ascent: 35
-
-t_green5_7:
-  file: type_green
-  grid: { rows: 6, columns: 7, cell: 8 }
-  height: 65
-  ascent: 35
-
-t_green5_8:
-  file: type_green
-  grid: { rows: 6, columns: 7, cell: 9 }
-  height: 65
-  ascent: 35
-
-t_green5_9:
-  file: type_green
-  grid: { rows: 6, columns: 7, cell: 10 }
-  height: 65
-  ascent: 35
-
-t_green5_a:
-  file: type_green
-  grid: { rows: 6, columns: 7, cell: 11 }
-  height: 65
-  ascent: 35
-
-t_green5_b:
-  file: type_green
-  grid: { rows: 6, columns: 7, cell: 12 }
-  height: 65
-  ascent: 35
-
-t_green5_c:
-  file: type_green
-  grid: { rows: 6, columns: 7, cell: 13 }
-  height: 65
-  ascent: 35
-
-t_green5_d:
-  file: type_green
-  grid: { rows: 6, columns: 7, cell: 14 }
-  height: 65
-  ascent: 35
-
-t_green5_e:
-  file: type_green
-  grid: { rows: 6, columns: 7, cell: 15 }
-  height: 65
-  ascent: 35
-
-t_green5_f:
-  file: type_green
-  grid: { rows: 6, columns: 7, cell: 16 }
-  height: 65
-  ascent: 35
-
-t_green5_g:
-  file: type_green
-  grid: { rows: 6, columns: 7, cell: 17 }
-  height: 65
-  ascent: 35
-
-t_green5_h:
-  file: type_green
-  grid: { rows: 6, columns: 7, cell: 18 }
-  height: 65
-  ascent: 35
-
-t_green5_i:
-  file: type_green
-  grid: { rows: 6, columns: 7, cell: 19 }
-  height: 65
-  ascent: 35
-
-t_green5_j:
-  file: type_green
-  grid: { rows: 6, columns: 7, cell: 20 }
-  height: 65
-  ascent: 35
-
-t_green5_k:
-  file: type_green
-  grid: { rows: 6, columns: 7, cell: 21 }
-  height: 65
-  ascent: 35
-
-t_green5_l:
-  file: type_green
-  grid: { rows: 6, columns: 7, cell: 22 }
-  height: 65
-  ascent: 35
-
-t_green5_m:
-  file: type_green
-  grid: { rows: 6, columns: 7, cell: 23 }
-  height: 65
-  ascent: 35
-
-t_green5_n:
-  file: type_green
-  grid: { rows: 6, columns: 7, cell: 24 }
-  height: 65
-  ascent: 35
-
-t_green5_o:
-  file: type_green
-  grid: { rows: 6, columns: 7, cell: 25 }
-  height: 65
-  ascent: 35
-
-t_green5_p:
-  file: type_green
-  grid: { rows: 6, columns: 7, cell: 26 }
-  height: 65
-  ascent: 35
-
-t_green5_q:
-  file: type_green
-  grid: { rows: 6, columns: 7, cell: 27 }
-  height: 65
-  ascent: 35
-
-t_green5_r:
-  file: type_green
-  grid: { rows: 6, columns: 7, cell: 28 }
-  height: 65
-  ascent: 35
-
-t_green5_s:
-  file: type_green
-  grid: { rows: 6, columns: 7, cell: 29 }
-  height: 65
-  ascent: 35
-
-t_green5_t:
-  file: type_green
-  grid: { rows: 6, columns: 7, cell: 30 }
-  height: 65
-  ascent: 35
-
-t_green5_u:
-  file: type_green
-  grid: { rows: 6, columns: 7, cell: 31 }
-  height: 65
-  ascent: 35
-
-t_green5_v:
-  file: type_green
-  grid: { rows: 6, columns: 7, cell: 32 }
-  height: 65
-  ascent: 35
-
-t_green5_w:
-  file: type_green
-  grid: { rows: 6, columns: 7, cell: 33 }
-  height: 65
-  ascent: 35
-
-t_green5_x:
-  file: type_green
-  grid: { rows: 6, columns: 7, cell: 34 }
-  height: 65
-  ascent: 35
-
-t_green5_y:
-  file: type_green
-  grid: { rows: 6, columns: 7, cell: 35 }
-  height: 65
-  ascent: 35
-
-t_green5_z:
-  file: type_green
-  grid: { rows: 6, columns: 7, cell: 36 }
-  height: 65
-  ascent: 35
-
-t_green5_bang:
-  file: type_green
-  grid: { rows: 6, columns: 7, cell: 37 }
-  height: 65
-  ascent: 35
-
-t_green5_dash:
-  file: type_green
-  grid: { rows: 6, columns: 7, cell: 38 }
-  height: 65
-  ascent: 35
-
-t_green5_apos:
-  file: type_green
-  grid: { rows: 6, columns: 7, cell: 39 }
-  height: 65
-  ascent: 35
-
-t_green5_slash:
-  file: type_green
-  grid: { rows: 6, columns: 7, cell: 40 }
-  height: 65
-  ascent: 35
-
-t_green5_colon:
-  file: type_green
-  grid: { rows: 6, columns: 7, cell: 41 }
-  height: 65
-  ascent: 35
-
-t_green5_dot:
-  file: type_green
-  grid: { rows: 6, columns: 7, cell: 42 }
-  height: 65
-  ascent: 35
-
-t_red4_0:
-  file: type_red
-  grid: { rows: 6, columns: 7, cell: 1 }
-  height: 52
-  ascent: 29
-
-t_red4_1:
-  file: type_red
-  grid: { rows: 6, columns: 7, cell: 2 }
-  height: 52
-  ascent: 29
-
-t_red4_2:
-  file: type_red
-  grid: { rows: 6, columns: 7, cell: 3 }
-  height: 52
-  ascent: 29
-
-t_red4_3:
-  file: type_red
-  grid: { rows: 6, columns: 7, cell: 4 }
-  height: 52
-  ascent: 29
-
-t_red4_4:
-  file: type_red
-  grid: { rows: 6, columns: 7, cell: 5 }
-  height: 52
-  ascent: 29
-
-t_red4_5:
-  file: type_red
-  grid: { rows: 6, columns: 7, cell: 6 }
-  height: 52
-  ascent: 29
-
-t_red4_6:
-  file: type_red
-  grid: { rows: 6, columns: 7, cell: 7 }
-  height: 52
-  ascent: 29
-
-t_red4_7:
-  file: type_red
-  grid: { rows: 6, columns: 7, cell: 8 }
-  height: 52
-  ascent: 29
-
-t_red4_8:
-  file: type_red
-  grid: { rows: 6, columns: 7, cell: 9 }
-  height: 52
-  ascent: 29
-
-t_red4_9:
-  file: type_red
-  grid: { rows: 6, columns: 7, cell: 10 }
-  height: 52
-  ascent: 29
-
-t_red4_a:
-  file: type_red
-  grid: { rows: 6, columns: 7, cell: 11 }
-  height: 52
-  ascent: 29
-
-t_red4_b:
-  file: type_red
-  grid: { rows: 6, columns: 7, cell: 12 }
-  height: 52
-  ascent: 29
-
-t_red4_c:
-  file: type_red
-  grid: { rows: 6, columns: 7, cell: 13 }
-  height: 52
-  ascent: 29
-
-t_red4_d:
-  file: type_red
-  grid: { rows: 6, columns: 7, cell: 14 }
-  height: 52
-  ascent: 29
-
-t_red4_e:
-  file: type_red
-  grid: { rows: 6, columns: 7, cell: 15 }
-  height: 52
-  ascent: 29
-
-t_red4_f:
-  file: type_red
-  grid: { rows: 6, columns: 7, cell: 16 }
-  height: 52
-  ascent: 29
-
-t_red4_g:
-  file: type_red
-  grid: { rows: 6, columns: 7, cell: 17 }
-  height: 52
-  ascent: 29
-
-t_red4_h:
-  file: type_red
-  grid: { rows: 6, columns: 7, cell: 18 }
-  height: 52
-  ascent: 29
-
-t_red4_i:
-  file: type_red
-  grid: { rows: 6, columns: 7, cell: 19 }
-  height: 52
-  ascent: 29
-
-t_red4_j:
-  file: type_red
-  grid: { rows: 6, columns: 7, cell: 20 }
-  height: 52
-  ascent: 29
-
-t_red4_k:
-  file: type_red
-  grid: { rows: 6, columns: 7, cell: 21 }
-  height: 52
-  ascent: 29
-
-t_red4_l:
-  file: type_red
-  grid: { rows: 6, columns: 7, cell: 22 }
-  height: 52
-  ascent: 29
-
-t_red4_m:
-  file: type_red
-  grid: { rows: 6, columns: 7, cell: 23 }
-  height: 52
-  ascent: 29
-
-t_red4_n:
-  file: type_red
-  grid: { rows: 6, columns: 7, cell: 24 }
-  height: 52
-  ascent: 29
-
-t_red4_o:
-  file: type_red
-  grid: { rows: 6, columns: 7, cell: 25 }
-  height: 52
-  ascent: 29
-
-t_red4_p:
-  file: type_red
-  grid: { rows: 6, columns: 7, cell: 26 }
-  height: 52
-  ascent: 29
-
-t_red4_q:
-  file: type_red
-  grid: { rows: 6, columns: 7, cell: 27 }
-  height: 52
-  ascent: 29
-
-t_red4_r:
-  file: type_red
-  grid: { rows: 6, columns: 7, cell: 28 }
-  height: 52
-  ascent: 29
-
-t_red4_s:
-  file: type_red
-  grid: { rows: 6, columns: 7, cell: 29 }
-  height: 52
-  ascent: 29
-
-t_red4_t:
-  file: type_red
-  grid: { rows: 6, columns: 7, cell: 30 }
-  height: 52
-  ascent: 29
-
-t_red4_u:
-  file: type_red
-  grid: { rows: 6, columns: 7, cell: 31 }
-  height: 52
-  ascent: 29
-
-t_red4_v:
-  file: type_red
-  grid: { rows: 6, columns: 7, cell: 32 }
-  height: 52
-  ascent: 29
-
-t_red4_w:
-  file: type_red
-  grid: { rows: 6, columns: 7, cell: 33 }
-  height: 52
-  ascent: 29
-
-t_red4_x:
-  file: type_red
-  grid: { rows: 6, columns: 7, cell: 34 }
-  height: 52
-  ascent: 29
-
-t_red4_y:
-  file: type_red
-  grid: { rows: 6, columns: 7, cell: 35 }
-  height: 52
-  ascent: 29
-
-t_red4_z:
-  file: type_red
-  grid: { rows: 6, columns: 7, cell: 36 }
-  height: 52
-  ascent: 29
-
-t_red4_bang:
-  file: type_red
-  grid: { rows: 6, columns: 7, cell: 37 }
-  height: 52
-  ascent: 29
-
-t_red4_dash:
-  file: type_red
-  grid: { rows: 6, columns: 7, cell: 38 }
-  height: 52
-  ascent: 29
-
-t_red4_apos:
-  file: type_red
-  grid: { rows: 6, columns: 7, cell: 39 }
-  height: 52
-  ascent: 29
-
-t_red4_slash:
-  file: type_red
-  grid: { rows: 6, columns: 7, cell: 40 }
-  height: 52
-  ascent: 29
-
-t_red4_colon:
-  file: type_red
-  grid: { rows: 6, columns: 7, cell: 41 }
-  height: 52
-  ascent: 29
-
-t_red4_dot:
-  file: type_red
-  grid: { rows: 6, columns: 7, cell: 42 }
-  height: 52
-  ascent: 29
-
-t_red5_0:
-  file: type_red
-  grid: { rows: 6, columns: 7, cell: 1 }
-  height: 65
-  ascent: 35
-
-t_red5_1:
-  file: type_red
-  grid: { rows: 6, columns: 7, cell: 2 }
-  height: 65
-  ascent: 35
-
-t_red5_2:
-  file: type_red
-  grid: { rows: 6, columns: 7, cell: 3 }
-  height: 65
-  ascent: 35
-
-t_red5_3:
-  file: type_red
-  grid: { rows: 6, columns: 7, cell: 4 }
-  height: 65
-  ascent: 35
-
-t_red5_4:
-  file: type_red
-  grid: { rows: 6, columns: 7, cell: 5 }
-  height: 65
-  ascent: 35
-
-t_red5_5:
-  file: type_red
-  grid: { rows: 6, columns: 7, cell: 6 }
-  height: 65
-  ascent: 35
-
-t_red5_6:
-  file: type_red
-  grid: { rows: 6, columns: 7, cell: 7 }
-  height: 65
-  ascent: 35
-
-t_red5_7:
-  file: type_red
-  grid: { rows: 6, columns: 7, cell: 8 }
-  height: 65
-  ascent: 35
-
-t_red5_8:
-  file: type_red
-  grid: { rows: 6, columns: 7, cell: 9 }
-  height: 65
-  ascent: 35
-
-t_red5_9:
-  file: type_red
-  grid: { rows: 6, columns: 7, cell: 10 }
-  height: 65
-  ascent: 35
-
-t_red5_a:
-  file: type_red
-  grid: { rows: 6, columns: 7, cell: 11 }
-  height: 65
-  ascent: 35
-
-t_red5_b:
-  file: type_red
-  grid: { rows: 6, columns: 7, cell: 12 }
-  height: 65
-  ascent: 35
-
-t_red5_c:
-  file: type_red
-  grid: { rows: 6, columns: 7, cell: 13 }
-  height: 65
-  ascent: 35
-
-t_red5_d:
-  file: type_red
-  grid: { rows: 6, columns: 7, cell: 14 }
-  height: 65
-  ascent: 35
-
-t_red5_e:
-  file: type_red
-  grid: { rows: 6, columns: 7, cell: 15 }
-  height: 65
-  ascent: 35
-
-t_red5_f:
-  file: type_red
-  grid: { rows: 6, columns: 7, cell: 16 }
-  height: 65
-  ascent: 35
-
-t_red5_g:
-  file: type_red
-  grid: { rows: 6, columns: 7, cell: 17 }
-  height: 65
-  ascent: 35
-
-t_red5_h:
-  file: type_red
-  grid: { rows: 6, columns: 7, cell: 18 }
-  height: 65
-  ascent: 35
-
-t_red5_i:
-  file: type_red
-  grid: { rows: 6, columns: 7, cell: 19 }
-  height: 65
-  ascent: 35
-
-t_red5_j:
-  file: type_red
-  grid: { rows: 6, columns: 7, cell: 20 }
-  height: 65
-  ascent: 35
-
-t_red5_k:
-  file: type_red
-  grid: { rows: 6, columns: 7, cell: 21 }
-  height: 65
-  ascent: 35
-
-t_red5_l:
-  file: type_red
-  grid: { rows: 6, columns: 7, cell: 22 }
-  height: 65
-  ascent: 35
-
-t_red5_m:
-  file: type_red
-  grid: { rows: 6, columns: 7, cell: 23 }
-  height: 65
-  ascent: 35
-
-t_red5_n:
-  file: type_red
-  grid: { rows: 6, columns: 7, cell: 24 }
-  height: 65
-  ascent: 35
-
-t_red5_o:
-  file: type_red
-  grid: { rows: 6, columns: 7, cell: 25 }
-  height: 65
-  ascent: 35
-
-t_red5_p:
-  file: type_red
-  grid: { rows: 6, columns: 7, cell: 26 }
-  height: 65
-  ascent: 35
-
-t_red5_q:
-  file: type_red
-  grid: { rows: 6, columns: 7, cell: 27 }
-  height: 65
-  ascent: 35
-
-t_red5_r:
-  file: type_red
-  grid: { rows: 6, columns: 7, cell: 28 }
-  height: 65
-  ascent: 35
-
-t_red5_s:
-  file: type_red
-  grid: { rows: 6, columns: 7, cell: 29 }
-  height: 65
-  ascent: 35
-
-t_red5_t:
-  file: type_red
-  grid: { rows: 6, columns: 7, cell: 30 }
-  height: 65
-  ascent: 35
-
-t_red5_u:
-  file: type_red
-  grid: { rows: 6, columns: 7, cell: 31 }
-  height: 65
-  ascent: 35
-
-t_red5_v:
-  file: type_red
-  grid: { rows: 6, columns: 7, cell: 32 }
-  height: 65
-  ascent: 35
-
-t_red5_w:
-  file: type_red
-  grid: { rows: 6, columns: 7, cell: 33 }
-  height: 65
-  ascent: 35
-
-t_red5_x:
-  file: type_red
-  grid: { rows: 6, columns: 7, cell: 34 }
-  height: 65
-  ascent: 35
-
-t_red5_y:
-  file: type_red
-  grid: { rows: 6, columns: 7, cell: 35 }
-  height: 65
-  ascent: 35
-
-t_red5_z:
-  file: type_red
-  grid: { rows: 6, columns: 7, cell: 36 }
-  height: 65
-  ascent: 35
-
-t_red5_bang:
-  file: type_red
-  grid: { rows: 6, columns: 7, cell: 37 }
-  height: 65
-  ascent: 35
-
-t_red5_dash:
-  file: type_red
-  grid: { rows: 6, columns: 7, cell: 38 }
-  height: 65
-  ascent: 35
-
-t_red5_apos:
-  file: type_red
-  grid: { rows: 6, columns: 7, cell: 39 }
-  height: 65
-  ascent: 35
-
-t_red5_slash:
-  file: type_red
-  grid: { rows: 6, columns: 7, cell: 40 }
-  height: 65
-  ascent: 35
-
-t_red5_colon:
-  file: type_red
-  grid: { rows: 6, columns: 7, cell: 41 }
-  height: 65
-  ascent: 35
-
-t_red5_dot:
-  file: type_red
-  grid: { rows: 6, columns: 7, cell: 42 }
-  height: 65
-  ascent: 35
+  ascent: 7
 
 t_grey1_0:
   file: type_grey
   grid: { rows: 6, columns: 7, cell: 1 }
   height: 13
-  ascent: 9
+  ascent: 7
 
 t_grey1_1:
   file: type_grey
   grid: { rows: 6, columns: 7, cell: 2 }
   height: 13
-  ascent: 9
+  ascent: 7
 
 t_grey1_2:
   file: type_grey
   grid: { rows: 6, columns: 7, cell: 3 }
   height: 13
-  ascent: 9
+  ascent: 7
 
 t_grey1_3:
   file: type_grey
   grid: { rows: 6, columns: 7, cell: 4 }
   height: 13
-  ascent: 9
+  ascent: 7
 
 t_grey1_4:
   file: type_grey
   grid: { rows: 6, columns: 7, cell: 5 }
   height: 13
-  ascent: 9
+  ascent: 7
 
 t_grey1_5:
   file: type_grey
   grid: { rows: 6, columns: 7, cell: 6 }
   height: 13
-  ascent: 9
+  ascent: 7
 
 t_grey1_6:
   file: type_grey
   grid: { rows: 6, columns: 7, cell: 7 }
   height: 13
-  ascent: 9
+  ascent: 7
 
 t_grey1_7:
   file: type_grey
   grid: { rows: 6, columns: 7, cell: 8 }
   height: 13
-  ascent: 9
+  ascent: 7
 
 t_grey1_8:
   file: type_grey
   grid: { rows: 6, columns: 7, cell: 9 }
   height: 13
-  ascent: 9
+  ascent: 7
 
 t_grey1_9:
   file: type_grey
   grid: { rows: 6, columns: 7, cell: 10 }
   height: 13
-  ascent: 9
+  ascent: 7
 
 t_grey1_a:
   file: type_grey
   grid: { rows: 6, columns: 7, cell: 11 }
   height: 13
-  ascent: 9
+  ascent: 7
 
 t_grey1_b:
   file: type_grey
   grid: { rows: 6, columns: 7, cell: 12 }
   height: 13
-  ascent: 9
+  ascent: 7
 
 t_grey1_c:
   file: type_grey
   grid: { rows: 6, columns: 7, cell: 13 }
   height: 13
-  ascent: 9
+  ascent: 7
 
 t_grey1_d:
   file: type_grey
   grid: { rows: 6, columns: 7, cell: 14 }
   height: 13
-  ascent: 9
+  ascent: 7
 
 t_grey1_e:
   file: type_grey
   grid: { rows: 6, columns: 7, cell: 15 }
   height: 13
-  ascent: 9
+  ascent: 7
 
 t_grey1_f:
   file: type_grey
   grid: { rows: 6, columns: 7, cell: 16 }
   height: 13
-  ascent: 9
+  ascent: 7
 
 t_grey1_g:
   file: type_grey
   grid: { rows: 6, columns: 7, cell: 17 }
   height: 13
-  ascent: 9
+  ascent: 7
 
 t_grey1_h:
   file: type_grey
   grid: { rows: 6, columns: 7, cell: 18 }
   height: 13
-  ascent: 9
+  ascent: 7
 
 t_grey1_i:
   file: type_grey
   grid: { rows: 6, columns: 7, cell: 19 }
   height: 13
-  ascent: 9
+  ascent: 7
 
 t_grey1_j:
   file: type_grey
   grid: { rows: 6, columns: 7, cell: 20 }
   height: 13
-  ascent: 9
+  ascent: 7
 
 t_grey1_k:
   file: type_grey
   grid: { rows: 6, columns: 7, cell: 21 }
   height: 13
-  ascent: 9
+  ascent: 7
 
 t_grey1_l:
   file: type_grey
   grid: { rows: 6, columns: 7, cell: 22 }
   height: 13
-  ascent: 9
+  ascent: 7
 
 t_grey1_m:
   file: type_grey
   grid: { rows: 6, columns: 7, cell: 23 }
   height: 13
-  ascent: 9
+  ascent: 7
 
 t_grey1_n:
   file: type_grey
   grid: { rows: 6, columns: 7, cell: 24 }
   height: 13
-  ascent: 9
+  ascent: 7
 
 t_grey1_o:
   file: type_grey
   grid: { rows: 6, columns: 7, cell: 25 }
   height: 13
-  ascent: 9
+  ascent: 7
 
 t_grey1_p:
   file: type_grey
   grid: { rows: 6, columns: 7, cell: 26 }
   height: 13
-  ascent: 9
+  ascent: 7
 
 t_grey1_q:
   file: type_grey
   grid: { rows: 6, columns: 7, cell: 27 }
   height: 13
-  ascent: 9
+  ascent: 7
 
 t_grey1_r:
   file: type_grey
   grid: { rows: 6, columns: 7, cell: 28 }
   height: 13
-  ascent: 9
+  ascent: 7
 
 t_grey1_s:
   file: type_grey
   grid: { rows: 6, columns: 7, cell: 29 }
   height: 13
-  ascent: 9
+  ascent: 7
 
 t_grey1_t:
   file: type_grey
   grid: { rows: 6, columns: 7, cell: 30 }
   height: 13
-  ascent: 9
+  ascent: 7
 
 t_grey1_u:
   file: type_grey
   grid: { rows: 6, columns: 7, cell: 31 }
   height: 13
-  ascent: 9
+  ascent: 7
 
 t_grey1_v:
   file: type_grey
   grid: { rows: 6, columns: 7, cell: 32 }
   height: 13
-  ascent: 9
+  ascent: 7
 
 t_grey1_w:
   file: type_grey
   grid: { rows: 6, columns: 7, cell: 33 }
   height: 13
-  ascent: 9
+  ascent: 7
 
 t_grey1_x:
   file: type_grey
   grid: { rows: 6, columns: 7, cell: 34 }
   height: 13
-  ascent: 9
+  ascent: 7
 
 t_grey1_y:
   file: type_grey
   grid: { rows: 6, columns: 7, cell: 35 }
   height: 13
-  ascent: 9
+  ascent: 7
 
 t_grey1_z:
   file: type_grey
   grid: { rows: 6, columns: 7, cell: 36 }
   height: 13
-  ascent: 9
+  ascent: 7
 
 t_grey1_bang:
   file: type_grey
   grid: { rows: 6, columns: 7, cell: 37 }
   height: 13
-  ascent: 9
+  ascent: 7
 
 t_grey1_dash:
   file: type_grey
   grid: { rows: 6, columns: 7, cell: 38 }
   height: 13
-  ascent: 9
+  ascent: 7
 
 t_grey1_apos:
   file: type_grey
   grid: { rows: 6, columns: 7, cell: 39 }
   height: 13
-  ascent: 9
+  ascent: 7
 
 t_grey1_slash:
   file: type_grey
   grid: { rows: 6, columns: 7, cell: 40 }
   height: 13
-  ascent: 9
+  ascent: 7
 
 t_grey1_colon:
   file: type_grey
   grid: { rows: 6, columns: 7, cell: 41 }
   height: 13
-  ascent: 9
+  ascent: 7
 
 t_grey1_dot:
   file: type_grey
   grid: { rows: 6, columns: 7, cell: 42 }
   height: 13
-  ascent: 9
+  ascent: 7
 
 t_grey2_0:
   file: type_grey
   grid: { rows: 6, columns: 7, cell: 1 }
   height: 26
-  ascent: 16
+  ascent: 7
 
 t_grey2_1:
   file: type_grey
   grid: { rows: 6, columns: 7, cell: 2 }
   height: 26
-  ascent: 16
+  ascent: 7
 
 t_grey2_2:
   file: type_grey
   grid: { rows: 6, columns: 7, cell: 3 }
   height: 26
-  ascent: 16
+  ascent: 7
 
 t_grey2_3:
   file: type_grey
   grid: { rows: 6, columns: 7, cell: 4 }
   height: 26
-  ascent: 16
+  ascent: 7
 
 t_grey2_4:
   file: type_grey
   grid: { rows: 6, columns: 7, cell: 5 }
   height: 26
-  ascent: 16
+  ascent: 7
 
 t_grey2_5:
   file: type_grey
   grid: { rows: 6, columns: 7, cell: 6 }
   height: 26
-  ascent: 16
+  ascent: 7
 
 t_grey2_6:
   file: type_grey
   grid: { rows: 6, columns: 7, cell: 7 }
   height: 26
-  ascent: 16
+  ascent: 7
 
 t_grey2_7:
   file: type_grey
   grid: { rows: 6, columns: 7, cell: 8 }
   height: 26
-  ascent: 16
+  ascent: 7
 
 t_grey2_8:
   file: type_grey
   grid: { rows: 6, columns: 7, cell: 9 }
   height: 26
-  ascent: 16
+  ascent: 7
 
 t_grey2_9:
   file: type_grey
   grid: { rows: 6, columns: 7, cell: 10 }
   height: 26
-  ascent: 16
+  ascent: 7
 
 t_grey2_a:
   file: type_grey
   grid: { rows: 6, columns: 7, cell: 11 }
   height: 26
-  ascent: 16
+  ascent: 7
 
 t_grey2_b:
   file: type_grey
   grid: { rows: 6, columns: 7, cell: 12 }
   height: 26
-  ascent: 16
+  ascent: 7
 
 t_grey2_c:
   file: type_grey
   grid: { rows: 6, columns: 7, cell: 13 }
   height: 26
-  ascent: 16
+  ascent: 7
 
 t_grey2_d:
   file: type_grey
   grid: { rows: 6, columns: 7, cell: 14 }
   height: 26
-  ascent: 16
+  ascent: 7
 
 t_grey2_e:
   file: type_grey
   grid: { rows: 6, columns: 7, cell: 15 }
   height: 26
-  ascent: 16
+  ascent: 7
 
 t_grey2_f:
   file: type_grey
   grid: { rows: 6, columns: 7, cell: 16 }
   height: 26
-  ascent: 16
+  ascent: 7
 
 t_grey2_g:
   file: type_grey
   grid: { rows: 6, columns: 7, cell: 17 }
   height: 26
-  ascent: 16
+  ascent: 7
 
 t_grey2_h:
   file: type_grey
   grid: { rows: 6, columns: 7, cell: 18 }
   height: 26
-  ascent: 16
+  ascent: 7
 
 t_grey2_i:
   file: type_grey
   grid: { rows: 6, columns: 7, cell: 19 }
   height: 26
-  ascent: 16
+  ascent: 7
 
 t_grey2_j:
   file: type_grey
   grid: { rows: 6, columns: 7, cell: 20 }
   height: 26
-  ascent: 16
+  ascent: 7
 
 t_grey2_k:
   file: type_grey
   grid: { rows: 6, columns: 7, cell: 21 }
   height: 26
-  ascent: 16
+  ascent: 7
 
 t_grey2_l:
   file: type_grey
   grid: { rows: 6, columns: 7, cell: 22 }
   height: 26
-  ascent: 16
+  ascent: 7
 
 t_grey2_m:
   file: type_grey
   grid: { rows: 6, columns: 7, cell: 23 }
   height: 26
-  ascent: 16
+  ascent: 7
 
 t_grey2_n:
   file: type_grey
   grid: { rows: 6, columns: 7, cell: 24 }
   height: 26
-  ascent: 16
+  ascent: 7
 
 t_grey2_o:
   file: type_grey
   grid: { rows: 6, columns: 7, cell: 25 }
   height: 26
-  ascent: 16
+  ascent: 7
 
 t_grey2_p:
   file: type_grey
   grid: { rows: 6, columns: 7, cell: 26 }
   height: 26
-  ascent: 16
+  ascent: 7
 
 t_grey2_q:
   file: type_grey
   grid: { rows: 6, columns: 7, cell: 27 }
   height: 26
-  ascent: 16
+  ascent: 7
 
 t_grey2_r:
   file: type_grey
   grid: { rows: 6, columns: 7, cell: 28 }
   height: 26
-  ascent: 16
+  ascent: 7
 
 t_grey2_s:
   file: type_grey
   grid: { rows: 6, columns: 7, cell: 29 }
   height: 26
-  ascent: 16
+  ascent: 7
 
 t_grey2_t:
   file: type_grey
   grid: { rows: 6, columns: 7, cell: 30 }
   height: 26
-  ascent: 16
+  ascent: 7
 
 t_grey2_u:
   file: type_grey
   grid: { rows: 6, columns: 7, cell: 31 }
   height: 26
-  ascent: 16
+  ascent: 7
 
 t_grey2_v:
   file: type_grey
   grid: { rows: 6, columns: 7, cell: 32 }
   height: 26
-  ascent: 16
+  ascent: 7
 
 t_grey2_w:
   file: type_grey
   grid: { rows: 6, columns: 7, cell: 33 }
   height: 26
-  ascent: 16
+  ascent: 7
 
 t_grey2_x:
   file: type_grey
   grid: { rows: 6, columns: 7, cell: 34 }
   height: 26
-  ascent: 16
+  ascent: 7
 
 t_grey2_y:
   file: type_grey
   grid: { rows: 6, columns: 7, cell: 35 }
   height: 26
-  ascent: 16
+  ascent: 7
 
 t_grey2_z:
   file: type_grey
   grid: { rows: 6, columns: 7, cell: 36 }
   height: 26
-  ascent: 16
+  ascent: 7
 
 t_grey2_bang:
   file: type_grey
   grid: { rows: 6, columns: 7, cell: 37 }
   height: 26
-  ascent: 16
+  ascent: 7
 
 t_grey2_dash:
   file: type_grey
   grid: { rows: 6, columns: 7, cell: 38 }
   height: 26
-  ascent: 16
+  ascent: 7
 
 t_grey2_apos:
   file: type_grey
   grid: { rows: 6, columns: 7, cell: 39 }
   height: 26
-  ascent: 16
+  ascent: 7
 
 t_grey2_slash:
   file: type_grey
   grid: { rows: 6, columns: 7, cell: 40 }
   height: 26
-  ascent: 16
+  ascent: 7
 
 t_grey2_colon:
   file: type_grey
   grid: { rows: 6, columns: 7, cell: 41 }
   height: 26
-  ascent: 16
+  ascent: 7
 
 t_grey2_dot:
   file: type_grey
   grid: { rows: 6, columns: 7, cell: 42 }
   height: 26
-  ascent: 16
+  ascent: 7
 
-# The start lights.
+t_gold2_0:
+  file: type_gold
+  grid: { rows: 6, columns: 7, cell: 1 }
+  height: 26
+  ascent: 7
 
-light_off:
-  file: light_off
-  height: 22
-  ascent: 14
+t_gold2_1:
+  file: type_gold
+  grid: { rows: 6, columns: 7, cell: 2 }
+  height: 26
+  ascent: 7
 
-light_red:
-  file: light_red
-  height: 22
-  ascent: 14
+t_gold2_2:
+  file: type_gold
+  grid: { rows: 6, columns: 7, cell: 3 }
+  height: 26
+  ascent: 7
 
-light_green:
-  file: light_green
-  height: 22
-  ascent: 14
+t_gold2_3:
+  file: type_gold
+  grid: { rows: 6, columns: 7, cell: 4 }
+  height: 26
+  ascent: 7
 
-# The item card (top left), one per item and per nitro left.
+t_gold2_4:
+  file: type_gold
+  grid: { rows: 6, columns: 7, cell: 5 }
+  height: 26
+  ascent: 7
 
-card_empty:
-  file: card_empty
+t_gold2_5:
+  file: type_gold
+  grid: { rows: 6, columns: 7, cell: 6 }
+  height: 26
+  ascent: 7
+
+t_gold2_6:
+  file: type_gold
+  grid: { rows: 6, columns: 7, cell: 7 }
+  height: 26
+  ascent: 7
+
+t_gold2_7:
+  file: type_gold
+  grid: { rows: 6, columns: 7, cell: 8 }
+  height: 26
+  ascent: 7
+
+t_gold2_8:
+  file: type_gold
+  grid: { rows: 6, columns: 7, cell: 9 }
+  height: 26
+  ascent: 7
+
+t_gold2_9:
+  file: type_gold
+  grid: { rows: 6, columns: 7, cell: 10 }
+  height: 26
+  ascent: 7
+
+t_gold2_a:
+  file: type_gold
+  grid: { rows: 6, columns: 7, cell: 11 }
+  height: 26
+  ascent: 7
+
+t_gold2_b:
+  file: type_gold
+  grid: { rows: 6, columns: 7, cell: 12 }
+  height: 26
+  ascent: 7
+
+t_gold2_c:
+  file: type_gold
+  grid: { rows: 6, columns: 7, cell: 13 }
+  height: 26
+  ascent: 7
+
+t_gold2_d:
+  file: type_gold
+  grid: { rows: 6, columns: 7, cell: 14 }
+  height: 26
+  ascent: 7
+
+t_gold2_e:
+  file: type_gold
+  grid: { rows: 6, columns: 7, cell: 15 }
+  height: 26
+  ascent: 7
+
+t_gold2_f:
+  file: type_gold
+  grid: { rows: 6, columns: 7, cell: 16 }
+  height: 26
+  ascent: 7
+
+t_gold2_g:
+  file: type_gold
+  grid: { rows: 6, columns: 7, cell: 17 }
+  height: 26
+  ascent: 7
+
+t_gold2_h:
+  file: type_gold
+  grid: { rows: 6, columns: 7, cell: 18 }
+  height: 26
+  ascent: 7
+
+t_gold2_i:
+  file: type_gold
+  grid: { rows: 6, columns: 7, cell: 19 }
+  height: 26
+  ascent: 7
+
+t_gold2_j:
+  file: type_gold
+  grid: { rows: 6, columns: 7, cell: 20 }
+  height: 26
+  ascent: 7
+
+t_gold2_k:
+  file: type_gold
+  grid: { rows: 6, columns: 7, cell: 21 }
+  height: 26
+  ascent: 7
+
+t_gold2_l:
+  file: type_gold
+  grid: { rows: 6, columns: 7, cell: 22 }
+  height: 26
+  ascent: 7
+
+t_gold2_m:
+  file: type_gold
+  grid: { rows: 6, columns: 7, cell: 23 }
+  height: 26
+  ascent: 7
+
+t_gold2_n:
+  file: type_gold
+  grid: { rows: 6, columns: 7, cell: 24 }
+  height: 26
+  ascent: 7
+
+t_gold2_o:
+  file: type_gold
+  grid: { rows: 6, columns: 7, cell: 25 }
+  height: 26
+  ascent: 7
+
+t_gold2_p:
+  file: type_gold
+  grid: { rows: 6, columns: 7, cell: 26 }
+  height: 26
+  ascent: 7
+
+t_gold2_q:
+  file: type_gold
+  grid: { rows: 6, columns: 7, cell: 27 }
+  height: 26
+  ascent: 7
+
+t_gold2_r:
+  file: type_gold
+  grid: { rows: 6, columns: 7, cell: 28 }
+  height: 26
+  ascent: 7
+
+t_gold2_s:
+  file: type_gold
+  grid: { rows: 6, columns: 7, cell: 29 }
+  height: 26
+  ascent: 7
+
+t_gold2_t:
+  file: type_gold
+  grid: { rows: 6, columns: 7, cell: 30 }
+  height: 26
+  ascent: 7
+
+t_gold2_u:
+  file: type_gold
+  grid: { rows: 6, columns: 7, cell: 31 }
+  height: 26
+  ascent: 7
+
+t_gold2_v:
+  file: type_gold
+  grid: { rows: 6, columns: 7, cell: 32 }
+  height: 26
+  ascent: 7
+
+t_gold2_w:
+  file: type_gold
+  grid: { rows: 6, columns: 7, cell: 33 }
+  height: 26
+  ascent: 7
+
+t_gold2_x:
+  file: type_gold
+  grid: { rows: 6, columns: 7, cell: 34 }
+  height: 26
+  ascent: 7
+
+t_gold2_y:
+  file: type_gold
+  grid: { rows: 6, columns: 7, cell: 35 }
+  height: 26
+  ascent: 7
+
+t_gold2_z:
+  file: type_gold
+  grid: { rows: 6, columns: 7, cell: 36 }
+  height: 26
+  ascent: 7
+
+t_gold2_bang:
+  file: type_gold
+  grid: { rows: 6, columns: 7, cell: 37 }
+  height: 26
+  ascent: 7
+
+t_gold2_dash:
+  file: type_gold
+  grid: { rows: 6, columns: 7, cell: 38 }
+  height: 26
+  ascent: 7
+
+t_gold2_apos:
+  file: type_gold
+  grid: { rows: 6, columns: 7, cell: 39 }
+  height: 26
+  ascent: 7
+
+t_gold2_slash:
+  file: type_gold
+  grid: { rows: 6, columns: 7, cell: 40 }
+  height: 26
+  ascent: 7
+
+t_gold2_colon:
+  file: type_gold
+  grid: { rows: 6, columns: 7, cell: 41 }
+  height: 26
+  ascent: 7
+
+t_gold2_dot:
+  file: type_gold
+  grid: { rows: 6, columns: 7, cell: 42 }
+  height: 26
+  ascent: 7
+
+t_gold3_0:
+  file: type_gold
+  grid: { rows: 6, columns: 7, cell: 1 }
+  height: 39
+  ascent: 7
+
+t_gold3_1:
+  file: type_gold
+  grid: { rows: 6, columns: 7, cell: 2 }
+  height: 39
+  ascent: 7
+
+t_gold3_2:
+  file: type_gold
+  grid: { rows: 6, columns: 7, cell: 3 }
+  height: 39
+  ascent: 7
+
+t_gold3_3:
+  file: type_gold
+  grid: { rows: 6, columns: 7, cell: 4 }
+  height: 39
+  ascent: 7
+
+t_gold3_4:
+  file: type_gold
+  grid: { rows: 6, columns: 7, cell: 5 }
+  height: 39
+  ascent: 7
+
+t_gold3_5:
+  file: type_gold
+  grid: { rows: 6, columns: 7, cell: 6 }
+  height: 39
+  ascent: 7
+
+t_gold3_6:
+  file: type_gold
+  grid: { rows: 6, columns: 7, cell: 7 }
+  height: 39
+  ascent: 7
+
+t_gold3_7:
+  file: type_gold
+  grid: { rows: 6, columns: 7, cell: 8 }
+  height: 39
+  ascent: 7
+
+t_gold3_8:
+  file: type_gold
+  grid: { rows: 6, columns: 7, cell: 9 }
+  height: 39
+  ascent: 7
+
+t_gold3_9:
+  file: type_gold
+  grid: { rows: 6, columns: 7, cell: 10 }
+  height: 39
+  ascent: 7
+
+t_gold3_a:
+  file: type_gold
+  grid: { rows: 6, columns: 7, cell: 11 }
+  height: 39
+  ascent: 7
+
+t_gold3_b:
+  file: type_gold
+  grid: { rows: 6, columns: 7, cell: 12 }
+  height: 39
+  ascent: 7
+
+t_gold3_c:
+  file: type_gold
+  grid: { rows: 6, columns: 7, cell: 13 }
+  height: 39
+  ascent: 7
+
+t_gold3_d:
+  file: type_gold
+  grid: { rows: 6, columns: 7, cell: 14 }
+  height: 39
+  ascent: 7
+
+t_gold3_e:
+  file: type_gold
+  grid: { rows: 6, columns: 7, cell: 15 }
+  height: 39
+  ascent: 7
+
+t_gold3_f:
+  file: type_gold
+  grid: { rows: 6, columns: 7, cell: 16 }
+  height: 39
+  ascent: 7
+
+t_gold3_g:
+  file: type_gold
+  grid: { rows: 6, columns: 7, cell: 17 }
+  height: 39
+  ascent: 7
+
+t_gold3_h:
+  file: type_gold
+  grid: { rows: 6, columns: 7, cell: 18 }
+  height: 39
+  ascent: 7
+
+t_gold3_i:
+  file: type_gold
+  grid: { rows: 6, columns: 7, cell: 19 }
+  height: 39
+  ascent: 7
+
+t_gold3_j:
+  file: type_gold
+  grid: { rows: 6, columns: 7, cell: 20 }
+  height: 39
+  ascent: 7
+
+t_gold3_k:
+  file: type_gold
+  grid: { rows: 6, columns: 7, cell: 21 }
+  height: 39
+  ascent: 7
+
+t_gold3_l:
+  file: type_gold
+  grid: { rows: 6, columns: 7, cell: 22 }
+  height: 39
+  ascent: 7
+
+t_gold3_m:
+  file: type_gold
+  grid: { rows: 6, columns: 7, cell: 23 }
+  height: 39
+  ascent: 7
+
+t_gold3_n:
+  file: type_gold
+  grid: { rows: 6, columns: 7, cell: 24 }
+  height: 39
+  ascent: 7
+
+t_gold3_o:
+  file: type_gold
+  grid: { rows: 6, columns: 7, cell: 25 }
+  height: 39
+  ascent: 7
+
+t_gold3_p:
+  file: type_gold
+  grid: { rows: 6, columns: 7, cell: 26 }
+  height: 39
+  ascent: 7
+
+t_gold3_q:
+  file: type_gold
+  grid: { rows: 6, columns: 7, cell: 27 }
+  height: 39
+  ascent: 7
+
+t_gold3_r:
+  file: type_gold
+  grid: { rows: 6, columns: 7, cell: 28 }
+  height: 39
+  ascent: 7
+
+t_gold3_s:
+  file: type_gold
+  grid: { rows: 6, columns: 7, cell: 29 }
+  height: 39
+  ascent: 7
+
+t_gold3_t:
+  file: type_gold
+  grid: { rows: 6, columns: 7, cell: 30 }
+  height: 39
+  ascent: 7
+
+t_gold3_u:
+  file: type_gold
+  grid: { rows: 6, columns: 7, cell: 31 }
+  height: 39
+  ascent: 7
+
+t_gold3_v:
+  file: type_gold
+  grid: { rows: 6, columns: 7, cell: 32 }
+  height: 39
+  ascent: 7
+
+t_gold3_w:
+  file: type_gold
+  grid: { rows: 6, columns: 7, cell: 33 }
+  height: 39
+  ascent: 7
+
+t_gold3_x:
+  file: type_gold
+  grid: { rows: 6, columns: 7, cell: 34 }
+  height: 39
+  ascent: 7
+
+t_gold3_y:
+  file: type_gold
+  grid: { rows: 6, columns: 7, cell: 35 }
+  height: 39
+  ascent: 7
+
+t_gold3_z:
+  file: type_gold
+  grid: { rows: 6, columns: 7, cell: 36 }
+  height: 39
+  ascent: 7
+
+t_gold3_bang:
+  file: type_gold
+  grid: { rows: 6, columns: 7, cell: 37 }
+  height: 39
+  ascent: 7
+
+t_gold3_dash:
+  file: type_gold
+  grid: { rows: 6, columns: 7, cell: 38 }
+  height: 39
+  ascent: 7
+
+t_gold3_apos:
+  file: type_gold
+  grid: { rows: 6, columns: 7, cell: 39 }
+  height: 39
+  ascent: 7
+
+t_gold3_slash:
+  file: type_gold
+  grid: { rows: 6, columns: 7, cell: 40 }
+  height: 39
+  ascent: 7
+
+t_gold3_colon:
+  file: type_gold
+  grid: { rows: 6, columns: 7, cell: 41 }
+  height: 39
+  ascent: 7
+
+t_gold3_dot:
+  file: type_gold
+  grid: { rows: 6, columns: 7, cell: 42 }
+  height: 39
+  ascent: 7
+
+t_green3_0:
+  file: type_green
+  grid: { rows: 6, columns: 7, cell: 1 }
+  height: 39
+  ascent: 7
+
+t_green3_1:
+  file: type_green
+  grid: { rows: 6, columns: 7, cell: 2 }
+  height: 39
+  ascent: 7
+
+t_green3_2:
+  file: type_green
+  grid: { rows: 6, columns: 7, cell: 3 }
+  height: 39
+  ascent: 7
+
+t_green3_3:
+  file: type_green
+  grid: { rows: 6, columns: 7, cell: 4 }
+  height: 39
+  ascent: 7
+
+t_green3_4:
+  file: type_green
+  grid: { rows: 6, columns: 7, cell: 5 }
+  height: 39
+  ascent: 7
+
+t_green3_5:
+  file: type_green
+  grid: { rows: 6, columns: 7, cell: 6 }
+  height: 39
+  ascent: 7
+
+t_green3_6:
+  file: type_green
+  grid: { rows: 6, columns: 7, cell: 7 }
+  height: 39
+  ascent: 7
+
+t_green3_7:
+  file: type_green
+  grid: { rows: 6, columns: 7, cell: 8 }
+  height: 39
+  ascent: 7
+
+t_green3_8:
+  file: type_green
+  grid: { rows: 6, columns: 7, cell: 9 }
+  height: 39
+  ascent: 7
+
+t_green3_9:
+  file: type_green
+  grid: { rows: 6, columns: 7, cell: 10 }
+  height: 39
+  ascent: 7
+
+t_green3_a:
+  file: type_green
+  grid: { rows: 6, columns: 7, cell: 11 }
+  height: 39
+  ascent: 7
+
+t_green3_b:
+  file: type_green
+  grid: { rows: 6, columns: 7, cell: 12 }
+  height: 39
+  ascent: 7
+
+t_green3_c:
+  file: type_green
+  grid: { rows: 6, columns: 7, cell: 13 }
+  height: 39
+  ascent: 7
+
+t_green3_d:
+  file: type_green
+  grid: { rows: 6, columns: 7, cell: 14 }
+  height: 39
+  ascent: 7
+
+t_green3_e:
+  file: type_green
+  grid: { rows: 6, columns: 7, cell: 15 }
+  height: 39
+  ascent: 7
+
+t_green3_f:
+  file: type_green
+  grid: { rows: 6, columns: 7, cell: 16 }
+  height: 39
+  ascent: 7
+
+t_green3_g:
+  file: type_green
+  grid: { rows: 6, columns: 7, cell: 17 }
+  height: 39
+  ascent: 7
+
+t_green3_h:
+  file: type_green
+  grid: { rows: 6, columns: 7, cell: 18 }
+  height: 39
+  ascent: 7
+
+t_green3_i:
+  file: type_green
+  grid: { rows: 6, columns: 7, cell: 19 }
+  height: 39
+  ascent: 7
+
+t_green3_j:
+  file: type_green
+  grid: { rows: 6, columns: 7, cell: 20 }
+  height: 39
+  ascent: 7
+
+t_green3_k:
+  file: type_green
+  grid: { rows: 6, columns: 7, cell: 21 }
+  height: 39
+  ascent: 7
+
+t_green3_l:
+  file: type_green
+  grid: { rows: 6, columns: 7, cell: 22 }
+  height: 39
+  ascent: 7
+
+t_green3_m:
+  file: type_green
+  grid: { rows: 6, columns: 7, cell: 23 }
+  height: 39
+  ascent: 7
+
+t_green3_n:
+  file: type_green
+  grid: { rows: 6, columns: 7, cell: 24 }
+  height: 39
+  ascent: 7
+
+t_green3_o:
+  file: type_green
+  grid: { rows: 6, columns: 7, cell: 25 }
+  height: 39
+  ascent: 7
+
+t_green3_p:
+  file: type_green
+  grid: { rows: 6, columns: 7, cell: 26 }
+  height: 39
+  ascent: 7
+
+t_green3_q:
+  file: type_green
+  grid: { rows: 6, columns: 7, cell: 27 }
+  height: 39
+  ascent: 7
+
+t_green3_r:
+  file: type_green
+  grid: { rows: 6, columns: 7, cell: 28 }
+  height: 39
+  ascent: 7
+
+t_green3_s:
+  file: type_green
+  grid: { rows: 6, columns: 7, cell: 29 }
+  height: 39
+  ascent: 7
+
+t_green3_t:
+  file: type_green
+  grid: { rows: 6, columns: 7, cell: 30 }
+  height: 39
+  ascent: 7
+
+t_green3_u:
+  file: type_green
+  grid: { rows: 6, columns: 7, cell: 31 }
+  height: 39
+  ascent: 7
+
+t_green3_v:
+  file: type_green
+  grid: { rows: 6, columns: 7, cell: 32 }
+  height: 39
+  ascent: 7
+
+t_green3_w:
+  file: type_green
+  grid: { rows: 6, columns: 7, cell: 33 }
+  height: 39
+  ascent: 7
+
+t_green3_x:
+  file: type_green
+  grid: { rows: 6, columns: 7, cell: 34 }
+  height: 39
+  ascent: 7
+
+t_green3_y:
+  file: type_green
+  grid: { rows: 6, columns: 7, cell: 35 }
+  height: 39
+  ascent: 7
+
+t_green3_z:
+  file: type_green
+  grid: { rows: 6, columns: 7, cell: 36 }
+  height: 39
+  ascent: 7
+
+t_green3_bang:
+  file: type_green
+  grid: { rows: 6, columns: 7, cell: 37 }
+  height: 39
+  ascent: 7
+
+t_green3_dash:
+  file: type_green
+  grid: { rows: 6, columns: 7, cell: 38 }
+  height: 39
+  ascent: 7
+
+t_green3_apos:
+  file: type_green
+  grid: { rows: 6, columns: 7, cell: 39 }
+  height: 39
+  ascent: 7
+
+t_green3_slash:
+  file: type_green
+  grid: { rows: 6, columns: 7, cell: 40 }
+  height: 39
+  ascent: 7
+
+t_green3_colon:
+  file: type_green
+  grid: { rows: 6, columns: 7, cell: 41 }
+  height: 39
+  ascent: 7
+
+t_green3_dot:
+  file: type_green
+  grid: { rows: 6, columns: 7, cell: 42 }
+  height: 39
+  ascent: 7
+
+t_red3_0:
+  file: type_red
+  grid: { rows: 6, columns: 7, cell: 1 }
+  height: 39
+  ascent: 7
+
+t_red3_1:
+  file: type_red
+  grid: { rows: 6, columns: 7, cell: 2 }
+  height: 39
+  ascent: 7
+
+t_red3_2:
+  file: type_red
+  grid: { rows: 6, columns: 7, cell: 3 }
+  height: 39
+  ascent: 7
+
+t_red3_3:
+  file: type_red
+  grid: { rows: 6, columns: 7, cell: 4 }
+  height: 39
+  ascent: 7
+
+t_red3_4:
+  file: type_red
+  grid: { rows: 6, columns: 7, cell: 5 }
+  height: 39
+  ascent: 7
+
+t_red3_5:
+  file: type_red
+  grid: { rows: 6, columns: 7, cell: 6 }
+  height: 39
+  ascent: 7
+
+t_red3_6:
+  file: type_red
+  grid: { rows: 6, columns: 7, cell: 7 }
+  height: 39
+  ascent: 7
+
+t_red3_7:
+  file: type_red
+  grid: { rows: 6, columns: 7, cell: 8 }
+  height: 39
+  ascent: 7
+
+t_red3_8:
+  file: type_red
+  grid: { rows: 6, columns: 7, cell: 9 }
+  height: 39
+  ascent: 7
+
+t_red3_9:
+  file: type_red
+  grid: { rows: 6, columns: 7, cell: 10 }
+  height: 39
+  ascent: 7
+
+t_red3_a:
+  file: type_red
+  grid: { rows: 6, columns: 7, cell: 11 }
+  height: 39
+  ascent: 7
+
+t_red3_b:
+  file: type_red
+  grid: { rows: 6, columns: 7, cell: 12 }
+  height: 39
+  ascent: 7
+
+t_red3_c:
+  file: type_red
+  grid: { rows: 6, columns: 7, cell: 13 }
+  height: 39
+  ascent: 7
+
+t_red3_d:
+  file: type_red
+  grid: { rows: 6, columns: 7, cell: 14 }
+  height: 39
+  ascent: 7
+
+t_red3_e:
+  file: type_red
+  grid: { rows: 6, columns: 7, cell: 15 }
+  height: 39
+  ascent: 7
+
+t_red3_f:
+  file: type_red
+  grid: { rows: 6, columns: 7, cell: 16 }
+  height: 39
+  ascent: 7
+
+t_red3_g:
+  file: type_red
+  grid: { rows: 6, columns: 7, cell: 17 }
+  height: 39
+  ascent: 7
+
+t_red3_h:
+  file: type_red
+  grid: { rows: 6, columns: 7, cell: 18 }
+  height: 39
+  ascent: 7
+
+t_red3_i:
+  file: type_red
+  grid: { rows: 6, columns: 7, cell: 19 }
+  height: 39
+  ascent: 7
+
+t_red3_j:
+  file: type_red
+  grid: { rows: 6, columns: 7, cell: 20 }
+  height: 39
+  ascent: 7
+
+t_red3_k:
+  file: type_red
+  grid: { rows: 6, columns: 7, cell: 21 }
+  height: 39
+  ascent: 7
+
+t_red3_l:
+  file: type_red
+  grid: { rows: 6, columns: 7, cell: 22 }
+  height: 39
+  ascent: 7
+
+t_red3_m:
+  file: type_red
+  grid: { rows: 6, columns: 7, cell: 23 }
+  height: 39
+  ascent: 7
+
+t_red3_n:
+  file: type_red
+  grid: { rows: 6, columns: 7, cell: 24 }
+  height: 39
+  ascent: 7
+
+t_red3_o:
+  file: type_red
+  grid: { rows: 6, columns: 7, cell: 25 }
+  height: 39
+  ascent: 7
+
+t_red3_p:
+  file: type_red
+  grid: { rows: 6, columns: 7, cell: 26 }
+  height: 39
+  ascent: 7
+
+t_red3_q:
+  file: type_red
+  grid: { rows: 6, columns: 7, cell: 27 }
+  height: 39
+  ascent: 7
+
+t_red3_r:
+  file: type_red
+  grid: { rows: 6, columns: 7, cell: 28 }
+  height: 39
+  ascent: 7
+
+t_red3_s:
+  file: type_red
+  grid: { rows: 6, columns: 7, cell: 29 }
+  height: 39
+  ascent: 7
+
+t_red3_t:
+  file: type_red
+  grid: { rows: 6, columns: 7, cell: 30 }
+  height: 39
+  ascent: 7
+
+t_red3_u:
+  file: type_red
+  grid: { rows: 6, columns: 7, cell: 31 }
+  height: 39
+  ascent: 7
+
+t_red3_v:
+  file: type_red
+  grid: { rows: 6, columns: 7, cell: 32 }
+  height: 39
+  ascent: 7
+
+t_red3_w:
+  file: type_red
+  grid: { rows: 6, columns: 7, cell: 33 }
+  height: 39
+  ascent: 7
+
+t_red3_x:
+  file: type_red
+  grid: { rows: 6, columns: 7, cell: 34 }
+  height: 39
+  ascent: 7
+
+t_red3_y:
+  file: type_red
+  grid: { rows: 6, columns: 7, cell: 35 }
+  height: 39
+  ascent: 7
+
+t_red3_z:
+  file: type_red
+  grid: { rows: 6, columns: 7, cell: 36 }
+  height: 39
+  ascent: 7
+
+t_red3_bang:
+  file: type_red
+  grid: { rows: 6, columns: 7, cell: 37 }
+  height: 39
+  ascent: 7
+
+t_red3_dash:
+  file: type_red
+  grid: { rows: 6, columns: 7, cell: 38 }
+  height: 39
+  ascent: 7
+
+t_red3_apos:
+  file: type_red
+  grid: { rows: 6, columns: 7, cell: 39 }
+  height: 39
+  ascent: 7
+
+t_red3_slash:
+  file: type_red
+  grid: { rows: 6, columns: 7, cell: 40 }
+  height: 39
+  ascent: 7
+
+t_red3_colon:
+  file: type_red
+  grid: { rows: 6, columns: 7, cell: 41 }
+  height: 39
+  ascent: 7
+
+t_red3_dot:
+  file: type_red
+  grid: { rows: 6, columns: 7, cell: 42 }
+  height: 39
+  ascent: 7
+
+# The item window: empty, each item, the roulette's frames.
+
+item_empty:
+  file: item_empty
+  height: 48
+  ascent: 7
+
+item_banana:
+  file: item_banana
+  height: 48
+  ascent: 7
+
+item_nitro:
+  file: item_nitro
+  height: 48
+  ascent: 7
+
+item_rocket:
+  file: item_rocket
+  height: 48
+  ascent: 7
+
+item_triple_3:
+  file: item_triple_3
+  height: 48
+  ascent: 7
+
+item_triple_2:
+  file: item_triple_2
+  height: 48
+  ascent: 7
+
+item_roll_0:
+  file: item_roll_0
+  height: 48
+  ascent: 7
+
+item_roll_1:
+  file: item_roll_1
+  height: 48
+  ascent: 7
+
+item_roll_2:
+  file: item_roll_2
+  height: 48
+  ascent: 7
+
+item_roll_3:
+  file: item_roll_3
+  height: 48
+  ascent: 7
+
+item_roll_4:
+  file: item_roll_4
+  height: 48
+  ascent: 7
+
+item_roll_5:
+  file: item_roll_5
+  height: 48
+  ascent: 7
+
+item_roll_6:
+  file: item_roll_6
+  height: 48
+  ascent: 7
+
+item_roll_7:
+  file: item_roll_7
+  height: 48
+  ascent: 7
+
+# The place, bottom right: 1ST to 8TH.
+
+place_1:
+  file: place_1
+  height: 64
+  ascent: 7
+
+place_2:
+  file: place_2
+  height: 64
+  ascent: 7
+
+place_3:
+  file: place_3
+  height: 64
+  ascent: 7
+
+place_4:
+  file: place_4
+  height: 64
+  ascent: 7
+
+place_5:
+  file: place_5
+  height: 64
+  ascent: 7
+
+place_6:
+  file: place_6
+  height: 64
+  ascent: 7
+
+place_7:
+  file: place_7
+  height: 64
+  ascent: 7
+
+place_8:
+  file: place_8
+  height: 64
+  ascent: 7
+
+# The lap panel, top right, for races of up to five laps.
+
+lap_1_1:
+  file: lap_1_1
+  height: 34
+  ascent: 7
+
+lap_1_2:
+  file: lap_1_2
+  height: 34
+  ascent: 7
+
+lap_2_2:
+  file: lap_2_2
+  height: 34
+  ascent: 7
+
+lap_1_3:
+  file: lap_1_3
+  height: 34
+  ascent: 7
+
+lap_2_3:
+  file: lap_2_3
+  height: 34
+  ascent: 7
+
+lap_3_3:
+  file: lap_3_3
+  height: 34
+  ascent: 7
+
+lap_1_4:
+  file: lap_1_4
+  height: 34
+  ascent: 7
+
+lap_2_4:
+  file: lap_2_4
+  height: 34
+  ascent: 7
+
+lap_3_4:
+  file: lap_3_4
+  height: 34
+  ascent: 7
+
+lap_4_4:
+  file: lap_4_4
+  height: 34
+  ascent: 7
+
+lap_1_5:
+  file: lap_1_5
+  height: 34
+  ascent: 7
+
+lap_2_5:
+  file: lap_2_5
+  height: 34
+  ascent: 7
+
+lap_3_5:
+  file: lap_3_5
+  height: 34
+  ascent: 7
+
+lap_4_5:
+  file: lap_4_5
+  height: 34
+  ascent: 7
+
+lap_5_5:
+  file: lap_5_5
+  height: 34
+  ascent: 7
+
+# The start lights: 0 to 3 lit red, then green. Drawn at 2x.
+
+lights_0:
+  file: lights_0
   height: 36
-  ascent: 21
+  ascent: 7
 
-card_box:
-  file: card_box
+lights_1:
+  file: lights_1
   height: 36
-  ascent: 21
+  ascent: 7
 
-card_banana:
-  file: card_banana
+lights_2:
+  file: lights_2
   height: 36
-  ascent: 21
+  ascent: 7
 
-card_nitro:
-  file: card_nitro
+lights_3:
+  file: lights_3
   height: 36
-  ascent: 21
+  ascent: 7
 
-card_rocket:
-  file: card_rocket
+lights_go:
+  file: lights_go
   height: 36
-  ascent: 21
+  ascent: 7
 
-card_triple_3:
-  file: card_triple_3
-  height: 36
-  ascent: 21
+# Banners and the countdown, centre. Drawn at 2x.
 
-card_triple_2:
-  file: card_triple_2
-  height: 36
-  ascent: 21
+banner_final:
+  file: banner_final
+  height: 53
+  ascent: 7
+
+banner_finish:
+  file: banner_finish
+  height: 53
+  ascent: 7
+
+banner_wrong:
+  file: banner_wrong
+  height: 53
+  ascent: 7
+
+banner_lap:
+  file: banner_lap
+  height: 53
+  ascent: 7
+
+banner_best:
+  file: banner_best
+  height: 53
+  ascent: 7
+
+count_3_0:
+  file: count_3_0
+  height: 61
+  ascent: 7
+
+count_3_1:
+  file: count_3_1
+  height: 50
+  ascent: 7
+
+count_3_2:
+  file: count_3_2
+  height: 44
+  ascent: 7
+
+count_2_0:
+  file: count_2_0
+  height: 61
+  ascent: 7
+
+count_2_1:
+  file: count_2_1
+  height: 50
+  ascent: 7
+
+count_2_2:
+  file: count_2_2
+  height: 44
+  ascent: 7
+
+count_1_0:
+  file: count_1_0
+  height: 61
+  ascent: 7
+
+count_1_1:
+  file: count_1_1
+  height: 50
+  ascent: 7
+
+count_1_2:
+  file: count_1_2
+  height: 44
+  ascent: 7
+
+count_go_0:
+  file: count_go_0
+  height: 61
+  ascent: 7
+
+count_go_1:
+  file: count_go_1
+  height: 50
+  ascent: 7
+
+count_go_2:
+  file: count_go_2
+  height: 44
+  ascent: 7
+
+# The speed gauge: speed steps by drift level (0 none, 1-3) by boost. Drawn at 2x.
+
+gauge_0_0_0:
+  file: gauge_0_0_0
+  height: 40
+  ascent: 7
+
+gauge_1_0_0:
+  file: gauge_1_0_0
+  height: 40
+  ascent: 7
+
+gauge_2_0_0:
+  file: gauge_2_0_0
+  height: 40
+  ascent: 7
+
+gauge_3_0_0:
+  file: gauge_3_0_0
+  height: 40
+  ascent: 7
+
+gauge_4_0_0:
+  file: gauge_4_0_0
+  height: 40
+  ascent: 7
+
+gauge_5_0_0:
+  file: gauge_5_0_0
+  height: 40
+  ascent: 7
+
+gauge_6_0_0:
+  file: gauge_6_0_0
+  height: 40
+  ascent: 7
+
+gauge_7_0_0:
+  file: gauge_7_0_0
+  height: 40
+  ascent: 7
+
+gauge_8_0_0:
+  file: gauge_8_0_0
+  height: 40
+  ascent: 7
+
+gauge_9_0_0:
+  file: gauge_9_0_0
+  height: 40
+  ascent: 7
+
+gauge_10_0_0:
+  file: gauge_10_0_0
+  height: 40
+  ascent: 7
+
+gauge_11_0_0:
+  file: gauge_11_0_0
+  height: 40
+  ascent: 7
+
+gauge_12_0_0:
+  file: gauge_12_0_0
+  height: 40
+  ascent: 7
+
+gauge_0_0_1:
+  file: gauge_0_0_1
+  height: 40
+  ascent: 7
+
+gauge_1_0_1:
+  file: gauge_1_0_1
+  height: 40
+  ascent: 7
+
+gauge_2_0_1:
+  file: gauge_2_0_1
+  height: 40
+  ascent: 7
+
+gauge_3_0_1:
+  file: gauge_3_0_1
+  height: 40
+  ascent: 7
+
+gauge_4_0_1:
+  file: gauge_4_0_1
+  height: 40
+  ascent: 7
+
+gauge_5_0_1:
+  file: gauge_5_0_1
+  height: 40
+  ascent: 7
+
+gauge_6_0_1:
+  file: gauge_6_0_1
+  height: 40
+  ascent: 7
+
+gauge_7_0_1:
+  file: gauge_7_0_1
+  height: 40
+  ascent: 7
+
+gauge_8_0_1:
+  file: gauge_8_0_1
+  height: 40
+  ascent: 7
+
+gauge_9_0_1:
+  file: gauge_9_0_1
+  height: 40
+  ascent: 7
+
+gauge_10_0_1:
+  file: gauge_10_0_1
+  height: 40
+  ascent: 7
+
+gauge_11_0_1:
+  file: gauge_11_0_1
+  height: 40
+  ascent: 7
+
+gauge_12_0_1:
+  file: gauge_12_0_1
+  height: 40
+  ascent: 7
+
+gauge_0_1_0:
+  file: gauge_0_1_0
+  height: 40
+  ascent: 7
+
+gauge_1_1_0:
+  file: gauge_1_1_0
+  height: 40
+  ascent: 7
+
+gauge_2_1_0:
+  file: gauge_2_1_0
+  height: 40
+  ascent: 7
+
+gauge_3_1_0:
+  file: gauge_3_1_0
+  height: 40
+  ascent: 7
+
+gauge_4_1_0:
+  file: gauge_4_1_0
+  height: 40
+  ascent: 7
+
+gauge_5_1_0:
+  file: gauge_5_1_0
+  height: 40
+  ascent: 7
+
+gauge_6_1_0:
+  file: gauge_6_1_0
+  height: 40
+  ascent: 7
+
+gauge_7_1_0:
+  file: gauge_7_1_0
+  height: 40
+  ascent: 7
+
+gauge_8_1_0:
+  file: gauge_8_1_0
+  height: 40
+  ascent: 7
+
+gauge_9_1_0:
+  file: gauge_9_1_0
+  height: 40
+  ascent: 7
+
+gauge_10_1_0:
+  file: gauge_10_1_0
+  height: 40
+  ascent: 7
+
+gauge_11_1_0:
+  file: gauge_11_1_0
+  height: 40
+  ascent: 7
+
+gauge_12_1_0:
+  file: gauge_12_1_0
+  height: 40
+  ascent: 7
+
+gauge_0_2_0:
+  file: gauge_0_2_0
+  height: 40
+  ascent: 7
+
+gauge_1_2_0:
+  file: gauge_1_2_0
+  height: 40
+  ascent: 7
+
+gauge_2_2_0:
+  file: gauge_2_2_0
+  height: 40
+  ascent: 7
+
+gauge_3_2_0:
+  file: gauge_3_2_0
+  height: 40
+  ascent: 7
+
+gauge_4_2_0:
+  file: gauge_4_2_0
+  height: 40
+  ascent: 7
+
+gauge_5_2_0:
+  file: gauge_5_2_0
+  height: 40
+  ascent: 7
+
+gauge_6_2_0:
+  file: gauge_6_2_0
+  height: 40
+  ascent: 7
+
+gauge_7_2_0:
+  file: gauge_7_2_0
+  height: 40
+  ascent: 7
+
+gauge_8_2_0:
+  file: gauge_8_2_0
+  height: 40
+  ascent: 7
+
+gauge_9_2_0:
+  file: gauge_9_2_0
+  height: 40
+  ascent: 7
+
+gauge_10_2_0:
+  file: gauge_10_2_0
+  height: 40
+  ascent: 7
+
+gauge_11_2_0:
+  file: gauge_11_2_0
+  height: 40
+  ascent: 7
+
+gauge_12_2_0:
+  file: gauge_12_2_0
+  height: 40
+  ascent: 7
+
+gauge_0_3_0:
+  file: gauge_0_3_0
+  height: 40
+  ascent: 7
+
+gauge_1_3_0:
+  file: gauge_1_3_0
+  height: 40
+  ascent: 7
+
+gauge_2_3_0:
+  file: gauge_2_3_0
+  height: 40
+  ascent: 7
+
+gauge_3_3_0:
+  file: gauge_3_3_0
+  height: 40
+  ascent: 7
+
+gauge_4_3_0:
+  file: gauge_4_3_0
+  height: 40
+  ascent: 7
+
+gauge_5_3_0:
+  file: gauge_5_3_0
+  height: 40
+  ascent: 7
+
+gauge_6_3_0:
+  file: gauge_6_3_0
+  height: 40
+  ascent: 7
+
+gauge_7_3_0:
+  file: gauge_7_3_0
+  height: 40
+  ascent: 7
+
+gauge_8_3_0:
+  file: gauge_8_3_0
+  height: 40
+  ascent: 7
+
+gauge_9_3_0:
+  file: gauge_9_3_0
+  height: 40
+  ascent: 7
+
+gauge_10_3_0:
+  file: gauge_10_3_0
+  height: 40
+  ascent: 7
+
+gauge_11_3_0:
+  file: gauge_11_3_0
+  height: 40
+  ascent: 7
+
+gauge_12_3_0:
+  file: gauge_12_3_0
+  height: 40
+  ascent: 7
+
+# The speed's digits, hung 22 pixels down so they sit inside the gauge: g_<digit>.
+
+g_0:
+  file: gdigit_0
+  height: 13
+  ascent: -15
+
+g_1:
+  file: gdigit_1
+  height: 13
+  ascent: -15
+
+g_2:
+  file: gdigit_2
+  height: 13
+  ascent: -15
+
+g_3:
+  file: gdigit_3
+  height: 13
+  ascent: -15
+
+g_4:
+  file: gdigit_4
+  height: 13
+  ascent: -15
+
+g_5:
+  file: gdigit_5
+  height: 13
+  ascent: -15
+
+g_6:
+  file: gdigit_6
+  height: 13
+  ascent: -15
+
+g_7:
+  file: gdigit_7
+  height: 13
+  ascent: -15
+
+g_8:
+  file: gdigit_8
+  height: 13
+  ascent: -15
+
+g_9:
+  file: gdigit_9
+  height: 13
+  ascent: -15
+
+# Speed lines while boosting, at the screen's edges.
+
+lines_l_0:
+  file: lines_l_0
+  height: 240
+  ascent: 7
+
+lines_l_1:
+  file: lines_l_1
+  height: 240
+  ascent: 7
+
+lines_l_2:
+  file: lines_l_2
+  height: 240
+  ascent: 7
+
+lines_r_0:
+  file: lines_r_0
+  height: 240
+  ascent: 7
+
+lines_r_1:
+  file: lines_r_1
+  height: 240
+  ascent: 7
+
+lines_r_2:
+  file: lines_r_2
+  height: 240
+  ascent: 7
+
+# Kart colour chips for the standings.
+
+chip_red:
+  file: chip_red
+  height: 6
+  ascent: 6
+
+chip_blue:
+  file: chip_blue
+  height: 6
+  ascent: 6
+
+chip_green:
+  file: chip_green
+  height: 6
+  ascent: 6
+
+chip_yellow:
+  file: chip_yellow
+  height: 6
+  ascent: 6
+
+chip_orange:
+  file: chip_orange
+  height: 6
+  ascent: 6
+
+chip_purple:
+  file: chip_purple
+  height: 6
+  ascent: 6
+
+chip_pink:
+  file: chip_pink
+  height: 6
+  ascent: 6
+
+chip_cyan:
+  file: chip_cyan
+  height: 6
+  ascent: 6
+
+# The minimaps, one per prefab, and the dots: one glyph per colour and per two rows.
+
+map_desert:
+  file: map_desert
+  height: 96
+  ascent: 3
+
+map_frost:
+  file: map_frost
+  height: 96
+  ascent: 3
+
+map_meadow:
+  file: map_meadow
+  height: 96
+  ascent: 3
+
+map_neon:
+  file: map_neon
+  height: 96
+  ascent: 3
+
+dot_red_0:
+  file: dot_red
+  height: 6
+  ascent: 6
+
+dot_red_1:
+  file: dot_red
+  height: 6
+  ascent: 4
+
+dot_red_2:
+  file: dot_red
+  height: 6
+  ascent: 2
+
+dot_red_3:
+  file: dot_red
+  height: 6
+  ascent: 0
+
+dot_red_4:
+  file: dot_red
+  height: 6
+  ascent: -2
+
+dot_red_5:
+  file: dot_red
+  height: 6
+  ascent: -4
+
+dot_red_6:
+  file: dot_red
+  height: 6
+  ascent: -6
+
+dot_red_7:
+  file: dot_red
+  height: 6
+  ascent: -8
+
+dot_red_8:
+  file: dot_red
+  height: 6
+  ascent: -10
+
+dot_red_9:
+  file: dot_red
+  height: 6
+  ascent: -12
+
+dot_red_10:
+  file: dot_red
+  height: 6
+  ascent: -14
+
+dot_red_11:
+  file: dot_red
+  height: 6
+  ascent: -16
+
+dot_red_12:
+  file: dot_red
+  height: 6
+  ascent: -18
+
+dot_red_13:
+  file: dot_red
+  height: 6
+  ascent: -20
+
+dot_red_14:
+  file: dot_red
+  height: 6
+  ascent: -22
+
+dot_red_15:
+  file: dot_red
+  height: 6
+  ascent: -24
+
+dot_red_16:
+  file: dot_red
+  height: 6
+  ascent: -26
+
+dot_red_17:
+  file: dot_red
+  height: 6
+  ascent: -28
+
+dot_red_18:
+  file: dot_red
+  height: 6
+  ascent: -30
+
+dot_red_19:
+  file: dot_red
+  height: 6
+  ascent: -32
+
+dot_red_20:
+  file: dot_red
+  height: 6
+  ascent: -34
+
+dot_red_21:
+  file: dot_red
+  height: 6
+  ascent: -36
+
+dot_red_22:
+  file: dot_red
+  height: 6
+  ascent: -38
+
+dot_red_23:
+  file: dot_red
+  height: 6
+  ascent: -40
+
+dot_red_24:
+  file: dot_red
+  height: 6
+  ascent: -42
+
+dot_red_25:
+  file: dot_red
+  height: 6
+  ascent: -44
+
+dot_red_26:
+  file: dot_red
+  height: 6
+  ascent: -46
+
+dot_red_27:
+  file: dot_red
+  height: 6
+  ascent: -48
+
+dot_red_28:
+  file: dot_red
+  height: 6
+  ascent: -50
+
+dot_red_29:
+  file: dot_red
+  height: 6
+  ascent: -52
+
+dot_red_30:
+  file: dot_red
+  height: 6
+  ascent: -54
+
+dot_red_31:
+  file: dot_red
+  height: 6
+  ascent: -56
+
+dot_red_32:
+  file: dot_red
+  height: 6
+  ascent: -58
+
+dot_red_33:
+  file: dot_red
+  height: 6
+  ascent: -60
+
+dot_red_34:
+  file: dot_red
+  height: 6
+  ascent: -62
+
+dot_red_35:
+  file: dot_red
+  height: 6
+  ascent: -64
+
+dot_red_36:
+  file: dot_red
+  height: 6
+  ascent: -66
+
+dot_red_37:
+  file: dot_red
+  height: 6
+  ascent: -68
+
+dot_red_38:
+  file: dot_red
+  height: 6
+  ascent: -70
+
+dot_red_39:
+  file: dot_red
+  height: 6
+  ascent: -72
+
+dot_red_40:
+  file: dot_red
+  height: 6
+  ascent: -74
+
+dot_red_41:
+  file: dot_red
+  height: 6
+  ascent: -76
+
+dot_red_42:
+  file: dot_red
+  height: 6
+  ascent: -78
+
+dot_red_43:
+  file: dot_red
+  height: 6
+  ascent: -80
+
+dot_red_44:
+  file: dot_red
+  height: 6
+  ascent: -82
+
+dot_red_45:
+  file: dot_red
+  height: 6
+  ascent: -84
+
+dot_red_46:
+  file: dot_red
+  height: 6
+  ascent: -86
+
+dot_red_47:
+  file: dot_red
+  height: 6
+  ascent: -88
+
+dot_red_me_0:
+  file: dot_red_me
+  height: 8
+  ascent: 7
+
+dot_red_me_1:
+  file: dot_red_me
+  height: 8
+  ascent: 5
+
+dot_red_me_2:
+  file: dot_red_me
+  height: 8
+  ascent: 3
+
+dot_red_me_3:
+  file: dot_red_me
+  height: 8
+  ascent: 1
+
+dot_red_me_4:
+  file: dot_red_me
+  height: 8
+  ascent: -1
+
+dot_red_me_5:
+  file: dot_red_me
+  height: 8
+  ascent: -3
+
+dot_red_me_6:
+  file: dot_red_me
+  height: 8
+  ascent: -5
+
+dot_red_me_7:
+  file: dot_red_me
+  height: 8
+  ascent: -7
+
+dot_red_me_8:
+  file: dot_red_me
+  height: 8
+  ascent: -9
+
+dot_red_me_9:
+  file: dot_red_me
+  height: 8
+  ascent: -11
+
+dot_red_me_10:
+  file: dot_red_me
+  height: 8
+  ascent: -13
+
+dot_red_me_11:
+  file: dot_red_me
+  height: 8
+  ascent: -15
+
+dot_red_me_12:
+  file: dot_red_me
+  height: 8
+  ascent: -17
+
+dot_red_me_13:
+  file: dot_red_me
+  height: 8
+  ascent: -19
+
+dot_red_me_14:
+  file: dot_red_me
+  height: 8
+  ascent: -21
+
+dot_red_me_15:
+  file: dot_red_me
+  height: 8
+  ascent: -23
+
+dot_red_me_16:
+  file: dot_red_me
+  height: 8
+  ascent: -25
+
+dot_red_me_17:
+  file: dot_red_me
+  height: 8
+  ascent: -27
+
+dot_red_me_18:
+  file: dot_red_me
+  height: 8
+  ascent: -29
+
+dot_red_me_19:
+  file: dot_red_me
+  height: 8
+  ascent: -31
+
+dot_red_me_20:
+  file: dot_red_me
+  height: 8
+  ascent: -33
+
+dot_red_me_21:
+  file: dot_red_me
+  height: 8
+  ascent: -35
+
+dot_red_me_22:
+  file: dot_red_me
+  height: 8
+  ascent: -37
+
+dot_red_me_23:
+  file: dot_red_me
+  height: 8
+  ascent: -39
+
+dot_red_me_24:
+  file: dot_red_me
+  height: 8
+  ascent: -41
+
+dot_red_me_25:
+  file: dot_red_me
+  height: 8
+  ascent: -43
+
+dot_red_me_26:
+  file: dot_red_me
+  height: 8
+  ascent: -45
+
+dot_red_me_27:
+  file: dot_red_me
+  height: 8
+  ascent: -47
+
+dot_red_me_28:
+  file: dot_red_me
+  height: 8
+  ascent: -49
+
+dot_red_me_29:
+  file: dot_red_me
+  height: 8
+  ascent: -51
+
+dot_red_me_30:
+  file: dot_red_me
+  height: 8
+  ascent: -53
+
+dot_red_me_31:
+  file: dot_red_me
+  height: 8
+  ascent: -55
+
+dot_red_me_32:
+  file: dot_red_me
+  height: 8
+  ascent: -57
+
+dot_red_me_33:
+  file: dot_red_me
+  height: 8
+  ascent: -59
+
+dot_red_me_34:
+  file: dot_red_me
+  height: 8
+  ascent: -61
+
+dot_red_me_35:
+  file: dot_red_me
+  height: 8
+  ascent: -63
+
+dot_red_me_36:
+  file: dot_red_me
+  height: 8
+  ascent: -65
+
+dot_red_me_37:
+  file: dot_red_me
+  height: 8
+  ascent: -67
+
+dot_red_me_38:
+  file: dot_red_me
+  height: 8
+  ascent: -69
+
+dot_red_me_39:
+  file: dot_red_me
+  height: 8
+  ascent: -71
+
+dot_red_me_40:
+  file: dot_red_me
+  height: 8
+  ascent: -73
+
+dot_red_me_41:
+  file: dot_red_me
+  height: 8
+  ascent: -75
+
+dot_red_me_42:
+  file: dot_red_me
+  height: 8
+  ascent: -77
+
+dot_red_me_43:
+  file: dot_red_me
+  height: 8
+  ascent: -79
+
+dot_red_me_44:
+  file: dot_red_me
+  height: 8
+  ascent: -81
+
+dot_red_me_45:
+  file: dot_red_me
+  height: 8
+  ascent: -83
+
+dot_red_me_46:
+  file: dot_red_me
+  height: 8
+  ascent: -85
+
+dot_red_me_47:
+  file: dot_red_me
+  height: 8
+  ascent: -87
+
+dot_blue_0:
+  file: dot_blue
+  height: 6
+  ascent: 6
+
+dot_blue_1:
+  file: dot_blue
+  height: 6
+  ascent: 4
+
+dot_blue_2:
+  file: dot_blue
+  height: 6
+  ascent: 2
+
+dot_blue_3:
+  file: dot_blue
+  height: 6
+  ascent: 0
+
+dot_blue_4:
+  file: dot_blue
+  height: 6
+  ascent: -2
+
+dot_blue_5:
+  file: dot_blue
+  height: 6
+  ascent: -4
+
+dot_blue_6:
+  file: dot_blue
+  height: 6
+  ascent: -6
+
+dot_blue_7:
+  file: dot_blue
+  height: 6
+  ascent: -8
+
+dot_blue_8:
+  file: dot_blue
+  height: 6
+  ascent: -10
+
+dot_blue_9:
+  file: dot_blue
+  height: 6
+  ascent: -12
+
+dot_blue_10:
+  file: dot_blue
+  height: 6
+  ascent: -14
+
+dot_blue_11:
+  file: dot_blue
+  height: 6
+  ascent: -16
+
+dot_blue_12:
+  file: dot_blue
+  height: 6
+  ascent: -18
+
+dot_blue_13:
+  file: dot_blue
+  height: 6
+  ascent: -20
+
+dot_blue_14:
+  file: dot_blue
+  height: 6
+  ascent: -22
+
+dot_blue_15:
+  file: dot_blue
+  height: 6
+  ascent: -24
+
+dot_blue_16:
+  file: dot_blue
+  height: 6
+  ascent: -26
+
+dot_blue_17:
+  file: dot_blue
+  height: 6
+  ascent: -28
+
+dot_blue_18:
+  file: dot_blue
+  height: 6
+  ascent: -30
+
+dot_blue_19:
+  file: dot_blue
+  height: 6
+  ascent: -32
+
+dot_blue_20:
+  file: dot_blue
+  height: 6
+  ascent: -34
+
+dot_blue_21:
+  file: dot_blue
+  height: 6
+  ascent: -36
+
+dot_blue_22:
+  file: dot_blue
+  height: 6
+  ascent: -38
+
+dot_blue_23:
+  file: dot_blue
+  height: 6
+  ascent: -40
+
+dot_blue_24:
+  file: dot_blue
+  height: 6
+  ascent: -42
+
+dot_blue_25:
+  file: dot_blue
+  height: 6
+  ascent: -44
+
+dot_blue_26:
+  file: dot_blue
+  height: 6
+  ascent: -46
+
+dot_blue_27:
+  file: dot_blue
+  height: 6
+  ascent: -48
+
+dot_blue_28:
+  file: dot_blue
+  height: 6
+  ascent: -50
+
+dot_blue_29:
+  file: dot_blue
+  height: 6
+  ascent: -52
+
+dot_blue_30:
+  file: dot_blue
+  height: 6
+  ascent: -54
+
+dot_blue_31:
+  file: dot_blue
+  height: 6
+  ascent: -56
+
+dot_blue_32:
+  file: dot_blue
+  height: 6
+  ascent: -58
+
+dot_blue_33:
+  file: dot_blue
+  height: 6
+  ascent: -60
+
+dot_blue_34:
+  file: dot_blue
+  height: 6
+  ascent: -62
+
+dot_blue_35:
+  file: dot_blue
+  height: 6
+  ascent: -64
+
+dot_blue_36:
+  file: dot_blue
+  height: 6
+  ascent: -66
+
+dot_blue_37:
+  file: dot_blue
+  height: 6
+  ascent: -68
+
+dot_blue_38:
+  file: dot_blue
+  height: 6
+  ascent: -70
+
+dot_blue_39:
+  file: dot_blue
+  height: 6
+  ascent: -72
+
+dot_blue_40:
+  file: dot_blue
+  height: 6
+  ascent: -74
+
+dot_blue_41:
+  file: dot_blue
+  height: 6
+  ascent: -76
+
+dot_blue_42:
+  file: dot_blue
+  height: 6
+  ascent: -78
+
+dot_blue_43:
+  file: dot_blue
+  height: 6
+  ascent: -80
+
+dot_blue_44:
+  file: dot_blue
+  height: 6
+  ascent: -82
+
+dot_blue_45:
+  file: dot_blue
+  height: 6
+  ascent: -84
+
+dot_blue_46:
+  file: dot_blue
+  height: 6
+  ascent: -86
+
+dot_blue_47:
+  file: dot_blue
+  height: 6
+  ascent: -88
+
+dot_blue_me_0:
+  file: dot_blue_me
+  height: 8
+  ascent: 7
+
+dot_blue_me_1:
+  file: dot_blue_me
+  height: 8
+  ascent: 5
+
+dot_blue_me_2:
+  file: dot_blue_me
+  height: 8
+  ascent: 3
+
+dot_blue_me_3:
+  file: dot_blue_me
+  height: 8
+  ascent: 1
+
+dot_blue_me_4:
+  file: dot_blue_me
+  height: 8
+  ascent: -1
+
+dot_blue_me_5:
+  file: dot_blue_me
+  height: 8
+  ascent: -3
+
+dot_blue_me_6:
+  file: dot_blue_me
+  height: 8
+  ascent: -5
+
+dot_blue_me_7:
+  file: dot_blue_me
+  height: 8
+  ascent: -7
+
+dot_blue_me_8:
+  file: dot_blue_me
+  height: 8
+  ascent: -9
+
+dot_blue_me_9:
+  file: dot_blue_me
+  height: 8
+  ascent: -11
+
+dot_blue_me_10:
+  file: dot_blue_me
+  height: 8
+  ascent: -13
+
+dot_blue_me_11:
+  file: dot_blue_me
+  height: 8
+  ascent: -15
+
+dot_blue_me_12:
+  file: dot_blue_me
+  height: 8
+  ascent: -17
+
+dot_blue_me_13:
+  file: dot_blue_me
+  height: 8
+  ascent: -19
+
+dot_blue_me_14:
+  file: dot_blue_me
+  height: 8
+  ascent: -21
+
+dot_blue_me_15:
+  file: dot_blue_me
+  height: 8
+  ascent: -23
+
+dot_blue_me_16:
+  file: dot_blue_me
+  height: 8
+  ascent: -25
+
+dot_blue_me_17:
+  file: dot_blue_me
+  height: 8
+  ascent: -27
+
+dot_blue_me_18:
+  file: dot_blue_me
+  height: 8
+  ascent: -29
+
+dot_blue_me_19:
+  file: dot_blue_me
+  height: 8
+  ascent: -31
+
+dot_blue_me_20:
+  file: dot_blue_me
+  height: 8
+  ascent: -33
+
+dot_blue_me_21:
+  file: dot_blue_me
+  height: 8
+  ascent: -35
+
+dot_blue_me_22:
+  file: dot_blue_me
+  height: 8
+  ascent: -37
+
+dot_blue_me_23:
+  file: dot_blue_me
+  height: 8
+  ascent: -39
+
+dot_blue_me_24:
+  file: dot_blue_me
+  height: 8
+  ascent: -41
+
+dot_blue_me_25:
+  file: dot_blue_me
+  height: 8
+  ascent: -43
+
+dot_blue_me_26:
+  file: dot_blue_me
+  height: 8
+  ascent: -45
+
+dot_blue_me_27:
+  file: dot_blue_me
+  height: 8
+  ascent: -47
+
+dot_blue_me_28:
+  file: dot_blue_me
+  height: 8
+  ascent: -49
+
+dot_blue_me_29:
+  file: dot_blue_me
+  height: 8
+  ascent: -51
+
+dot_blue_me_30:
+  file: dot_blue_me
+  height: 8
+  ascent: -53
+
+dot_blue_me_31:
+  file: dot_blue_me
+  height: 8
+  ascent: -55
+
+dot_blue_me_32:
+  file: dot_blue_me
+  height: 8
+  ascent: -57
+
+dot_blue_me_33:
+  file: dot_blue_me
+  height: 8
+  ascent: -59
+
+dot_blue_me_34:
+  file: dot_blue_me
+  height: 8
+  ascent: -61
+
+dot_blue_me_35:
+  file: dot_blue_me
+  height: 8
+  ascent: -63
+
+dot_blue_me_36:
+  file: dot_blue_me
+  height: 8
+  ascent: -65
+
+dot_blue_me_37:
+  file: dot_blue_me
+  height: 8
+  ascent: -67
+
+dot_blue_me_38:
+  file: dot_blue_me
+  height: 8
+  ascent: -69
+
+dot_blue_me_39:
+  file: dot_blue_me
+  height: 8
+  ascent: -71
+
+dot_blue_me_40:
+  file: dot_blue_me
+  height: 8
+  ascent: -73
+
+dot_blue_me_41:
+  file: dot_blue_me
+  height: 8
+  ascent: -75
+
+dot_blue_me_42:
+  file: dot_blue_me
+  height: 8
+  ascent: -77
+
+dot_blue_me_43:
+  file: dot_blue_me
+  height: 8
+  ascent: -79
+
+dot_blue_me_44:
+  file: dot_blue_me
+  height: 8
+  ascent: -81
+
+dot_blue_me_45:
+  file: dot_blue_me
+  height: 8
+  ascent: -83
+
+dot_blue_me_46:
+  file: dot_blue_me
+  height: 8
+  ascent: -85
+
+dot_blue_me_47:
+  file: dot_blue_me
+  height: 8
+  ascent: -87
+
+dot_green_0:
+  file: dot_green
+  height: 6
+  ascent: 6
+
+dot_green_1:
+  file: dot_green
+  height: 6
+  ascent: 4
+
+dot_green_2:
+  file: dot_green
+  height: 6
+  ascent: 2
+
+dot_green_3:
+  file: dot_green
+  height: 6
+  ascent: 0
+
+dot_green_4:
+  file: dot_green
+  height: 6
+  ascent: -2
+
+dot_green_5:
+  file: dot_green
+  height: 6
+  ascent: -4
+
+dot_green_6:
+  file: dot_green
+  height: 6
+  ascent: -6
+
+dot_green_7:
+  file: dot_green
+  height: 6
+  ascent: -8
+
+dot_green_8:
+  file: dot_green
+  height: 6
+  ascent: -10
+
+dot_green_9:
+  file: dot_green
+  height: 6
+  ascent: -12
+
+dot_green_10:
+  file: dot_green
+  height: 6
+  ascent: -14
+
+dot_green_11:
+  file: dot_green
+  height: 6
+  ascent: -16
+
+dot_green_12:
+  file: dot_green
+  height: 6
+  ascent: -18
+
+dot_green_13:
+  file: dot_green
+  height: 6
+  ascent: -20
+
+dot_green_14:
+  file: dot_green
+  height: 6
+  ascent: -22
+
+dot_green_15:
+  file: dot_green
+  height: 6
+  ascent: -24
+
+dot_green_16:
+  file: dot_green
+  height: 6
+  ascent: -26
+
+dot_green_17:
+  file: dot_green
+  height: 6
+  ascent: -28
+
+dot_green_18:
+  file: dot_green
+  height: 6
+  ascent: -30
+
+dot_green_19:
+  file: dot_green
+  height: 6
+  ascent: -32
+
+dot_green_20:
+  file: dot_green
+  height: 6
+  ascent: -34
+
+dot_green_21:
+  file: dot_green
+  height: 6
+  ascent: -36
+
+dot_green_22:
+  file: dot_green
+  height: 6
+  ascent: -38
+
+dot_green_23:
+  file: dot_green
+  height: 6
+  ascent: -40
+
+dot_green_24:
+  file: dot_green
+  height: 6
+  ascent: -42
+
+dot_green_25:
+  file: dot_green
+  height: 6
+  ascent: -44
+
+dot_green_26:
+  file: dot_green
+  height: 6
+  ascent: -46
+
+dot_green_27:
+  file: dot_green
+  height: 6
+  ascent: -48
+
+dot_green_28:
+  file: dot_green
+  height: 6
+  ascent: -50
+
+dot_green_29:
+  file: dot_green
+  height: 6
+  ascent: -52
+
+dot_green_30:
+  file: dot_green
+  height: 6
+  ascent: -54
+
+dot_green_31:
+  file: dot_green
+  height: 6
+  ascent: -56
+
+dot_green_32:
+  file: dot_green
+  height: 6
+  ascent: -58
+
+dot_green_33:
+  file: dot_green
+  height: 6
+  ascent: -60
+
+dot_green_34:
+  file: dot_green
+  height: 6
+  ascent: -62
+
+dot_green_35:
+  file: dot_green
+  height: 6
+  ascent: -64
+
+dot_green_36:
+  file: dot_green
+  height: 6
+  ascent: -66
+
+dot_green_37:
+  file: dot_green
+  height: 6
+  ascent: -68
+
+dot_green_38:
+  file: dot_green
+  height: 6
+  ascent: -70
+
+dot_green_39:
+  file: dot_green
+  height: 6
+  ascent: -72
+
+dot_green_40:
+  file: dot_green
+  height: 6
+  ascent: -74
+
+dot_green_41:
+  file: dot_green
+  height: 6
+  ascent: -76
+
+dot_green_42:
+  file: dot_green
+  height: 6
+  ascent: -78
+
+dot_green_43:
+  file: dot_green
+  height: 6
+  ascent: -80
+
+dot_green_44:
+  file: dot_green
+  height: 6
+  ascent: -82
+
+dot_green_45:
+  file: dot_green
+  height: 6
+  ascent: -84
+
+dot_green_46:
+  file: dot_green
+  height: 6
+  ascent: -86
+
+dot_green_47:
+  file: dot_green
+  height: 6
+  ascent: -88
+
+dot_green_me_0:
+  file: dot_green_me
+  height: 8
+  ascent: 7
+
+dot_green_me_1:
+  file: dot_green_me
+  height: 8
+  ascent: 5
+
+dot_green_me_2:
+  file: dot_green_me
+  height: 8
+  ascent: 3
+
+dot_green_me_3:
+  file: dot_green_me
+  height: 8
+  ascent: 1
+
+dot_green_me_4:
+  file: dot_green_me
+  height: 8
+  ascent: -1
+
+dot_green_me_5:
+  file: dot_green_me
+  height: 8
+  ascent: -3
+
+dot_green_me_6:
+  file: dot_green_me
+  height: 8
+  ascent: -5
+
+dot_green_me_7:
+  file: dot_green_me
+  height: 8
+  ascent: -7
+
+dot_green_me_8:
+  file: dot_green_me
+  height: 8
+  ascent: -9
+
+dot_green_me_9:
+  file: dot_green_me
+  height: 8
+  ascent: -11
+
+dot_green_me_10:
+  file: dot_green_me
+  height: 8
+  ascent: -13
+
+dot_green_me_11:
+  file: dot_green_me
+  height: 8
+  ascent: -15
+
+dot_green_me_12:
+  file: dot_green_me
+  height: 8
+  ascent: -17
+
+dot_green_me_13:
+  file: dot_green_me
+  height: 8
+  ascent: -19
+
+dot_green_me_14:
+  file: dot_green_me
+  height: 8
+  ascent: -21
+
+dot_green_me_15:
+  file: dot_green_me
+  height: 8
+  ascent: -23
+
+dot_green_me_16:
+  file: dot_green_me
+  height: 8
+  ascent: -25
+
+dot_green_me_17:
+  file: dot_green_me
+  height: 8
+  ascent: -27
+
+dot_green_me_18:
+  file: dot_green_me
+  height: 8
+  ascent: -29
+
+dot_green_me_19:
+  file: dot_green_me
+  height: 8
+  ascent: -31
+
+dot_green_me_20:
+  file: dot_green_me
+  height: 8
+  ascent: -33
+
+dot_green_me_21:
+  file: dot_green_me
+  height: 8
+  ascent: -35
+
+dot_green_me_22:
+  file: dot_green_me
+  height: 8
+  ascent: -37
+
+dot_green_me_23:
+  file: dot_green_me
+  height: 8
+  ascent: -39
+
+dot_green_me_24:
+  file: dot_green_me
+  height: 8
+  ascent: -41
+
+dot_green_me_25:
+  file: dot_green_me
+  height: 8
+  ascent: -43
+
+dot_green_me_26:
+  file: dot_green_me
+  height: 8
+  ascent: -45
+
+dot_green_me_27:
+  file: dot_green_me
+  height: 8
+  ascent: -47
+
+dot_green_me_28:
+  file: dot_green_me
+  height: 8
+  ascent: -49
+
+dot_green_me_29:
+  file: dot_green_me
+  height: 8
+  ascent: -51
+
+dot_green_me_30:
+  file: dot_green_me
+  height: 8
+  ascent: -53
+
+dot_green_me_31:
+  file: dot_green_me
+  height: 8
+  ascent: -55
+
+dot_green_me_32:
+  file: dot_green_me
+  height: 8
+  ascent: -57
+
+dot_green_me_33:
+  file: dot_green_me
+  height: 8
+  ascent: -59
+
+dot_green_me_34:
+  file: dot_green_me
+  height: 8
+  ascent: -61
+
+dot_green_me_35:
+  file: dot_green_me
+  height: 8
+  ascent: -63
+
+dot_green_me_36:
+  file: dot_green_me
+  height: 8
+  ascent: -65
+
+dot_green_me_37:
+  file: dot_green_me
+  height: 8
+  ascent: -67
+
+dot_green_me_38:
+  file: dot_green_me
+  height: 8
+  ascent: -69
+
+dot_green_me_39:
+  file: dot_green_me
+  height: 8
+  ascent: -71
+
+dot_green_me_40:
+  file: dot_green_me
+  height: 8
+  ascent: -73
+
+dot_green_me_41:
+  file: dot_green_me
+  height: 8
+  ascent: -75
+
+dot_green_me_42:
+  file: dot_green_me
+  height: 8
+  ascent: -77
+
+dot_green_me_43:
+  file: dot_green_me
+  height: 8
+  ascent: -79
+
+dot_green_me_44:
+  file: dot_green_me
+  height: 8
+  ascent: -81
+
+dot_green_me_45:
+  file: dot_green_me
+  height: 8
+  ascent: -83
+
+dot_green_me_46:
+  file: dot_green_me
+  height: 8
+  ascent: -85
+
+dot_green_me_47:
+  file: dot_green_me
+  height: 8
+  ascent: -87
+
+dot_yellow_0:
+  file: dot_yellow
+  height: 6
+  ascent: 6
+
+dot_yellow_1:
+  file: dot_yellow
+  height: 6
+  ascent: 4
+
+dot_yellow_2:
+  file: dot_yellow
+  height: 6
+  ascent: 2
+
+dot_yellow_3:
+  file: dot_yellow
+  height: 6
+  ascent: 0
+
+dot_yellow_4:
+  file: dot_yellow
+  height: 6
+  ascent: -2
+
+dot_yellow_5:
+  file: dot_yellow
+  height: 6
+  ascent: -4
+
+dot_yellow_6:
+  file: dot_yellow
+  height: 6
+  ascent: -6
+
+dot_yellow_7:
+  file: dot_yellow
+  height: 6
+  ascent: -8
+
+dot_yellow_8:
+  file: dot_yellow
+  height: 6
+  ascent: -10
+
+dot_yellow_9:
+  file: dot_yellow
+  height: 6
+  ascent: -12
+
+dot_yellow_10:
+  file: dot_yellow
+  height: 6
+  ascent: -14
+
+dot_yellow_11:
+  file: dot_yellow
+  height: 6
+  ascent: -16
+
+dot_yellow_12:
+  file: dot_yellow
+  height: 6
+  ascent: -18
+
+dot_yellow_13:
+  file: dot_yellow
+  height: 6
+  ascent: -20
+
+dot_yellow_14:
+  file: dot_yellow
+  height: 6
+  ascent: -22
+
+dot_yellow_15:
+  file: dot_yellow
+  height: 6
+  ascent: -24
+
+dot_yellow_16:
+  file: dot_yellow
+  height: 6
+  ascent: -26
+
+dot_yellow_17:
+  file: dot_yellow
+  height: 6
+  ascent: -28
+
+dot_yellow_18:
+  file: dot_yellow
+  height: 6
+  ascent: -30
+
+dot_yellow_19:
+  file: dot_yellow
+  height: 6
+  ascent: -32
+
+dot_yellow_20:
+  file: dot_yellow
+  height: 6
+  ascent: -34
+
+dot_yellow_21:
+  file: dot_yellow
+  height: 6
+  ascent: -36
+
+dot_yellow_22:
+  file: dot_yellow
+  height: 6
+  ascent: -38
+
+dot_yellow_23:
+  file: dot_yellow
+  height: 6
+  ascent: -40
+
+dot_yellow_24:
+  file: dot_yellow
+  height: 6
+  ascent: -42
+
+dot_yellow_25:
+  file: dot_yellow
+  height: 6
+  ascent: -44
+
+dot_yellow_26:
+  file: dot_yellow
+  height: 6
+  ascent: -46
+
+dot_yellow_27:
+  file: dot_yellow
+  height: 6
+  ascent: -48
+
+dot_yellow_28:
+  file: dot_yellow
+  height: 6
+  ascent: -50
+
+dot_yellow_29:
+  file: dot_yellow
+  height: 6
+  ascent: -52
+
+dot_yellow_30:
+  file: dot_yellow
+  height: 6
+  ascent: -54
+
+dot_yellow_31:
+  file: dot_yellow
+  height: 6
+  ascent: -56
+
+dot_yellow_32:
+  file: dot_yellow
+  height: 6
+  ascent: -58
+
+dot_yellow_33:
+  file: dot_yellow
+  height: 6
+  ascent: -60
+
+dot_yellow_34:
+  file: dot_yellow
+  height: 6
+  ascent: -62
+
+dot_yellow_35:
+  file: dot_yellow
+  height: 6
+  ascent: -64
+
+dot_yellow_36:
+  file: dot_yellow
+  height: 6
+  ascent: -66
+
+dot_yellow_37:
+  file: dot_yellow
+  height: 6
+  ascent: -68
+
+dot_yellow_38:
+  file: dot_yellow
+  height: 6
+  ascent: -70
+
+dot_yellow_39:
+  file: dot_yellow
+  height: 6
+  ascent: -72
+
+dot_yellow_40:
+  file: dot_yellow
+  height: 6
+  ascent: -74
+
+dot_yellow_41:
+  file: dot_yellow
+  height: 6
+  ascent: -76
+
+dot_yellow_42:
+  file: dot_yellow
+  height: 6
+  ascent: -78
+
+dot_yellow_43:
+  file: dot_yellow
+  height: 6
+  ascent: -80
+
+dot_yellow_44:
+  file: dot_yellow
+  height: 6
+  ascent: -82
+
+dot_yellow_45:
+  file: dot_yellow
+  height: 6
+  ascent: -84
+
+dot_yellow_46:
+  file: dot_yellow
+  height: 6
+  ascent: -86
+
+dot_yellow_47:
+  file: dot_yellow
+  height: 6
+  ascent: -88
+
+dot_yellow_me_0:
+  file: dot_yellow_me
+  height: 8
+  ascent: 7
+
+dot_yellow_me_1:
+  file: dot_yellow_me
+  height: 8
+  ascent: 5
+
+dot_yellow_me_2:
+  file: dot_yellow_me
+  height: 8
+  ascent: 3
+
+dot_yellow_me_3:
+  file: dot_yellow_me
+  height: 8
+  ascent: 1
+
+dot_yellow_me_4:
+  file: dot_yellow_me
+  height: 8
+  ascent: -1
+
+dot_yellow_me_5:
+  file: dot_yellow_me
+  height: 8
+  ascent: -3
+
+dot_yellow_me_6:
+  file: dot_yellow_me
+  height: 8
+  ascent: -5
+
+dot_yellow_me_7:
+  file: dot_yellow_me
+  height: 8
+  ascent: -7
+
+dot_yellow_me_8:
+  file: dot_yellow_me
+  height: 8
+  ascent: -9
+
+dot_yellow_me_9:
+  file: dot_yellow_me
+  height: 8
+  ascent: -11
+
+dot_yellow_me_10:
+  file: dot_yellow_me
+  height: 8
+  ascent: -13
+
+dot_yellow_me_11:
+  file: dot_yellow_me
+  height: 8
+  ascent: -15
+
+dot_yellow_me_12:
+  file: dot_yellow_me
+  height: 8
+  ascent: -17
+
+dot_yellow_me_13:
+  file: dot_yellow_me
+  height: 8
+  ascent: -19
+
+dot_yellow_me_14:
+  file: dot_yellow_me
+  height: 8
+  ascent: -21
+
+dot_yellow_me_15:
+  file: dot_yellow_me
+  height: 8
+  ascent: -23
+
+dot_yellow_me_16:
+  file: dot_yellow_me
+  height: 8
+  ascent: -25
+
+dot_yellow_me_17:
+  file: dot_yellow_me
+  height: 8
+  ascent: -27
+
+dot_yellow_me_18:
+  file: dot_yellow_me
+  height: 8
+  ascent: -29
+
+dot_yellow_me_19:
+  file: dot_yellow_me
+  height: 8
+  ascent: -31
+
+dot_yellow_me_20:
+  file: dot_yellow_me
+  height: 8
+  ascent: -33
+
+dot_yellow_me_21:
+  file: dot_yellow_me
+  height: 8
+  ascent: -35
+
+dot_yellow_me_22:
+  file: dot_yellow_me
+  height: 8
+  ascent: -37
+
+dot_yellow_me_23:
+  file: dot_yellow_me
+  height: 8
+  ascent: -39
+
+dot_yellow_me_24:
+  file: dot_yellow_me
+  height: 8
+  ascent: -41
+
+dot_yellow_me_25:
+  file: dot_yellow_me
+  height: 8
+  ascent: -43
+
+dot_yellow_me_26:
+  file: dot_yellow_me
+  height: 8
+  ascent: -45
+
+dot_yellow_me_27:
+  file: dot_yellow_me
+  height: 8
+  ascent: -47
+
+dot_yellow_me_28:
+  file: dot_yellow_me
+  height: 8
+  ascent: -49
+
+dot_yellow_me_29:
+  file: dot_yellow_me
+  height: 8
+  ascent: -51
+
+dot_yellow_me_30:
+  file: dot_yellow_me
+  height: 8
+  ascent: -53
+
+dot_yellow_me_31:
+  file: dot_yellow_me
+  height: 8
+  ascent: -55
+
+dot_yellow_me_32:
+  file: dot_yellow_me
+  height: 8
+  ascent: -57
+
+dot_yellow_me_33:
+  file: dot_yellow_me
+  height: 8
+  ascent: -59
+
+dot_yellow_me_34:
+  file: dot_yellow_me
+  height: 8
+  ascent: -61
+
+dot_yellow_me_35:
+  file: dot_yellow_me
+  height: 8
+  ascent: -63
+
+dot_yellow_me_36:
+  file: dot_yellow_me
+  height: 8
+  ascent: -65
+
+dot_yellow_me_37:
+  file: dot_yellow_me
+  height: 8
+  ascent: -67
+
+dot_yellow_me_38:
+  file: dot_yellow_me
+  height: 8
+  ascent: -69
+
+dot_yellow_me_39:
+  file: dot_yellow_me
+  height: 8
+  ascent: -71
+
+dot_yellow_me_40:
+  file: dot_yellow_me
+  height: 8
+  ascent: -73
+
+dot_yellow_me_41:
+  file: dot_yellow_me
+  height: 8
+  ascent: -75
+
+dot_yellow_me_42:
+  file: dot_yellow_me
+  height: 8
+  ascent: -77
+
+dot_yellow_me_43:
+  file: dot_yellow_me
+  height: 8
+  ascent: -79
+
+dot_yellow_me_44:
+  file: dot_yellow_me
+  height: 8
+  ascent: -81
+
+dot_yellow_me_45:
+  file: dot_yellow_me
+  height: 8
+  ascent: -83
+
+dot_yellow_me_46:
+  file: dot_yellow_me
+  height: 8
+  ascent: -85
+
+dot_yellow_me_47:
+  file: dot_yellow_me
+  height: 8
+  ascent: -87
+
+dot_orange_0:
+  file: dot_orange
+  height: 6
+  ascent: 6
+
+dot_orange_1:
+  file: dot_orange
+  height: 6
+  ascent: 4
+
+dot_orange_2:
+  file: dot_orange
+  height: 6
+  ascent: 2
+
+dot_orange_3:
+  file: dot_orange
+  height: 6
+  ascent: 0
+
+dot_orange_4:
+  file: dot_orange
+  height: 6
+  ascent: -2
+
+dot_orange_5:
+  file: dot_orange
+  height: 6
+  ascent: -4
+
+dot_orange_6:
+  file: dot_orange
+  height: 6
+  ascent: -6
+
+dot_orange_7:
+  file: dot_orange
+  height: 6
+  ascent: -8
+
+dot_orange_8:
+  file: dot_orange
+  height: 6
+  ascent: -10
+
+dot_orange_9:
+  file: dot_orange
+  height: 6
+  ascent: -12
+
+dot_orange_10:
+  file: dot_orange
+  height: 6
+  ascent: -14
+
+dot_orange_11:
+  file: dot_orange
+  height: 6
+  ascent: -16
+
+dot_orange_12:
+  file: dot_orange
+  height: 6
+  ascent: -18
+
+dot_orange_13:
+  file: dot_orange
+  height: 6
+  ascent: -20
+
+dot_orange_14:
+  file: dot_orange
+  height: 6
+  ascent: -22
+
+dot_orange_15:
+  file: dot_orange
+  height: 6
+  ascent: -24
+
+dot_orange_16:
+  file: dot_orange
+  height: 6
+  ascent: -26
+
+dot_orange_17:
+  file: dot_orange
+  height: 6
+  ascent: -28
+
+dot_orange_18:
+  file: dot_orange
+  height: 6
+  ascent: -30
+
+dot_orange_19:
+  file: dot_orange
+  height: 6
+  ascent: -32
+
+dot_orange_20:
+  file: dot_orange
+  height: 6
+  ascent: -34
+
+dot_orange_21:
+  file: dot_orange
+  height: 6
+  ascent: -36
+
+dot_orange_22:
+  file: dot_orange
+  height: 6
+  ascent: -38
+
+dot_orange_23:
+  file: dot_orange
+  height: 6
+  ascent: -40
+
+dot_orange_24:
+  file: dot_orange
+  height: 6
+  ascent: -42
+
+dot_orange_25:
+  file: dot_orange
+  height: 6
+  ascent: -44
+
+dot_orange_26:
+  file: dot_orange
+  height: 6
+  ascent: -46
+
+dot_orange_27:
+  file: dot_orange
+  height: 6
+  ascent: -48
+
+dot_orange_28:
+  file: dot_orange
+  height: 6
+  ascent: -50
+
+dot_orange_29:
+  file: dot_orange
+  height: 6
+  ascent: -52
+
+dot_orange_30:
+  file: dot_orange
+  height: 6
+  ascent: -54
+
+dot_orange_31:
+  file: dot_orange
+  height: 6
+  ascent: -56
+
+dot_orange_32:
+  file: dot_orange
+  height: 6
+  ascent: -58
+
+dot_orange_33:
+  file: dot_orange
+  height: 6
+  ascent: -60
+
+dot_orange_34:
+  file: dot_orange
+  height: 6
+  ascent: -62
+
+dot_orange_35:
+  file: dot_orange
+  height: 6
+  ascent: -64
+
+dot_orange_36:
+  file: dot_orange
+  height: 6
+  ascent: -66
+
+dot_orange_37:
+  file: dot_orange
+  height: 6
+  ascent: -68
+
+dot_orange_38:
+  file: dot_orange
+  height: 6
+  ascent: -70
+
+dot_orange_39:
+  file: dot_orange
+  height: 6
+  ascent: -72
+
+dot_orange_40:
+  file: dot_orange
+  height: 6
+  ascent: -74
+
+dot_orange_41:
+  file: dot_orange
+  height: 6
+  ascent: -76
+
+dot_orange_42:
+  file: dot_orange
+  height: 6
+  ascent: -78
+
+dot_orange_43:
+  file: dot_orange
+  height: 6
+  ascent: -80
+
+dot_orange_44:
+  file: dot_orange
+  height: 6
+  ascent: -82
+
+dot_orange_45:
+  file: dot_orange
+  height: 6
+  ascent: -84
+
+dot_orange_46:
+  file: dot_orange
+  height: 6
+  ascent: -86
+
+dot_orange_47:
+  file: dot_orange
+  height: 6
+  ascent: -88
+
+dot_orange_me_0:
+  file: dot_orange_me
+  height: 8
+  ascent: 7
+
+dot_orange_me_1:
+  file: dot_orange_me
+  height: 8
+  ascent: 5
+
+dot_orange_me_2:
+  file: dot_orange_me
+  height: 8
+  ascent: 3
+
+dot_orange_me_3:
+  file: dot_orange_me
+  height: 8
+  ascent: 1
+
+dot_orange_me_4:
+  file: dot_orange_me
+  height: 8
+  ascent: -1
+
+dot_orange_me_5:
+  file: dot_orange_me
+  height: 8
+  ascent: -3
+
+dot_orange_me_6:
+  file: dot_orange_me
+  height: 8
+  ascent: -5
+
+dot_orange_me_7:
+  file: dot_orange_me
+  height: 8
+  ascent: -7
+
+dot_orange_me_8:
+  file: dot_orange_me
+  height: 8
+  ascent: -9
+
+dot_orange_me_9:
+  file: dot_orange_me
+  height: 8
+  ascent: -11
+
+dot_orange_me_10:
+  file: dot_orange_me
+  height: 8
+  ascent: -13
+
+dot_orange_me_11:
+  file: dot_orange_me
+  height: 8
+  ascent: -15
+
+dot_orange_me_12:
+  file: dot_orange_me
+  height: 8
+  ascent: -17
+
+dot_orange_me_13:
+  file: dot_orange_me
+  height: 8
+  ascent: -19
+
+dot_orange_me_14:
+  file: dot_orange_me
+  height: 8
+  ascent: -21
+
+dot_orange_me_15:
+  file: dot_orange_me
+  height: 8
+  ascent: -23
+
+dot_orange_me_16:
+  file: dot_orange_me
+  height: 8
+  ascent: -25
+
+dot_orange_me_17:
+  file: dot_orange_me
+  height: 8
+  ascent: -27
+
+dot_orange_me_18:
+  file: dot_orange_me
+  height: 8
+  ascent: -29
+
+dot_orange_me_19:
+  file: dot_orange_me
+  height: 8
+  ascent: -31
+
+dot_orange_me_20:
+  file: dot_orange_me
+  height: 8
+  ascent: -33
+
+dot_orange_me_21:
+  file: dot_orange_me
+  height: 8
+  ascent: -35
+
+dot_orange_me_22:
+  file: dot_orange_me
+  height: 8
+  ascent: -37
+
+dot_orange_me_23:
+  file: dot_orange_me
+  height: 8
+  ascent: -39
+
+dot_orange_me_24:
+  file: dot_orange_me
+  height: 8
+  ascent: -41
+
+dot_orange_me_25:
+  file: dot_orange_me
+  height: 8
+  ascent: -43
+
+dot_orange_me_26:
+  file: dot_orange_me
+  height: 8
+  ascent: -45
+
+dot_orange_me_27:
+  file: dot_orange_me
+  height: 8
+  ascent: -47
+
+dot_orange_me_28:
+  file: dot_orange_me
+  height: 8
+  ascent: -49
+
+dot_orange_me_29:
+  file: dot_orange_me
+  height: 8
+  ascent: -51
+
+dot_orange_me_30:
+  file: dot_orange_me
+  height: 8
+  ascent: -53
+
+dot_orange_me_31:
+  file: dot_orange_me
+  height: 8
+  ascent: -55
+
+dot_orange_me_32:
+  file: dot_orange_me
+  height: 8
+  ascent: -57
+
+dot_orange_me_33:
+  file: dot_orange_me
+  height: 8
+  ascent: -59
+
+dot_orange_me_34:
+  file: dot_orange_me
+  height: 8
+  ascent: -61
+
+dot_orange_me_35:
+  file: dot_orange_me
+  height: 8
+  ascent: -63
+
+dot_orange_me_36:
+  file: dot_orange_me
+  height: 8
+  ascent: -65
+
+dot_orange_me_37:
+  file: dot_orange_me
+  height: 8
+  ascent: -67
+
+dot_orange_me_38:
+  file: dot_orange_me
+  height: 8
+  ascent: -69
+
+dot_orange_me_39:
+  file: dot_orange_me
+  height: 8
+  ascent: -71
+
+dot_orange_me_40:
+  file: dot_orange_me
+  height: 8
+  ascent: -73
+
+dot_orange_me_41:
+  file: dot_orange_me
+  height: 8
+  ascent: -75
+
+dot_orange_me_42:
+  file: dot_orange_me
+  height: 8
+  ascent: -77
+
+dot_orange_me_43:
+  file: dot_orange_me
+  height: 8
+  ascent: -79
+
+dot_orange_me_44:
+  file: dot_orange_me
+  height: 8
+  ascent: -81
+
+dot_orange_me_45:
+  file: dot_orange_me
+  height: 8
+  ascent: -83
+
+dot_orange_me_46:
+  file: dot_orange_me
+  height: 8
+  ascent: -85
+
+dot_orange_me_47:
+  file: dot_orange_me
+  height: 8
+  ascent: -87
+
+dot_purple_0:
+  file: dot_purple
+  height: 6
+  ascent: 6
+
+dot_purple_1:
+  file: dot_purple
+  height: 6
+  ascent: 4
+
+dot_purple_2:
+  file: dot_purple
+  height: 6
+  ascent: 2
+
+dot_purple_3:
+  file: dot_purple
+  height: 6
+  ascent: 0
+
+dot_purple_4:
+  file: dot_purple
+  height: 6
+  ascent: -2
+
+dot_purple_5:
+  file: dot_purple
+  height: 6
+  ascent: -4
+
+dot_purple_6:
+  file: dot_purple
+  height: 6
+  ascent: -6
+
+dot_purple_7:
+  file: dot_purple
+  height: 6
+  ascent: -8
+
+dot_purple_8:
+  file: dot_purple
+  height: 6
+  ascent: -10
+
+dot_purple_9:
+  file: dot_purple
+  height: 6
+  ascent: -12
+
+dot_purple_10:
+  file: dot_purple
+  height: 6
+  ascent: -14
+
+dot_purple_11:
+  file: dot_purple
+  height: 6
+  ascent: -16
+
+dot_purple_12:
+  file: dot_purple
+  height: 6
+  ascent: -18
+
+dot_purple_13:
+  file: dot_purple
+  height: 6
+  ascent: -20
+
+dot_purple_14:
+  file: dot_purple
+  height: 6
+  ascent: -22
+
+dot_purple_15:
+  file: dot_purple
+  height: 6
+  ascent: -24
+
+dot_purple_16:
+  file: dot_purple
+  height: 6
+  ascent: -26
+
+dot_purple_17:
+  file: dot_purple
+  height: 6
+  ascent: -28
+
+dot_purple_18:
+  file: dot_purple
+  height: 6
+  ascent: -30
+
+dot_purple_19:
+  file: dot_purple
+  height: 6
+  ascent: -32
+
+dot_purple_20:
+  file: dot_purple
+  height: 6
+  ascent: -34
+
+dot_purple_21:
+  file: dot_purple
+  height: 6
+  ascent: -36
+
+dot_purple_22:
+  file: dot_purple
+  height: 6
+  ascent: -38
+
+dot_purple_23:
+  file: dot_purple
+  height: 6
+  ascent: -40
+
+dot_purple_24:
+  file: dot_purple
+  height: 6
+  ascent: -42
+
+dot_purple_25:
+  file: dot_purple
+  height: 6
+  ascent: -44
+
+dot_purple_26:
+  file: dot_purple
+  height: 6
+  ascent: -46
+
+dot_purple_27:
+  file: dot_purple
+  height: 6
+  ascent: -48
+
+dot_purple_28:
+  file: dot_purple
+  height: 6
+  ascent: -50
+
+dot_purple_29:
+  file: dot_purple
+  height: 6
+  ascent: -52
+
+dot_purple_30:
+  file: dot_purple
+  height: 6
+  ascent: -54
+
+dot_purple_31:
+  file: dot_purple
+  height: 6
+  ascent: -56
+
+dot_purple_32:
+  file: dot_purple
+  height: 6
+  ascent: -58
+
+dot_purple_33:
+  file: dot_purple
+  height: 6
+  ascent: -60
+
+dot_purple_34:
+  file: dot_purple
+  height: 6
+  ascent: -62
+
+dot_purple_35:
+  file: dot_purple
+  height: 6
+  ascent: -64
+
+dot_purple_36:
+  file: dot_purple
+  height: 6
+  ascent: -66
+
+dot_purple_37:
+  file: dot_purple
+  height: 6
+  ascent: -68
+
+dot_purple_38:
+  file: dot_purple
+  height: 6
+  ascent: -70
+
+dot_purple_39:
+  file: dot_purple
+  height: 6
+  ascent: -72
+
+dot_purple_40:
+  file: dot_purple
+  height: 6
+  ascent: -74
+
+dot_purple_41:
+  file: dot_purple
+  height: 6
+  ascent: -76
+
+dot_purple_42:
+  file: dot_purple
+  height: 6
+  ascent: -78
+
+dot_purple_43:
+  file: dot_purple
+  height: 6
+  ascent: -80
+
+dot_purple_44:
+  file: dot_purple
+  height: 6
+  ascent: -82
+
+dot_purple_45:
+  file: dot_purple
+  height: 6
+  ascent: -84
+
+dot_purple_46:
+  file: dot_purple
+  height: 6
+  ascent: -86
+
+dot_purple_47:
+  file: dot_purple
+  height: 6
+  ascent: -88
+
+dot_purple_me_0:
+  file: dot_purple_me
+  height: 8
+  ascent: 7
+
+dot_purple_me_1:
+  file: dot_purple_me
+  height: 8
+  ascent: 5
+
+dot_purple_me_2:
+  file: dot_purple_me
+  height: 8
+  ascent: 3
+
+dot_purple_me_3:
+  file: dot_purple_me
+  height: 8
+  ascent: 1
+
+dot_purple_me_4:
+  file: dot_purple_me
+  height: 8
+  ascent: -1
+
+dot_purple_me_5:
+  file: dot_purple_me
+  height: 8
+  ascent: -3
+
+dot_purple_me_6:
+  file: dot_purple_me
+  height: 8
+  ascent: -5
+
+dot_purple_me_7:
+  file: dot_purple_me
+  height: 8
+  ascent: -7
+
+dot_purple_me_8:
+  file: dot_purple_me
+  height: 8
+  ascent: -9
+
+dot_purple_me_9:
+  file: dot_purple_me
+  height: 8
+  ascent: -11
+
+dot_purple_me_10:
+  file: dot_purple_me
+  height: 8
+  ascent: -13
+
+dot_purple_me_11:
+  file: dot_purple_me
+  height: 8
+  ascent: -15
+
+dot_purple_me_12:
+  file: dot_purple_me
+  height: 8
+  ascent: -17
+
+dot_purple_me_13:
+  file: dot_purple_me
+  height: 8
+  ascent: -19
+
+dot_purple_me_14:
+  file: dot_purple_me
+  height: 8
+  ascent: -21
+
+dot_purple_me_15:
+  file: dot_purple_me
+  height: 8
+  ascent: -23
+
+dot_purple_me_16:
+  file: dot_purple_me
+  height: 8
+  ascent: -25
+
+dot_purple_me_17:
+  file: dot_purple_me
+  height: 8
+  ascent: -27
+
+dot_purple_me_18:
+  file: dot_purple_me
+  height: 8
+  ascent: -29
+
+dot_purple_me_19:
+  file: dot_purple_me
+  height: 8
+  ascent: -31
+
+dot_purple_me_20:
+  file: dot_purple_me
+  height: 8
+  ascent: -33
+
+dot_purple_me_21:
+  file: dot_purple_me
+  height: 8
+  ascent: -35
+
+dot_purple_me_22:
+  file: dot_purple_me
+  height: 8
+  ascent: -37
+
+dot_purple_me_23:
+  file: dot_purple_me
+  height: 8
+  ascent: -39
+
+dot_purple_me_24:
+  file: dot_purple_me
+  height: 8
+  ascent: -41
+
+dot_purple_me_25:
+  file: dot_purple_me
+  height: 8
+  ascent: -43
+
+dot_purple_me_26:
+  file: dot_purple_me
+  height: 8
+  ascent: -45
+
+dot_purple_me_27:
+  file: dot_purple_me
+  height: 8
+  ascent: -47
+
+dot_purple_me_28:
+  file: dot_purple_me
+  height: 8
+  ascent: -49
+
+dot_purple_me_29:
+  file: dot_purple_me
+  height: 8
+  ascent: -51
+
+dot_purple_me_30:
+  file: dot_purple_me
+  height: 8
+  ascent: -53
+
+dot_purple_me_31:
+  file: dot_purple_me
+  height: 8
+  ascent: -55
+
+dot_purple_me_32:
+  file: dot_purple_me
+  height: 8
+  ascent: -57
+
+dot_purple_me_33:
+  file: dot_purple_me
+  height: 8
+  ascent: -59
+
+dot_purple_me_34:
+  file: dot_purple_me
+  height: 8
+  ascent: -61
+
+dot_purple_me_35:
+  file: dot_purple_me
+  height: 8
+  ascent: -63
+
+dot_purple_me_36:
+  file: dot_purple_me
+  height: 8
+  ascent: -65
+
+dot_purple_me_37:
+  file: dot_purple_me
+  height: 8
+  ascent: -67
+
+dot_purple_me_38:
+  file: dot_purple_me
+  height: 8
+  ascent: -69
+
+dot_purple_me_39:
+  file: dot_purple_me
+  height: 8
+  ascent: -71
+
+dot_purple_me_40:
+  file: dot_purple_me
+  height: 8
+  ascent: -73
+
+dot_purple_me_41:
+  file: dot_purple_me
+  height: 8
+  ascent: -75
+
+dot_purple_me_42:
+  file: dot_purple_me
+  height: 8
+  ascent: -77
+
+dot_purple_me_43:
+  file: dot_purple_me
+  height: 8
+  ascent: -79
+
+dot_purple_me_44:
+  file: dot_purple_me
+  height: 8
+  ascent: -81
+
+dot_purple_me_45:
+  file: dot_purple_me
+  height: 8
+  ascent: -83
+
+dot_purple_me_46:
+  file: dot_purple_me
+  height: 8
+  ascent: -85
+
+dot_purple_me_47:
+  file: dot_purple_me
+  height: 8
+  ascent: -87
+
+dot_pink_0:
+  file: dot_pink
+  height: 6
+  ascent: 6
+
+dot_pink_1:
+  file: dot_pink
+  height: 6
+  ascent: 4
+
+dot_pink_2:
+  file: dot_pink
+  height: 6
+  ascent: 2
+
+dot_pink_3:
+  file: dot_pink
+  height: 6
+  ascent: 0
+
+dot_pink_4:
+  file: dot_pink
+  height: 6
+  ascent: -2
+
+dot_pink_5:
+  file: dot_pink
+  height: 6
+  ascent: -4
+
+dot_pink_6:
+  file: dot_pink
+  height: 6
+  ascent: -6
+
+dot_pink_7:
+  file: dot_pink
+  height: 6
+  ascent: -8
+
+dot_pink_8:
+  file: dot_pink
+  height: 6
+  ascent: -10
+
+dot_pink_9:
+  file: dot_pink
+  height: 6
+  ascent: -12
+
+dot_pink_10:
+  file: dot_pink
+  height: 6
+  ascent: -14
+
+dot_pink_11:
+  file: dot_pink
+  height: 6
+  ascent: -16
+
+dot_pink_12:
+  file: dot_pink
+  height: 6
+  ascent: -18
+
+dot_pink_13:
+  file: dot_pink
+  height: 6
+  ascent: -20
+
+dot_pink_14:
+  file: dot_pink
+  height: 6
+  ascent: -22
+
+dot_pink_15:
+  file: dot_pink
+  height: 6
+  ascent: -24
+
+dot_pink_16:
+  file: dot_pink
+  height: 6
+  ascent: -26
+
+dot_pink_17:
+  file: dot_pink
+  height: 6
+  ascent: -28
+
+dot_pink_18:
+  file: dot_pink
+  height: 6
+  ascent: -30
+
+dot_pink_19:
+  file: dot_pink
+  height: 6
+  ascent: -32
+
+dot_pink_20:
+  file: dot_pink
+  height: 6
+  ascent: -34
+
+dot_pink_21:
+  file: dot_pink
+  height: 6
+  ascent: -36
+
+dot_pink_22:
+  file: dot_pink
+  height: 6
+  ascent: -38
+
+dot_pink_23:
+  file: dot_pink
+  height: 6
+  ascent: -40
+
+dot_pink_24:
+  file: dot_pink
+  height: 6
+  ascent: -42
+
+dot_pink_25:
+  file: dot_pink
+  height: 6
+  ascent: -44
+
+dot_pink_26:
+  file: dot_pink
+  height: 6
+  ascent: -46
+
+dot_pink_27:
+  file: dot_pink
+  height: 6
+  ascent: -48
+
+dot_pink_28:
+  file: dot_pink
+  height: 6
+  ascent: -50
+
+dot_pink_29:
+  file: dot_pink
+  height: 6
+  ascent: -52
+
+dot_pink_30:
+  file: dot_pink
+  height: 6
+  ascent: -54
+
+dot_pink_31:
+  file: dot_pink
+  height: 6
+  ascent: -56
+
+dot_pink_32:
+  file: dot_pink
+  height: 6
+  ascent: -58
+
+dot_pink_33:
+  file: dot_pink
+  height: 6
+  ascent: -60
+
+dot_pink_34:
+  file: dot_pink
+  height: 6
+  ascent: -62
+
+dot_pink_35:
+  file: dot_pink
+  height: 6
+  ascent: -64
+
+dot_pink_36:
+  file: dot_pink
+  height: 6
+  ascent: -66
+
+dot_pink_37:
+  file: dot_pink
+  height: 6
+  ascent: -68
+
+dot_pink_38:
+  file: dot_pink
+  height: 6
+  ascent: -70
+
+dot_pink_39:
+  file: dot_pink
+  height: 6
+  ascent: -72
+
+dot_pink_40:
+  file: dot_pink
+  height: 6
+  ascent: -74
+
+dot_pink_41:
+  file: dot_pink
+  height: 6
+  ascent: -76
+
+dot_pink_42:
+  file: dot_pink
+  height: 6
+  ascent: -78
+
+dot_pink_43:
+  file: dot_pink
+  height: 6
+  ascent: -80
+
+dot_pink_44:
+  file: dot_pink
+  height: 6
+  ascent: -82
+
+dot_pink_45:
+  file: dot_pink
+  height: 6
+  ascent: -84
+
+dot_pink_46:
+  file: dot_pink
+  height: 6
+  ascent: -86
+
+dot_pink_47:
+  file: dot_pink
+  height: 6
+  ascent: -88
+
+dot_pink_me_0:
+  file: dot_pink_me
+  height: 8
+  ascent: 7
+
+dot_pink_me_1:
+  file: dot_pink_me
+  height: 8
+  ascent: 5
+
+dot_pink_me_2:
+  file: dot_pink_me
+  height: 8
+  ascent: 3
+
+dot_pink_me_3:
+  file: dot_pink_me
+  height: 8
+  ascent: 1
+
+dot_pink_me_4:
+  file: dot_pink_me
+  height: 8
+  ascent: -1
+
+dot_pink_me_5:
+  file: dot_pink_me
+  height: 8
+  ascent: -3
+
+dot_pink_me_6:
+  file: dot_pink_me
+  height: 8
+  ascent: -5
+
+dot_pink_me_7:
+  file: dot_pink_me
+  height: 8
+  ascent: -7
+
+dot_pink_me_8:
+  file: dot_pink_me
+  height: 8
+  ascent: -9
+
+dot_pink_me_9:
+  file: dot_pink_me
+  height: 8
+  ascent: -11
+
+dot_pink_me_10:
+  file: dot_pink_me
+  height: 8
+  ascent: -13
+
+dot_pink_me_11:
+  file: dot_pink_me
+  height: 8
+  ascent: -15
+
+dot_pink_me_12:
+  file: dot_pink_me
+  height: 8
+  ascent: -17
+
+dot_pink_me_13:
+  file: dot_pink_me
+  height: 8
+  ascent: -19
+
+dot_pink_me_14:
+  file: dot_pink_me
+  height: 8
+  ascent: -21
+
+dot_pink_me_15:
+  file: dot_pink_me
+  height: 8
+  ascent: -23
+
+dot_pink_me_16:
+  file: dot_pink_me
+  height: 8
+  ascent: -25
+
+dot_pink_me_17:
+  file: dot_pink_me
+  height: 8
+  ascent: -27
+
+dot_pink_me_18:
+  file: dot_pink_me
+  height: 8
+  ascent: -29
+
+dot_pink_me_19:
+  file: dot_pink_me
+  height: 8
+  ascent: -31
+
+dot_pink_me_20:
+  file: dot_pink_me
+  height: 8
+  ascent: -33
+
+dot_pink_me_21:
+  file: dot_pink_me
+  height: 8
+  ascent: -35
+
+dot_pink_me_22:
+  file: dot_pink_me
+  height: 8
+  ascent: -37
+
+dot_pink_me_23:
+  file: dot_pink_me
+  height: 8
+  ascent: -39
+
+dot_pink_me_24:
+  file: dot_pink_me
+  height: 8
+  ascent: -41
+
+dot_pink_me_25:
+  file: dot_pink_me
+  height: 8
+  ascent: -43
+
+dot_pink_me_26:
+  file: dot_pink_me
+  height: 8
+  ascent: -45
+
+dot_pink_me_27:
+  file: dot_pink_me
+  height: 8
+  ascent: -47
+
+dot_pink_me_28:
+  file: dot_pink_me
+  height: 8
+  ascent: -49
+
+dot_pink_me_29:
+  file: dot_pink_me
+  height: 8
+  ascent: -51
+
+dot_pink_me_30:
+  file: dot_pink_me
+  height: 8
+  ascent: -53
+
+dot_pink_me_31:
+  file: dot_pink_me
+  height: 8
+  ascent: -55
+
+dot_pink_me_32:
+  file: dot_pink_me
+  height: 8
+  ascent: -57
+
+dot_pink_me_33:
+  file: dot_pink_me
+  height: 8
+  ascent: -59
+
+dot_pink_me_34:
+  file: dot_pink_me
+  height: 8
+  ascent: -61
+
+dot_pink_me_35:
+  file: dot_pink_me
+  height: 8
+  ascent: -63
+
+dot_pink_me_36:
+  file: dot_pink_me
+  height: 8
+  ascent: -65
+
+dot_pink_me_37:
+  file: dot_pink_me
+  height: 8
+  ascent: -67
+
+dot_pink_me_38:
+  file: dot_pink_me
+  height: 8
+  ascent: -69
+
+dot_pink_me_39:
+  file: dot_pink_me
+  height: 8
+  ascent: -71
+
+dot_pink_me_40:
+  file: dot_pink_me
+  height: 8
+  ascent: -73
+
+dot_pink_me_41:
+  file: dot_pink_me
+  height: 8
+  ascent: -75
+
+dot_pink_me_42:
+  file: dot_pink_me
+  height: 8
+  ascent: -77
+
+dot_pink_me_43:
+  file: dot_pink_me
+  height: 8
+  ascent: -79
+
+dot_pink_me_44:
+  file: dot_pink_me
+  height: 8
+  ascent: -81
+
+dot_pink_me_45:
+  file: dot_pink_me
+  height: 8
+  ascent: -83
+
+dot_pink_me_46:
+  file: dot_pink_me
+  height: 8
+  ascent: -85
+
+dot_pink_me_47:
+  file: dot_pink_me
+  height: 8
+  ascent: -87
+
+dot_cyan_0:
+  file: dot_cyan
+  height: 6
+  ascent: 6
+
+dot_cyan_1:
+  file: dot_cyan
+  height: 6
+  ascent: 4
+
+dot_cyan_2:
+  file: dot_cyan
+  height: 6
+  ascent: 2
+
+dot_cyan_3:
+  file: dot_cyan
+  height: 6
+  ascent: 0
+
+dot_cyan_4:
+  file: dot_cyan
+  height: 6
+  ascent: -2
+
+dot_cyan_5:
+  file: dot_cyan
+  height: 6
+  ascent: -4
+
+dot_cyan_6:
+  file: dot_cyan
+  height: 6
+  ascent: -6
+
+dot_cyan_7:
+  file: dot_cyan
+  height: 6
+  ascent: -8
+
+dot_cyan_8:
+  file: dot_cyan
+  height: 6
+  ascent: -10
+
+dot_cyan_9:
+  file: dot_cyan
+  height: 6
+  ascent: -12
+
+dot_cyan_10:
+  file: dot_cyan
+  height: 6
+  ascent: -14
+
+dot_cyan_11:
+  file: dot_cyan
+  height: 6
+  ascent: -16
+
+dot_cyan_12:
+  file: dot_cyan
+  height: 6
+  ascent: -18
+
+dot_cyan_13:
+  file: dot_cyan
+  height: 6
+  ascent: -20
+
+dot_cyan_14:
+  file: dot_cyan
+  height: 6
+  ascent: -22
+
+dot_cyan_15:
+  file: dot_cyan
+  height: 6
+  ascent: -24
+
+dot_cyan_16:
+  file: dot_cyan
+  height: 6
+  ascent: -26
+
+dot_cyan_17:
+  file: dot_cyan
+  height: 6
+  ascent: -28
+
+dot_cyan_18:
+  file: dot_cyan
+  height: 6
+  ascent: -30
+
+dot_cyan_19:
+  file: dot_cyan
+  height: 6
+  ascent: -32
+
+dot_cyan_20:
+  file: dot_cyan
+  height: 6
+  ascent: -34
+
+dot_cyan_21:
+  file: dot_cyan
+  height: 6
+  ascent: -36
+
+dot_cyan_22:
+  file: dot_cyan
+  height: 6
+  ascent: -38
+
+dot_cyan_23:
+  file: dot_cyan
+  height: 6
+  ascent: -40
+
+dot_cyan_24:
+  file: dot_cyan
+  height: 6
+  ascent: -42
+
+dot_cyan_25:
+  file: dot_cyan
+  height: 6
+  ascent: -44
+
+dot_cyan_26:
+  file: dot_cyan
+  height: 6
+  ascent: -46
+
+dot_cyan_27:
+  file: dot_cyan
+  height: 6
+  ascent: -48
+
+dot_cyan_28:
+  file: dot_cyan
+  height: 6
+  ascent: -50
+
+dot_cyan_29:
+  file: dot_cyan
+  height: 6
+  ascent: -52
+
+dot_cyan_30:
+  file: dot_cyan
+  height: 6
+  ascent: -54
+
+dot_cyan_31:
+  file: dot_cyan
+  height: 6
+  ascent: -56
+
+dot_cyan_32:
+  file: dot_cyan
+  height: 6
+  ascent: -58
+
+dot_cyan_33:
+  file: dot_cyan
+  height: 6
+  ascent: -60
+
+dot_cyan_34:
+  file: dot_cyan
+  height: 6
+  ascent: -62
+
+dot_cyan_35:
+  file: dot_cyan
+  height: 6
+  ascent: -64
+
+dot_cyan_36:
+  file: dot_cyan
+  height: 6
+  ascent: -66
+
+dot_cyan_37:
+  file: dot_cyan
+  height: 6
+  ascent: -68
+
+dot_cyan_38:
+  file: dot_cyan
+  height: 6
+  ascent: -70
+
+dot_cyan_39:
+  file: dot_cyan
+  height: 6
+  ascent: -72
+
+dot_cyan_40:
+  file: dot_cyan
+  height: 6
+  ascent: -74
+
+dot_cyan_41:
+  file: dot_cyan
+  height: 6
+  ascent: -76
+
+dot_cyan_42:
+  file: dot_cyan
+  height: 6
+  ascent: -78
+
+dot_cyan_43:
+  file: dot_cyan
+  height: 6
+  ascent: -80
+
+dot_cyan_44:
+  file: dot_cyan
+  height: 6
+  ascent: -82
+
+dot_cyan_45:
+  file: dot_cyan
+  height: 6
+  ascent: -84
+
+dot_cyan_46:
+  file: dot_cyan
+  height: 6
+  ascent: -86
+
+dot_cyan_47:
+  file: dot_cyan
+  height: 6
+  ascent: -88
+
+dot_cyan_me_0:
+  file: dot_cyan_me
+  height: 8
+  ascent: 7
+
+dot_cyan_me_1:
+  file: dot_cyan_me
+  height: 8
+  ascent: 5
+
+dot_cyan_me_2:
+  file: dot_cyan_me
+  height: 8
+  ascent: 3
+
+dot_cyan_me_3:
+  file: dot_cyan_me
+  height: 8
+  ascent: 1
+
+dot_cyan_me_4:
+  file: dot_cyan_me
+  height: 8
+  ascent: -1
+
+dot_cyan_me_5:
+  file: dot_cyan_me
+  height: 8
+  ascent: -3
+
+dot_cyan_me_6:
+  file: dot_cyan_me
+  height: 8
+  ascent: -5
+
+dot_cyan_me_7:
+  file: dot_cyan_me
+  height: 8
+  ascent: -7
+
+dot_cyan_me_8:
+  file: dot_cyan_me
+  height: 8
+  ascent: -9
+
+dot_cyan_me_9:
+  file: dot_cyan_me
+  height: 8
+  ascent: -11
+
+dot_cyan_me_10:
+  file: dot_cyan_me
+  height: 8
+  ascent: -13
+
+dot_cyan_me_11:
+  file: dot_cyan_me
+  height: 8
+  ascent: -15
+
+dot_cyan_me_12:
+  file: dot_cyan_me
+  height: 8
+  ascent: -17
+
+dot_cyan_me_13:
+  file: dot_cyan_me
+  height: 8
+  ascent: -19
+
+dot_cyan_me_14:
+  file: dot_cyan_me
+  height: 8
+  ascent: -21
+
+dot_cyan_me_15:
+  file: dot_cyan_me
+  height: 8
+  ascent: -23
+
+dot_cyan_me_16:
+  file: dot_cyan_me
+  height: 8
+  ascent: -25
+
+dot_cyan_me_17:
+  file: dot_cyan_me
+  height: 8
+  ascent: -27
+
+dot_cyan_me_18:
+  file: dot_cyan_me
+  height: 8
+  ascent: -29
+
+dot_cyan_me_19:
+  file: dot_cyan_me
+  height: 8
+  ascent: -31
+
+dot_cyan_me_20:
+  file: dot_cyan_me
+  height: 8
+  ascent: -33
+
+dot_cyan_me_21:
+  file: dot_cyan_me
+  height: 8
+  ascent: -35
+
+dot_cyan_me_22:
+  file: dot_cyan_me
+  height: 8
+  ascent: -37
+
+dot_cyan_me_23:
+  file: dot_cyan_me
+  height: 8
+  ascent: -39
+
+dot_cyan_me_24:
+  file: dot_cyan_me
+  height: 8
+  ascent: -41
+
+dot_cyan_me_25:
+  file: dot_cyan_me
+  height: 8
+  ascent: -43
+
+dot_cyan_me_26:
+  file: dot_cyan_me
+  height: 8
+  ascent: -45
+
+dot_cyan_me_27:
+  file: dot_cyan_me
+  height: 8
+  ascent: -47
+
+dot_cyan_me_28:
+  file: dot_cyan_me
+  height: 8
+  ascent: -49
+
+dot_cyan_me_29:
+  file: dot_cyan_me
+  height: 8
+  ascent: -51
+
+dot_cyan_me_30:
+  file: dot_cyan_me
+  height: 8
+  ascent: -53
+
+dot_cyan_me_31:
+  file: dot_cyan_me
+  height: 8
+  ascent: -55
+
+dot_cyan_me_32:
+  file: dot_cyan_me
+  height: 8
+  ascent: -57
+
+dot_cyan_me_33:
+  file: dot_cyan_me
+  height: 8
+  ascent: -59
+
+dot_cyan_me_34:
+  file: dot_cyan_me
+  height: 8
+  ascent: -61
+
+dot_cyan_me_35:
+  file: dot_cyan_me
+  height: 8
+  ascent: -63
+
+dot_cyan_me_36:
+  file: dot_cyan_me
+  height: 8
+  ascent: -65
+
+dot_cyan_me_37:
+  file: dot_cyan_me
+  height: 8
+  ascent: -67
+
+dot_cyan_me_38:
+  file: dot_cyan_me
+  height: 8
+  ascent: -69
+
+dot_cyan_me_39:
+  file: dot_cyan_me
+  height: 8
+  ascent: -71
+
+dot_cyan_me_40:
+  file: dot_cyan_me
+  height: 8
+  ascent: -73
+
+dot_cyan_me_41:
+  file: dot_cyan_me
+  height: 8
+  ascent: -75
+
+dot_cyan_me_42:
+  file: dot_cyan_me
+  height: 8
+  ascent: -77
+
+dot_cyan_me_43:
+  file: dot_cyan_me
+  height: 8
+  ascent: -79
+
+dot_cyan_me_44:
+  file: dot_cyan_me
+  height: 8
+  ascent: -81
+
+dot_cyan_me_45:
+  file: dot_cyan_me
+  height: 8
+  ascent: -83
+
+dot_cyan_me_46:
+  file: dot_cyan_me
+  height: 8
+  ascent: -85
+
+dot_cyan_me_47:
+  file: dot_cyan_me
+  height: 8
+  ascent: -87

@@ -70,6 +70,9 @@ public final class Race {
     int finishers;
     long firstFinish = -1;
     int laps;
+    /** The line across the top of every racer's screen, and for how many more ticks. */
+    String feed = "";
+    int feedTicks;
     private List<Result> lastResults = List.of();
     private String fastestName;
     private long fastestLap = -1;
@@ -322,7 +325,7 @@ public final class Race {
                     }
                 }
                 content().sound(p, "go", 1f, 1f, Sound.BLOCK_NOTE_BLOCK_BELL);
-                r.banner(messages().plain("hud-go"), "green", 5, 30);
+                content().vfx("gk_go", r.kart.location(), null);
                 r.subline("", 0);
             }
         }
@@ -335,6 +338,7 @@ public final class Race {
 
     private void tickRacing() {
         clock++;
+        if (feedTicks > 0) feedTicks--;
         List<Track.Checkpoint> gates = track.checkpoints();
         for (Racer r : new ArrayList<>(order)) {
             Player p = r.player();
@@ -355,6 +359,7 @@ public final class Race {
             Location at = r.kart.location();
             Track.Checkpoint gate = gates.get(r.next);
             if (gate.contains(at)) passGate(r, p);
+            wrongWay(r, gate, at);
             boolean lost = at.getY() < track.floor() || r.kart.submersion() > 0.4
                     || clock - r.lastGateTick > settings().stuckTicks;
             if (lost) askRespawn(r);
@@ -400,13 +405,17 @@ public final class Race {
                 fastestLap = lapTicks;
                 fastestName = r.name;
             }
+            boolean personalBest = r.bestLap == lapTicks && r.lap > 1;
             r.lap++;
             r.lapStartTick = clock;
             if (r.lap > laps) {
                 finish(r, p);
             } else {
                 content().sound(p, "lap", 1f, 1f, Sound.ENTITY_EXPERIENCE_ORB_PICKUP);
-                if (r.lap == laps) r.banner(messages().plain("hud-final-lap"), "gold", 3, 50);
+                content().vfx("gk_lap", r.kart.location(), p);
+                if (r.lap == laps) r.banner("banner_final", 50);
+                else if (personalBest) r.banner("banner_best", 40);
+                else r.banner("banner_lap", 30);
             }
         }
         r.next = (r.next + 1) % n;
@@ -427,7 +436,10 @@ public final class Race {
         r.item = null;
         r.roulette = 0;
         content().sound(p, "finish", 1f, 1f, Sound.UI_TOAST_CHALLENGE_COMPLETE);
-        r.banner(messages().plain("hud-finish"), "gold", 4, 80);
+        content().vfx("gk_confetti", r.kart.location(), null);
+        r.kart.dress(p, "gokarts_" + r.colour.id() + "_victory");
+        feed(messages().plain("feed-finish", "name", r.name, "place", Hud.ordinal(r.place)));
+        r.banner("banner_finish", 80);
         r.subline(messages().plain("hud-finished-place", "place", Hud.ordinal(r.place)), 400);
         p.getWorld().spawnParticle(Particle.FIREWORK, r.kart.pointOn(0, 1.2, 0), 40, 0.6, 0.6, 0.6, 0.08);
     }
@@ -464,6 +476,7 @@ public final class Race {
         r.lastGateTick = clock;
         r.subline(messages().plain("hud-respawning"), 20);
         p.getWorld().spawnParticle(Particle.CLOUD, at.clone().add(0, 0.6, 0), 20, 0.5, 0.3, 0.5, 0.02);
+        content().vfx("gk_respawn", at, null);
         Text.send(p, messages().component("respawned"));
     }
 
@@ -475,6 +488,26 @@ public final class Race {
             r.kart.remove();
         }
         r.kart = null;
+    }
+
+    /** The line across the top of everybody's screen for a few seconds. */
+    void feed(String text) {
+        feed = text;
+        feedTicks = 70;
+    }
+
+    /**
+     * WRONG WAY: going away from the next gate, at speed, for a second and a
+     * half. Measured against where the racer was a second ago, so a hairpin
+     * (which leads away from the gate for a moment, on purpose) does not count.
+     */
+    private void wrongWay(Racer r, Track.Checkpoint gate, Location at) {
+        if (clock % 20 != 0) return;
+        double gap = gate.distance(at);
+        boolean away = !Double.isNaN(r.lastGap) && gap > r.lastGap + 3 && r.kart.groundSpeed() > 3;
+        r.lastGap = gap;
+        r.wrongTicks = away ? r.wrongTicks + 20 : 0;
+        if (r.wrongTicks >= 40) r.banner("banner_wrong", 22);
     }
 
     /** Race order: whoever is home in the order they got there, then whoever has passed more gates, then whoever is nearer the next. */
@@ -516,7 +549,11 @@ public final class Race {
             Player p = r.player();
             if (p != null) hud.leave(p);
         }
+        Records.Entry lapBefore = plugin.records().lap(track.id());
         plugin.records().record(track, lastResults, fastestName, fastestLap);
+        if (fastestName != null && !stopped && (lapBefore == null || fastestLap < lapBefore.ticks())) {
+            broadcast(messages().component("record", "name", fastestName, "time", Text.raceClock(fastestLap)));
+        }
         phase = Phase.RESULTS;
         phaseTicks = 0;
         for (Racer r : members.values()) {

@@ -1,50 +1,53 @@
 """
 Builds every asset in the gokarts content folder from what ResourcePack AI
-Studio made for it (tools/src):
+Studio made for it (tools/src), offline:
 
   python tools/make_assets.py
 
-- the kart: one Studio model, rigged in Studio's vehicle editor ("Animate with
-  AI": wheels, steering and the driver's four emotes), painted here in eight
-  colours. Each colour is its own item and its own vehicle, because a kart is
-  told apart on the grid by its paint;
-- the item box, the banana, the nitro and the rocket: Studio models, given
-  namespaced textures;
-- the driver's emotes, out of Studio's emote manifest (tools/src/
-  studio_emotes_compact.json, keyframes packed one per "time x y z interp");
-- the sounds: Studio's, trimmed, faded and levelled, the two engine loops
-  crossfaded so they repeat without a click;
-- the HUD's glyphs: tools/hud_art.py, the item cards drawn from Studio's own
-  thumbnails of the models (tools/src/thumbs).
+- the kart: one Studio model (kart_mk2), rigged in Studio's vehicle editor
+  ("Animate with AI": wheels, steering, five driving states and the driver's
+  emotes) and given a trick, a spin-out and a boost of its own. White bodywork,
+  red accents; the accents are repainted here in eight colours, and each colour
+  is its own item and its own vehicle;
+- the helmet: a Studio model, turned to face the way a rig does and painted in
+  the same eight colours. Every driver emote carries it on the head, as a prop;
+- the item box, the banana, the nitro and the rocket: Studio models;
+- the driver's emotes (Studio's emote manifest, tools/src/emotes.json): every
+  state, the win and the daze, once per colour, each wearing its helmet;
+- the VFX (tools/src/vfx/*.json, Studio's recipes): copied, and the drift's
+  mini-turbo painted in its three levels' colours;
+- the sounds: Studio's, trimmed, faded and levelled, the engine loops crossfaded;
+- the HUD's art (tools/hud_art.py), with a minimap for each prefab track drawn
+  from src/main/resources/prefabs by tools/prefabs.py, and the minimaps'
+  frames written to prefabs/minimap.json for the plugin to put dots on.
 
 Deterministic: a re-run writes the same files.
 """
 import colorsys
 import json
 import os
+import shutil
 
 import numpy as np
 import soundfile as sf
 from PIL import Image
 
 import hud_art
+import prefabs
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
 SRC = os.path.join(ROOT, "src")
-OUT = os.path.join(ROOT, "..", "src", "main", "resources", "content", "gokarts")
+RES = os.path.join(ROOT, "..", "src", "main", "resources")
+OUT = os.path.join(RES, "content", "gokarts")
 A = os.path.join(OUT, "assets")
 NS = "gokarts"
 
 # The plugin's race/KartColour.java has the same list and the same colours.
-COLOURS = {
-    "red": (0xFF, 0x46, 0x55), "blue": (0x2E, 0x9B, 0xFF), "green": (0x5B, 0xE3, 0x7D), "yellow": (0xFF, 0xD2, 0x3F),
-    "orange": (0xFF, 0x8A, 0x3D), "purple": (0xA4, 0x5C, 0xFF), "pink": (0xFF, 0x5C, 0xC8), "cyan": (0x3D, 0xE0, 0xE0),
-}
+COLOURS = dict(hud_art.KART_COLOURS)
 CODES = {"red": "c", "blue": "9", "green": "a", "yellow": "e", "orange": "6", "purple": "5", "pink": "d", "cyan": "b"}
 
-# How a kart is held and shown in an inventory: it is two blocks long.
 KART_DISPLAY = {
-    "gui": {"rotation": [30, 225, 0], "translation": [0, -1.5, 0], "scale": [0.38, 0.38, 0.38]},
+    "gui": {"rotation": [30, 225, 0], "translation": [0, -1.5, 0], "scale": [0.36, 0.36, 0.36]},
     "ground": {"rotation": [0, 0, 0], "translation": [0, 2, 0], "scale": [0.25, 0.25, 0.25]},
     "fixed": {"rotation": [0, 0, 0], "translation": [0, 0, 0], "scale": [0.45, 0.45, 0.45]},
     "thirdperson_righthand": {"rotation": [75, 45, 0], "translation": [0, 2.5, 0], "scale": [0.25, 0.25, 0.25]},
@@ -57,7 +60,15 @@ PROP_DISPLAY = {
     "fixed": {"rotation": [0, 0, 0], "translation": [0, 0, 0], "scale": [1, 1, 1]},
     "thirdperson_righthand": {"rotation": [75, 45, 0], "translation": [0, 2.5, 0], "scale": [0.375, 0.375, 0.375]},
     "firstperson_righthand": {"rotation": [0, 45, 0], "translation": [2, 2, 0], "scale": [0.5, 0.5, 0.5]},
+    "head": {"rotation": [0, 0, 0], "translation": [0, 0, 0], "scale": [1, 1, 1]},
 }
+
+# What Studio's vehicle editor worked out for kart_mk2, converted as model-subtypes.ts'
+# vehicleOffsetToBlocks does: x is -(px-8)/16, y px/16, z (px-8)/16.
+SEAT = (0.0, 10 / 16, (6 - 8) / 16)          # the seat at model pixel (8, 10, 6)
+EXHAUST = (-(14 - 8) / 16, 9 / 16, (-9.5 - 8) / 16)
+HITBOX = (1.5, 1.25, 2.25)
+STATES = ["airborne", "turning", "reversing", "moving", "idle"]
 
 
 def path(*p):
@@ -83,28 +94,33 @@ def load(name):
         return json.load(f)
 
 
+def clean():
+    """Everything this script writes, gone first: a file it no longer makes must not linger in the jar."""
+    for rel in ("assets/models", "assets/textures", "assets/sounds", "emotes", "vfx", "vehicles", "items", "sounds", "fonts"):
+        shutil.rmtree(os.path.join(OUT, rel), ignore_errors=True)
+
+
 # ---------------------------------------------------------------------------
-# The kart, in eight colours
+# Paint
 # ---------------------------------------------------------------------------
 
-def is_body_red(r, g, b):
-    """The bodywork: Studio painted it red, and nothing else on the kart is."""
+def is_red(r, g, b):
     h, s, v = colorsys.rgb_to_hsv(r / 255, g / 255, b / 255)
-    return (h < 0.06 or h > 0.92) and s > 0.45 and v > 0.25
+    return (h < 0.06 or h > 0.92) and s > 0.4 and v > 0.2
 
 
-def paint(atlas, rgb):
-    """The atlas with its red bodywork repainted in `rgb`, keeping every pixel's shading."""
-    if rgb == COLOURS["red"]:
+def paint(atlas, rgb, base=COLOURS["red"]):
+    """The atlas with its red parts repainted in `rgb`, keeping every pixel's shading."""
+    if rgb == base:
         return atlas.copy()
     th, ts, tv = colorsys.rgb_to_hsv(*(c / 255 for c in rgb))
-    base_v = colorsys.rgb_to_hsv(*(c / 255 for c in COLOURS["red"]))[2]
+    base_v = colorsys.rgb_to_hsv(*(c / 255 for c in base))[2]
     out = atlas.copy()
     px = out.load()
     for y in range(out.height):
         for x in range(out.width):
             r, g, b, a = px[x, y]
-            if a == 0 or not is_body_red(r, g, b):
+            if a == 0 or not is_red(r, g, b):
                 continue
             _, s, v = colorsys.rgb_to_hsv(r / 255, g / 255, b / 255)
             nv = min(1.0, v / base_v * tv)
@@ -114,11 +130,29 @@ def paint(atlas, rgb):
     return out
 
 
+# ---------------------------------------------------------------------------
+# The karts
+# ---------------------------------------------------------------------------
+
+VEHICLES_HEADER = """# Go karts: one vehicle per paint, every one the same Studio kart (kart_mk2).
+# Rigged in ResourcePack AI Studio's vehicle editor: the wheels, the steering,
+# five driving states, and the driver's emotes (emotes/gokarts.json), which
+# carry the driver's helmet in the kart's colour. Generated by tools/make_assets.py.
+#
+# `speed` is the CEILING a boost may reach. The plugin holds a kart to
+# config.yml's karts.cruise-speed the rest of the time (and to offroad-speed on
+# grass), so change that rather than this to make karts faster.
+#
+# Space is the handbrake (jump: false), which is what lets the rear step out:
+# the plugin turns holding it through a corner into a drift boost.
+
+"""
+
+
 def karts():
-    model = load("go_kart_generated.json")
-    atlas = Image.open(os.path.join(SRC, "go_kart_atlas.png")).convert("RGBA")
+    model = load("kart_mk2_generated.json")
+    atlas = Image.open(os.path.join(SRC, "kart_mk2_atlas.png")).convert("RGBA")
     items, vehicles = [], []
-    rig = rig_settings()
     for colour, rgb in COLOURS.items():
         paint(atlas, rgb).save(path("textures", "block", f"kart_{colour}.png"))
         m = json.loads(json.dumps(model))
@@ -134,42 +168,19 @@ def karts():
     - "&7Right-click the ground to park it,"
     - "&7then right-click it to get in."
 """)
-        vehicles.append(vehicle_yaml(colour, name, rig))
+        vehicles.append(vehicle_yaml(colour, name))
     write_text("# The karts you carry. Right-click the ground with one and RP Engine parks\n"
                "# the vehicle, because each is the item its vehicle's `model:` names.\n"
                "# Generated by tools/make_assets.py.\n\n" + "\n".join(items), "items", "karts.yml")
     write_text(VEHICLES_HEADER + "\n".join(vehicles), "vehicles", "karts.yml")
 
 
-def rig_settings():
-    """What Studio's vehicle editor worked out for the kart, in blocks (model-subtypes.ts' vehicleOffsetToBlocks)."""
-    return {
-        # The seat at model pixel (8, 5, 6): x is -(px-8)/16, y px/16, z (px-8)/16.
-        "seat": (0.0, 0.3125, -0.125),
-        # The exhaust tip at (12, 5, -7.5).
-        "exhaust": (-0.25, 0.3125, -0.969),
-        "hitbox": (1.5, 0.75, 2.0),
-    }
-
-
-VEHICLES_HEADER = """# Go karts: one vehicle per paint, every one the same Studio kart. Rigged in
-# ResourcePack AI Studio's vehicle editor (the wheels, the steering and the
-# driver's emotes, emotes/gokarts.json). Generated by tools/make_assets.py.
-#
-# `speed` is the CEILING a boost may reach. The plugin holds a kart to
-# config.yml's karts.cruise-speed the rest of the time (and to offroad-speed on
-# grass), so change that rather than this to make karts faster.
-#
-# Space is the handbrake (jump: false), which is what lets the rear step out:
-# the plugin turns holding it through a corner into a drift boost.
-
-"""
-
-
-def vehicle_yaml(colour, name, rig):
-    sx, sy, sz = rig["seat"]
-    ex, ey, ez = rig["exhaust"]
-    w, h, l = rig["hitbox"]
+def vehicle_yaml(colour, name):
+    sx, sy, sz = SEAT
+    ex, ey, ez = EXHAUST
+    w, h, l = HITBOX
+    seat = "\n".join(f"        {s}: gokarts_{colour}_{s}" for s in STATES)
+    body = "\n".join(f"    {s}: {s}" for s in STATES)
     return f"""kart_{colour}:
   model: {NS}:kart_{colour}_item
   name: "&{CODES[colour]}{name} Kart"
@@ -184,8 +195,7 @@ def vehicle_yaml(colour, name, rig):
   jump: false
   capes: false
   # Off: in a race the HUD is in the action bar, and the engine's readout there
-  # would take turns with it. Out of a race the plugin writes its own speed
-  # line, with the drift charge in it.
+  # would take turns with it. Out of a race the plugin writes its own.
   speedometer: false
   # The wheels turn because the kart moved: at a standstill they stop.
   animation-follows-speed: true
@@ -196,28 +206,22 @@ def vehicle_yaml(colour, name, rig):
   seats:
     - role: driver
       x: {sx}
-      y: {sy}
-      z: {sz}
+      y: {sy:.4f}
+      z: {sz:.4f}
       pose: sitting
       animations:
-        turning: gokarts_drive_turning
-        reversing: gokarts_drive_reversing
-        moving: gokarts_drive_moving
-        idle: gokarts_drive_idle
+{seat}
   animations:
-    turning: turning
-    reversing: reversing
-    moving: moving
-    idle: idle
+{body}
   sounds:
     idle: {NS}:idle
     moving: {NS}:engine
   particles:
     - effect: smoke
       states: [moving, reversing, idle]
-      x: {ex}
-      y: {ey}
-      z: {ez}
+      x: {ex:.4f}
+      y: {ey:.4f}
+      z: {ez:.4f}
       count: 1
       interval: 3
       spread: 0.04
@@ -226,21 +230,71 @@ def vehicle_yaml(colour, name, rig):
 
 
 # ---------------------------------------------------------------------------
+# The helmet
+# ---------------------------------------------------------------------------
+
+# A player's head is 8 pixels on a side, its centre 12 above the rig's origin
+# (a block above the feet). The helmet's hollow is 4..12 across and 0..9 up, so
+# the head sits in it centred at y 4.5; the model's own centre is (8, 8, 8).
+HELMET_OFFSET = [0, 12 + (8 - 4.5), 0]
+
+
+def turn_half(model):
+    """The model turned 180 degrees about the vertical: Studio drew the visor on +z, and a rig faces -z."""
+    swap = {"north": "south", "south": "north", "east": "west", "west": "east"}
+    for e in model["elements"]:
+        f, t = e["from"], e["to"]
+        e["from"], e["to"] = [16 - t[0], f[1], 16 - t[2]], [16 - f[0], t[1], 16 - f[2]]
+        faces = {}
+        for k, face in e.get("faces", {}).items():
+            if k in ("up", "down"):
+                face = dict(face)
+                face["rotation"] = (face.get("rotation", 0) + 180) % 360
+                faces[k] = face
+            else:
+                faces[swap[k]] = face
+        e["faces"] = faces
+        rot = e.get("rotation")
+        if rot and rot.get("axis") in ("x", "z"):
+            rot["angle"] = -rot["angle"]
+        if rot and "origin" in rot:
+            o = rot["origin"]
+            rot["origin"] = [16 - o[0], o[1], 16 - o[2]]
+    return model
+
+
+def helmets():
+    base = turn_half(load("kart_helmet_generated.json"))
+    base.pop("groups", None)
+    atlas = Image.open(os.path.join(SRC, "kart_helmet_atlas.png")).convert("RGBA")
+    lines = []
+    for colour, rgb in COLOURS.items():
+        paint(atlas, rgb).save(path("textures", "block", f"helmet_{colour}.png"))
+        m = json.loads(json.dumps(base))
+        m["textures"] = {"atlas": f"{NS}:block/helmet_{colour}", "particle": f"{NS}:block/helmet_{colour}"}
+        m["display"] = PROP_DISPLAY
+        save_json(m, "models", f"helmet_{colour}.json")
+        lines += [f"helmet_{colour}:", "  material: PAPER", f"  model: helmet_{colour}",
+                  f'  name: "&{CODES[colour]}&l{colour.capitalize()} Racing Helmet"', ""]
+    return lines
+
+
+# ---------------------------------------------------------------------------
 # The props
 # ---------------------------------------------------------------------------
 
 PROPS = {
-    # id: (Studio model, item name, lore)
     "item_box": ("kart_item_box", "&d&lItem Box", ["&7Drive through it for an item."]),
     "banana": ("kart_banana", "&e&lBanana", ["&7Drop it behind you. Whoever hits it spins out."]),
-    "nitro": ("kart_nitro", "&9&lNitro", ["&7A boost, whenever you like."]),
+    "nitro": ("kart_nitro2", "&9&lNitro", ["&7A boost, whenever you like."]),
     "rocket": ("kart_rocket", "&c&lRocket", ["&7Fired at the kart ahead of you."]),
 }
 
 
-def props():
+def props(helmet_lines):
     lines = ["# What the plugin draws in the world and puts in a racer's hand: item boxes,",
-             "# bananas, nitro and rockets. Studio models. Generated by tools/make_assets.py.", ""]
+             "# bananas, nitro and rockets, and the racing helmets the driver emotes wear.",
+             "# Studio models. Generated by tools/make_assets.py.", ""]
     for pid, (src, name, lore) in PROPS.items():
         m = load(f"{src}_generated.json")
         Image.open(os.path.join(SRC, f"{src}_atlas.png")).convert("RGBA").save(path("textures", "block", f"{pid}.png"))
@@ -248,22 +302,16 @@ def props():
         m["display"] = PROP_DISPLAY
         m.pop("groups", None)
         save_json(m, "models", f"{pid}.json")
-        lines.append(f"{pid}:")
-        lines.append("  material: PAPER")
-        lines.append(f"  model: {pid}")
-        lines.append(f'  name: "{name}"')
-        lines.append("  lore:")
-        for line in lore:
-            lines.append(f'    - "{line}"')
-        lines.append("")
+        lines += [f"{pid}:", "  material: PAPER", f"  model: {pid}", f'  name: "{name}"', "  lore:"]
+        lines += [f'    - "{line}"' for line in lore] + [""]
     # Nothing in hand: an invisible item, so the hotbar slot a racer's item lives
-    # in always holds SOMETHING, which is what makes Q and the clicks reach the
-    # plugin at all.
+    # in always holds SOMETHING, which is what makes Q and the clicks reach the plugin.
     blank = Image.new("RGBA", (16, 16), (0, 0, 0, 0))
     blank.putpixel((15, 0), (255, 255, 255, 1))
     blank.save(path("textures", "item", "blank.png"))
     lines += ["no_item:", "  material: PAPER", '  name: "&7No item"', "  lore:",
               '    - "&7Drive through an item box."', "  texture: item/blank", ""]
+    lines += helmet_lines
     write_text("\n".join(lines), "items", "props.yml")
 
 
@@ -271,41 +319,69 @@ def props():
 # Emotes
 # ---------------------------------------------------------------------------
 
-EMOTE_IDS = {
-    "driver_idle-2": "gokarts_drive_idle",
-    "driver_moving-2": "gokarts_drive_moving",
-    "driver_reversing-2": "gokarts_drive_reversing",
-    "driver_turning-2": "gokarts_drive_turning",
+UPPER_BODY = {"head", "body", "rightArm", "leftArm", "rightForearm", "leftForearm"}
+
+# Studio's emote ids, and what each is here (the colour goes in front).
+EMOTES = {
+    "driver_idle-3": "idle", "driver_moving-3": "moving", "driver_reversing-3": "reversing",
+    "driver_turning-3": "turning", "driver_airborne-2": "airborne",
+    "kart_victory": "victory", "kart_dazed": "dazed",
 }
-INTERP = {"s": "smooth", "l": "linear", "t": "step"}
-
-
-def channels(packed):
-    out = {}
-    for ch, frames in packed.items():
-        keys = []
-        for frame in frames.split("|"):
-            t, x, y, z, i = frame.split(" ")
-            keys.append({"time": float(t), "value": [float(x), float(y), float(z)], "interpolation": INTERP[i]})
-        out[ch] = keys
-    return out
 
 
 def emotes():
-    src = load("studio_emotes_compact.json")
+    src = load("emotes.json")
     out = {}
-    for e in src:
-        out[EMOTE_IDS[e["id"]]] = {
-            "name": "Go kart - " + e["n"].split("—")[-1].strip(),
-            "length": e["l"],
-            "loop": e["lp"],
-            "root": channels(e["r"]),
-            "animators": {bone: channels(ch) for bone, ch in e["a"].items()},
-        }
+    for studio_id, state in EMOTES.items():
+        e = src[studio_id]
+        # A driver is sitting: only the upper body may move, or the emote stands
+        # them up in the kart (a bone an emote animates replaces the seat's pose).
+        animators = {bone: ch for bone, ch in e["animators"].items() if bone in UPPER_BODY}
+        root = {ch: keys for ch, keys in (e.get("root") or {}).items() if ch == "rotation"}
+        e = {**e, "animators": animators, "root": root}
+        for colour in COLOURS:
+            out[f"gokarts_{colour}_{state}"] = {
+                "name": f"Go kart - {state} ({colour})",
+                "length": e["length"],
+                "loop": e.get("loop", True),
+                **({"root": e["root"]} if e.get("root") else {}),
+                "animators": e["animators"],
+                "props": [{"id": "helmet", "modelId": f"{NS}:helmet_{colour}", "attach": "head",
+                           "offset": HELMET_OFFSET, "scale": 1}],
+            }
     full = os.path.join(OUT, "emotes", "gokarts.json")
     os.makedirs(os.path.dirname(full), exist_ok=True)
     with open(full, "w", encoding="utf-8", newline="\n") as f:
         json.dump(out, f, indent=1, ensure_ascii=False)
+
+
+# ---------------------------------------------------------------------------
+# VFX
+# ---------------------------------------------------------------------------
+
+MINITURBO = {1: {"deep": "#155cb9", "mid": "#36acff", "bright": "#b4f3ff"},
+             2: {"deep": "#b4400c", "mid": "#ff8a2e", "bright": "#ffe0a8"},
+             3: {"deep": "#5a1fb9", "mid": "#b05cff", "bright": "#f0c8ff"}}
+
+
+def vfx():
+    folder = os.path.join(SRC, "vfx")
+    os.makedirs(os.path.join(OUT, "vfx"), exist_ok=True)
+    for name in sorted(os.listdir(folder)):
+        if not name.endswith(".json"):
+            continue
+        with open(os.path.join(folder, name), encoding="utf-8") as f:
+            recipe = json.load(f)
+        if name == "gk_miniturbo.json":
+            for level, ramp in MINITURBO.items():
+                r = json.loads(json.dumps(recipe))
+                for key in r.get("palettes", {}):
+                    r["palettes"][key] = ramp
+                with open(os.path.join(OUT, "vfx", f"gk_miniturbo_{level}.json"), "w", encoding="utf-8", newline="\n") as f:
+                    json.dump(r, f, indent=1)
+            continue
+        with open(os.path.join(OUT, "vfx", name), "w", encoding="utf-8", newline="\n") as f:
+            json.dump(recipe, f, indent=1)
 
 
 # ---------------------------------------------------------------------------
@@ -340,14 +416,12 @@ def sounds():
         if longest:
             mono = mono[: int(longest * sr)]
         if loop:
-            # Crossfade the tail into the head, so the repeat has no seam.
             n = int(0.12 * sr)
             head, tail = mono[:n].copy(), mono[-n:]
             ramp = np.linspace(0, 1, n)
             mono = mono[n:].copy()
             mono[-n:] = tail * (1 - ramp) + head * ramp
         else:
-            # Trim trailing quiet, then a short fade so nothing ends in a click.
             env = np.abs(mono)
             loud = np.nonzero(env > 0.02 * max(1e-6, env.max()))[0]
             if len(loud):
@@ -357,45 +431,58 @@ def sounds():
         peak = np.abs(mono).max()
         if peak > 0:
             mono = mono / peak * 0.9
-        out = path("sounds", sid + ".ogg")
-        sf.write(out, mono.astype(np.float32), sr, format="OGG", subtype="VORBIS")
-        length = round(len(mono) / sr, 3)
-        lines.append(f"{sid}:")
-        lines.append(f"  file: {sid}")
-        lines.append("  category: neutral")
-        lines.append(f'  subtitle: "{subtitle}"')
+        sf.write(path("sounds", sid + ".ogg"), mono.astype(np.float32), sr, format="OGG", subtype="VORBIS")
+        lines += [f"{sid}:", f"  file: {sid}", "  category: neutral", f'  subtitle: "{subtitle}"']
         if volume != 1.0:
             lines.append(f"  volume: {volume}")
         if loop:
-            lines.append(f"  length: {length}")
+            lines.append(f"  length: {round(len(mono) / sr, 3)}")
         lines.append("")
     write_text("\n".join(lines), "sounds", "sounds.yml")
 
 
 # ---------------------------------------------------------------------------
+# The HUD's art and the minimaps
+# ---------------------------------------------------------------------------
 
 def icons():
     thumbs = {pid: os.path.join(SRC, "thumbs", f"{src}.png") for pid, (src, _, _) in PROPS.items()}
+    maps = {}
+    for pid in sorted(f[:-5] for f in os.listdir(prefabs.PREFABS) if f.endswith(".json") and f != "minimap.json"):
+        p, roads = prefabs.load(pid)
+        pts, gaps = [], []
+        for ri, r in enumerate(roads):
+            pts.append([(x[0], x[1]) for x in r.samples[::4]])
+            gaps.append([prefabs.features(p, roads, ri, x)[1] for x in r.samples[::4]])
+        main = roads[0]
+        s = main.at(p.get("start", 0) * main.length)
+        maps[pid] = (pts, gaps, ((s[0], s[1]), (s[4], s[5])))
     out = ["# Glyphs the plugin writes into the HUD (huds/hud.json). Generated by",
            "# tools/make_assets.py and tools/hud_art.py: edit those, not this.", ""]
-    out += hud_art.build(os.path.join(A, "textures", "font"), thumbs)
+    lines, frames = hud_art.build(os.path.join(A, "textures", "font"), thumbs, maps)
+    out += lines
     write_text("\n".join(out), "fonts", "icons.yml")
+    frames_out = {pid: {**f, "size": hud_art.MAP, "dotStep": hud_art.DOT_STEP} for pid, f in frames.items()}
+    with open(os.path.join(prefabs.PREFABS, "minimap.json"), "w", encoding="utf-8", newline="\n") as f:
+        json.dump(frames_out, f, indent=1)
 
 
 def pack_yml():
     write_text("""name: Go Karts
 author: ResourcePack AI
-version: 0.1.0
+version: 0.2.0
 # Installed by the RPEGoKarts addon from its own jar. Edit freely - a newer
 # plugin build overwrites its own files and leaves anything you add.
 """, "pack.yml")
 
 
 if __name__ == "__main__":
+    clean()
     pack_yml()
     karts()
-    props()
+    props(helmets())
     emotes()
+    vfx()
     sounds()
     icons()
     print("Wrote", os.path.normpath(OUT))

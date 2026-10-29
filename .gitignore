@@ -9,3 +9,6 @@ out/
 __pycache__/
 *.pyc
 .venv/
+
+# tools/prefabs.py preview's pictures
+tools/previews/

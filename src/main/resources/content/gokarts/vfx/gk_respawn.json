@@ -1,0 +1,356 @@
+{
+ "v": 1,
+ "duration": 24,
+ "palettes": {
+  "cloud": {
+   "deep": "#a3b3bd",
+   "mid": "#dae5ea",
+   "bright": "#ffffff"
+  },
+  "cyan": {
+   "deep": "#087d99",
+   "mid": "#39dcec",
+   "bright": "#cbffff"
+  }
+ },
+ "layers": [
+  {
+   "type": "sprite",
+   "name": "soft respawn puff",
+   "start": 0,
+   "end": 18,
+   "palette": "cloud",
+   "copies": {
+    "count": 7,
+    "scatter": [
+     1.3,
+     0.4,
+     0.9
+    ],
+    "seed": 13
+   },
+   "sprite": "glow",
+   "billboard": true,
+   "pos": [
+    [
+     0,
+     [
+      0,
+      0.45,
+      0
+     ]
+    ],
+    [
+     6,
+     [
+      0,
+      0.75,
+      0
+     ]
+    ],
+    [
+     18,
+     [
+      0,
+      1.1,
+      0
+     ]
+    ]
+   ],
+   "scale": [
+    [
+     0,
+     0.3
+    ],
+    [
+     3,
+     2.2,
+     "out"
+    ],
+    [
+     8,
+     2.6
+    ],
+    [
+     18,
+     3.2
+    ]
+   ],
+   "fade": [
+    [
+     0,
+     0.4
+    ],
+    [
+     3,
+     0.36
+    ],
+    [
+     7,
+     0.52
+    ],
+    [
+     18,
+     1
+    ]
+   ]
+  },
+  {
+   "type": "sprite",
+   "name": "rising cyan ring",
+   "start": 1,
+   "end": 23,
+   "palette": "cyan",
+   "sprite": "shock",
+   "pos": [
+    [
+     0,
+     [
+      0,
+      0.06,
+      0
+     ]
+    ],
+    [
+     22,
+     [
+      0,
+      2.6,
+      0
+     ],
+     "out"
+    ]
+   ],
+   "scale": [
+    [
+     0,
+     [
+      1.2,
+      1,
+      1.2
+     ]
+    ],
+    [
+     5,
+     [
+      4.3,
+      1,
+      4.3
+     ],
+     "out"
+    ],
+    [
+     22,
+     [
+      4.9,
+      1,
+      4.9
+     ]
+    ]
+   ],
+   "fade": [
+    [
+     0,
+     0.18
+    ],
+    [
+     6,
+     0.24
+    ],
+    [
+     10,
+     0.36
+    ],
+    [
+     13,
+     0.24
+    ],
+    [
+     22,
+     1
+    ]
+   ]
+  },
+  {
+   "type": "sprite",
+   "name": "ground arrival ripple",
+   "start": 0,
+   "end": 12,
+   "palette": "cyan",
+   "sprite": "shock",
+   "pos": [
+    0,
+    0.04,
+    0
+   ],
+   "scale": [
+    [
+     0,
+     0.6
+    ],
+    [
+     12,
+     5.5,
+     "out"
+    ]
+   ],
+   "fade": [
+    [
+     0,
+     0.4
+    ],
+    [
+     12,
+     1
+    ]
+   ]
+  },
+  {
+   "type": "sprite",
+   "name": "twinkling stars",
+   "start": 3,
+   "end": 14,
+   "palette": "cyan",
+   "copies": {
+    "count": 8,
+    "arc": [
+     0,
+     360
+    ],
+    "radius": 2,
+    "scatter": [
+     0.2,
+     0.5,
+     0.2
+    ],
+    "stagger": 1,
+    "jitter": 2,
+    "seed": 82
+   },
+   "sprite": "flare",
+   "billboard": true,
+   "pos": [
+    [
+     0,
+     [
+      0,
+      0.65,
+      0
+     ]
+    ],
+    [
+     11,
+     [
+      0,
+      1.8,
+      0
+     ]
+    ]
+   ],
+   "scale": [
+    [
+     0,
+     0.05
+    ],
+    [
+     2,
+     1.05,
+     "out"
+    ],
+    [
+     5,
+     0.3
+    ],
+    [
+     7,
+     0.8
+    ],
+    [
+     11,
+     0.02
+    ]
+   ],
+   "fade": [
+    [
+     0,
+     0.4
+    ],
+    [
+     2,
+     0
+    ],
+    [
+     5,
+     0.45
+    ],
+    [
+     7,
+     0.1
+    ],
+    [
+     11,
+     1
+    ]
+   ]
+  },
+  {
+   "type": "motes",
+   "name": "buoyant shimmer",
+   "start": 2,
+   "end": 3,
+   "palette": "cyan",
+   "kind": "glow",
+   "burst": 16,
+   "at": [
+    0,
+    0.4,
+    0
+   ],
+   "shape": "disc",
+   "size": 1.8,
+   "dir": [
+    0,
+    1,
+    0
+   ],
+   "spread": 0.3,
+   "speed": [
+    0.06,
+    0.14
+   ],
+   "drag": 0.96,
+   "scale": [
+    0.09,
+    0.16
+   ],
+   "life": [
+    12,
+    20
+   ]
+  }
+ ],
+ "sounds": [
+  {
+   "t": 0,
+   "sound": "entity.player.small_fall",
+   "volume": 0.5,
+   "pitch": 1.5,
+   "at": [
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "t": 1,
+   "sound": "block.amethyst_block.chime",
+   "volume": 0.8,
+   "pitch": 1.8,
+   "at": [
+    0,
+    1,
+    0
+   ]
+  }
+ ]
+}

@@ -50,6 +50,12 @@ public final class Track {
     private final List<Vector> boxes = new ArrayList<>();
     /** Generated into a world of its own ({@link TrackBuilder#ownWorld}), which the plugin loads on start. */
     private boolean ownWorld;
+    /** The prefab it was generated from, or null for a track built by hand. */
+    private String prefab;
+    /** Where the prefab's (u, v) frame is in the world, for the minimap: {ox, oz, fx, fz, u0, v0}. */
+    private double[] mapFrame;
+    private int mapBaseY;
+    private double mapStartH;
     /** Its own lap count, or 0 for config.yml's. */
     private int laps;
     /** Below this a kart has fallen off the circuit; NaN is 8 below the lowest gate. */
@@ -126,6 +132,26 @@ public final class Track {
         return boxes;
     }
 
+    public String prefab() {
+        return prefab;
+    }
+
+    public void prefab(String id) {
+        this.prefab = id;
+    }
+
+    void mapFrame(double[] frame, int baseY, double startH) {
+        this.mapFrame = frame;
+        this.mapBaseY = baseY;
+        this.mapStartH = startH;
+    }
+
+    /** A world position as the prefab's (u, v), for the minimap; null for a track with no prefab. */
+    public double[] mapPosition(double x, double z) {
+        if (mapFrame == null) return null;
+        return Frame.load(mapFrame, mapBaseY).local(x, z);
+    }
+
     public int laps() {
         return laps;
     }
@@ -164,6 +190,12 @@ public final class Track {
         s.set("world", world);
         s.set("own-world", ownWorld ? true : null);
         s.set("laps", laps == 0 ? null : laps);
+        s.set("prefab", prefab);
+        if (mapFrame != null) {
+            s.set("map.frame", java.util.Arrays.stream(mapFrame).boxed().toList());
+            s.set("map.base-y", mapBaseY);
+            s.set("map.start-h", mapStartH);
+        }
         s.set("floor", Double.isNaN(floor) ? null : floor);
         s.set("lobby", lobby == null ? null : pos(lobby));
         List<List<Double>> g = new ArrayList<>();
@@ -184,6 +216,13 @@ public final class Track {
         t.world = s.getString("world");
         t.ownWorld = s.getBoolean("own-world", false);
         t.laps = s.getInt("laps", 0);
+        t.prefab = s.getString("prefab");
+        double[] frame = nums(s.getList("map.frame"));
+        if (frame.length == 6) {
+            t.mapFrame = frame;
+            t.mapBaseY = s.getInt("map.base-y");
+            t.mapStartH = s.getDouble("map.start-h");
+        }
         t.floor = s.isSet("floor") ? s.getDouble("floor") : Double.NaN;
         World w = t.world();
         t.lobby = loc(w, s.getList("lobby"));

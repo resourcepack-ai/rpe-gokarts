@@ -30,6 +30,13 @@ karts:
   offroad-blocks: [GRASS_BLOCK, DIRT, COARSE_DIRT, PODZOL, MYCELIUM, SAND, RED_SAND, GRAVEL, SNOW_BLOCK, MUD, MOSS_BLOCK, ROOTED_DIRT, FARMLAND, DIRT_PATH]
   # Driving over this is a boost.
   boost-pad-block: MAGENTA_GLAZED_TERRACOTTA
+  # Driving over this throws the kart into the air (the prefab tracks put one
+  # at the lip of every ramp). Space in the air is a trick, and landing one is
+  # a boost. Put them anywhere on a track of your own.
+  jump-pad-block: LIME_GLAZED_TERRACOTTA
+  jump: {up: 7.5, forward: 3}
+  # A kart turns less on these: it slides wide of where it is pointed.
+  ice-blocks: [ICE, PACKED_ICE, BLUE_ICE]
   # The driving tricks (drift boosts, boost pads) on karts parked and driven
   # outside a race too, not only in one.
   tricks-outside-races: true
@@ -41,6 +48,8 @@ boost:
   nitro: {kick: 7, seconds: 1.6}
   # Holding W as the last light comes on (and not before the second).
   rocket-start: {kick: 6, seconds: 1.2}
+  # Landing a trick off a jump pad.
+  trick: {kick: 4, seconds: 0.8}
 
 # Hold space (the handbrake) while steering, at speed: the kart slides, and the
 # longer you hold the slide the bigger the boost when you let go. Sparks show
@@ -110,6 +119,7 @@ messages:
   finished: "{prefix} <#E8EAED><#FFD23F>{name}</#FFD23F> finished <#FFD23F>{place}</#FFD23F> in <#FFD23F>{time}</#FFD23F>."
   winner: "{prefix} <#FFD23F>{name}</#FFD23F> <#E8EAED>wins at <#FFD23F>{track}</#FFD23F> in <#FFD23F>{time}</#FFD23F>!"
   fastest-lap: "{prefix} <#E8EAED>Fastest lap: <#FFD23F>{name}</#FFD23F>, <#FFD23F>{time}</#FFD23F>."
+  record: "{prefix} <#FFD23F><bold>LAP RECORD!</bold></#FFD23F> <#E8EAED>{name} - <#FFD23F>{time}</#FFD23F>"
   timeout: "{prefix} <#9AA0A6>Time's up for everybody still out there.</#9AA0A6>"
   stopped: "{prefix} <#FF5C5C>The race was stopped.</#FF5C5C>"
   hit-banana: "{prefix} <#FFD23F>Banana!</#FFD23F>"
@@ -144,6 +154,11 @@ messages:
   hud-speed: "{speed} km/h"
   hud-finished-place: "You finished {place}"
   hud-dnf: "Did not finish"
+  # The line across the top of the screen when something happens to somebody.
+  feed-rocket: "{shooter} ▸ rocket ▸ {victim}"
+  feed-banana: "{victim} slipped on {owner}'s banana"
+  feed-finish: "{name} finished {place}"
+  feed-record: "{name} set a lap record: {time}"
   hud-you: "»"
 
   # Item names, under the item card.

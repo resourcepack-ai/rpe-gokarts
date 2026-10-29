@@ -4,7 +4,7 @@ plugins {
 }
 
 group = 'ai.resourcepack.addons'
-version = '0.1.0'
+version = '0.2.0'
 
 java {
     toolchain {
@@ -123,6 +123,9 @@ dependencies {
     implementation 'ai.resourcepack:common:0.7.0'
 
     testImplementation 'org.junit.jupiter:junit-jupiter:5.11.0'
+    // The prefabs are read with the server's Gson; the tests need their own.
+    testImplementation 'com.google.code.gson:gson:2.10.1'
+    testImplementation 'org.spigotmc:spigot-api:1.21.4-R0.1-SNAPSHOT'
 }
 
 test {

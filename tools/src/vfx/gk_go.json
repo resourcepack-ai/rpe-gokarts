@@ -1,0 +1,531 @@
+{
+ "v": 1,
+ "duration": 24,
+ "palettes": {
+  "go": {
+   "deep": "#08652a",
+   "mid": "#22de45",
+   "bright": "#a3ffac"
+  },
+  "white": {
+   "deep": "#629c7b",
+   "mid": "#d9ffe6",
+   "bright": "#ffffff"
+  }
+ },
+ "layers": [
+  {
+   "type": "sprite",
+   "name": "GO ground flash ring",
+   "start": 0,
+   "end": 17,
+   "palette": "go",
+   "sprite": "shock",
+   "pos": [
+    0,
+    0.07,
+    3
+   ],
+   "scale": [
+    [
+     0,
+     [
+      0.6,
+      1,
+      0.6
+     ]
+    ],
+    [
+     4,
+     [
+      7,
+      1,
+      7
+     ],
+     "out"
+    ],
+    [
+     11,
+     [
+      13,
+      1,
+      13
+     ],
+     "out"
+    ],
+    [
+     17,
+     [
+      15,
+      1,
+      15
+     ]
+    ]
+   ],
+   "fade": [
+    [
+     0,
+     0
+    ],
+    [
+     4,
+     0.12
+    ],
+    [
+     10,
+     0.45
+    ],
+    [
+     17,
+     1
+    ]
+   ]
+  },
+  {
+   "type": "sprite",
+   "name": "green ground afterglow",
+   "start": 0,
+   "end": 18,
+   "palette": "go",
+   "sprite": "glow",
+   "pos": [
+    0,
+    0.045,
+    3
+   ],
+   "rot": [
+    -90,
+    0,
+    0
+   ],
+   "scale": [
+    [
+     0,
+     3
+    ],
+    [
+     3,
+     7,
+     "out"
+    ],
+    [
+     18,
+     9
+    ]
+   ],
+   "fade": [
+    [
+     0,
+     0.15
+    ],
+    [
+     4,
+     0.45
+    ],
+    [
+     18,
+     1
+    ]
+   ]
+  },
+  {
+   "type": "sprite",
+   "name": "soft start bloom",
+   "start": 0,
+   "end": 13,
+   "palette": "go",
+   "sprite": "glow",
+   "billboard": true,
+   "pos": [
+    0,
+    0.55,
+    3
+   ],
+   "scale": [
+    [
+     0,
+     5.5
+    ],
+    [
+     3,
+     6.5
+    ],
+    [
+     13,
+     2
+    ]
+   ],
+   "fade": [
+    [
+     0,
+     0.2
+    ],
+    [
+     4,
+     0.6
+    ],
+    [
+     13,
+     1
+    ]
+   ]
+  },
+  {
+   "type": "sprite",
+   "name": "white green kickoff flash",
+   "start": 0,
+   "end": 7,
+   "palette": "go",
+   "sprite": "flare",
+   "billboard": true,
+   "pos": [
+    0,
+    0.22,
+    3
+   ],
+   "scale": [
+    [
+     0,
+     4.2
+    ],
+    [
+     2,
+     5.5
+    ],
+    [
+     7,
+     0.3
+    ]
+   ],
+   "fade": [
+    [
+     0,
+     0
+    ],
+    [
+     7,
+     1
+    ]
+   ]
+  },
+  {
+   "type": "sprite",
+   "name": "bold rising green streaks",
+   "start": 0,
+   "end": 15,
+   "palette": "go",
+   "copies": {
+    "count": 11,
+    "scatter": [
+     3.8,
+     0.25,
+     0.65
+    ],
+    "jitter": 2,
+    "seed": 17
+   },
+   "sprite": "streak",
+   "pos": [
+    [
+     0,
+     [
+      0,
+      0.35,
+      3
+     ]
+    ],
+    [
+     5,
+     [
+      0,
+      1.9,
+      3
+     ],
+     "out"
+    ],
+    [
+     15,
+     [
+      0,
+      2.65,
+      3
+     ],
+     "out"
+    ]
+   ],
+   "scale": [
+    [
+     0,
+     [
+      0.22,
+      0.6,
+      0.22
+     ]
+    ],
+    [
+     3,
+     [
+      0.26,
+      1.65,
+      0.26
+     ]
+    ],
+    [
+     15,
+     [
+      0.08,
+      0.3,
+      0.08
+     ]
+    ]
+   ],
+   "fade": [
+    [
+     0,
+     0
+    ],
+    [
+     5,
+     0.15
+    ],
+    [
+     15,
+     1
+    ]
+   ]
+  },
+  {
+   "type": "sprite",
+   "name": "bright rising white streaks",
+   "start": 1,
+   "end": 14,
+   "palette": "white",
+   "copies": {
+    "count": 8,
+    "scatter": [
+     3.5,
+     0.2,
+     0.5
+    ],
+    "jitter": 2,
+    "seed": 39
+   },
+   "sprite": "streak",
+   "pos": [
+    [
+     0,
+     [
+      0,
+      0.3,
+      3
+     ]
+    ],
+    [
+     5,
+     [
+      0,
+      2.3,
+      3
+     ],
+     "out"
+    ],
+    [
+     13,
+     [
+      0,
+      3.1,
+      3
+     ],
+     "out"
+    ]
+   ],
+   "scale": [
+    [
+     0,
+     [
+      0.14,
+      0.5,
+      0.14
+     ]
+    ],
+    [
+     3,
+     [
+      0.18,
+      1.2,
+      0.18
+     ]
+    ],
+    [
+     13,
+     [
+      0.05,
+      0.2,
+      0.05
+     ]
+    ]
+   ],
+   "fade": [
+    [
+     0,
+     0
+    ],
+    [
+     4,
+     0.1
+    ],
+    [
+     13,
+     1
+    ]
+   ]
+  },
+  {
+   "type": "motes",
+   "name": "green upward sparkle jets",
+   "start": 0,
+   "end": 2,
+   "palette": "go",
+   "kind": "streak",
+   "burst": 18,
+   "at": [
+    0,
+    0.12,
+    3
+   ],
+   "shape": "box",
+   "size": [
+    3.4,
+    0,
+    0.5
+   ],
+   "dir": [
+    0,
+    1,
+    0
+   ],
+   "spread": 0.22,
+   "speed": [
+    0.19,
+    0.4
+   ],
+   "gravity": 0.023,
+   "drag": 0.94,
+   "scale": [
+    0.1,
+    0.18
+   ],
+   "length": 1,
+   "life": [
+    11,
+    19
+   ]
+  },
+  {
+   "type": "motes",
+   "name": "white upward sparkle jets",
+   "start": 1,
+   "end": 2,
+   "palette": "white",
+   "kind": "streak",
+   "burst": 10,
+   "at": [
+    0,
+    0.15,
+    3
+   ],
+   "shape": "box",
+   "size": [
+    3.2,
+    0,
+    0.45
+   ],
+   "dir": [
+    0,
+    1,
+    0
+   ],
+   "spread": 0.18,
+   "speed": [
+    0.2,
+    0.38
+   ],
+   "gravity": 0.02,
+   "drag": 0.94,
+   "scale": [
+    0.08,
+    0.13
+   ],
+   "length": 0.8,
+   "life": [
+    9,
+    16
+   ]
+  },
+  {
+   "type": "motes",
+   "name": "last green glitter",
+   "start": 1,
+   "end": 4,
+   "palette": "go",
+   "kind": "glow",
+   "burst": 12,
+   "rate": 1,
+   "at": [
+    0,
+    0.3,
+    3
+   ],
+   "shape": "box",
+   "size": [
+    3.1,
+    0.1,
+    0.5
+   ],
+   "dir": [
+    0,
+    1,
+    0
+   ],
+   "spread": 0.25,
+   "speed": [
+    0.08,
+    0.17
+   ],
+   "gravity": 0.002,
+   "drag": 0.92,
+   "scale": [
+    0.12,
+    0.22
+   ],
+   "life": [
+    12,
+    20
+   ]
+  }
+ ],
+ "sounds": [
+  {
+   "t": 0,
+   "sound": "entity.player.levelup",
+   "volume": 0.8,
+   "pitch": 1.8,
+   "at": [
+    0,
+    0,
+    3
+   ]
+  },
+  {
+   "t": 0,
+   "sound": "entity.firework_rocket.blast",
+   "volume": 0.45,
+   "pitch": 1.6,
+   "at": [
+    0,
+    0,
+    3
+   ]
+  }
+ ]
+}

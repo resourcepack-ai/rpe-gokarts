@@ -146,6 +146,7 @@ final class Items {
 
     private void smash(Box b) {
         race.content().sound(b.at, "smash", 1f, 1f, Sound.BLOCK_GLASS_BREAK);
+        race.content().vfx("gk_box_break", b.at, null);
         b.at.getWorld().spawnParticle(Particle.FIREWORK, b.at, 14, 0.3, 0.3, 0.3, 0.12);
         b.display.remove();
         b.display = null;
@@ -233,7 +234,7 @@ final class Items {
                 if (r.kart == null || r.finished) continue;
                 if (r == b.owner && tick - b.dropped < 25) continue;
                 if (!near(r.kart.location(), b.at, 1.1, 1.6)) continue;
-                spinOut(r);
+                spinOut(r, b.owner);
                 b.display.remove();
                 it.remove();
                 break;
@@ -241,13 +242,27 @@ final class Items {
         }
     }
 
-    private void spinOut(Racer r) {
+    private void spinOut(Racer r, Racer owner) {
         Vehicle v = r.kart;
         race.plugin.driving().stun(v, settings().bananaStunTicks);
         v.spin(ThreadLocalRandom.current().nextBoolean() ? 720 : -720);
         race.content().sound(v.location(), "spinout", 1f, 1f, Sound.ENTITY_ITEM_BREAK);
+        daze(r);
         Player p = r.player();
         if (p != null) Text.send(p, race.messages().component("hit-banana"));
+        race.feed(race.messages().plain("feed-banana", "victim", r.name, "owner", owner.name));
+    }
+
+    /** Stars round the driver's head and the driver reeling for a moment. */
+    private void daze(Racer r) {
+        Player p = r.player();
+        if (p == null || r.kart == null) return;
+        race.content().vfx("gk_dizzy", r.kart.location(), p);
+        String emote = "gokarts_" + r.colour.id() + "_dazed";
+        r.kart.dress(p, emote);
+        org.bukkit.Bukkit.getScheduler().runTaskLater(race.plugin, () -> {
+            if (r.kart != null && r.kart.isValid() && !r.finished) r.kart.undress(p);
+        }, 30L);
     }
 
     private void tickRockets() {
@@ -296,12 +311,15 @@ final class Items {
 
     private void blast(Location at, Racer hit, Racer owner) {
         at.getWorld().spawnParticle(Particle.EXPLOSION, at, 1);
+        race.content().vfx("gk_explosion", at, null);
         at.getWorld().spawnParticle(Particle.FLAME, at, 20, 0.4, 0.3, 0.4, 0.08);
         race.content().sound(at, "blast", 1f, 1f, Sound.ENTITY_GENERIC_EXPLODE);
         if (hit == null) return;
         Vehicle v = hit.kart;
         race.plugin.driving().stun(v, settings().rocketStunTicks);
         v.applyImpulse(new Vector(0, 6.5, 0), ThreadLocalRandom.current().nextBoolean() ? 540 : -540);
+        daze(hit);
+        race.feed(race.messages().plain("feed-rocket", "shooter", owner.name, "victim", hit.name));
         Player victim = hit.player();
         if (victim != null) Text.send(victim, race.messages().component("hit-rocket", "name", owner.name));
         Player shooter = owner.player();

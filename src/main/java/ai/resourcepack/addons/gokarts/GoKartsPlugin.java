@@ -11,6 +11,7 @@ import ai.resourcepack.addons.gokarts.race.RaceListener;
 import ai.resourcepack.addons.gokarts.race.RaceManager;
 import ai.resourcepack.addons.gokarts.race.Records;
 import ai.resourcepack.addons.gokarts.track.Track;
+import ai.resourcepack.addons.gokarts.track.Theme;
 import ai.resourcepack.addons.gokarts.track.TrackBuilder;
 import ai.resourcepack.addons.gokarts.track.TrackStore;
 import ai.resourcepack.addons.gokarts.track.TrackUndo;
@@ -170,7 +171,13 @@ public final class GoKartsPlugin extends JavaPlugin {
                 getLogger().warning("Track " + t.id() + " lives in its own world, " + t.worldName() + ", which is gone.");
                 continue;
             }
-            if (TrackBuilder.ownWorld(t.worldName()) == null) {
+            Theme theme = null;
+            try {
+                if (t.prefab() != null) theme = ai.resourcepack.addons.gokarts.track.Prefab.load(t.prefab()).theme;
+            } catch (java.io.IOException ignored) {
+                // A prefab this build no longer has: the world loads as it was saved either way.
+            }
+            if (TrackBuilder.ownWorld(t.worldName(), theme) == null) {
                 getLogger().warning("Could not load " + t.worldName() + ", the world of track " + t.id() + ".");
             }
         }

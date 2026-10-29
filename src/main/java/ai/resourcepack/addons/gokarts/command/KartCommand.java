@@ -7,6 +7,8 @@ import ai.resourcepack.addons.gokarts.text.Text;
 import ai.resourcepack.addons.gokarts.track.Track;
 import ai.resourcepack.addons.gokarts.track.TrackBuilder;
 import ai.resourcepack.addons.gokarts.track.BlockUndo;
+import ai.resourcepack.addons.gokarts.track.Prefab;
+import ai.resourcepack.addons.gokarts.track.PrefabBuilder;
 import ai.resourcepack.addons.gokarts.track.TrackStore;
 import ai.resourcepack.addons.gokarts.track.TrackUndo;
 import org.bukkit.configuration.file.YamlConfiguration;
@@ -382,15 +384,18 @@ public final class KartCommand implements TabExecutor {
     }
 
     /**
-     * /kart track generate <id> [name]: in a new world of its own, the default,
-     * since it replaces nothing. /kart track generate <id> here confirm [name]:
-     * where you stand, facing the way you face, replacing what is there. From
-     * the console, /kart track generate <id> at <world> <x> <y> <z> <yaw> [name]
-     * builds in place too. Every one can be taken back with /kart track undo.
+     * /kart track generate <id> [prefab] [name]: one of the four prefab
+     * circuits ({@link Prefab#IDS}, Sunny Meadows unless named) in a new world
+     * of its own, the default, since it replaces nothing.
+     * /kart track generate <id> here confirm [prefab] [name]: where you stand,
+     * the start straight running the way you face, replacing what is there.
+     * From the console, /kart track generate <id> at <world> <x> <y> <z> <yaw>
+     * [prefab] [name] builds in place too. Every one can be taken back with
+     * /kart track undo.
      */
     private void generate(CommandSender s, String id, String[] a) {
-        Location where;
-        String name;
+        Location where = null;
+        int rest;
         boolean ownWorld = false;
         if (a.length >= 6 && a[0].equalsIgnoreCase("at")) {
             World w = TrackBuilder.world(a[1]);
@@ -399,50 +404,62 @@ public final class KartCommand implements TabExecutor {
                 return;
             }
             where = new Location(w, parse(a[2], 0), parse(a[3], 64), parse(a[4], 0), (float) parse(a[5], 0), 0);
-            name = joined(a, 6);
+            rest = 6;
         } else if (a.length >= 1 && a[0].equalsIgnoreCase("here")) {
             Player p = player(s);
             if (p == null) return;
             if (a.length < 2 || !a[1].equalsIgnoreCase("confirm")) {
-                int[] size = TrackBuilder.footprint();
-                Text.send(s, Text.msg("This builds the circuit, " + size[2] + " blocks a lap, starting under your feet and running "
-                        + "forward and to your right. It replaces every block in a box about " + size[0] + " by " + size[1]
-                        + ", from two below your feet to fourteen above (<#FFD23F>/kart track undo " + id
-                        + "</#FFD23F> puts them back, though not what chests and signs held). Run <#FFD23F>/kart track generate "
-                        + id + " here confirm [name]</#FFD23F> to build it. Without <#FFD23F>here</#FFD23F> it gets a world of its own."));
+                Text.send(s, Text.msg("This builds the circuit where you stand, its start straight running the way you face, "
+                        + "and replaces every block in a box about 220 by 220 blocks round it, from fifteen below your feet to twenty "
+                        + "above (<#FFD23F>/kart track undo " + id + "</#FFD23F> puts them back, though not what chests and signs "
+                        + "held). Run <#FFD23F>/kart track generate " + id + " here confirm [prefab] [name]</#FFD23F> to build it. "
+                        + "Without <#FFD23F>here</#FFD23F> it gets a world of its own."));
                 return;
             }
             where = p.getLocation();
-            name = joined(a, 2);
+            rest = 2;
         } else {
             // A world of its own. "confirm" is still taken, from before there was a choice.
-            int from = a.length >= 1 && a[0].equalsIgnoreCase("confirm") ? 1 : 0;
-            name = joined(a, from);
+            rest = a.length >= 1 && a[0].equalsIgnoreCase("confirm") ? 1 : 0;
+            ownWorld = true;
+        }
+        String prefabId = "meadow";
+        if (a.length > rest && Prefab.IDS.contains(a[rest].toLowerCase(Locale.ROOT))) prefabId = a[rest++].toLowerCase(Locale.ROOT);
+        String name = joined(a, rest);
+        Prefab prefab;
+        try {
+            prefab = Prefab.load(prefabId);
+        } catch (java.io.IOException err) {
+            Text.send(s, Text.error("Could not read the prefab " + prefabId + ": " + Text.MM.escapeTags(String.valueOf(err.getMessage()))));
+            return;
+        }
+        if (ownWorld) {
             String worldName = freeWorldName(id);
-            Text.send(s, Text.msg("Making a new world for it, <#FFD23F>" + worldName + "</#FFD23F>..."));
-            World w = TrackBuilder.ownWorld(worldName);
+            Text.send(s, Text.msg("Making a new " + prefab.theme.title.toLowerCase(Locale.ROOT) + " world for it, <#FFD23F>"
+                    + worldName + "</#FFD23F>..."));
+            World w = TrackBuilder.ownWorld(worldName, prefab.theme);
             if (w == null) {
                 Text.send(s, Text.error("The server would not make the world " + worldName + "."));
                 return;
             }
             where = TrackBuilder.ownWorldOrigin(w);
-            ownWorld = true;
         }
         Track existing = plugin.tracks().get(id);
         if (existing != null) plugin.races().shut(existing);
         YamlConfiguration before = TrackUndo.snapshot(existing);
         Track t = existing != null ? existing : plugin.tracks().create(id);
-        if (name != null) t.name(name);
+        t.name(name != null ? name : prefab.name);
         t.enabled(false);
         t.ownWorld(ownWorld);
         BlockUndo undo = ownWorld ? null : new BlockUndo(where.getWorld().getName());
         boolean own = ownWorld;
-        Text.send(s, Text.msg("Building " + id + "..."));
-        TrackBuilder.build(plugin, t, where, undo,
+        Location at = where;
+        Text.send(s, Text.msg("Building <#FFD23F>" + Text.MM.escapeTags(prefab.name) + "</#FFD23F> as " + id + "..."));
+        PrefabBuilder.build(plugin, t, prefab, at, own, undo,
                 percent -> Text.send(s, Text.msg("<#9AA0A6>" + percent + "%</#9AA0A6>")),
                 () -> {
                     plugin.tracks().save();
-                    plugin.undo().remember(id, own, where.getWorld().getName(), before, undo);
+                    plugin.undo().remember(id, own, at.getWorld().getName(), before, undo);
                     Text.send(s, Text.msg("<#5BE37D>" + id + " is built and open.</#5BE37D> <#FFD23F>/kart join " + id
                             + "</#FFD23F>, then <#FFD23F>/kart start</#FFD23F>. <#9AA0A6>Changed your mind? /kart track undo "
                             + id + "</#9AA0A6>"));
@@ -564,7 +581,7 @@ public final class KartCommand implements TabExecutor {
         if (s.hasPermission(Perms.START)) lines.add("<#FFD23F>/kart start</#FFD23F> [track] <#9AA0A6>- start now, alone is fine</#9AA0A6>");
         if (s.hasPermission(Perms.STOP)) lines.add("<#FFD23F>/kart stop</#FFD23F> [track]");
         if (s.hasPermission(Perms.GIVE)) lines.add("<#FFD23F>/kart give</#FFD23F> [colour] [player] <#9AA0A6>- a kart to drive anywhere</#9AA0A6>");
-        if (s.hasPermission(Perms.TRACK_GENERATE)) lines.add("<#FFD23F>/kart track generate</#FFD23F> <id> [here confirm] [name] <#9AA0A6>- build a circuit, in a new world unless here</#9AA0A6>");
+        if (s.hasPermission(Perms.TRACK_GENERATE)) lines.add("<#FFD23F>/kart track generate</#FFD23F> <id> [here confirm] [meadow|desert|frost|neon] [name] <#9AA0A6>- build a circuit, in a new world unless here</#9AA0A6>");
         if (s.hasPermission(Perms.TRACK_UNDO)) lines.add("<#FFD23F>/kart track undo</#FFD23F> <id> confirm <#9AA0A6>- take the last generate back</#9AA0A6>");
         if (s.hasPermission(Perms.TRACK)) lines.add("<#FFD23F>/kart track</#FFD23F> list|create|setlobby|addgrid|addcheckpoint|addbox|laps|enable|disable|tp|name");
         if (s.hasPermission(Perms.RELOAD)) lines.add("<#FFD23F>/kart reload</#FFD23F>");
@@ -612,9 +629,13 @@ public final class KartCommand implements TabExecutor {
         } else if (args.length == 4 && args[0].equalsIgnoreCase("track") && args[1].equalsIgnoreCase("generate")) {
             out.add("here");
             out.add("at");
+            out.addAll(Prefab.IDS);
         } else if (args.length == 5 && args[0].equalsIgnoreCase("track") && args[1].equalsIgnoreCase("generate")
                 && args[3].equalsIgnoreCase("here")) {
             out.add("confirm");
+        } else if (args.length == 6 && args[0].equalsIgnoreCase("track") && args[1].equalsIgnoreCase("generate")
+                && args[3].equalsIgnoreCase("here")) {
+            out.addAll(Prefab.IDS);
         }
         String last = args.length == 0 ? "" : args[args.length - 1].toLowerCase(Locale.ROOT);
         out.removeIf(o -> !o.toLowerCase(Locale.ROOT).startsWith(last));

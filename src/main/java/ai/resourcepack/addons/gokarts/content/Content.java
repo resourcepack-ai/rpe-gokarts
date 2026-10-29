@@ -66,6 +66,25 @@ public final class Content {
         return engine.icons().character(id(path)).orElse(fallback);
     }
 
+    /**
+     * One of the content folder's VFX (Studio's recipes, vfx/*.json), at a
+     * place and facing its yaw, following {@code follow} when it is a player in
+     * a kart. Nothing at all where the server cannot play VFX (below 1.21.4).
+     */
+    public void vfx(String path, Location at, org.bukkit.entity.Player follow) {
+        try {
+            if (follow != null) {
+                engine.vfx().play(id(path), at, follow, ai.resourcepack.engine.api.VfxOptions.builder().follow(follow).build());
+            } else {
+                engine.vfx().play(id(path), at);
+            }
+        } catch (RuntimeException e) {
+            if (missing.add("vfx:" + path)) {
+                org.bukkit.Bukkit.getLogger().warning("[RPEGoKarts] Could not play the VFX " + NS + ":" + path + ": " + e.getMessage());
+            }
+        }
+    }
+
     public void sound(Location at, String path, float volume, float pitch, Sound fallback) {
         if (!engine.sounds().playAt(at, id(path), volume, pitch) && fallback != null) {
             at.getWorld().playSound(at, fallback, SoundCategory.PLAYERS, volume, pitch);

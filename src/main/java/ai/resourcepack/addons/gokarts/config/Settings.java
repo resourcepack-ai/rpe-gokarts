@@ -35,6 +35,11 @@ public final class Settings {
     public final double offroadSpeed;
     public final Set<Material> offroad;
     public final Material boostPad;
+    public final Material jumpPad;
+    public final Set<Material> ice;
+    /** A jump pad's throw: up and forward, blocks a second. */
+    public final double jumpUp, jumpForward;
+    public final Boost trickBoost;
     public final boolean tricksOutside;
 
     public final Boost padBoost;
@@ -78,10 +83,20 @@ public final class Settings {
         Material pad = Material.matchMaterial(c.getString("karts.boost-pad-block", "MAGENTA_GLAZED_TERRACOTTA"));
         boostPad = pad != null && pad.isBlock() ? pad : Material.MAGENTA_GLAZED_TERRACOTTA;
         tricksOutside = c.getBoolean("karts.tricks-outside-races", true);
+        Material jump = Material.matchMaterial(c.getString("karts.jump-pad-block", "LIME_GLAZED_TERRACOTTA"));
+        jumpPad = jump != null && jump.isBlock() ? jump : Material.LIME_GLAZED_TERRACOTTA;
+        ice = EnumSet.noneOf(Material.class);
+        for (String name : c.getStringList("karts.ice-blocks")) {
+            Material m = Material.matchMaterial(name);
+            if (m != null && m.isBlock()) ice.add(m);
+        }
+        jumpUp = clamp(c.getDouble("karts.jump.up", 7.5), 0, 30);
+        jumpForward = clamp(c.getDouble("karts.jump.forward", 3), 0, 30);
 
         padBoost = boost(c, "boost.pad", 5, 1.0);
         nitroBoost = boost(c, "boost.nitro", 7, 1.6);
         rocketStart = boost(c, "boost.rocket-start", 6, 1.2);
+        trickBoost = boost(c, "boost.trick", 4, 0.8);
 
         driftMinSpeed = clamp(c.getDouble("drift.min-speed", 6), 0, 60);
         List<DriftLevel> levels = new ArrayList<>();

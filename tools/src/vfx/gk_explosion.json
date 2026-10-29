@@ -1,0 +1,448 @@
+{
+ "v": 1,
+ "duration": 32,
+ "palettes": {
+  "flame": {
+   "deep": "#b52c05",
+   "mid": "#ff8508",
+   "bright": "#ffe631"
+  },
+  "smoke": {
+   "deep": "#101013",
+   "mid": "#252529",
+   "bright": "#454349"
+  }
+ },
+ "layers": [
+  {
+   "type": "sprite",
+   "name": "rocket impact flash",
+   "start": 0,
+   "end": 6,
+   "palette": "flame",
+   "sprite": "flare",
+   "billboard": true,
+   "pos": [
+    0,
+    0.9,
+    5
+   ],
+   "scale": [
+    [
+     0,
+     2
+    ],
+    [
+     1,
+     10,
+     "out"
+    ],
+    [
+     6,
+     1
+    ]
+   ],
+   "fade": [
+    [
+     0,
+     0
+    ],
+    [
+     6,
+     1
+    ]
+   ]
+  },
+  {
+   "type": "sprite",
+   "name": "round yellow fireball",
+   "start": 0,
+   "end": 19,
+   "palette": "flame",
+   "sprite": "glow",
+   "billboard": true,
+   "pos": [
+    [
+     0,
+     [
+      0,
+      1.1,
+      5
+     ]
+    ],
+    [
+     6,
+     [
+      0,
+      1.7,
+      5
+     ]
+    ],
+    [
+     19,
+     [
+      0,
+      2.3,
+      5
+     ]
+    ]
+   ],
+   "scale": [
+    [
+     0,
+     1.5
+    ],
+    [
+     4,
+     10,
+     "out"
+    ],
+    [
+     9,
+     10.5
+    ],
+    [
+     19,
+     4
+    ]
+   ],
+   "fade": [
+    [
+     0,
+     0
+    ],
+    [
+     5,
+     0.08
+    ],
+    [
+     9,
+     0.23
+    ],
+    [
+     14,
+     0.6
+    ],
+    [
+     19,
+     1
+    ]
+   ]
+  },
+  {
+   "type": "sprite",
+   "name": "rolling orange lobes",
+   "start": 1,
+   "end": 21,
+   "palette": "flame",
+   "copies": {
+    "count": 9,
+    "scatter": [
+     2.1,
+     0.9,
+     1.4
+    ],
+    "seed": 17
+   },
+   "sprite": "glow",
+   "billboard": true,
+   "pos": [
+    [
+     0,
+     [
+      0,
+      1.2,
+      5
+     ]
+    ],
+    [
+     5,
+     [
+      0,
+      1.7,
+      5
+     ]
+    ],
+    [
+     20,
+     [
+      0,
+      2.5,
+      5
+     ]
+    ]
+   ],
+   "scale": [
+    [
+     0,
+     0.6
+    ],
+    [
+     4,
+     5.2,
+     "back"
+    ],
+    [
+     10,
+     5.4
+    ],
+    [
+     20,
+     3.5
+    ]
+   ],
+   "fade": [
+    [
+     0,
+     0.13
+    ],
+    [
+     5,
+     0.2
+    ],
+    [
+     10,
+     0.38
+    ],
+    [
+     15,
+     0.7
+    ],
+    [
+     20,
+     1
+    ]
+   ]
+  },
+  {
+   "type": "sprite",
+   "name": "billowing black smoke puffs",
+   "start": 10,
+   "end": 32,
+   "palette": "smoke",
+   "copies": {
+    "count": 10,
+    "scatter": [
+     2.3,
+     1,
+     1.4
+    ],
+    "seed": 17
+   },
+   "sprite": "glow",
+   "billboard": true,
+   "pos": [
+    [
+     0,
+     [
+      0,
+      1.8,
+      5.6
+     ]
+    ],
+    [
+     22,
+     [
+      0,
+      3.3,
+      5.8
+     ],
+     "out"
+    ]
+   ],
+   "scale": [
+    [
+     0,
+     2
+    ],
+    [
+     6,
+     5.2,
+     "out"
+    ],
+    [
+     14,
+     5.8
+    ],
+    [
+     22,
+     6.2
+    ]
+   ],
+   "fade": [
+    [
+     0,
+     0.7
+    ],
+    [
+     5,
+     0.46
+    ],
+    [
+     12,
+     0.55
+    ],
+    [
+     17,
+     0.73
+    ],
+    [
+     22,
+     1
+    ]
+   ]
+  },
+  {
+   "type": "sprite",
+   "name": "ground blast ring",
+   "start": 1,
+   "end": 20,
+   "palette": "flame",
+   "sprite": "shock",
+   "pos": [
+    0,
+    0.06,
+    5
+   ],
+   "scale": [
+    [
+     0,
+     [
+      1,
+      1,
+      1
+     ]
+    ],
+    [
+     10,
+     [
+      13,
+      1,
+      13
+     ],
+     "out"
+    ],
+    [
+     19,
+     [
+      18,
+      1,
+      18
+     ],
+     "out"
+    ]
+   ],
+   "fade": [
+    [
+     0,
+     0.05
+    ],
+    [
+     7,
+     0.35
+    ],
+    [
+     19,
+     1
+    ]
+   ]
+  },
+  {
+   "type": "motes",
+   "name": "flying hot embers",
+   "start": 1,
+   "end": 2,
+   "palette": "flame",
+   "kind": "streak",
+   "burst": 26,
+   "at": [
+    0,
+    1.1,
+    5
+   ],
+   "shape": "sphere",
+   "size": 1,
+   "dir": [
+    0,
+    1,
+    0
+   ],
+   "spread": 0.85,
+   "speed": [
+    0.4,
+    0.85
+   ],
+   "gravity": 0.035,
+   "drag": 0.94,
+   "scale": [
+    0.16,
+    0.25
+   ],
+   "length": 1.7,
+   "life": [
+    16,
+    27
+   ]
+  },
+  {
+   "type": "motes",
+   "name": "last glowing cinders",
+   "start": 5,
+   "end": 10,
+   "palette": "flame",
+   "kind": "glow",
+   "rate": 2,
+   "at": [
+    0,
+    1.5,
+    5
+   ],
+   "shape": "sphere",
+   "size": 2,
+   "dir": [
+    0,
+    1,
+    0
+   ],
+   "spread": 0.7,
+   "speed": [
+    0.12,
+    0.24
+   ],
+   "gravity": 0.012,
+   "drag": 0.96,
+   "scale": [
+    0.17,
+    0.3
+   ],
+   "life": [
+    13,
+    21
+   ]
+  }
+ ],
+ "sounds": [
+  {
+   "t": 0,
+   "sound": "entity.generic.explode",
+   "volume": 1.5,
+   "pitch": 0.85,
+   "at": [
+    0,
+    0.9,
+    5
+   ]
+  },
+  {
+   "t": 1,
+   "sound": "item.firecharge.use",
+   "volume": 0.9,
+   "pitch": 0.7,
+   "at": [
+    0,
+    0.9,
+    5
+   ]
+  }
+ ]
+}

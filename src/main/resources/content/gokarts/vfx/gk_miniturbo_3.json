@@ -1,0 +1,411 @@
+{
+ "v": 1,
+ "duration": 11,
+ "palettes": {
+  "turbo": {
+   "deep": "#5a1fb9",
+   "mid": "#b05cff",
+   "bright": "#f0c8ff"
+  }
+ },
+ "layers": [
+  {
+   "type": "sprite",
+   "name": "wheel ignition glints",
+   "start": 0,
+   "end": 5,
+   "palette": "turbo",
+   "copies": {
+    "count": 2,
+    "step": [
+     1.44,
+     0,
+     0
+    ]
+   },
+   "sprite": "flare",
+   "billboard": true,
+   "pos": [
+    -0.72,
+    0.3,
+    -0.85
+   ],
+   "scale": [
+    [
+     0,
+     0.3
+    ],
+    [
+     1,
+     1,
+     "out"
+    ],
+    [
+     5,
+     0.05
+    ]
+   ],
+   "fade": [
+    [
+     0,
+     0.15
+    ],
+    [
+     1,
+     0
+    ],
+    [
+     5,
+     1
+    ]
+   ]
+  },
+  {
+   "type": "sprite",
+   "name": "short flash rings",
+   "start": 1,
+   "end": 5,
+   "palette": "turbo",
+   "copies": {
+    "count": 2,
+    "step": [
+     1.44,
+     0,
+     0
+    ]
+   },
+   "sprite": "shock",
+   "pos": [
+    -0.72,
+    0.3,
+    -0.9
+   ],
+   "rot": [
+    65,
+    0,
+    0
+   ],
+   "scale": [
+    [
+     0,
+     0.18
+    ],
+    [
+     2,
+     0.7,
+     "out"
+    ],
+    [
+     4,
+     0.95
+    ]
+   ],
+   "fade": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     0.18
+    ],
+    [
+     4,
+     1
+    ]
+   ]
+  },
+  {
+   "type": "motes",
+   "name": "backward electric spray",
+   "start": 1,
+   "end": 2,
+   "palette": "turbo",
+   "copies": {
+    "count": 2,
+    "step": [
+     1.44,
+     0,
+     0
+    ],
+    "seed": 21
+   },
+   "kind": "streak",
+   "burst": 14,
+   "at": [
+    -0.72,
+    0.27,
+    -0.9
+   ],
+   "shape": "point",
+   "dir": [
+    0,
+    0.65,
+    -1
+   ],
+   "spread": 0.23,
+   "speed": [
+    0.19,
+    0.37
+   ],
+   "gravity": 0.012,
+   "drag": 0.92,
+   "scale": [
+    0.065,
+    0.105
+   ],
+   "length": 0.6,
+   "life": [
+    7,
+    9
+   ]
+  },
+  {
+   "type": "motes",
+   "name": "tiny blue embers",
+   "start": 1,
+   "end": 2,
+   "palette": "turbo",
+   "copies": {
+    "count": 2,
+    "step": [
+     1.44,
+     0,
+     0
+    ],
+    "seed": 32
+   },
+   "kind": "glow",
+   "burst": 4,
+   "at": [
+    -0.72,
+    0.3,
+    -0.9
+   ],
+   "shape": "point",
+   "dir": [
+    0,
+    0.65,
+    -1
+   ],
+   "spread": 0.3,
+   "speed": [
+    0.12,
+    0.23
+   ],
+   "gravity": 0.013,
+   "drag": 0.94,
+   "scale": [
+    0.06,
+    0.1
+   ],
+   "life": [
+    6,
+    9
+   ]
+  },
+  {
+   "type": "sprite",
+   "name": "left trailing star",
+   "start": 3,
+   "end": 10,
+   "palette": "turbo",
+   "sprite": "flare",
+   "billboard": true,
+   "pos": [
+    [
+     0,
+     [
+      -0.85,
+      0.6,
+      -1.4
+     ]
+    ],
+    [
+     7,
+     [
+      -1.02,
+      0.98,
+      -2.45
+     ]
+    ]
+   ],
+   "scale": [
+    [
+     0,
+     0.1
+    ],
+    [
+     1,
+     0.48
+    ],
+    [
+     3,
+     0.34
+    ],
+    [
+     7,
+     0.02
+    ]
+   ],
+   "fade": [
+    [
+     0,
+     0.3
+    ],
+    [
+     1,
+     0
+    ],
+    [
+     3,
+     0.15
+    ],
+    [
+     7,
+     1
+    ]
+   ]
+  },
+  {
+   "type": "sprite",
+   "name": "right trailing star",
+   "start": 3,
+   "end": 10,
+   "palette": "turbo",
+   "sprite": "flare",
+   "billboard": true,
+   "pos": [
+    [
+     0,
+     [
+      0.85,
+      0.65,
+      -1.55
+     ]
+    ],
+    [
+     7,
+     [
+      1,
+      1.02,
+      -2.5
+     ]
+    ]
+   ],
+   "scale": [
+    [
+     0,
+     0.1
+    ],
+    [
+     1,
+     0.44
+    ],
+    [
+     3,
+     0.3
+    ],
+    [
+     7,
+     0.02
+    ]
+   ],
+   "fade": [
+    [
+     0,
+     0.3
+    ],
+    [
+     1,
+     0
+    ],
+    [
+     3,
+     0.15
+    ],
+    [
+     7,
+     1
+    ]
+   ]
+  },
+  {
+   "type": "sprite",
+   "name": "secondary tiny stars",
+   "start": 2,
+   "end": 8,
+   "palette": "turbo",
+   "copies": {
+    "count": 2,
+    "step": [
+     1.44,
+     0.12,
+     0.08
+    ]
+   },
+   "sprite": "flare",
+   "billboard": true,
+   "pos": [
+    [
+     0,
+     [
+      -0.57,
+      0.48,
+      -1.1
+     ]
+    ],
+    [
+     6,
+     [
+      -0.45,
+      0.8,
+      -1.95
+     ]
+    ]
+   ],
+   "scale": [
+    [
+     0,
+     0.05
+    ],
+    [
+     1,
+     0.3
+    ],
+    [
+     6,
+     0.02
+    ]
+   ],
+   "fade": [
+    [
+     0,
+     0.2
+    ],
+    [
+     1,
+     0
+    ],
+    [
+     6,
+     1
+    ]
+   ]
+  }
+ ],
+ "sounds": [
+  {
+   "t": 1,
+   "sound": "entity.firework_rocket.blast",
+   "volume": 0.35,
+   "pitch": 1.9
+  },
+  {
+   "t": 2,
+   "sound": "block.amethyst_block.hit",
+   "volume": 0.45,
+   "pitch": 1.8
+  }
+ ]
+}

@@ -13,91 +13,107 @@
   },
   "shapes": [
     {
-      "id": "standings",
-      "kind": "roundedBox",
-      "x": -58,
-      "y": -3,
-      "radius": 3,
-      "width": 52,
-      "height": 44,
-      "thickness": 2,
-      "sides": 6,
-      "rotation": 0,
-      "color": "#0d1117",
-      "alpha": 0.42,
-      "op": "union",
-      "smoothing": 0,
-      "feather": 1,
-      "pin": "right",
-      "stretch": false
-    },
-    {
       "id": "clock",
       "kind": "roundedBox",
-      "x": -36,
-      "y": 30,
-      "radius": 3,
-      "width": 32,
-      "height": 24,
+      "x": -40,
+      "y": 55,
+      "radius": 4,
+      "width": 36,
+      "height": 12,
       "thickness": 2,
       "sides": 6,
       "rotation": 0,
-      "color": "#0d1117",
-      "alpha": 0.42,
+      "color": "#0c1016",
+      "alpha": 0.55,
       "op": "union",
       "smoothing": 0,
       "feather": 1,
       "pin": "top-right",
+      "stretch": false
+    },
+    {
+      "id": "standings",
+      "kind": "roundedBox",
+      "x": -56,
+      "y": -2,
+      "radius": 4,
+      "width": 52,
+      "height": 46,
+      "thickness": 2,
+      "sides": 6,
+      "rotation": 0,
+      "color": "#0c1016",
+      "alpha": 0.45,
+      "op": "union",
+      "smoothing": 0,
+      "feather": 1,
+      "pin": "right",
       "stretch": false
     }
   ],
   "texts": [
     {
       "id": "item",
-      "x": 6,
-      "y": 18,
+      "x": 8,
+      "y": 8,
       "text": "{gk_item}",
       "color": "#ffffff",
       "pin": "top-left"
     },
     {
       "id": "item_name",
-      "x": 6,
-      "y": 44,
+      "x": 8,
+      "y": 60,
       "text": "{gk_item_name}",
       "color": "#e8eaed",
       "pin": "top-left"
     },
     {
+      "id": "map",
+      "x": 8,
+      "y": 72,
+      "text": "{gk_map}",
+      "color": "#ffffff",
+      "pin": "top-left"
+    },
+    {
       "id": "lap",
-      "x": -6,
-      "y": 14,
+      "x": -8,
+      "y": 8,
       "text": "{gk_lap}",
       "color": "#ffffff",
       "pin": "top-right"
     },
     {
       "id": "time",
-      "x": -6,
-      "y": 34,
+      "x": -10,
+      "y": 46,
       "text": "{gk_time}",
       "color": "#ffffff",
       "pin": "top-right"
     },
     {
       "id": "best",
-      "x": -6,
-      "y": 44,
+      "x": -10,
+      "y": 56,
       "text": "{gk_best}",
       "color": "#9aa0a6",
       "pin": "top-right"
     },
     {
+      "id": "feed",
+      "x": 0,
+      "y": 8,
+      "text": "{gk_feed}",
+      "color": "#ffffff",
+      "pin": "top"
+    },
+    {
       "id": "p1",
-      "x": -10,
-      "y": -38,
+      "x": -8,
+      "y": -40,
       "text": "{gk_p1}",
-      "color": "#e8eaed",
+      "color": "#ffffff",
       "pin": "right",
       "states": [
         {
@@ -109,10 +125,10 @@
     },
     {
       "id": "p2",
-      "x": -10,
-      "y": -28,
+      "x": -8,
+      "y": -29,
       "text": "{gk_p2}",
-      "color": "#e8eaed",
+      "color": "#ffffff",
       "pin": "right",
       "states": [
         {
@@ -124,10 +140,10 @@
     },
     {
       "id": "p3",
-      "x": -10,
+      "x": -8,
       "y": -18,
       "text": "{gk_p3}",
-      "color": "#e8eaed",
+      "color": "#ffffff",
       "pin": "right",
       "states": [
         {
@@ -139,10 +155,10 @@
     },
     {
       "id": "p4",
-      "x": -10,
-      "y": -8,
+      "x": -8,
+      "y": -7,
       "text": "{gk_p4}",
-      "color": "#e8eaed",
+      "color": "#ffffff",
       "pin": "right",
       "states": [
         {
@@ -154,10 +170,10 @@
     },
     {
       "id": "p5",
-      "x": -10,
-      "y": 2,
+      "x": -8,
+      "y": 4,
       "text": "{gk_p5}",
-      "color": "#e8eaed",
+      "color": "#ffffff",
       "pin": "right",
       "states": [
         {
@@ -169,10 +185,10 @@
     },
     {
       "id": "p6",
-      "x": -10,
-      "y": 12,
+      "x": -8,
+      "y": 15,
       "text": "{gk_p6}",
-      "color": "#e8eaed",
+      "color": "#ffffff",
       "pin": "right",
       "states": [
         {
@@ -184,10 +200,10 @@
     },
     {
       "id": "p7",
-      "x": -10,
-      "y": 22,
+      "x": -8,
+      "y": 26,
       "text": "{gk_p7}",
-      "color": "#e8eaed",
+      "color": "#ffffff",
       "pin": "right",
       "states": [
         {
@@ -199,10 +215,10 @@
     },
     {
       "id": "p8",
-      "x": -10,
-      "y": 32,
+      "x": -8,
+      "y": 37,
       "text": "{gk_p8}",
-      "color": "#e8eaed",
+      "color": "#ffffff",
       "pin": "right",
       "states": [
         {
@@ -213,17 +229,17 @@
       "state": "gk_p8_c"
     },
     {
-      "id": "speed",
-      "x": -8,
-      "y": -80,
-      "text": "{gk_speed}",
+      "id": "gauge",
+      "x": -14,
+      "y": -106,
+      "text": "{gk_gauge}",
       "color": "#ffffff",
       "pin": "bottom-right"
     },
     {
       "id": "pos",
       "x": -8,
-      "y": -36,
+      "y": -62,
       "text": "{gk_pos}",
       "color": "#ffffff",
       "pin": "bottom-right"
@@ -231,7 +247,7 @@
     {
       "id": "lights",
       "x": 0,
-      "y": -78,
+      "y": -76,
       "text": "{gk_lights}",
       "color": "#ffffff",
       "pin": "center"
@@ -247,42 +263,30 @@
     {
       "id": "center2",
       "x": 0,
-      "y": 14,
+      "y": 40,
       "text": "{gk_center2}",
       "color": "#ffffff",
       "pin": "center"
+    },
+    {
+      "id": "lines_l",
+      "x": 0,
+      "y": -116,
+      "text": "{gk_lines_l}",
+      "color": "#ffffff",
+      "pin": "left"
+    },
+    {
+      "id": "lines_r",
+      "x": 0,
+      "y": -116,
+      "text": "{gk_lines_r}",
+      "color": "#ffffff",
+      "pin": "right"
     }
   ],
   "heads": [],
   "images": [],
-  "bars": [
-    {
-      "id": "drift",
-      "x": -8,
-      "y": -72,
-      "width": 60,
-      "height": 4,
-      "value": "gk_drift",
-      "max": "100",
-      "shape": "solid",
-      "segments": 3,
-      "gap": 1,
-      "color": "#c86bff",
-      "stops": [
-        {
-          "at": 0.34,
-          "color": "#4fc3ff"
-        },
-        {
-          "at": 0.67,
-          "color": "#ff9d2e"
-        }
-      ],
-      "background": "#1b1f26",
-      "preview": 0.5,
-      "pin": "bottom-right",
-      "when": "{gk_drift} > 0"
-    }
-  ],
+  "bars": [],
   "triggers": []
 }

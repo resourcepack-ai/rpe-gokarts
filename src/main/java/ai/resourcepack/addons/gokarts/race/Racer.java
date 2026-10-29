@@ -48,11 +48,12 @@ final class Racer {
     /** Whether W was down when the second light came on: a stall at GO. */
     boolean jumped;
 
-    /** What the HUD's middle says, and for how many more ticks. */
-    String banner = "";
-    String bannerSheet = "white";
-    int bannerScale = 4;
+    /** The banner in the HUD's middle (a glyph id: banner_final, banner_finish...), and for how many more ticks. */
+    String banner;
     int bannerTicks;
+    /** For WRONG WAY: how far from the next gate, a second ago. */
+    double lastGap = Double.NaN;
+    int wrongTicks;
     String subline = "";
     int sublineTicks;
 
@@ -65,10 +66,8 @@ final class Racer {
         return Bukkit.getPlayer(id);
     }
 
-    void banner(String text, String sheet, int scale, int ticks) {
-        banner = text;
-        bannerSheet = sheet;
-        bannerScale = scale;
+    void banner(String glyph, int ticks) {
+        banner = glyph;
         bannerTicks = ticks;
     }
 
