@@ -28,9 +28,9 @@ is ordinary RP Engine content shipped inside the jar.
 2. Go Karts installs its content into `plugins/RPEngine/content/gokarts/` and
    reloads the engine once, so the resource pack the engine serves now carries
    it.
-3. As an op, stand somewhere open and flat, facing the way the start straight
-   should run, and run `/kart track generate main confirm`. The circuit is built
-   forward and to your right, in a few seconds.
+3. As an op, run `/kart track generate main`. It makes a new world for the
+   track (`gokarts_main`), builds the circuit there in a few seconds and takes
+   you to it.
 4. `/kart join`, then `/kart start`. Alone is fine.
 
 ## Racing
@@ -79,9 +79,24 @@ speed line above your hotbar all work anywhere.
 
 ## Tracks (staff)
 
-`/kart track generate <id> confirm [name]` builds a whole circuit, about 330
-blocks a lap. From the console: `/kart track generate <id> at <world> <x> <y>
-<z> <yaw> [name]`.
+`/kart track generate <id> [name]` builds a whole circuit, about 330 blocks a
+lap, **in a new world of its own** (`gokarts_<id>`: superflat, peaceful, always
+midday), so it replaces nothing. The plugin loads that world again every time
+the server starts. Generating the same track again makes a fresh world
+(`gokarts_<id>_2`...) and leaves the old one alone.
+
+`/kart track generate <id> here confirm [name]` builds it where you stand
+instead, starting under your feet and running forward and to your right,
+replacing every block in a box about 80 by 130 from two below your feet to
+fourteen above. From the console: `/kart track generate <id> at <world> <x>
+<y> <z> <yaw> [name]`.
+
+**`/kart track undo <id> confirm` takes the last generate back.** A track in its
+own world deletes that world; one built in place puts back every block it
+replaced (their type and states, not what a chest or a sign held). Either way
+the track goes back to what it was before, or is forgotten if it was new. One
+level: it undoes the last generate of that track, and survives a restart
+(`plugins/RPEGoKarts/undo/`).
 
 By hand, on a track you built yourself: `create`, `setlobby`, `addgrid` (once
 per grid slot, facing the way the karts should), `addcheckpoint [radius]` (the
@@ -122,7 +137,8 @@ each grants every node listed under it, and nothing checks them directly.
 | `gokarts.give.others` | op | `/kart give <colour> <player>` |
 | `gokarts.as` | op | `/kart as <player> ...`; what they run is checked against *their* permissions |
 | `gokarts.track` | op | Track setup |
-| `gokarts.track.generate` | op | `/kart track generate`, which replaces every block in a box about 80 by 130 |
+| `gokarts.track.generate` | op | `/kart track generate`, in a new world, or with `here` in place, replacing every block in a box about 80 by 130 |
+| `gokarts.track.undo` | op | `/kart track undo`, which deletes the world a generate made, or puts back the blocks it replaced |
 | `gokarts.track.delete` | op | `/kart track delete` |
 | `gokarts.bypass.commands` | op | Run any command during a race |
 

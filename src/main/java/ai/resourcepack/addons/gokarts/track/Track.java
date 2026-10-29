@@ -48,6 +48,8 @@ public final class Track {
     private final List<Location> grid = new ArrayList<>();
     private final List<Checkpoint> checkpoints = new ArrayList<>();
     private final List<Vector> boxes = new ArrayList<>();
+    /** Generated into a world of its own ({@link TrackBuilder#ownWorld}), which the plugin loads on start. */
+    private boolean ownWorld;
     /** Its own lap count, or 0 for config.yml's. */
     private int laps;
     /** Below this a kart has fallen off the circuit; NaN is 8 below the lowest gate. */
@@ -90,8 +92,21 @@ public final class Track {
         this.world = w.getName();
     }
 
+    /** The lobby, in the track's world as it is loaded now (a track's own world loads after tracks.yml is read). */
     public Location lobby() {
-        return lobby == null ? null : lobby.clone();
+        if (lobby == null) return null;
+        Location l = lobby.clone();
+        World w = world();
+        if (w != null) l.setWorld(w);
+        return l;
+    }
+
+    public boolean ownWorld() {
+        return ownWorld;
+    }
+
+    public void ownWorld(boolean own) {
+        this.ownWorld = own;
     }
 
     public void lobby(Location l) {
@@ -143,10 +158,11 @@ public final class Track {
 
     // ---- tracks.yml --------------------------------------------------------------
 
-    void save(ConfigurationSection s) {
+    public void save(ConfigurationSection s) {
         s.set("name", name);
         s.set("enabled", enabled);
         s.set("world", world);
+        s.set("own-world", ownWorld ? true : null);
         s.set("laps", laps == 0 ? null : laps);
         s.set("floor", Double.isNaN(floor) ? null : floor);
         s.set("lobby", lobby == null ? null : pos(lobby));
@@ -161,11 +177,12 @@ public final class Track {
         s.set("boxes", b);
     }
 
-    static Track load(String id, ConfigurationSection s) {
+    public static Track load(String id, ConfigurationSection s) {
         Track t = new Track(id);
         t.name = s.getString("name", id);
         t.enabled = s.getBoolean("enabled", false);
         t.world = s.getString("world");
+        t.ownWorld = s.getBoolean("own-world", false);
         t.laps = s.getInt("laps", 0);
         t.floor = s.isSet("floor") ? s.getDouble("floor") : Double.NaN;
         World w = t.world();

@@ -44,6 +44,8 @@ public final class Perms {
     public static final String TRACK = "gokarts.track";
     /** {@code /kart track generate}, which replaces every block in a large box. */
     public static final String TRACK_GENERATE = "gokarts.track.generate";
+    /** {@code /kart track undo}, which puts back what a generate replaced, or deletes the world it made. */
+    public static final String TRACK_UNDO = "gokarts.track.undo";
     /** {@code /kart track delete}, which also ends that track's race. */
     public static final String TRACK_DELETE = "gokarts.track.delete";
     /** Running any command during a race, not only the short list a racer may. */
@@ -53,5 +55,5 @@ public final class Perms {
     public static final List<String> PLAY = List.of(JOIN, COLOUR, RESULTS, RIDE);
     /** What {@code gokarts.admin} grants. */
     public static final List<String> ADMIN = List.of(START, STOP, RELOAD, GIVE, GIVE_OTHERS, AS, TRACK, TRACK_GENERATE,
-            TRACK_DELETE, BYPASS_COMMANDS);
+            TRACK_UNDO, TRACK_DELETE, BYPASS_COMMANDS);
 }

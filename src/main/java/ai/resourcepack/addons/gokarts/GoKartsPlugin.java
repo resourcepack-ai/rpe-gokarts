@@ -10,7 +10,10 @@ import ai.resourcepack.addons.gokarts.race.PlayerSnapshot;
 import ai.resourcepack.addons.gokarts.race.RaceListener;
 import ai.resourcepack.addons.gokarts.race.RaceManager;
 import ai.resourcepack.addons.gokarts.race.Records;
+import ai.resourcepack.addons.gokarts.track.Track;
+import ai.resourcepack.addons.gokarts.track.TrackBuilder;
 import ai.resourcepack.addons.gokarts.track.TrackStore;
+import ai.resourcepack.addons.gokarts.track.TrackUndo;
 import ai.resourcepack.addons.gokarts.ui.Results;
 import ai.resourcepack.engine.RPEnginePlugin;
 import ai.resourcepack.engine.api.AddonContent;
@@ -57,6 +60,7 @@ public final class GoKartsPlugin extends JavaPlugin {
     private Driving driving;
     private Results results;
     private Records records;
+    private TrackUndo undo;
     /** Who asked for which colour, kept for as long as the server runs. */
     private final Map<UUID, KartColour> colours = new HashMap<>();
     /** Ticks since enable: Spigot has no current-tick counter of its own. */
@@ -122,6 +126,8 @@ public final class GoKartsPlugin extends JavaPlugin {
         getDataFolder().mkdirs();
         tracks = new TrackStore(new File(getDataFolder(), "tracks.yml"), getLogger());
         tracks.load();
+        loadOwnWorlds();
+        undo = new TrackUndo(new File(getDataFolder(), "undo"), getLogger());
         records = new Records(new File(getDataFolder(), "records.yml"), getLogger());
         records.load();
         snapshots = new PlayerSnapshot(new File(getDataFolder(), "snapshots"), getLogger());
@@ -142,7 +148,7 @@ public final class GoKartsPlugin extends JavaPlugin {
             races.tick();
         }, 1L, 1L);
         int n = tracks.all().size();
-        banner.ok("Tracks", n == 0 ? "None yet. /kart track generate main confirm builds one"
+        banner.ok("Tracks", n == 0 ? "None yet. /kart track generate main builds one, in a world of its own"
                 : n + (n == 1 ? " track" : " tracks") + ". /kart join, then /kart start");
         banner.print();
     }
@@ -150,6 +156,24 @@ public final class GoKartsPlugin extends JavaPlugin {
     @Override
     public void onDisable() {
         if (races != null) races.stopAll();
+    }
+
+    /**
+     * A track generated into a world of its own needs that world loaded, and
+     * the server only loads the worlds it knows about by itself. Loading one
+     * Multiverse already loaded is nothing.
+     */
+    private void loadOwnWorlds() {
+        for (Track t : tracks.all()) {
+            if (!t.ownWorld() || t.worldName() == null || getServer().getWorld(t.worldName()) != null) continue;
+            if (TrackBuilder.worldFolder(t.worldName()) == null) {
+                getLogger().warning("Track " + t.id() + " lives in its own world, " + t.worldName() + ", which is gone.");
+                continue;
+            }
+            if (TrackBuilder.ownWorld(t.worldName()) == null) {
+                getLogger().warning("Could not load " + t.worldName() + ", the world of track " + t.id() + ".");
+            }
+        }
     }
 
     /** Takes down any item boxes, bananas or rockets a crash left in loaded worlds (they are never saved, but be sure). */
@@ -174,6 +198,7 @@ public final class GoKartsPlugin extends JavaPlugin {
         messages = new Messages(getConfig());
         if (!races.races().isEmpty()) return false;
         tracks.load();
+        loadOwnWorlds();
         records.load();
         return true;
     }
@@ -218,6 +243,10 @@ public final class GoKartsPlugin extends JavaPlugin {
 
     public Results results() {
         return results;
+    }
+
+    public TrackUndo undo() {
+        return undo;
     }
 
     public Records records() {

@@ -77,7 +77,7 @@ public final class TrackBuilder {
      * cleared first), telling {@code progress} as it goes and running
      * {@code done} when the last block is down.
      */
-    public static void build(Plugin plugin, Track track, Location where, Consumer<Integer> progress, Runnable done) {
+    public static void build(Plugin plugin, Track track, Location where, BlockUndo undo, Consumer<Integer> progress, Runnable done) {
         World w = where.getWorld();
         BlockFace facing = cardinal(where.getYaw());
         Frame f = new Frame(where.getBlockX() + 0.5, where.getBlockY(), where.getBlockZ() + 0.5, facing);
@@ -124,13 +124,13 @@ public final class TrackBuilder {
                 for (int n = 0; n < COLUMNS_PER_TICK; n++) {
                     if (x > fx1) {
                         cancel();
-                        finish(plugin, track, w, f, c, s0, boxRows);
+                        finish(plugin, track, w, f, c, s0, boxRows, undo);
                         done.run();
                         return;
                     }
                     double[] uv = f.local(x + 0.5, z + 0.5);
                     if (uv[0] >= bu0 && uv[0] <= bu1 && uv[1] >= bv0 && uv[1] <= bv1) {
-                        column(w, x, z, y0, uv[0], uv[1], c, s0, pads, f);
+                        column(undo, w, x, z, y0, uv[0], uv[1], c, s0, pads, f);
                     }
                     doneCount++;
                     if (++z > fz1) {
@@ -148,7 +148,7 @@ public final class TrackBuilder {
     }
 
     /** One column of the circuit: the floor, what stands on it, and air above. */
-    private static void column(World w, int x, int z, int y0, double u, double v, Circuit c, double s0,
+    private static void column(BlockUndo undo, World w, int x, int z, int y0, double u, double v, Circuit c, double s0,
                                List<Double> pads, Frame f) {
         Circuit.Near near = c.near(u, v);
         double d = near.distance();
@@ -187,11 +187,11 @@ public final class TrackBuilder {
             under = Material.DIRT;
             floor = Material.GRASS_BLOCK;
         }
-        set(w, x, y0 - 2, z, under, null);
-        set(w, x, y0 - 1, z, floor, floorData);
-        set(w, x, y0, z, base, null);
-        set(w, x, y0 + 1, z, top, null);
-        for (int y = y0 + 2; y <= y0 + CLEAR; y++) set(w, x, y, z, Material.AIR, null);
+        set(undo, w, x, y0 - 2, z, under, null);
+        set(undo, w, x, y0 - 1, z, floor, floorData);
+        set(undo, w, x, y0, z, base, null);
+        set(undo, w, x, y0 + 1, z, top, null);
+        for (int y = y0 + 2; y <= y0 + CLEAR; y++) set(undo, w, x, y, z, Material.AIR, null);
     }
 
     private static BlockData padFacing(Frame f, Circuit.Sample p) {
@@ -204,17 +204,21 @@ public final class TrackBuilder {
         return data;
     }
 
-    private static void set(World w, int x, int y, int z, Material m, BlockData data) {
+    /** Sets one block, remembering what was there first when the build can be undone ({@code undo} not null). */
+    private static void set(BlockUndo undo, World w, int x, int y, int z, Material m, BlockData data) {
         Block b = w.getBlockAt(x, y, z);
         if (data != null) {
+            if (undo != null) undo.record(b);
             b.setBlockData(data, false);
         } else if (b.getType() != m) {
+            if (undo != null) undo.record(b);
             b.setType(m, false);
         }
     }
 
     /** The gantry, the viewing box, and the track itself. */
-    private static void finish(Plugin plugin, Track track, World w, Frame f, Circuit c, double s0, List<Double> boxRows) {
+    private static void finish(Plugin plugin, Track track, World w, Frame f, Circuit c, double s0, List<Double> boxRows,
+                               BlockUndo undo) {
         int y0 = f.y;
         Circuit.Sample line = c.at(s0);
         // The gantry over the line: a white pillar beyond each wall and a chequered beam across.
@@ -224,10 +228,10 @@ public final class TrackBuilder {
             int bx = (int) Math.floor(xz[0]), bz = (int) Math.floor(xz[1]);
             boolean pillar = Math.abs(lat) > reach - 0.6;
             if (pillar) {
-                for (int y = y0 - 1; y <= y0 + 6; y++) set(w, bx, y, bz, Material.WHITE_CONCRETE, null);
+                for (int y = y0 - 1; y <= y0 + 6; y++) set(undo, w, bx, y, bz, Material.WHITE_CONCRETE, null);
             }
-            set(w, bx, y0 + 6, bz, ((bx + bz) & 1) == 0 ? Material.WHITE_CONCRETE : Material.BLACK_CONCRETE, null);
-            set(w, bx, y0 + 7, bz, ((bx + bz) & 1) == 0 ? Material.BLACK_CONCRETE : Material.WHITE_CONCRETE, null);
+            set(undo, w, bx, y0 + 6, bz, ((bx + bz) & 1) == 0 ? Material.WHITE_CONCRETE : Material.BLACK_CONCRETE, null);
+            set(undo, w, bx, y0 + 7, bz, ((bx + bz) & 1) == 0 ? Material.BLACK_CONCRETE : Material.WHITE_CONCRETE, null);
         }
 
         // The viewing box: a glass floor and a waist-high glass wall, high over the infield.
@@ -237,11 +241,11 @@ public final class TrackBuilder {
             for (int dv = -3; dv <= 3; dv++) {
                 double[] xz = f.world(lu + du, lv + dv);
                 int bx = (int) Math.floor(xz[0]), bz = (int) Math.floor(xz[1]);
-                set(w, bx, ly, bz, Material.LIGHT_BLUE_STAINED_GLASS, null);
+                set(undo, w, bx, ly, bz, Material.LIGHT_BLUE_STAINED_GLASS, null);
                 boolean rim = Math.abs(du) == 3 || Math.abs(dv) == 3;
-                set(w, bx, ly + 1, bz, rim ? Material.GLASS : Material.AIR, null);
-                set(w, bx, ly + 2, bz, Material.AIR, null);
-                set(w, bx, ly + 3, bz, Material.AIR, null);
+                set(undo, w, bx, ly + 1, bz, rim ? Material.GLASS : Material.AIR, null);
+                set(undo, w, bx, ly + 2, bz, Material.AIR, null);
+                set(undo, w, bx, ly + 3, bz, Material.AIR, null);
             }
         }
         double[] lxz = f.world(lu, lv);
@@ -281,6 +285,12 @@ public final class TrackBuilder {
                 double[] xz = f.world(p.u() + p.dv() * lat, p.v() - p.du() * lat);
                 track.boxes().add(new Vector(xz[0], y0 + 0.9, xz[1]));
             }
+        }
+        if (track.ownWorld()) {
+            for (org.bukkit.entity.LivingEntity e : w.getLivingEntities()) {
+                if (!(e instanceof org.bukkit.entity.Player)) e.remove();
+            }
+            w.setSpawnLocation(lobby);
         }
         track.enabled(true);
         plugin.getLogger().info("Generated track " + track.id() + ": " + Math.round(c.length()) + " blocks a lap, "
@@ -341,6 +351,64 @@ public final class TrackBuilder {
 
     static float yaw(double dx, double dz) {
         return (float) Math.toDegrees(Math.atan2(-dx, dz));
+    }
+
+    /** The name of the world a track is generated into when it gets one of its own. */
+    public static String worldName(String trackId) {
+        return "gokarts_" + trackId;
+    }
+
+    /**
+     * A track's own world, loaded or made: superflat, no structures, peaceful,
+     * always midday and dry, so the circuit is the only thing in it. Called
+     * again on every start for each track that has one, because the server
+     * only loads the worlds it knows about by itself.
+     */
+    public static World ownWorld(String name) {
+        World w = Bukkit.getWorld(name);
+        if (w != null) return w;
+        w = new org.bukkit.WorldCreator(name).type(org.bukkit.WorldType.FLAT).generateStructures(false).createWorld();
+        if (w == null) return null;
+        w.setDifficulty(org.bukkit.Difficulty.PEACEFUL);
+        w.setTime(6000);
+        w.setStorm(false);
+        w.setThundering(false);
+        rule(w, org.bukkit.GameRule.DO_DAYLIGHT_CYCLE, false);
+        rule(w, org.bukkit.GameRule.DO_WEATHER_CYCLE, false);
+        rule(w, org.bukkit.GameRule.DO_MOB_SPAWNING, false);
+        return w;
+    }
+
+    /** A game rule, if this server still has it under this name (several were renamed in 1.21.11). */
+    private static <T> void rule(World w, org.bukkit.GameRule<T> rule, T value) {
+        try {
+            w.setGameRule(rule, value);
+        } catch (Throwable renamed) {
+            // Not fatal: the world is still a fine place for a track.
+        }
+    }
+
+    /**
+     * Where a world's files are, loaded or not: the loaded world's own folder,
+     * or, for one that is not loaded, wherever this server keeps a world of
+     * that name - beside the main world on Spigot and older Paper, under the
+     * main world's {@code dimensions/minecraft/} on Paper 26 and newer. Null
+     * when there is none.
+     */
+    public static java.io.File worldFolder(String name) {
+        World loaded = Bukkit.getWorld(name);
+        if (loaded != null) return loaded.getWorldFolder();
+        java.io.File root = Bukkit.getWorldContainer();
+        java.io.File beside = new java.io.File(root, name);
+        if (beside.isDirectory()) return beside;
+        String main = Bukkit.getWorlds().isEmpty() ? "world" : Bukkit.getWorlds().get(0).getName();
+        java.io.File dimension = new java.io.File(root, main + "/dimensions/minecraft/" + name);
+        return dimension.isDirectory() ? dimension : null;
+    }
+
+    /** Where a track goes in its own world: on the surface at the origin, the straight running south. */
+    public static Location ownWorldOrigin(World w) {
+        return new Location(w, 0.5, w.getHighestBlockYAt(0, 0) + 1, 0.5, 0, 0);
     }
 
     /** Whether the server has a world loaded under this name, for the console form. */

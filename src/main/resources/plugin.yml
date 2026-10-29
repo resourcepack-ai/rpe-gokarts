@@ -53,6 +53,7 @@ permissions:
       gokarts.as: true
       gokarts.track: true
       gokarts.track.generate: true
+      gokarts.track.undo: true
       gokarts.track.delete: true
       gokarts.bypass.commands: true
   gokarts.start:
@@ -77,7 +78,10 @@ permissions:
     description: /kart track setup - list, create, setlobby, addgrid, cleargrid, addcheckpoint, clearcheckpoints, addbox, clearboxes, laps, enable, disable, tp, name.
     default: op
   gokarts.track.generate:
-    description: /kart track generate - build a whole circuit forward and to your right, replacing every block in a box about 80 by 130 blocks, from one below your feet to fourteen above.
+    description: /kart track generate - build a whole circuit in a new world of its own, or with "here" where you stand, forward and to your right, replacing every block in a box about 80 by 130 blocks from two below your feet to fourteen above.
+    default: op
+  gokarts.track.undo:
+    description: /kart track undo - take back the last generate of a track, putting back the blocks it replaced or deleting the world it made.
     default: op
   gokarts.track.delete:
     description: /kart track delete - remove a track, ending its race.

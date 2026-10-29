@@ -73,6 +73,11 @@ public final class TrackStore {
         return t;
     }
 
+    /** Puts a track in, replacing any with its id: an undo bringing back what a generate replaced. */
+    public void put(Track t) {
+        tracks.put(t.id(), t);
+    }
+
     public void delete(String id) {
         tracks.remove(normalise(id));
     }
