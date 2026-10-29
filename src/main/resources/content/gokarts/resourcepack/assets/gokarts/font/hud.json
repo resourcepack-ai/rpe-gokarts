@@ -96,6 +96,24 @@
    "chars": [
     ""
    ]
+  },
+  {
+   "type": "bitmap",
+   "file": "gokarts:font/rpe_shader_1.png",
+   "ascent": 7,
+   "height": 8,
+   "chars": [
+    ""
+   ]
+  },
+  {
+   "type": "bitmap",
+   "file": "gokarts:font/rpe_shader_2.png",
+   "ascent": 7,
+   "height": 8,
+   "chars": [
+    ""
+   ]
   }
  ]
 }
