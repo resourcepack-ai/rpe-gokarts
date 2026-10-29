@@ -1,0 +1,22 @@
+{
+ "providers": [
+  {
+   "type": "bitmap",
+   "file": "minecraft:font/dialog_gokarts_results_background.png",
+   "ascent": 7,
+   "height": 213,
+   "chars": [
+    ""
+   ]
+  },
+  {
+   "type": "bitmap",
+   "file": "minecraft:font/dialog_gokarts_results_tile_r0c1.png",
+   "ascent": 7,
+   "height": 213,
+   "chars": [
+    ""
+   ]
+  }
+ ]
+}

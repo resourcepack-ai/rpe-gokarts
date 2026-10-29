@@ -1,0 +1,101 @@
+{
+ "providers": [
+  {
+   "type": "bitmap",
+   "file": "gokarts:font/rpe_bar_64x4.png",
+   "ascent": 3,
+   "height": 4,
+   "chars": [
+    ""
+   ]
+  },
+  {
+   "type": "bitmap",
+   "file": "gokarts:font/rpe_bar_32x4.png",
+   "ascent": 3,
+   "height": 4,
+   "chars": [
+    ""
+   ]
+  },
+  {
+   "type": "bitmap",
+   "file": "gokarts:font/rpe_bar_16x4.png",
+   "ascent": 3,
+   "height": 4,
+   "chars": [
+    ""
+   ]
+  },
+  {
+   "type": "bitmap",
+   "file": "gokarts:font/rpe_bar_8x4.png",
+   "ascent": 3,
+   "height": 4,
+   "chars": [
+    ""
+   ]
+  },
+  {
+   "type": "bitmap",
+   "file": "gokarts:font/rpe_bar_4x4.png",
+   "ascent": 3,
+   "height": 4,
+   "chars": [
+    ""
+   ]
+  },
+  {
+   "type": "bitmap",
+   "file": "gokarts:font/rpe_bar_2x4.png",
+   "ascent": 3,
+   "height": 4,
+   "chars": [
+    ""
+   ]
+  },
+  {
+   "type": "bitmap",
+   "file": "gokarts:font/rpe_bar_1x4.png",
+   "ascent": 3,
+   "height": 4,
+   "chars": [
+    ""
+   ]
+  },
+  {
+   "type": "space",
+   "advances": {
+    "": 1,
+    "": -1,
+    "": 2,
+    "": -2,
+    "": 4,
+    "": -4,
+    "": 8,
+    "": -8,
+    "": 16,
+    "": -16,
+    "": 32,
+    "": -32,
+    "": 64,
+    "": -64,
+    "": 128,
+    "": -128,
+    "": 256,
+    "": -256,
+    "": 512,
+    "": -512
+   }
+  },
+  {
+   "type": "bitmap",
+   "file": "gokarts:font/rpe_shader_0.png",
+   "ascent": 7,
+   "height": 8,
+   "chars": [
+    ""
+   ]
+  }
+ ]
+}

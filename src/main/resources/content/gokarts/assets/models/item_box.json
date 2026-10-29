@@ -1,0 +1,165 @@
+{
+ "parent": "block/block",
+ "textures": {
+  "atlas": "gokarts:block/item_box",
+  "particle": "gokarts:block/item_box"
+ },
+ "elements": [
+  {
+   "from": [
+    2,
+    0,
+    2
+   ],
+   "to": [
+    14,
+    12,
+    14
+   ],
+   "faces": {
+    "north": {
+     "uv": [
+      0,
+      0,
+      6,
+      6
+     ],
+     "texture": "#atlas"
+    },
+    "south": {
+     "uv": [
+      0,
+      0,
+      6,
+      6
+     ],
+     "texture": "#atlas"
+    },
+    "east": {
+     "uv": [
+      6,
+      0,
+      12,
+      6
+     ],
+     "texture": "#atlas"
+    },
+    "west": {
+     "uv": [
+      6,
+      0,
+      12,
+      6
+     ],
+     "texture": "#atlas"
+    },
+    "up": {
+     "uv": [
+      0,
+      0,
+      6,
+      6
+     ],
+     "texture": "#atlas"
+    },
+    "down": {
+     "uv": [
+      0,
+      6,
+      6,
+      12
+     ],
+     "texture": "#atlas"
+    }
+   },
+   "name": "mystery_cube"
+  }
+ ],
+ "display": {
+  "gui": {
+   "rotation": [
+    30,
+    225,
+    0
+   ],
+   "translation": [
+    0,
+    0,
+    0
+   ],
+   "scale": [
+    0.625,
+    0.625,
+    0.625
+   ]
+  },
+  "ground": {
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "translation": [
+    0,
+    3,
+    0
+   ],
+   "scale": [
+    0.5,
+    0.5,
+    0.5
+   ]
+  },
+  "fixed": {
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "translation": [
+    0,
+    0,
+    0
+   ],
+   "scale": [
+    1,
+    1,
+    1
+   ]
+  },
+  "thirdperson_righthand": {
+   "rotation": [
+    75,
+    45,
+    0
+   ],
+   "translation": [
+    0,
+    2.5,
+    0
+   ],
+   "scale": [
+    0.375,
+    0.375,
+    0.375
+   ]
+  },
+  "firstperson_righthand": {
+   "rotation": [
+    0,
+    45,
+    0
+   ],
+   "translation": [
+    2,
+    2,
+    0
+   ],
+   "scale": [
+    0.5,
+    0.5,
+    0.5
+   ]
+  }
+ }
+}

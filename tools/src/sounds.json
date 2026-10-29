@@ -1,0 +1,18 @@
+{
+  "kart.beep": {
+    "replace": true,
+    "sounds": [
+      {
+        "name": "kart_beep"
+      }
+    ]
+  },
+  "kart.engine": {
+    "replace": true,
+    "sounds": [
+      {
+        "name": "kart_engine"
+      }
+    ]
+  }
+}

@@ -1,0 +1,87 @@
+name: RPEGoKarts
+main: ai.resourcepack.addons.gokarts.GoKartsPlugin
+version: ${version}
+api-version: '1.21'
+description: Go-kart racing for RP Engine - drift for a boost, grab item boxes, throw bananas, and race your friends round a circuit it builds for you.
+author: ResourcePack AI
+# Hard, not soft: every kart is an RP Engine vehicle, and the HUD, the results
+# screen, the item boxes and the sounds are RP Engine content. This plugin is
+# the race on top.
+depend: [RPEngine]
+softdepend: [Multiverse-Core]
+
+commands:
+  kart:
+    description: Go karts - join a race, leave it, pick a colour; staff start races and build tracks.
+    usage: /<command> [join|leave|colour|results|start|stop|give|track|reload|as]
+    aliases: [gokart, karts, gk]
+    # No command-level permission: every subcommand checks its own node below,
+    # and /kart leave needs none, so nobody can be stuck in a race.
+
+# One node per subcommand. gokarts.play and gokarts.admin are convenience
+# parents: they grant everything under them, and nothing checks them directly.
+permissions:
+  gokarts.play:
+    description: Everything a racer does - join, pick a colour, see the results, get into a kart. A parent; nothing checks it.
+    default: true
+    children:
+      gokarts.join: true
+      gokarts.colour: true
+      gokarts.results: true
+      gokarts.ride: true
+  gokarts.join:
+    description: /kart join - into a track's lobby.
+    default: true
+  gokarts.colour:
+    description: /kart colour - the kart you would like to drive in the next race.
+    default: true
+  gokarts.results:
+    description: /kart results - the last race's results screen.
+    default: true
+  gokarts.ride:
+    description: Get into a go kart at all, a parked one included (RP Engine checks it as the karts' permission).
+    default: true
+  gokarts.admin:
+    description: Every staff node - start, stop, reload, give, /kart as, tracks, the command bypass. A parent; nothing checks it.
+    default: op
+    children:
+      gokarts.start: true
+      gokarts.stop: true
+      gokarts.reload: true
+      gokarts.give: true
+      gokarts.give.others: true
+      gokarts.as: true
+      gokarts.track: true
+      gokarts.track.generate: true
+      gokarts.track.delete: true
+      gokarts.bypass.commands: true
+  gokarts.start:
+    description: /kart start [track] - start a race now (it joins you first if you are not in).
+    default: op
+  gokarts.stop:
+    description: /kart stop - end a race, or empty a lobby.
+    default: op
+  gokarts.reload:
+    description: /kart reload - re-read config.yml and tracks.yml.
+    default: op
+  gokarts.give:
+    description: /kart give [colour] - a kart of your own to park and drive anywhere.
+    default: op
+  gokarts.give.others:
+    description: /kart give <colour> <player> - a kart for somebody else.
+    default: op
+  gokarts.as:
+    description: /kart as <player> ... - run a subcommand as somebody else (for NPCs and console). Checked against THEIR permissions.
+    default: op
+  gokarts.track:
+    description: /kart track setup - list, create, setlobby, addgrid, cleargrid, addcheckpoint, clearcheckpoints, addbox, clearboxes, laps, enable, disable, tp, name.
+    default: op
+  gokarts.track.generate:
+    description: /kart track generate - build a whole circuit forward and to your right, replacing every block in a box about 80 by 130 blocks, from one below your feet to fourteen above.
+    default: op
+  gokarts.track.delete:
+    description: /kart track delete - remove a track, ending its race.
+    default: op
+  gokarts.bypass.commands:
+    description: Run any command during a race, not only the few a racer may (/kart, /msg, /r, /me, /list...).
+    default: op

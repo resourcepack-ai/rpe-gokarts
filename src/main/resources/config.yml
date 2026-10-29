@@ -1,0 +1,166 @@
+# Go Karts. /kart reload re-reads this file. Options a newer version adds are
+# written into it on start, with their defaults; nothing you set is touched.
+
+race:
+  # Laps a race is, unless the track sets its own (/kart track laps).
+  laps: 3
+  # With this many waiting, the lobby counts down and starts on its own. An op
+  # can always /kart start sooner, alone included.
+  min-players: 2
+  # How long the lobby counts down once enough are waiting, in seconds.
+  lobby-countdown: 20
+  # Once the winner is home, how long everybody else has to finish, in seconds.
+  finish-timeout: 30
+  # The longest a race may run before it is called, in seconds.
+  max-seconds: 600
+  # How long the results stay up before everybody is back in the lobby, in seconds.
+  results-seconds: 12
+  # A racer who has not passed a gate for this long is put back on the track
+  # at the last one they passed, in seconds. Q does it at once.
+  stuck-seconds: 12
+
+karts:
+  # How fast a kart goes flat out, in blocks a second. The vehicle's own
+  # `speed:` (vehicles/karts.yml) is the ceiling a boost may reach; this is
+  # the limit it is held to the rest of the time.
+  cruise-speed: 13
+  # On grass, sand, dirt and the like: what cutting a corner costs.
+  offroad-speed: 6
+  # What counts as off the road. Any block not in this list is road.
+  offroad-blocks: [GRASS_BLOCK, DIRT, COARSE_DIRT, PODZOL, MYCELIUM, SAND, RED_SAND, GRAVEL, SNOW_BLOCK, MUD, MOSS_BLOCK, ROOTED_DIRT, FARMLAND, DIRT_PATH]
+  # Driving over this is a boost.
+  boost-pad-block: MAGENTA_GLAZED_TERRACOTTA
+  # The driving tricks (drift boosts, boost pads) on karts parked and driven
+  # outside a race too, not only in one.
+  tricks-outside-races: true
+
+# Every boost: how hard it kicks (blocks a second added at once) and how long
+# the speed limit is lifted for (seconds).
+boost:
+  pad: {kick: 5, seconds: 1.0}
+  nitro: {kick: 7, seconds: 1.6}
+  # Holding W as the last light comes on (and not before the second).
+  rocket-start: {kick: 6, seconds: 1.2}
+
+# Hold space (the handbrake) while steering, at speed: the kart slides, and the
+# longer you hold the slide the bigger the boost when you let go. Sparks show
+# the level: blue, then orange, then purple.
+drift:
+  min-speed: 6
+  levels:
+    - {after: 0.8, kick: 3, seconds: 0.5}
+    - {after: 1.8, kick: 5, seconds: 0.9}
+    - {after: 3.0, kick: 7, seconds: 1.3}
+
+items:
+  enabled: true
+  # How long a smashed item box takes to come back, in seconds.
+  box-respawn: 3
+  # How long the roulette spins before you get your item, in seconds.
+  roulette: 1.5
+  # A banana's spin-out, and a rocket's hit, in seconds.
+  banana-stun: 1.2
+  rocket-stun: 1.8
+  # How fast a rocket flies, in blocks a second, and the longest it looks for its target.
+  rocket-speed: 34
+  rocket-seconds: 10
+  # How likely each item is, by place: the first list is for the leader, the
+  # last for whoever is last, and everybody between gets the list nearest
+  # their share of the field. Weights, not percentages.
+  odds:
+    - {banana: 6, nitro: 3, triple-nitro: 0, rocket: 1}
+    - {banana: 3, nitro: 4, triple-nitro: 1, rocket: 2}
+    - {banana: 2, nitro: 3, triple-nitro: 2, rocket: 3}
+    - {banana: 1, nitro: 2, triple-nitro: 3, rocket: 4}
+
+# Commands a racer may run during a race (staff with gokarts.bypass.commands
+# may run any). /kart is always allowed.
+allowed-commands: [msg, tell, w, r, reply, me, list]
+
+ui:
+  # The HUD and the results screen: RP Engine content ids. Point either at
+  # your own; a replacement has to print the same values (see the README).
+  hud: gokarts:hud
+  results: gokarts:results
+
+# Every word a player reads. MiniMessage. {prefix} is the prefix below.
+messages:
+  prefix: "<bold><gradient:#FF4655:#FFD23F:#5BE37D>GO KARTS</gradient></bold> <#5F6368>▏</#5F6368>"
+  joined: "{prefix} <#E8EAED>You're in the lobby for <#FFD23F>{track}</#FFD23F>. {hint}"
+  hint-start: "<#9AA0A6>Run <#FFD23F>/kart start</#FFD23F> whenever you like.</#9AA0A6>"
+  hint-wait: "<#9AA0A6>The race starts once {min} are waiting.</#9AA0A6>"
+  left: "{prefix} <#E8EAED>You left the race."
+  not-in: "{prefix} <#FF5C5C>You're not in a race."
+  already-in: "{prefix} <#FF5C5C>You're already in a race. <#9AA0A6>/kart leave</#9AA0A6> first."
+  no-track: "{prefix} <#FF5C5C>There's no track ready to race on. An op can build one with <#FFD23F>/kart track generate</#FFD23F>."
+  track-closed: "{prefix} <#FF5C5C>{track} is closed."
+  track-not-ready: "{prefix} <#FF5C5C>{track} isn't ready: it still needs {missing}."
+  race-running: "{prefix} <#FF5C5C>A race is already on at {track}. You'll be in the next one."
+  full: "{prefix} <#FF5C5C>{track} is full."
+  colour-set: "{prefix} <#E8EAED>You'll drive the <{hex}>{colour}</{hex}> kart if it's free."
+  colour-unknown: "{prefix} <#FF5C5C>No kart is {colour}. Try {list}."
+  lobby-count: "<#E8EAED>{track} <#5F6368>·</#5F6368> <#FFD23F>{n}</#FFD23F> waiting <#5F6368>·</#5F6368> starting in <#FFD23F>{seconds}</#FFD23F>"
+  lobby-wait: "<#E8EAED>{track} <#5F6368>·</#5F6368> <#FFD23F>{n}</#FFD23F> waiting <#5F6368>·</#5F6368> <#9AA0A6>{need}</#9AA0A6>"
+  lobby-need: "waiting for {more} more"
+  lobby-op: "/kart start when you're ready"
+  how-to: "{prefix} <#E8EAED><#FFD23F>W</#FFD23F>/<#FFD23F>S</#FFD23F> to drive, <#FFD23F>A</#FFD23F>/<#FFD23F>D</#FFD23F> to steer, hold <#FFD23F>Space</#FFD23F> in a corner to drift (let go for a boost), <#FFD23F>F</#FFD23F> or a click to use an item, <#FFD23F>Q</#FFD23F> if you're stuck."
+  rocket-start: "{prefix} <#5BE37D>Rocket start!</#5BE37D>"
+  stalled: "{prefix} <#FF5C5C>Too early - you stalled it.</#FF5C5C>"
+  respawned: "{prefix} <#9AA0A6>Back on the track.</#9AA0A6>"
+  finished: "{prefix} <#E8EAED><#FFD23F>{name}</#FFD23F> finished <#FFD23F>{place}</#FFD23F> in <#FFD23F>{time}</#FFD23F>."
+  winner: "{prefix} <#FFD23F>{name}</#FFD23F> <#E8EAED>wins at <#FFD23F>{track}</#FFD23F> in <#FFD23F>{time}</#FFD23F>!"
+  fastest-lap: "{prefix} <#E8EAED>Fastest lap: <#FFD23F>{name}</#FFD23F>, <#FFD23F>{time}</#FFD23F>."
+  timeout: "{prefix} <#9AA0A6>Time's up for everybody still out there.</#9AA0A6>"
+  stopped: "{prefix} <#FF5C5C>The race was stopped.</#FF5C5C>"
+  hit-banana: "{prefix} <#FFD23F>Banana!</#FFD23F>"
+  hit-rocket: "{prefix} <#FF5C5C>{name} got you with a rocket.</#FF5C5C>"
+  got-rocket: "{prefix} <#5BE37D>Your rocket got {name}.</#5BE37D>"
+  command-blocked: "{prefix} <#FF5C5C>You can't use that during a race. <#9AA0A6>/kart leave</#9AA0A6> to leave."
+  given: "{prefix} <#E8EAED>A <{hex}>{colour}</{hex}> kart. Right-click the ground to park it, then right-click it to get in."
+  given-other: "{prefix} <#E8EAED>Gave {player} a <{hex}>{colour}</{hex}> kart."
+  no-permission: "{prefix} <#FF5C5C>You can't do that."
+  player-only: "{prefix} <#FF5C5C>That's for players."
+  unknown-player: "{prefix} <#FF5C5C>Nobody called {player} is online."
+  reloaded: "{prefix} <#E8EAED>Reloaded config.yml{tracks}."
+  reloaded-tracks: " and tracks.yml"
+  reloaded-not-tracks: " (tracks.yml is in use by a race, and will be read after it)"
+
+  # A kart driven outside a race: the line above the hotbar.
+  free-speed: "<#E8EAED>{speed}</#E8EAED> <#9AA0A6>km/h</#9AA0A6>"
+  free-drift-1: "  <#4FC3FF>▮</#4FC3FF><#3A3F47>▮▮</#3A3F47>"
+  free-drift-2: "  <#FF9D2E>▮▮</#FF9D2E><#3A3F47>▮</#3A3F47>"
+  free-drift-3: "  <#C86BFF>▮▮▮</#C86BFF>"
+  free-boost: "  <#FFD23F><bold>BOOST</bold></#FFD23F>"
+
+  # The HUD's words. Only these letters can be drawn big: A-Z, 0-9, ! - ' / : . and spaces.
+  hud-go: "GO!"
+  hud-final-lap: "FINAL LAP"
+  hud-finish: "FINISH!"
+  hud-lap: "LAP"
+  hud-waiting: "Wait for the lights"
+  hud-wrong-way: "Missed a checkpoint - turn back"
+  hud-respawning: "Hold on..."
+  hud-best: "Best {time}"
+  hud-speed: "{speed} km/h"
+  hud-finished-place: "You finished {place}"
+  hud-dnf: "Did not finish"
+  hud-you: "»"
+
+  # Item names, under the item card.
+  item-none: ""
+  item-roulette: "..."
+  item-banana: "Banana - F to drop it"
+  item-nitro: "Nitro - F to boost"
+  item-triple-nitro: "Triple Nitro - {left} left"
+  item-rocket: "Rocket - F to fire"
+
+  # The results screen (dialogs/results.json).
+  results-title: "RACE RESULTS"
+  results-place: "#"
+  results-driver: "Driver"
+  results-time: "Time"
+  results-best: "Best lap"
+  results-dnf: "DNF"
+  results-laps: "{laps} laps"
+  results-record: "Lap record {time} - {name}"
+  results-close: "Close"

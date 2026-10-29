@@ -1,0 +1,5926 @@
+{
+ "parent": "block/block",
+ "textures": {
+  "atlas": "gokarts:block/kart_purple",
+  "particle": "gokarts:block/kart_purple"
+ },
+ "elements": [
+  {
+   "from": [
+    3,
+    2,
+    2.5
+   ],
+   "to": [
+    13,
+    3,
+    17.5
+   ],
+   "faces": {
+    "north": {
+     "uv": [
+      0,
+      10.5,
+      2.5,
+      10.75
+     ],
+     "texture": "#atlas"
+    },
+    "south": {
+     "uv": [
+      0,
+      10.5,
+      2.5,
+      10.75
+     ],
+     "texture": "#atlas"
+    },
+    "up": {
+     "uv": [
+      0.25,
+      0,
+      2.75,
+      3.75
+     ],
+     "texture": "#atlas"
+    },
+    "down": {
+     "uv": [
+      2.75,
+      0,
+      5.25,
+      3.75
+     ],
+     "texture": "#atlas"
+    }
+   },
+   "name": "floor_pan"
+  },
+  {
+   "from": [
+    13,
+    2,
+    -4.5
+   ],
+   "to": [
+    14,
+    3,
+    22.5
+   ],
+   "faces": {
+    "north": {
+     "uv": [
+      8,
+      10.5,
+      8.25,
+      10.75
+     ],
+     "texture": "#atlas"
+    },
+    "east": {
+     "uv": [
+      8.25,
+      9.5,
+      15,
+      9.75
+     ],
+     "texture": "#atlas"
+    },
+    "west": {
+     "uv": [
+      8.25,
+      9.5,
+      15,
+      9.75
+     ],
+     "texture": "#atlas"
+    },
+    "up": {
+     "uv": [
+      0,
+      0,
+      0.25,
+      6.75
+     ],
+     "texture": "#atlas"
+    },
+    "down": {
+     "uv": [
+      0,
+      0,
+      0.25,
+      6.75
+     ],
+     "texture": "#atlas"
+    }
+   },
+   "name": "right_main_tube"
+  },
+  {
+   "from": [
+    2,
+    2,
+    -4.5
+   ],
+   "to": [
+    3,
+    3,
+    22.5
+   ],
+   "faces": {
+    "north": {
+     "uv": [
+      8,
+      10.5,
+      8.25,
+      10.75
+     ],
+     "texture": "#atlas"
+    },
+    "east": {
+     "uv": [
+      8.25,
+      9.5,
+      15,
+      9.75
+     ],
+     "texture": "#atlas"
+    },
+    "west": {
+     "uv": [
+      8.25,
+      9.5,
+      15,
+      9.75
+     ],
+     "texture": "#atlas"
+    },
+    "up": {
+     "uv": [
+      0,
+      0,
+      0.25,
+      6.75
+     ],
+     "texture": "#atlas"
+    },
+    "down": {
+     "uv": [
+      0,
+      0,
+      0.25,
+      6.75
+     ],
+     "texture": "#atlas"
+    }
+   },
+   "name": "left_main_tube"
+  },
+  {
+   "from": [
+    3,
+    2,
+    -4.5
+   ],
+   "to": [
+    13,
+    3,
+    -3.5
+   ],
+   "faces": {
+    "north": {
+     "uv": [
+      0,
+      10.5,
+      2.5,
+      10.75
+     ],
+     "texture": "#atlas"
+    },
+    "south": {
+     "uv": [
+      0,
+      10.5,
+      2.5,
+      10.75
+     ],
+     "texture": "#atlas"
+    },
+    "up": {
+     "uv": [
+      0,
+      10.5,
+      2.5,
+      10.75
+     ],
+     "texture": "#atlas"
+    },
+    "down": {
+     "uv": [
+      0,
+      10.5,
+      2.5,
+      10.75
+     ],
+     "texture": "#atlas"
+    }
+   },
+   "name": "rear_crossmember"
+  },
+  {
+   "from": [
+    3,
+    2,
+    21.5
+   ],
+   "to": [
+    13,
+    3,
+    22.5
+   ],
+   "faces": {
+    "north": {
+     "uv": [
+      0,
+      10.5,
+      2.5,
+      10.75
+     ],
+     "texture": "#atlas"
+    },
+    "down": {
+     "uv": [
+      0,
+      10.5,
+      2.5,
+      10.75
+     ],
+     "texture": "#atlas"
+    }
+   },
+   "name": "front_crossmember"
+  },
+  {
+   "from": [
+    2,
+    2,
+    22.5
+   ],
+   "to": [
+    14,
+    3,
+    23.5
+   ],
+   "faces": {
+    "north": {
+     "uv": [
+      8,
+      10.25,
+      11,
+      10.5
+     ],
+     "texture": "#atlas"
+    },
+    "south": {
+     "uv": [
+      8,
+      10.25,
+      11,
+      10.5
+     ],
+     "texture": "#atlas"
+    },
+    "east": {
+     "uv": [
+      8,
+      10.5,
+      8.25,
+      10.75
+     ],
+     "texture": "#atlas"
+    },
+    "west": {
+     "uv": [
+      8,
+      10.5,
+      8.25,
+      10.75
+     ],
+     "texture": "#atlas"
+    },
+    "up": {
+     "uv": [
+      8,
+      10.25,
+      11,
+      10.5
+     ],
+     "texture": "#atlas"
+    },
+    "down": {
+     "uv": [
+      8,
+      10.25,
+      11,
+      10.5
+     ],
+     "texture": "#atlas"
+    }
+   },
+   "name": "front_bumper_tube"
+  },
+  {
+   "from": [
+    0,
+    2,
+    -7.5
+   ],
+   "to": [
+    16,
+    3,
+    -6.5
+   ],
+   "faces": {
+    "north": {
+     "uv": [
+      0,
+      10.25,
+      4,
+      10.5
+     ],
+     "texture": "#atlas"
+    },
+    "south": {
+     "uv": [
+      4,
+      10.25,
+      8,
+      10.5
+     ],
+     "texture": "#atlas"
+    },
+    "east": {
+     "uv": [
+      8,
+      10.5,
+      8.25,
+      10.75
+     ],
+     "texture": "#atlas"
+    },
+    "west": {
+     "uv": [
+      8,
+      10.5,
+      8.25,
+      10.75
+     ],
+     "texture": "#atlas"
+    },
+    "up": {
+     "uv": [
+      4,
+      10.25,
+      8,
+      10.5
+     ],
+     "texture": "#atlas"
+    },
+    "down": {
+     "uv": [
+      4,
+      10.25,
+      8,
+      10.5
+     ],
+     "texture": "#atlas"
+    }
+   },
+   "name": "rear_bumper_bar"
+  },
+  {
+   "from": [
+    12,
+    2,
+    -6.5
+   ],
+   "to": [
+    13,
+    3,
+    -4.5
+   ],
+   "faces": {
+    "east": {
+     "uv": [
+      7,
+      10.5,
+      7.5,
+      10.75
+     ],
+     "texture": "#atlas"
+    },
+    "west": {
+     "uv": [
+      7,
+      10.5,
+      7.5,
+      10.75
+     ],
+     "texture": "#atlas"
+    },
+    "up": {
+     "uv": [
+      7.75,
+      9.5,
+      8,
+      10
+     ],
+     "texture": "#atlas"
+    },
+    "down": {
+     "uv": [
+      7.75,
+      9.5,
+      8,
+      10
+     ],
+     "texture": "#atlas"
+    }
+   },
+   "name": "right_bumper_mount"
+  },
+  {
+   "from": [
+    3,
+    2,
+    -6.5
+   ],
+   "to": [
+    4,
+    3,
+    -4.5
+   ],
+   "faces": {
+    "east": {
+     "uv": [
+      7,
+      10.5,
+      7.5,
+      10.75
+     ],
+     "texture": "#atlas"
+    },
+    "west": {
+     "uv": [
+      7,
+      10.5,
+      7.5,
+      10.75
+     ],
+     "texture": "#atlas"
+    },
+    "up": {
+     "uv": [
+      7.75,
+      9.5,
+      8,
+      10
+     ],
+     "texture": "#atlas"
+    },
+    "down": {
+     "uv": [
+      7.75,
+      9.5,
+      8,
+      10
+     ],
+     "texture": "#atlas"
+    }
+   },
+   "name": "left_bumper_mount"
+  },
+  {
+   "from": [
+    15,
+    0,
+    -3
+   ],
+   "to": [
+    18,
+    8,
+    0
+   ],
+   "faces": {
+    "north": {
+     "uv": [
+      15.25,
+      0,
+      16,
+      2
+     ],
+     "texture": "#atlas"
+    },
+    "south": {
+     "uv": [
+      15.25,
+      0,
+      16,
+      2
+     ],
+     "texture": "#atlas"
+    },
+    "east": {
+     "uv": [
+      15.25,
+      0,
+      16,
+      2
+     ],
+     "texture": "#atlas"
+    },
+    "west": {
+     "uv": [
+      15.25,
+      0,
+      16,
+      2
+     ],
+     "texture": "#atlas"
+    },
+    "up": {
+     "uv": [
+      14.5,
+      8.75,
+      15.25,
+      9.5
+     ],
+     "texture": "#atlas"
+    },
+    "down": {
+     "uv": [
+      14.5,
+      8.75,
+      15.25,
+      9.5
+     ],
+     "texture": "#atlas"
+    }
+   },
+   "name": "rear_right_a"
+  },
+  {
+   "from": [
+    15.06,
+    2.5,
+    -5.5
+   ],
+   "to": [
+    17.94,
+    5.5,
+    2.5
+   ],
+   "faces": {
+    "north": {
+     "uv": [
+      14.5,
+      8.75,
+      15.25,
+      9.5
+     ],
+     "texture": "#atlas"
+    },
+    "south": {
+     "uv": [
+      14.5,
+      8.75,
+      15.25,
+      9.5
+     ],
+     "texture": "#atlas"
+    },
+    "east": {
+     "uv": [
+      7.5,
+      8.75,
+      9.5,
+      9.5
+     ],
+     "texture": "#atlas"
+    },
+    "west": {
+     "uv": [
+      7.5,
+      8.75,
+      9.5,
+      9.5
+     ],
+     "texture": "#atlas"
+    },
+    "up": {
+     "uv": [
+      15.25,
+      0,
+      16,
+      2
+     ],
+     "texture": "#atlas"
+    },
+    "down": {
+     "uv": [
+      15.25,
+      0,
+      16,
+      2
+     ],
+     "texture": "#atlas"
+    }
+   },
+   "name": "rear_right_b"
+  },
+  {
+   "from": [
+    14.94,
+    0,
+    -3
+   ],
+   "to": [
+    18.06,
+    8,
+    0
+   ],
+   "faces": {
+    "north": {
+     "uv": [
+      15.25,
+      0,
+      16,
+      2
+     ],
+     "texture": "#atlas"
+    },
+    "south": {
+     "uv": [
+      15.25,
+      0,
+      16,
+      2
+     ],
+     "texture": "#atlas"
+    },
+    "east": {
+     "uv": [
+      15.25,
+      0,
+      16,
+      2
+     ],
+     "texture": "#atlas"
+    },
+    "west": {
+     "uv": [
+      15.25,
+      0,
+      16,
+      2
+     ],
+     "texture": "#atlas"
+    },
+    "up": {
+     "uv": [
+      14.5,
+      8.75,
+      15.25,
+      9.5
+     ],
+     "texture": "#atlas"
+    },
+    "down": {
+     "uv": [
+      14.5,
+      8.75,
+      15.25,
+      9.5
+     ],
+     "texture": "#atlas"
+    }
+   },
+   "name": "rear_right_c",
+   "rotation": {
+    "origin": [
+     16.5,
+     4,
+     -1.5
+    ],
+    "axis": "x",
+    "angle": 45
+   }
+  },
+  {
+   "from": [
+    15.12,
+    0,
+    -3
+   ],
+   "to": [
+    17.88,
+    8,
+    0
+   ],
+   "faces": {
+    "north": {
+     "uv": [
+      15.25,
+      0,
+      16,
+      2
+     ],
+     "texture": "#atlas"
+    },
+    "south": {
+     "uv": [
+      15.25,
+      0,
+      16,
+      2
+     ],
+     "texture": "#atlas"
+    },
+    "east": {
+     "uv": [
+      15.25,
+      0,
+      16,
+      2
+     ],
+     "texture": "#atlas"
+    },
+    "west": {
+     "uv": [
+      15.25,
+      0,
+      16,
+      2
+     ],
+     "texture": "#atlas"
+    },
+    "up": {
+     "uv": [
+      14.5,
+      8.75,
+      15.25,
+      9.5
+     ],
+     "texture": "#atlas"
+    },
+    "down": {
+     "uv": [
+      14.5,
+      8.75,
+      15.25,
+      9.5
+     ],
+     "texture": "#atlas"
+    }
+   },
+   "name": "rear_right_d",
+   "rotation": {
+    "origin": [
+     16.5,
+     4,
+     -1.5
+    ],
+    "axis": "x",
+    "angle": -45
+   }
+  },
+  {
+   "from": [
+    14,
+    2,
+    -3.5
+   ],
+   "to": [
+    15,
+    6,
+    0.5
+   ],
+   "faces": {
+    "north": {
+     "uv": [
+      12.75,
+      6.75,
+      13,
+      7.75
+     ],
+     "texture": "#atlas"
+    },
+    "south": {
+     "uv": [
+      12.75,
+      6.75,
+      13,
+      7.75
+     ],
+     "texture": "#atlas"
+    },
+    "east": {
+     "uv": [
+      7.75,
+      6.75,
+      8.75,
+      7.75
+     ],
+     "texture": "#atlas"
+    },
+    "west": {
+     "uv": [
+      8.75,
+      6.75,
+      9.75,
+      7.75
+     ],
+     "texture": "#atlas"
+    },
+    "up": {
+     "uv": [
+      12.75,
+      6.75,
+      13,
+      7.75
+     ],
+     "texture": "#atlas"
+    },
+    "down": {
+     "uv": [
+      12.75,
+      6.75,
+      13,
+      7.75
+     ],
+     "texture": "#atlas"
+    }
+   },
+   "name": "rear_right_hub_in"
+  },
+  {
+   "from": [
+    18,
+    2,
+    -3.5
+   ],
+   "to": [
+    19,
+    6,
+    0.5
+   ],
+   "faces": {
+    "north": {
+     "uv": [
+      12.75,
+      6.75,
+      13,
+      7.75
+     ],
+     "texture": "#atlas"
+    },
+    "south": {
+     "uv": [
+      12.75,
+      6.75,
+      13,
+      7.75
+     ],
+     "texture": "#atlas"
+    },
+    "east": {
+     "uv": [
+      9.75,
+      6.75,
+      10.75,
+      7.75
+     ],
+     "texture": "#atlas"
+    },
+    "west": {
+     "uv": [
+      7.75,
+      6.75,
+      8.75,
+      7.75
+     ],
+     "texture": "#atlas"
+    },
+    "up": {
+     "uv": [
+      12.75,
+      6.75,
+      13,
+      7.75
+     ],
+     "texture": "#atlas"
+    },
+    "down": {
+     "uv": [
+      12.75,
+      6.75,
+      13,
+      7.75
+     ],
+     "texture": "#atlas"
+    }
+   },
+   "name": "rear_right_hub_out"
+  },
+  {
+   "from": [
+    15,
+    0,
+    16.5
+   ],
+   "to": [
+    18,
+    8,
+    19.5
+   ],
+   "faces": {
+    "north": {
+     "uv": [
+      15.25,
+      0,
+      16,
+      2
+     ],
+     "texture": "#atlas"
+    },
+    "south": {
+     "uv": [
+      15.25,
+      0,
+      16,
+      2
+     ],
+     "texture": "#atlas"
+    },
+    "east": {
+     "uv": [
+      15.25,
+      0,
+      16,
+      2
+     ],
+     "texture": "#atlas"
+    },
+    "west": {
+     "uv": [
+      15.25,
+      0,
+      16,
+      2
+     ],
+     "texture": "#atlas"
+    },
+    "up": {
+     "uv": [
+      14.5,
+      8.75,
+      15.25,
+      9.5
+     ],
+     "texture": "#atlas"
+    },
+    "down": {
+     "uv": [
+      14.5,
+      8.75,
+      15.25,
+      9.5
+     ],
+     "texture": "#atlas"
+    }
+   },
+   "name": "front_right_a"
+  },
+  {
+   "from": [
+    15.06,
+    2.5,
+    14
+   ],
+   "to": [
+    17.94,
+    5.5,
+    22
+   ],
+   "faces": {
+    "north": {
+     "uv": [
+      14.5,
+      8.75,
+      15.25,
+      9.5
+     ],
+     "texture": "#atlas"
+    },
+    "south": {
+     "uv": [
+      14.5,
+      8.75,
+      15.25,
+      9.5
+     ],
+     "texture": "#atlas"
+    },
+    "east": {
+     "uv": [
+      7.5,
+      8.75,
+      9.5,
+      9.5
+     ],
+     "texture": "#atlas"
+    },
+    "west": {
+     "uv": [
+      7.5,
+      8.75,
+      9.5,
+      9.5
+     ],
+     "texture": "#atlas"
+    },
+    "up": {
+     "uv": [
+      15.25,
+      0,
+      16,
+      2
+     ],
+     "texture": "#atlas"
+    },
+    "down": {
+     "uv": [
+      15.25,
+      0,
+      16,
+      2
+     ],
+     "texture": "#atlas"
+    }
+   },
+   "name": "front_right_b"
+  },
+  {
+   "from": [
+    14.94,
+    0,
+    16.5
+   ],
+   "to": [
+    18.06,
+    8,
+    19.5
+   ],
+   "faces": {
+    "north": {
+     "uv": [
+      15.25,
+      0,
+      16,
+      2
+     ],
+     "texture": "#atlas"
+    },
+    "south": {
+     "uv": [
+      15.25,
+      0,
+      16,
+      2
+     ],
+     "texture": "#atlas"
+    },
+    "east": {
+     "uv": [
+      15.25,
+      0,
+      16,
+      2
+     ],
+     "texture": "#atlas"
+    },
+    "west": {
+     "uv": [
+      15.25,
+      0,
+      16,
+      2
+     ],
+     "texture": "#atlas"
+    },
+    "up": {
+     "uv": [
+      14.5,
+      8.75,
+      15.25,
+      9.5
+     ],
+     "texture": "#atlas"
+    },
+    "down": {
+     "uv": [
+      14.5,
+      8.75,
+      15.25,
+      9.5
+     ],
+     "texture": "#atlas"
+    }
+   },
+   "name": "front_right_c",
+   "rotation": {
+    "origin": [
+     16.5,
+     4,
+     18
+    ],
+    "axis": "x",
+    "angle": 45
+   }
+  },
+  {
+   "from": [
+    15.12,
+    0,
+    16.5
+   ],
+   "to": [
+    17.88,
+    8,
+    19.5
+   ],
+   "faces": {
+    "north": {
+     "uv": [
+      15.25,
+      0,
+      16,
+      2
+     ],
+     "texture": "#atlas"
+    },
+    "south": {
+     "uv": [
+      15.25,
+      0,
+      16,
+      2
+     ],
+     "texture": "#atlas"
+    },
+    "east": {
+     "uv": [
+      15.25,
+      0,
+      16,
+      2
+     ],
+     "texture": "#atlas"
+    },
+    "west": {
+     "uv": [
+      15.25,
+      0,
+      16,
+      2
+     ],
+     "texture": "#atlas"
+    },
+    "up": {
+     "uv": [
+      14.5,
+      8.75,
+      15.25,
+      9.5
+     ],
+     "texture": "#atlas"
+    },
+    "down": {
+     "uv": [
+      14.5,
+      8.75,
+      15.25,
+      9.5
+     ],
+     "texture": "#atlas"
+    }
+   },
+   "name": "front_right_d",
+   "rotation": {
+    "origin": [
+     16.5,
+     4,
+     18
+    ],
+    "axis": "x",
+    "angle": -45
+   }
+  },
+  {
+   "from": [
+    14,
+    2,
+    16
+   ],
+   "to": [
+    15,
+    6,
+    20
+   ],
+   "faces": {
+    "north": {
+     "uv": [
+      12.75,
+      6.75,
+      13,
+      7.75
+     ],
+     "texture": "#atlas"
+    },
+    "south": {
+     "uv": [
+      12.75,
+      6.75,
+      13,
+      7.75
+     ],
+     "texture": "#atlas"
+    },
+    "east": {
+     "uv": [
+      7.75,
+      6.75,
+      8.75,
+      7.75
+     ],
+     "texture": "#atlas"
+    },
+    "west": {
+     "uv": [
+      8.75,
+      6.75,
+      9.75,
+      7.75
+     ],
+     "texture": "#atlas"
+    },
+    "up": {
+     "uv": [
+      12.75,
+      6.75,
+      13,
+      7.75
+     ],
+     "texture": "#atlas"
+    },
+    "down": {
+     "uv": [
+      12.75,
+      6.75,
+      13,
+      7.75
+     ],
+     "texture": "#atlas"
+    }
+   },
+   "name": "front_right_hub_in"
+  },
+  {
+   "from": [
+    18,
+    2,
+    16
+   ],
+   "to": [
+    19,
+    6,
+    20
+   ],
+   "faces": {
+    "north": {
+     "uv": [
+      12.75,
+      6.75,
+      13,
+      7.75
+     ],
+     "texture": "#atlas"
+    },
+    "south": {
+     "uv": [
+      12.75,
+      6.75,
+      13,
+      7.75
+     ],
+     "texture": "#atlas"
+    },
+    "east": {
+     "uv": [
+      9.75,
+      6.75,
+      10.75,
+      7.75
+     ],
+     "texture": "#atlas"
+    },
+    "west": {
+     "uv": [
+      7.75,
+      6.75,
+      8.75,
+      7.75
+     ],
+     "texture": "#atlas"
+    },
+    "up": {
+     "uv": [
+      12.75,
+      6.75,
+      13,
+      7.75
+     ],
+     "texture": "#atlas"
+    },
+    "down": {
+     "uv": [
+      12.75,
+      6.75,
+      13,
+      7.75
+     ],
+     "texture": "#atlas"
+    }
+   },
+   "name": "front_right_hub_out"
+  },
+  {
+   "from": [
+    4,
+    3,
+    3.5
+   ],
+   "to": [
+    12,
+    5,
+    9.5
+   ],
+   "faces": {
+    "north": {
+     "uv": [
+      2.75,
+      9.5,
+      4.75,
+      10
+     ],
+     "texture": "#atlas"
+    },
+    "south": {
+     "uv": [
+      2.75,
+      9.5,
+      4.75,
+      10
+     ],
+     "texture": "#atlas"
+    },
+    "up": {
+     "uv": [
+      0.5,
+      6.75,
+      2.5,
+      8.25
+     ],
+     "texture": "#atlas"
+    }
+   },
+   "name": "seat_cushion"
+  },
+  {
+   "from": [
+    4,
+    5,
+    1.5
+   ],
+   "to": [
+    12,
+    13,
+    3.5
+   ],
+   "faces": {
+    "north": {
+     "uv": [
+      11.25,
+      0,
+      13.25,
+      2
+     ],
+     "texture": "#atlas"
+    },
+    "south": {
+     "uv": [
+      13.25,
+      0,
+      15.25,
+      2
+     ],
+     "texture": "#atlas"
+    },
+    "east": {
+     "uv": [
+      0,
+      6.75,
+      0.5,
+      8.75
+     ],
+     "texture": "#atlas"
+    },
+    "west": {
+     "uv": [
+      0,
+      6.75,
+      0.5,
+      8.75
+     ],
+     "texture": "#atlas"
+    },
+    "up": {
+     "uv": [
+      2.75,
+      9.5,
+      4.75,
+      10
+     ],
+     "texture": "#atlas"
+    },
+    "down": {
+     "uv": [
+      2.75,
+      9.5,
+      4.75,
+      10
+     ],
+     "texture": "#atlas"
+    }
+   },
+   "name": "seat_backrest",
+   "free_rotation": {
+    "origin": [
+     8,
+     5,
+     3.5
+    ],
+    "angles": [
+     -10,
+     0,
+     0
+    ]
+   }
+  },
+  {
+   "from": [
+    12,
+    3,
+    3.5
+   ],
+   "to": [
+    13,
+    7,
+    9.5
+   ],
+   "faces": {
+    "north": {
+     "uv": [
+      13,
+      6.75,
+      13.25,
+      7.75
+     ],
+     "texture": "#atlas"
+    },
+    "south": {
+     "uv": [
+      13,
+      6.75,
+      13.25,
+      7.75
+     ],
+     "texture": "#atlas"
+    },
+    "east": {
+     "uv": [
+      4.75,
+      6.75,
+      6.25,
+      7.75
+     ],
+     "texture": "#atlas"
+    },
+    "west": {
+     "uv": [
+      4.75,
+      6.75,
+      6.25,
+      7.75
+     ],
+     "texture": "#atlas"
+    },
+    "up": {
+     "uv": [
+      2.5,
+      6.75,
+      2.75,
+      8.25
+     ],
+     "texture": "#atlas"
+    }
+   },
+   "name": "seat_right_bolster"
+  },
+  {
+   "from": [
+    3,
+    3,
+    3.5
+   ],
+   "to": [
+    4,
+    7,
+    9.5
+   ],
+   "faces": {
+    "north": {
+     "uv": [
+      13,
+      6.75,
+      13.25,
+      7.75
+     ],
+     "texture": "#atlas"
+    },
+    "south": {
+     "uv": [
+      13,
+      6.75,
+      13.25,
+      7.75
+     ],
+     "texture": "#atlas"
+    },
+    "east": {
+     "uv": [
+      4.75,
+      6.75,
+      6.25,
+      7.75
+     ],
+     "texture": "#atlas"
+    },
+    "west": {
+     "uv": [
+      4.75,
+      6.75,
+      6.25,
+      7.75
+     ],
+     "texture": "#atlas"
+    },
+    "up": {
+     "uv": [
+      2.5,
+      6.75,
+      2.75,
+      8.25
+     ],
+     "texture": "#atlas"
+    }
+   },
+   "name": "seat_left_bolster"
+  },
+  {
+   "from": [
+    14,
+    2,
+    3.5
+   ],
+   "to": [
+    16,
+    5,
+    13.5
+   ],
+   "faces": {
+    "north": {
+     "uv": [
+      0.75,
+      9.5,
+      1.25,
+      10.25
+     ],
+     "texture": "#atlas"
+    },
+    "south": {
+     "uv": [
+      0.75,
+      9.5,
+      1.25,
+      10.25
+     ],
+     "texture": "#atlas"
+    },
+    "east": {
+     "uv": [
+      13.25,
+      6.75,
+      15.75,
+      7.5
+     ],
+     "texture": "#atlas"
+    },
+    "west": {
+     "uv": [
+      13.25,
+      6.75,
+      15.75,
+      7.5
+     ],
+     "texture": "#atlas"
+    },
+    "up": {
+     "uv": [
+      10.25,
+      0,
+      10.75,
+      2.5
+     ],
+     "texture": "#atlas"
+    },
+    "down": {
+     "uv": [
+      10.75,
+      0,
+      11.25,
+      2.5
+     ],
+     "texture": "#atlas"
+    }
+   },
+   "name": "right_side_pod"
+  },
+  {
+   "from": [
+    4,
+    4.5,
+    -3.5
+   ],
+   "to": [
+    12,
+    5.5,
+    0.5
+   ],
+   "faces": {
+    "north": {
+     "uv": [
+      2.5,
+      10.5,
+      4.5,
+      10.75
+     ],
+     "texture": "#atlas"
+    },
+    "south": {
+     "uv": [
+      2.5,
+      10.5,
+      4.5,
+      10.75
+     ],
+     "texture": "#atlas"
+    },
+    "east": {
+     "uv": [
+      4.5,
+      10.5,
+      5.5,
+      10.75
+     ],
+     "texture": "#atlas"
+    },
+    "west": {
+     "uv": [
+      4.5,
+      10.5,
+      5.5,
+      10.75
+     ],
+     "texture": "#atlas"
+    },
+    "up": {
+     "uv": [
+      2.75,
+      6.75,
+      4.75,
+      7.75
+     ],
+     "texture": "#atlas"
+    },
+    "down": {
+     "uv": [
+      2.75,
+      6.75,
+      4.75,
+      7.75
+     ],
+     "texture": "#atlas"
+    }
+   },
+   "name": "engine_cradle"
+  },
+  {
+   "from": [
+    5,
+    5.5,
+    -3.5
+   ],
+   "to": [
+    11,
+    8.5,
+    0.5
+   ],
+   "faces": {
+    "north": {
+     "uv": [
+      9.5,
+      8.75,
+      11,
+      9.5
+     ],
+     "texture": "#atlas"
+    },
+    "south": {
+     "uv": [
+      11,
+      8.75,
+      12.5,
+      9.5
+     ],
+     "texture": "#atlas"
+    },
+    "east": {
+     "uv": [
+      12.5,
+      8.75,
+      13.5,
+      9.5
+     ],
+     "texture": "#atlas"
+    },
+    "west": {
+     "uv": [
+      12.5,
+      8.75,
+      13.5,
+      9.5
+     ],
+     "texture": "#atlas"
+    },
+    "up": {
+     "uv": [
+      6.25,
+      6.75,
+      7.75,
+      7.75
+     ],
+     "texture": "#atlas"
+    }
+   },
+   "name": "engine_block"
+  },
+  {
+   "from": [
+    6,
+    8.5,
+    -2.5
+   ],
+   "to": [
+    10,
+    9.5,
+    0.5
+   ],
+   "faces": {
+    "north": {
+     "uv": [
+      4.5,
+      10.5,
+      5.5,
+      10.75
+     ],
+     "texture": "#atlas"
+    },
+    "south": {
+     "uv": [
+      4.5,
+      10.5,
+      5.5,
+      10.75
+     ],
+     "texture": "#atlas"
+    },
+    "east": {
+     "uv": [
+      5.5,
+      10.5,
+      6.25,
+      10.75
+     ],
+     "texture": "#atlas"
+    },
+    "west": {
+     "uv": [
+      5.5,
+      10.5,
+      6.25,
+      10.75
+     ],
+     "texture": "#atlas"
+    },
+    "up": {
+     "uv": [
+      13.5,
+      8.75,
+      14.5,
+      9.5
+     ],
+     "texture": "#atlas"
+    }
+   },
+   "name": "engine_cylinder_head"
+  },
+  {
+   "from": [
+    11,
+    5.5,
+    -2.5
+   ],
+   "to": [
+    13,
+    7.5,
+    0.5
+   ],
+   "faces": {
+    "north": {
+     "uv": [
+      6.25,
+      9.5,
+      6.75,
+      10
+     ],
+     "texture": "#atlas"
+    },
+    "south": {
+     "uv": [
+      6.25,
+      9.5,
+      6.75,
+      10
+     ],
+     "texture": "#atlas"
+    },
+    "east": {
+     "uv": [
+      4.75,
+      9.5,
+      5.5,
+      10
+     ],
+     "texture": "#atlas"
+    },
+    "up": {
+     "uv": [
+      1.25,
+      9.5,
+      1.75,
+      10.25
+     ],
+     "texture": "#atlas"
+    },
+    "down": {
+     "uv": [
+      1.25,
+      9.5,
+      1.75,
+      10.25
+     ],
+     "texture": "#atlas"
+    }
+   },
+   "name": "air_filter_box"
+  },
+  {
+   "from": [
+    2,
+    3.5,
+    -2
+   ],
+   "to": [
+    14,
+    4.5,
+    -1
+   ],
+   "faces": {
+    "north": {
+     "uv": [
+      11,
+      10.25,
+      14,
+      10.5
+     ],
+     "texture": "#atlas"
+    },
+    "south": {
+     "uv": [
+      11,
+      10.25,
+      14,
+      10.5
+     ],
+     "texture": "#atlas"
+    },
+    "up": {
+     "uv": [
+      11,
+      10.25,
+      14,
+      10.5
+     ],
+     "texture": "#atlas"
+    },
+    "down": {
+     "uv": [
+      11,
+      10.25,
+      14,
+      10.5
+     ],
+     "texture": "#atlas"
+    }
+   },
+   "name": "rear_axle"
+  },
+  {
+   "from": [
+    13,
+    3,
+    -3
+   ],
+   "to": [
+    14,
+    5,
+    -2
+   ],
+   "faces": {
+    "north": {
+     "uv": [
+      8,
+      9.5,
+      8.25,
+      10
+     ],
+     "texture": "#atlas"
+    },
+    "south": {
+     "uv": [
+      8,
+      9.5,
+      8.25,
+      10
+     ],
+     "texture": "#atlas"
+    },
+    "west": {
+     "uv": [
+      8,
+      9.5,
+      8.25,
+      10
+     ],
+     "texture": "#atlas"
+    },
+    "up": {
+     "uv": [
+      8.25,
+      10.5,
+      8.5,
+      10.75
+     ],
+     "texture": "#atlas"
+    }
+   },
+   "name": "right_rear_bearing"
+  },
+  {
+   "from": [
+    2,
+    3,
+    -3
+   ],
+   "to": [
+    3,
+    5,
+    -2
+   ],
+   "faces": {
+    "north": {
+     "uv": [
+      8,
+      9.5,
+      8.25,
+      10
+     ],
+     "texture": "#atlas"
+    },
+    "south": {
+     "uv": [
+      8,
+      9.5,
+      8.25,
+      10
+     ],
+     "texture": "#atlas"
+    },
+    "east": {
+     "uv": [
+      8,
+      9.5,
+      8.25,
+      10
+     ],
+     "texture": "#atlas"
+    },
+    "up": {
+     "uv": [
+      8.25,
+      10.5,
+      8.5,
+      10.75
+     ],
+     "texture": "#atlas"
+    }
+   },
+   "name": "left_rear_bearing"
+  },
+  {
+   "from": [
+    13,
+    3.5,
+    17.5
+   ],
+   "to": [
+    14,
+    4.5,
+    18.5
+   ],
+   "faces": {
+    "south": {
+     "uv": [
+      8.25,
+      10.5,
+      8.5,
+      10.75
+     ],
+     "texture": "#atlas"
+    },
+    "up": {
+     "uv": [
+      8.25,
+      10.5,
+      8.5,
+      10.75
+     ],
+     "texture": "#atlas"
+    },
+    "down": {
+     "uv": [
+      8.25,
+      10.5,
+      8.5,
+      10.75
+     ],
+     "texture": "#atlas"
+    }
+   },
+   "name": "front_right_stub_axle"
+  },
+  {
+   "from": [
+    13,
+    3,
+    16.5
+   ],
+   "to": [
+    14,
+    5,
+    17.5
+   ],
+   "faces": {
+    "north": {
+     "uv": [
+      7.75,
+      9.5,
+      8,
+      10
+     ],
+     "texture": "#atlas"
+    },
+    "south": {
+     "uv": [
+      7.75,
+      9.5,
+      8,
+      10
+     ],
+     "texture": "#atlas"
+    },
+    "up": {
+     "uv": [
+      8,
+      10.5,
+      8.25,
+      10.75
+     ],
+     "texture": "#atlas"
+    }
+   },
+   "name": "front_right_kingpin_mount"
+  },
+  {
+   "from": [
+    2,
+    3,
+    16.5
+   ],
+   "to": [
+    3,
+    5,
+    17.5
+   ],
+   "faces": {
+    "north": {
+     "uv": [
+      7.75,
+      9.5,
+      8,
+      10
+     ],
+     "texture": "#atlas"
+    },
+    "south": {
+     "uv": [
+      7.75,
+      9.5,
+      8,
+      10
+     ],
+     "texture": "#atlas"
+    },
+    "up": {
+     "uv": [
+      8,
+      10.5,
+      8.25,
+      10.75
+     ],
+     "texture": "#atlas"
+    }
+   },
+   "name": "front_left_kingpin_mount"
+  },
+  {
+   "from": [
+    7,
+    3,
+    12
+   ],
+   "to": [
+    9,
+    4,
+    13
+   ],
+   "faces": {
+    "north": {
+     "uv": [
+      7,
+      10.5,
+      7.5,
+      10.75
+     ],
+     "texture": "#atlas"
+    },
+    "south": {
+     "uv": [
+      7,
+      10.5,
+      7.5,
+      10.75
+     ],
+     "texture": "#atlas"
+    },
+    "east": {
+     "uv": [
+      8,
+      10.5,
+      8.25,
+      10.75
+     ],
+     "texture": "#atlas"
+    },
+    "west": {
+     "uv": [
+      8,
+      10.5,
+      8.25,
+      10.75
+     ],
+     "texture": "#atlas"
+    },
+    "up": {
+     "uv": [
+      7,
+      10.5,
+      7.5,
+      10.75
+     ],
+     "texture": "#atlas"
+    }
+   },
+   "name": "steering_column_foot"
+  },
+  {
+   "from": [
+    11,
+    6.5,
+    -3.5
+   ],
+   "to": [
+    12,
+    7.5,
+    -2.5
+   ],
+   "faces": {
+    "east": {
+     "uv": [
+      8.25,
+      10.5,
+      8.5,
+      10.75
+     ],
+     "texture": "#atlas"
+    },
+    "up": {
+     "uv": [
+      8.25,
+      10.5,
+      8.5,
+      10.75
+     ],
+     "texture": "#atlas"
+    },
+    "down": {
+     "uv": [
+      8.25,
+      10.5,
+      8.5,
+      10.75
+     ],
+     "texture": "#atlas"
+    }
+   },
+   "name": "exhaust_elbow"
+  },
+  {
+   "from": [
+    10.5,
+    6,
+    -6.5
+   ],
+   "to": [
+    12.5,
+    8,
+    -3.5
+   ],
+   "faces": {
+    "south": {
+     "uv": [
+      6.75,
+      9.5,
+      7.25,
+      10
+     ],
+     "texture": "#atlas"
+    },
+    "east": {
+     "uv": [
+      5.5,
+      9.5,
+      6.25,
+      10
+     ],
+     "texture": "#atlas"
+    },
+    "west": {
+     "uv": [
+      5.5,
+      9.5,
+      6.25,
+      10
+     ],
+     "texture": "#atlas"
+    },
+    "up": {
+     "uv": [
+      1.75,
+      9.5,
+      2.25,
+      10.25
+     ],
+     "texture": "#atlas"
+    },
+    "down": {
+     "uv": [
+      1.75,
+      9.5,
+      2.25,
+      10.25
+     ],
+     "texture": "#atlas"
+    }
+   },
+   "name": "exhaust_muffler"
+  },
+  {
+   "from": [
+    10,
+    5.5,
+    -7.5
+   ],
+   "to": [
+    13,
+    8.5,
+    -6.5
+   ],
+   "faces": {
+    "north": {
+     "uv": [
+      15.25,
+      8.75,
+      16,
+      9.5
+     ],
+     "texture": "#atlas"
+    },
+    "south": {
+     "uv": [
+      0,
+      9.5,
+      0.75,
+      10.25
+     ],
+     "texture": "#atlas"
+    },
+    "east": {
+     "uv": [
+      2.25,
+      9.5,
+      2.5,
+      10.25
+     ],
+     "texture": "#atlas"
+    },
+    "west": {
+     "uv": [
+      2.25,
+      9.5,
+      2.5,
+      10.25
+     ],
+     "texture": "#atlas"
+    },
+    "up": {
+     "uv": [
+      6.25,
+      10.5,
+      7,
+      10.75
+     ],
+     "texture": "#atlas"
+    },
+    "down": {
+     "uv": [
+      5.5,
+      10.5,
+      6.25,
+      10.75
+     ],
+     "texture": "#atlas"
+    }
+   },
+   "name": "exhaust_tip"
+  },
+  {
+   "from": [
+    -2,
+    0,
+    -3
+   ],
+   "to": [
+    1,
+    8,
+    0
+   ],
+   "faces": {
+    "north": {
+     "uv": [
+      15.25,
+      0,
+      16,
+      2
+     ],
+     "texture": "#atlas"
+    },
+    "south": {
+     "uv": [
+      15.25,
+      0,
+      16,
+      2
+     ],
+     "texture": "#atlas"
+    },
+    "east": {
+     "uv": [
+      15.25,
+      0,
+      16,
+      2
+     ],
+     "texture": "#atlas"
+    },
+    "west": {
+     "uv": [
+      15.25,
+      0,
+      16,
+      2
+     ],
+     "texture": "#atlas"
+    },
+    "up": {
+     "uv": [
+      14.5,
+      8.75,
+      15.25,
+      9.5
+     ],
+     "texture": "#atlas"
+    },
+    "down": {
+     "uv": [
+      14.5,
+      8.75,
+      15.25,
+      9.5
+     ],
+     "texture": "#atlas"
+    }
+   },
+   "name": "rear_right_a_copy"
+  },
+  {
+   "from": [
+    -1.94,
+    2.5,
+    -5.5
+   ],
+   "to": [
+    0.94,
+    5.5,
+    2.5
+   ],
+   "faces": {
+    "north": {
+     "uv": [
+      14.5,
+      8.75,
+      15.25,
+      9.5
+     ],
+     "texture": "#atlas"
+    },
+    "south": {
+     "uv": [
+      14.5,
+      8.75,
+      15.25,
+      9.5
+     ],
+     "texture": "#atlas"
+    },
+    "east": {
+     "uv": [
+      7.5,
+      8.75,
+      9.5,
+      9.5
+     ],
+     "texture": "#atlas"
+    },
+    "west": {
+     "uv": [
+      7.5,
+      8.75,
+      9.5,
+      9.5
+     ],
+     "texture": "#atlas"
+    },
+    "up": {
+     "uv": [
+      15.25,
+      0,
+      16,
+      2
+     ],
+     "texture": "#atlas"
+    },
+    "down": {
+     "uv": [
+      15.25,
+      0,
+      16,
+      2
+     ],
+     "texture": "#atlas"
+    }
+   },
+   "name": "rear_right_b_copy"
+  },
+  {
+   "from": [
+    -2.06,
+    0,
+    -3
+   ],
+   "to": [
+    1.06,
+    8,
+    0
+   ],
+   "faces": {
+    "north": {
+     "uv": [
+      15.25,
+      0,
+      16,
+      2
+     ],
+     "texture": "#atlas"
+    },
+    "south": {
+     "uv": [
+      15.25,
+      0,
+      16,
+      2
+     ],
+     "texture": "#atlas"
+    },
+    "east": {
+     "uv": [
+      15.25,
+      0,
+      16,
+      2
+     ],
+     "texture": "#atlas"
+    },
+    "west": {
+     "uv": [
+      15.25,
+      0,
+      16,
+      2
+     ],
+     "texture": "#atlas"
+    },
+    "up": {
+     "uv": [
+      14.5,
+      8.75,
+      15.25,
+      9.5
+     ],
+     "texture": "#atlas"
+    },
+    "down": {
+     "uv": [
+      14.5,
+      8.75,
+      15.25,
+      9.5
+     ],
+     "texture": "#atlas"
+    }
+   },
+   "name": "rear_right_c_copy",
+   "rotation": {
+    "origin": [
+     -0.5,
+     4,
+     -1.5
+    ],
+    "axis": "x",
+    "angle": 45
+   }
+  },
+  {
+   "from": [
+    -1.88,
+    0,
+    -3
+   ],
+   "to": [
+    0.88,
+    8,
+    0
+   ],
+   "faces": {
+    "north": {
+     "uv": [
+      15.25,
+      0,
+      16,
+      2
+     ],
+     "texture": "#atlas"
+    },
+    "south": {
+     "uv": [
+      15.25,
+      0,
+      16,
+      2
+     ],
+     "texture": "#atlas"
+    },
+    "east": {
+     "uv": [
+      15.25,
+      0,
+      16,
+      2
+     ],
+     "texture": "#atlas"
+    },
+    "west": {
+     "uv": [
+      15.25,
+      0,
+      16,
+      2
+     ],
+     "texture": "#atlas"
+    },
+    "up": {
+     "uv": [
+      14.5,
+      8.75,
+      15.25,
+      9.5
+     ],
+     "texture": "#atlas"
+    },
+    "down": {
+     "uv": [
+      14.5,
+      8.75,
+      15.25,
+      9.5
+     ],
+     "texture": "#atlas"
+    }
+   },
+   "name": "rear_right_d_copy",
+   "rotation": {
+    "origin": [
+     -0.5,
+     4,
+     -1.5
+    ],
+    "axis": "x",
+    "angle": -45
+   }
+  },
+  {
+   "from": [
+    1,
+    2,
+    -3.5
+   ],
+   "to": [
+    2,
+    6,
+    0.5
+   ],
+   "faces": {
+    "north": {
+     "uv": [
+      12.75,
+      6.75,
+      13,
+      7.75
+     ],
+     "texture": "#atlas"
+    },
+    "south": {
+     "uv": [
+      12.75,
+      6.75,
+      13,
+      7.75
+     ],
+     "texture": "#atlas"
+    },
+    "east": {
+     "uv": [
+      10.75,
+      6.75,
+      11.75,
+      7.75
+     ],
+     "texture": "#atlas"
+    },
+    "west": {
+     "uv": [
+      7.75,
+      6.75,
+      8.75,
+      7.75
+     ],
+     "texture": "#atlas"
+    },
+    "up": {
+     "uv": [
+      12.75,
+      6.75,
+      13,
+      7.75
+     ],
+     "texture": "#atlas"
+    },
+    "down": {
+     "uv": [
+      12.75,
+      6.75,
+      13,
+      7.75
+     ],
+     "texture": "#atlas"
+    }
+   },
+   "name": "rear_right_hub_in_copy"
+  },
+  {
+   "from": [
+    -3,
+    2,
+    -3.5
+   ],
+   "to": [
+    -2,
+    6,
+    0.5
+   ],
+   "faces": {
+    "north": {
+     "uv": [
+      12.75,
+      6.75,
+      13,
+      7.75
+     ],
+     "texture": "#atlas"
+    },
+    "south": {
+     "uv": [
+      12.75,
+      6.75,
+      13,
+      7.75
+     ],
+     "texture": "#atlas"
+    },
+    "east": {
+     "uv": [
+      7.75,
+      6.75,
+      8.75,
+      7.75
+     ],
+     "texture": "#atlas"
+    },
+    "west": {
+     "uv": [
+      11.75,
+      6.75,
+      12.75,
+      7.75
+     ],
+     "texture": "#atlas"
+    },
+    "up": {
+     "uv": [
+      12.75,
+      6.75,
+      13,
+      7.75
+     ],
+     "texture": "#atlas"
+    },
+    "down": {
+     "uv": [
+      12.75,
+      6.75,
+      13,
+      7.75
+     ],
+     "texture": "#atlas"
+    }
+   },
+   "name": "rear_right_hub_out_copy"
+  },
+  {
+   "from": [
+    -2,
+    0,
+    16.5
+   ],
+   "to": [
+    1,
+    8,
+    19.5
+   ],
+   "faces": {
+    "north": {
+     "uv": [
+      15.25,
+      0,
+      16,
+      2
+     ],
+     "texture": "#atlas"
+    },
+    "south": {
+     "uv": [
+      15.25,
+      0,
+      16,
+      2
+     ],
+     "texture": "#atlas"
+    },
+    "east": {
+     "uv": [
+      15.25,
+      0,
+      16,
+      2
+     ],
+     "texture": "#atlas"
+    },
+    "west": {
+     "uv": [
+      15.25,
+      0,
+      16,
+      2
+     ],
+     "texture": "#atlas"
+    },
+    "up": {
+     "uv": [
+      14.5,
+      8.75,
+      15.25,
+      9.5
+     ],
+     "texture": "#atlas"
+    },
+    "down": {
+     "uv": [
+      14.5,
+      8.75,
+      15.25,
+      9.5
+     ],
+     "texture": "#atlas"
+    }
+   },
+   "name": "front_right_a_copy"
+  },
+  {
+   "from": [
+    -1.94,
+    2.5,
+    14
+   ],
+   "to": [
+    0.94,
+    5.5,
+    22
+   ],
+   "faces": {
+    "north": {
+     "uv": [
+      14.5,
+      8.75,
+      15.25,
+      9.5
+     ],
+     "texture": "#atlas"
+    },
+    "south": {
+     "uv": [
+      14.5,
+      8.75,
+      15.25,
+      9.5
+     ],
+     "texture": "#atlas"
+    },
+    "east": {
+     "uv": [
+      7.5,
+      8.75,
+      9.5,
+      9.5
+     ],
+     "texture": "#atlas"
+    },
+    "west": {
+     "uv": [
+      7.5,
+      8.75,
+      9.5,
+      9.5
+     ],
+     "texture": "#atlas"
+    },
+    "up": {
+     "uv": [
+      15.25,
+      0,
+      16,
+      2
+     ],
+     "texture": "#atlas"
+    },
+    "down": {
+     "uv": [
+      15.25,
+      0,
+      16,
+      2
+     ],
+     "texture": "#atlas"
+    }
+   },
+   "name": "front_right_b_copy"
+  },
+  {
+   "from": [
+    -2.06,
+    0,
+    16.5
+   ],
+   "to": [
+    1.06,
+    8,
+    19.5
+   ],
+   "faces": {
+    "north": {
+     "uv": [
+      15.25,
+      0,
+      16,
+      2
+     ],
+     "texture": "#atlas"
+    },
+    "south": {
+     "uv": [
+      15.25,
+      0,
+      16,
+      2
+     ],
+     "texture": "#atlas"
+    },
+    "east": {
+     "uv": [
+      15.25,
+      0,
+      16,
+      2
+     ],
+     "texture": "#atlas"
+    },
+    "west": {
+     "uv": [
+      15.25,
+      0,
+      16,
+      2
+     ],
+     "texture": "#atlas"
+    },
+    "up": {
+     "uv": [
+      14.5,
+      8.75,
+      15.25,
+      9.5
+     ],
+     "texture": "#atlas"
+    },
+    "down": {
+     "uv": [
+      14.5,
+      8.75,
+      15.25,
+      9.5
+     ],
+     "texture": "#atlas"
+    }
+   },
+   "name": "front_right_c_copy",
+   "rotation": {
+    "origin": [
+     -0.5,
+     4,
+     18
+    ],
+    "axis": "x",
+    "angle": 45
+   }
+  },
+  {
+   "from": [
+    -1.88,
+    0,
+    16.5
+   ],
+   "to": [
+    0.88,
+    8,
+    19.5
+   ],
+   "faces": {
+    "north": {
+     "uv": [
+      15.25,
+      0,
+      16,
+      2
+     ],
+     "texture": "#atlas"
+    },
+    "south": {
+     "uv": [
+      15.25,
+      0,
+      16,
+      2
+     ],
+     "texture": "#atlas"
+    },
+    "east": {
+     "uv": [
+      15.25,
+      0,
+      16,
+      2
+     ],
+     "texture": "#atlas"
+    },
+    "west": {
+     "uv": [
+      15.25,
+      0,
+      16,
+      2
+     ],
+     "texture": "#atlas"
+    },
+    "up": {
+     "uv": [
+      14.5,
+      8.75,
+      15.25,
+      9.5
+     ],
+     "texture": "#atlas"
+    },
+    "down": {
+     "uv": [
+      14.5,
+      8.75,
+      15.25,
+      9.5
+     ],
+     "texture": "#atlas"
+    }
+   },
+   "name": "front_right_d_copy",
+   "rotation": {
+    "origin": [
+     -0.5,
+     4,
+     18
+    ],
+    "axis": "x",
+    "angle": -45
+   }
+  },
+  {
+   "from": [
+    1,
+    2,
+    16
+   ],
+   "to": [
+    2,
+    6,
+    20
+   ],
+   "faces": {
+    "north": {
+     "uv": [
+      12.75,
+      6.75,
+      13,
+      7.75
+     ],
+     "texture": "#atlas"
+    },
+    "south": {
+     "uv": [
+      12.75,
+      6.75,
+      13,
+      7.75
+     ],
+     "texture": "#atlas"
+    },
+    "east": {
+     "uv": [
+      10.75,
+      6.75,
+      11.75,
+      7.75
+     ],
+     "texture": "#atlas"
+    },
+    "west": {
+     "uv": [
+      7.75,
+      6.75,
+      8.75,
+      7.75
+     ],
+     "texture": "#atlas"
+    },
+    "up": {
+     "uv": [
+      12.75,
+      6.75,
+      13,
+      7.75
+     ],
+     "texture": "#atlas"
+    },
+    "down": {
+     "uv": [
+      12.75,
+      6.75,
+      13,
+      7.75
+     ],
+     "texture": "#atlas"
+    }
+   },
+   "name": "front_right_hub_in_copy"
+  },
+  {
+   "from": [
+    -3,
+    2,
+    16
+   ],
+   "to": [
+    -2,
+    6,
+    20
+   ],
+   "faces": {
+    "north": {
+     "uv": [
+      12.75,
+      6.75,
+      13,
+      7.75
+     ],
+     "texture": "#atlas"
+    },
+    "south": {
+     "uv": [
+      12.75,
+      6.75,
+      13,
+      7.75
+     ],
+     "texture": "#atlas"
+    },
+    "east": {
+     "uv": [
+      7.75,
+      6.75,
+      8.75,
+      7.75
+     ],
+     "texture": "#atlas"
+    },
+    "west": {
+     "uv": [
+      11.75,
+      6.75,
+      12.75,
+      7.75
+     ],
+     "texture": "#atlas"
+    },
+    "up": {
+     "uv": [
+      12.75,
+      6.75,
+      13,
+      7.75
+     ],
+     "texture": "#atlas"
+    },
+    "down": {
+     "uv": [
+      12.75,
+      6.75,
+      13,
+      7.75
+     ],
+     "texture": "#atlas"
+    }
+   },
+   "name": "front_right_hub_out_copy"
+  },
+  {
+   "from": [
+    2,
+    3.5,
+    17.5
+   ],
+   "to": [
+    3,
+    4.5,
+    18.5
+   ],
+   "faces": {
+    "south": {
+     "uv": [
+      8.25,
+      10.5,
+      8.5,
+      10.75
+     ],
+     "texture": "#atlas"
+    },
+    "up": {
+     "uv": [
+      8.25,
+      10.5,
+      8.5,
+      10.75
+     ],
+     "texture": "#atlas"
+    },
+    "down": {
+     "uv": [
+      8.25,
+      10.5,
+      8.5,
+      10.75
+     ],
+     "texture": "#atlas"
+    }
+   },
+   "name": "front_right_stub_axle_copy"
+  },
+  {
+   "from": [
+    0,
+    2,
+    3.5
+   ],
+   "to": [
+    2,
+    5,
+    13.5
+   ],
+   "faces": {
+    "north": {
+     "uv": [
+      0.75,
+      9.5,
+      1.25,
+      10.25
+     ],
+     "texture": "#atlas"
+    },
+    "south": {
+     "uv": [
+      0.75,
+      9.5,
+      1.25,
+      10.25
+     ],
+     "texture": "#atlas"
+    },
+    "east": {
+     "uv": [
+      13.25,
+      6.75,
+      15.75,
+      7.5
+     ],
+     "texture": "#atlas"
+    },
+    "west": {
+     "uv": [
+      13.25,
+      6.75,
+      15.75,
+      7.5
+     ],
+     "texture": "#atlas"
+    },
+    "up": {
+     "uv": [
+      10.25,
+      0,
+      10.75,
+      2.5
+     ],
+     "texture": "#atlas"
+    },
+    "down": {
+     "uv": [
+      10.75,
+      0,
+      11.25,
+      2.5
+     ],
+     "texture": "#atlas"
+    }
+   },
+   "name": "left_side_pod"
+  },
+  {
+   "from": [
+    4,
+    3,
+    10
+   ],
+   "to": [
+    6,
+    4,
+    12
+   ],
+   "faces": {
+    "north": {
+     "uv": [
+      7.5,
+      10.5,
+      8,
+      10.75
+     ],
+     "texture": "#atlas"
+    },
+    "south": {
+     "uv": [
+      7.5,
+      10.5,
+      8,
+      10.75
+     ],
+     "texture": "#atlas"
+    },
+    "east": {
+     "uv": [
+      7.5,
+      10.5,
+      8,
+      10.75
+     ],
+     "texture": "#atlas"
+    },
+    "west": {
+     "uv": [
+      7.5,
+      10.5,
+      8,
+      10.75
+     ],
+     "texture": "#atlas"
+    },
+    "up": {
+     "uv": [
+      7.25,
+      9.5,
+      7.75,
+      10
+     ],
+     "texture": "#atlas"
+    }
+   },
+   "name": "left_pedal"
+  },
+  {
+   "from": [
+    10,
+    3,
+    10
+   ],
+   "to": [
+    12,
+    4,
+    12
+   ],
+   "faces": {
+    "north": {
+     "uv": [
+      7.5,
+      10.5,
+      8,
+      10.75
+     ],
+     "texture": "#atlas"
+    },
+    "south": {
+     "uv": [
+      7.5,
+      10.5,
+      8,
+      10.75
+     ],
+     "texture": "#atlas"
+    },
+    "east": {
+     "uv": [
+      7.5,
+      10.5,
+      8,
+      10.75
+     ],
+     "texture": "#atlas"
+    },
+    "west": {
+     "uv": [
+      7.5,
+      10.5,
+      8,
+      10.75
+     ],
+     "texture": "#atlas"
+    },
+    "up": {
+     "uv": [
+      7.25,
+      9.5,
+      7.75,
+      10
+     ],
+     "texture": "#atlas"
+    }
+   },
+   "name": "right_pedal"
+  },
+  {
+   "from": [
+    7.5,
+    4,
+    11.5
+   ],
+   "to": [
+    8.5,
+    7,
+    12.5
+   ],
+   "faces": {
+    "north": {
+     "uv": [
+      2.5,
+      9.5,
+      2.75,
+      10.25
+     ],
+     "texture": "#atlas"
+    },
+    "south": {
+     "uv": [
+      2.5,
+      9.5,
+      2.75,
+      10.25
+     ],
+     "texture": "#atlas"
+    },
+    "east": {
+     "uv": [
+      2.5,
+      9.5,
+      2.75,
+      10.25
+     ],
+     "texture": "#atlas"
+    },
+    "west": {
+     "uv": [
+      2.5,
+      9.5,
+      2.75,
+      10.25
+     ],
+     "texture": "#atlas"
+    },
+    "up": {
+     "uv": [
+      8.25,
+      10.5,
+      8.5,
+      10.75
+     ],
+     "texture": "#atlas"
+    },
+    "down": {
+     "uv": [
+      8.25,
+      10.5,
+      8.5,
+      10.75
+     ],
+     "texture": "#atlas"
+    }
+   },
+   "name": "steering_column",
+   "free_rotation": {
+    "origin": [
+     8,
+     5.5,
+     12
+    ],
+    "angles": [
+     -18.43,
+     0,
+     0
+    ]
+   },
+   "rotation": {
+    "origin": [
+     8,
+     5.5,
+     12
+    ],
+    "axis": "x",
+    "angle": -22.5
+   }
+  },
+  {
+   "from": [
+    3,
+    3,
+    13.5
+   ],
+   "to": [
+    13,
+    6,
+    23.5
+   ],
+   "faces": {
+    "north": {
+     "uv": [
+      0,
+      8.75,
+      2.5,
+      9.5
+     ],
+     "texture": "#atlas"
+    },
+    "south": {
+     "uv": [
+      2.5,
+      8.75,
+      5,
+      9.5
+     ],
+     "texture": "#atlas"
+    },
+    "east": {
+     "uv": [
+      5,
+      8.75,
+      7.5,
+      9.5
+     ],
+     "texture": "#atlas"
+    },
+    "west": {
+     "uv": [
+      5,
+      8.75,
+      7.5,
+      9.5
+     ],
+     "texture": "#atlas"
+    },
+    "up": {
+     "uv": [
+      5.25,
+      0,
+      7.75,
+      2.5
+     ],
+     "texture": "#atlas"
+    },
+    "down": {
+     "uv": [
+      7.75,
+      0,
+      10.25,
+      2.5
+     ],
+     "texture": "#atlas"
+    }
+   },
+   "name": "nose_fairing"
+  },
+  {
+   "from": [
+    7,
+    9.5,
+    11
+   ],
+   "to": [
+    9,
+    10.5,
+    12
+   ],
+   "faces": {
+    "north": {
+     "uv": [
+      7,
+      10.5,
+      7.5,
+      10.75
+     ],
+     "texture": "#atlas"
+    },
+    "south": {
+     "uv": [
+      7,
+      10.5,
+      7.5,
+      10.75
+     ],
+     "texture": "#atlas"
+    },
+    "east": {
+     "uv": [
+      8,
+      10.5,
+      8.25,
+      10.75
+     ],
+     "texture": "#atlas"
+    },
+    "west": {
+     "uv": [
+      8,
+      10.5,
+      8.25,
+      10.75
+     ],
+     "texture": "#atlas"
+    },
+    "up": {
+     "uv": [
+      7,
+      10.5,
+      7.5,
+      10.75
+     ],
+     "texture": "#atlas"
+    },
+    "down": {
+     "uv": [
+      7,
+      10.5,
+      7.5,
+      10.75
+     ],
+     "texture": "#atlas"
+    }
+   },
+   "name": "steering_wheel_top"
+  },
+  {
+   "from": [
+    7,
+    5.5,
+    11.06
+   ],
+   "to": [
+    9,
+    6.5,
+    11.94
+   ],
+   "faces": {
+    "north": {
+     "uv": [
+      7,
+      10.5,
+      7.5,
+      10.75
+     ],
+     "texture": "#atlas"
+    },
+    "south": {
+     "uv": [
+      7,
+      10.5,
+      7.5,
+      10.75
+     ],
+     "texture": "#atlas"
+    },
+    "east": {
+     "uv": [
+      8,
+      10.5,
+      8.25,
+      10.75
+     ],
+     "texture": "#atlas"
+    },
+    "west": {
+     "uv": [
+      8,
+      10.5,
+      8.25,
+      10.75
+     ],
+     "texture": "#atlas"
+    },
+    "up": {
+     "uv": [
+      7,
+      10.5,
+      7.5,
+      10.75
+     ],
+     "texture": "#atlas"
+    },
+    "down": {
+     "uv": [
+      7,
+      10.5,
+      7.5,
+      10.75
+     ],
+     "texture": "#atlas"
+    }
+   },
+   "name": "steering_wheel_bottom"
+  },
+  {
+   "from": [
+    5.5,
+    7,
+    10.94
+   ],
+   "to": [
+    6.5,
+    9,
+    12.06
+   ],
+   "faces": {
+    "north": {
+     "uv": [
+      7.75,
+      9.5,
+      8,
+      10
+     ],
+     "texture": "#atlas"
+    },
+    "south": {
+     "uv": [
+      7.75,
+      9.5,
+      8,
+      10
+     ],
+     "texture": "#atlas"
+    },
+    "east": {
+     "uv": [
+      7.75,
+      9.5,
+      8,
+      10
+     ],
+     "texture": "#atlas"
+    },
+    "west": {
+     "uv": [
+      7.75,
+      9.5,
+      8,
+      10
+     ],
+     "texture": "#atlas"
+    },
+    "up": {
+     "uv": [
+      8,
+      10.5,
+      8.25,
+      10.75
+     ],
+     "texture": "#atlas"
+    },
+    "down": {
+     "uv": [
+      8,
+      10.5,
+      8.25,
+      10.75
+     ],
+     "texture": "#atlas"
+    }
+   },
+   "name": "steering_wheel_left"
+  },
+  {
+   "from": [
+    9.5,
+    7,
+    11.12
+   ],
+   "to": [
+    10.5,
+    9,
+    11.88
+   ],
+   "faces": {
+    "north": {
+     "uv": [
+      7.75,
+      9.5,
+      8,
+      10
+     ],
+     "texture": "#atlas"
+    },
+    "south": {
+     "uv": [
+      7.75,
+      9.5,
+      8,
+      10
+     ],
+     "texture": "#atlas"
+    },
+    "east": {
+     "uv": [
+      7.75,
+      9.5,
+      8,
+      10
+     ],
+     "texture": "#atlas"
+    },
+    "west": {
+     "uv": [
+      7.75,
+      9.5,
+      8,
+      10
+     ],
+     "texture": "#atlas"
+    },
+    "up": {
+     "uv": [
+      8,
+      10.5,
+      8.25,
+      10.75
+     ],
+     "texture": "#atlas"
+    },
+    "down": {
+     "uv": [
+      8,
+      10.5,
+      8.25,
+      10.75
+     ],
+     "texture": "#atlas"
+    }
+   },
+   "name": "steering_wheel_right"
+  },
+  {
+   "from": [
+    8.5,
+    9,
+    10.88
+   ],
+   "to": [
+    10.5,
+    10,
+    12.12
+   ],
+   "faces": {
+    "north": {
+     "uv": [
+      7,
+      10.5,
+      7.5,
+      10.75
+     ],
+     "texture": "#atlas"
+    },
+    "south": {
+     "uv": [
+      7,
+      10.5,
+      7.5,
+      10.75
+     ],
+     "texture": "#atlas"
+    },
+    "east": {
+     "uv": [
+      8,
+      10.5,
+      8.25,
+      10.75
+     ],
+     "texture": "#atlas"
+    },
+    "west": {
+     "uv": [
+      8,
+      10.5,
+      8.25,
+      10.75
+     ],
+     "texture": "#atlas"
+    },
+    "up": {
+     "uv": [
+      7,
+      10.5,
+      7.5,
+      10.75
+     ],
+     "texture": "#atlas"
+    },
+    "down": {
+     "uv": [
+      7,
+      10.5,
+      7.5,
+      10.75
+     ],
+     "texture": "#atlas"
+    }
+   },
+   "name": "steering_wheel_tr",
+   "rotation": {
+    "origin": [
+     9.768,
+     9.768,
+     11.5
+    ],
+    "axis": "z",
+    "angle": -45
+   }
+  },
+  {
+   "from": [
+    5.5,
+    9,
+    11.18
+   ],
+   "to": [
+    7.5,
+    10,
+    11.82
+   ],
+   "faces": {
+    "north": {
+     "uv": [
+      7,
+      10.5,
+      7.5,
+      10.75
+     ],
+     "texture": "#atlas"
+    },
+    "south": {
+     "uv": [
+      7,
+      10.5,
+      7.5,
+      10.75
+     ],
+     "texture": "#atlas"
+    },
+    "east": {
+     "uv": [
+      8,
+      10.5,
+      8.25,
+      10.75
+     ],
+     "texture": "#atlas"
+    },
+    "west": {
+     "uv": [
+      8,
+      10.5,
+      8.25,
+      10.75
+     ],
+     "texture": "#atlas"
+    },
+    "up": {
+     "uv": [
+      7,
+      10.5,
+      7.5,
+      10.75
+     ],
+     "texture": "#atlas"
+    },
+    "down": {
+     "uv": [
+      7,
+      10.5,
+      7.5,
+      10.75
+     ],
+     "texture": "#atlas"
+    }
+   },
+   "name": "steering_wheel_tl",
+   "rotation": {
+    "origin": [
+     6.232,
+     9.768,
+     11.5
+    ],
+    "axis": "z",
+    "angle": 45
+   }
+  },
+  {
+   "from": [
+    8.5,
+    6,
+    10.82
+   ],
+   "to": [
+    10.5,
+    7,
+    12.18
+   ],
+   "faces": {
+    "north": {
+     "uv": [
+      7,
+      10.5,
+      7.5,
+      10.75
+     ],
+     "texture": "#atlas"
+    },
+    "south": {
+     "uv": [
+      7,
+      10.5,
+      7.5,
+      10.75
+     ],
+     "texture": "#atlas"
+    },
+    "east": {
+     "uv": [
+      8,
+      10.5,
+      8.25,
+      10.75
+     ],
+     "texture": "#atlas"
+    },
+    "west": {
+     "uv": [
+      8,
+      10.5,
+      8.25,
+      10.75
+     ],
+     "texture": "#atlas"
+    },
+    "up": {
+     "uv": [
+      7,
+      10.5,
+      7.5,
+      10.75
+     ],
+     "texture": "#atlas"
+    },
+    "down": {
+     "uv": [
+      7,
+      10.5,
+      7.5,
+      10.75
+     ],
+     "texture": "#atlas"
+    }
+   },
+   "name": "steering_wheel_br",
+   "rotation": {
+    "origin": [
+     9.768,
+     6.232,
+     11.5
+    ],
+    "axis": "z",
+    "angle": 45
+   }
+  },
+  {
+   "from": [
+    5.5,
+    6,
+    11.24
+   ],
+   "to": [
+    7.5,
+    7,
+    11.76
+   ],
+   "faces": {
+    "north": {
+     "uv": [
+      7,
+      10.5,
+      7.5,
+      10.75
+     ],
+     "texture": "#atlas"
+    },
+    "south": {
+     "uv": [
+      7,
+      10.5,
+      7.5,
+      10.75
+     ],
+     "texture": "#atlas"
+    },
+    "east": {
+     "uv": [
+      8,
+      10.5,
+      8.25,
+      10.75
+     ],
+     "texture": "#atlas"
+    },
+    "west": {
+     "uv": [
+      8,
+      10.5,
+      8.25,
+      10.75
+     ],
+     "texture": "#atlas"
+    },
+    "up": {
+     "uv": [
+      7,
+      10.5,
+      7.5,
+      10.75
+     ],
+     "texture": "#atlas"
+    },
+    "down": {
+     "uv": [
+      7,
+      10.5,
+      7.5,
+      10.75
+     ],
+     "texture": "#atlas"
+    }
+   },
+   "name": "steering_wheel_bl",
+   "rotation": {
+    "origin": [
+     6.232,
+     6.232,
+     11.5
+    ],
+    "axis": "z",
+    "angle": -45
+   }
+  },
+  {
+   "from": [
+    6.5,
+    7.5,
+    11
+   ],
+   "to": [
+    9.5,
+    8.5,
+    12
+   ],
+   "faces": {
+    "north": {
+     "uv": [
+      5.5,
+      10.5,
+      6.25,
+      10.75
+     ],
+     "texture": "#atlas"
+    },
+    "south": {
+     "uv": [
+      5.5,
+      10.5,
+      6.25,
+      10.75
+     ],
+     "texture": "#atlas"
+    },
+    "up": {
+     "uv": [
+      5.5,
+      10.5,
+      6.25,
+      10.75
+     ],
+     "texture": "#atlas"
+    },
+    "down": {
+     "uv": [
+      5.5,
+      10.5,
+      6.25,
+      10.75
+     ],
+     "texture": "#atlas"
+    }
+   },
+   "name": "steering_wheel_spoke_h"
+  },
+  {
+   "from": [
+    7.5,
+    7.44,
+    10.94
+   ],
+   "to": [
+    8.5,
+    8.56,
+    12.06
+   ],
+   "faces": {
+    "north": {
+     "uv": [
+      8,
+      10.5,
+      8.25,
+      10.75
+     ],
+     "texture": "#atlas"
+    },
+    "south": {
+     "uv": [
+      8,
+      10.5,
+      8.25,
+      10.75
+     ],
+     "texture": "#atlas"
+    },
+    "up": {
+     "uv": [
+      8,
+      10.5,
+      8.25,
+      10.75
+     ],
+     "texture": "#atlas"
+    },
+    "down": {
+     "uv": [
+      8,
+      10.5,
+      8.25,
+      10.75
+     ],
+     "texture": "#atlas"
+    }
+   },
+   "name": "steering_wheel_hub"
+  }
+ ],
+ "groups": [
+  {
+   "name": "root",
+   "origin": [
+    8,
+    0,
+    8
+   ],
+   "children": [],
+   "parent": -1
+  },
+  {
+   "name": "frame",
+   "origin": [
+    8,
+    2.5,
+    8.5
+   ],
+   "children": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    31,
+    32,
+    34,
+    35,
+    36
+   ],
+   "parent": 0
+  },
+  {
+   "name": "bodywork",
+   "origin": [
+    8,
+    3,
+    8.5
+   ],
+   "children": [
+    25,
+    53,
+    57
+   ],
+   "parent": 1
+  },
+  {
+   "name": "seat",
+   "origin": [
+    8,
+    3,
+    6.5
+   ],
+   "children": [
+    21,
+    22,
+    23,
+    24
+   ],
+   "parent": 1
+  },
+  {
+   "name": "powertrain",
+   "origin": [
+    8,
+    3,
+    -1.5
+   ],
+   "children": [
+    26
+   ],
+   "parent": 1
+  },
+  {
+   "name": "steering",
+   "origin": [
+    8,
+    8,
+    11.5
+   ],
+   "children": [
+    58,
+    59,
+    60,
+    61,
+    62,
+    63,
+    64,
+    65,
+    66,
+    67
+   ],
+   "parent": 1
+  },
+  {
+   "name": "rear_right_wheel",
+   "origin": [
+    16.5,
+    4,
+    -1.5
+   ],
+   "children": [
+    9,
+    10,
+    11,
+    12,
+    13,
+    14
+   ],
+   "parent": 1
+  },
+  {
+   "name": "front_right_steer",
+   "origin": [
+    13.5,
+    4,
+    18
+   ],
+   "children": [
+    33
+   ],
+   "parent": 1
+  },
+  {
+   "name": "front_right_wheel",
+   "origin": [
+    16.5,
+    4,
+    18
+   ],
+   "children": [
+    15,
+    16,
+    17,
+    18,
+    19,
+    20
+   ],
+   "parent": 7
+  },
+  {
+   "name": "rear_left_wheel",
+   "origin": [
+    -0.5,
+    4,
+    -1.5
+   ],
+   "children": [
+    40,
+    41,
+    42,
+    43,
+    44,
+    45
+   ],
+   "parent": 1
+  },
+  {
+   "name": "front_left_steer",
+   "origin": [
+    2.5,
+    4,
+    18
+   ],
+   "children": [
+    52
+   ],
+   "parent": 1
+  },
+  {
+   "name": "front_right_wheel_copy",
+   "origin": [
+    -0.5,
+    4,
+    18
+   ],
+   "children": [
+    46,
+    47,
+    48,
+    49,
+    50,
+    51
+   ],
+   "parent": 10
+  },
+  {
+   "name": "engine_shake",
+   "origin": [
+    8,
+    5,
+    -1.5
+   ],
+   "children": [
+    27,
+    28,
+    29
+   ],
+   "parent": 4
+  },
+  {
+   "name": "rear_axle_roll",
+   "origin": [
+    8,
+    4,
+    -1.5
+   ],
+   "children": [
+    30
+   ],
+   "parent": 1
+  },
+  {
+   "name": "left_pedal_hinge",
+   "origin": [
+    5,
+    3.5,
+    12
+   ],
+   "children": [
+    54
+   ],
+   "parent": 1
+  },
+  {
+   "name": "right_pedal_hinge",
+   "origin": [
+    11,
+    3.5,
+    12
+   ],
+   "children": [
+    55
+   ],
+   "parent": 1
+  },
+  {
+   "name": "steering_column_turn",
+   "origin": [
+    8,
+    5.5,
+    12
+   ],
+   "children": [
+    56
+   ],
+   "parent": 1
+  },
+  {
+   "name": "exhaust_shake",
+   "origin": [
+    11.5,
+    7,
+    -3
+   ],
+   "children": [
+    37,
+    38,
+    39
+   ],
+   "parent": 12
+  }
+ ],
+ "animations": [
+  {
+   "name": "turning",
+   "length": 1.5,
+   "loop": true,
+   "triggers": [
+    {
+     "type": "loop"
+    }
+   ],
+   "animators": {
+    "g:7": {
+     "rotation": [
+      {
+       "time": 0,
+       "value": [
+        0,
+        0,
+        0
+       ],
+       "interpolation": "smooth"
+      },
+      {
+       "time": 0.3,
+       "value": [
+        0,
+        26,
+        0
+       ],
+       "interpolation": "smooth"
+      },
+      {
+       "time": 0.75,
+       "value": [
+        0,
+        28,
+        0
+       ],
+       "interpolation": "smooth"
+      },
+      {
+       "time": 1.2,
+       "value": [
+        0,
+        26,
+        0
+       ],
+       "interpolation": "smooth"
+      },
+      {
+       "time": 1.5,
+       "value": [
+        0,
+        0,
+        0
+       ],
+       "interpolation": "smooth"
+      }
+     ]
+    },
+    "g:10": {
+     "rotation": [
+      {
+       "time": 0,
+       "value": [
+        0,
+        0,
+        0
+       ],
+       "interpolation": "smooth"
+      },
+      {
+       "time": 0.3,
+       "value": [
+        0,
+        21,
+        0
+       ],
+       "interpolation": "smooth"
+      },
+      {
+       "time": 0.75,
+       "value": [
+        0,
+        23,
+        0
+       ],
+       "interpolation": "smooth"
+      },
+      {
+       "time": 1.2,
+       "value": [
+        0,
+        21,
+        0
+       ],
+       "interpolation": "smooth"
+      },
+      {
+       "time": 1.5,
+       "value": [
+        0,
+        0,
+        0
+       ],
+       "interpolation": "smooth"
+      }
+     ]
+    },
+    "g:8": {
+     "rotation": [
+      {
+       "time": 0,
+       "value": [
+        0,
+        0,
+        0
+       ]
+      },
+      {
+       "time": 1.5,
+       "value": [
+        0,
+        0,
+        0
+       ],
+       "interpolation": "step"
+      }
+     ]
+    },
+    "g:11": {
+     "rotation": [
+      {
+       "time": 0,
+       "value": [
+        0,
+        0,
+        0
+       ]
+      },
+      {
+       "time": 1.5,
+       "value": [
+        0,
+        0,
+        0
+       ],
+       "interpolation": "step"
+      }
+     ]
+    },
+    "g:6": {
+     "rotation": [
+      {
+       "time": 0,
+       "value": [
+        0,
+        0,
+        0
+       ]
+      },
+      {
+       "time": 1.5,
+       "value": [
+        0,
+        0,
+        0
+       ],
+       "interpolation": "step"
+      }
+     ]
+    },
+    "g:9": {
+     "rotation": [
+      {
+       "time": 0,
+       "value": [
+        0,
+        0,
+        0
+       ]
+      },
+      {
+       "time": 1.5,
+       "value": [
+        0,
+        0,
+        0
+       ],
+       "interpolation": "step"
+      }
+     ]
+    },
+    "g:13": {
+     "rotation": [
+      {
+       "time": 0,
+       "value": [
+        0,
+        0,
+        0
+       ]
+      },
+      {
+       "time": 1.5,
+       "value": [
+        0,
+        0,
+        0
+       ],
+       "interpolation": "step"
+      }
+     ]
+    },
+    "g:2": {
+     "rotation": [
+      {
+       "time": 0,
+       "value": [
+        0,
+        0,
+        0
+       ],
+       "interpolation": "smooth"
+      },
+      {
+       "time": 0.3,
+       "value": [
+        0,
+        0,
+        -1.5
+       ],
+       "interpolation": "smooth"
+      },
+      {
+       "time": 0.75,
+       "value": [
+        0.4,
+        0,
+        -2
+       ],
+       "interpolation": "smooth"
+      },
+      {
+       "time": 1.2,
+       "value": [
+        0,
+        0,
+        -1.5
+       ],
+       "interpolation": "smooth"
+      },
+      {
+       "time": 1.5,
+       "value": [
+        0,
+        0,
+        0
+       ],
+       "interpolation": "smooth"
+      }
+     ]
+    },
+    "g:5": {
+     "rotation": [
+      {
+       "time": 0,
+       "value": [
+        0,
+        0,
+        0
+       ],
+       "interpolation": "smooth"
+      },
+      {
+       "time": 0.3,
+       "value": [
+        0,
+        0,
+        -24
+       ],
+       "interpolation": "smooth"
+      },
+      {
+       "time": 0.75,
+       "value": [
+        0,
+        0,
+        -27
+       ],
+       "interpolation": "smooth"
+      },
+      {
+       "time": 1.2,
+       "value": [
+        0,
+        0,
+        -24
+       ],
+       "interpolation": "smooth"
+      },
+      {
+       "time": 1.5,
+       "value": [
+        0,
+        0,
+        0
+       ],
+       "interpolation": "smooth"
+      }
+     ]
+    }
+   }
+  },
+  {
+   "name": "reversing",
+   "length": 1.5,
+   "loop": true,
+   "triggers": [
+    {
+     "type": "loop"
+    }
+   ],
+   "animators": {
+    "g:6": {
+     "rotation": [
+      {
+       "time": 0,
+       "value": [
+        360,
+        0,
+        0
+       ]
+      },
+      {
+       "time": 0.375,
+       "value": [
+        270,
+        0,
+        0
+       ]
+      },
+      {
+       "time": 0.75,
+       "value": [
+        180,
+        0,
+        0
+       ]
+      },
+      {
+       "time": 1.125,
+       "value": [
+        90,
+        0,
+        0
+       ]
+      },
+      {
+       "time": 1.5,
+       "value": [
+        360,
+        0,
+        0
+       ],
+       "interpolation": "step"
+      }
+     ]
+    },
+    "g:9": {
+     "rotation": [
+      {
+       "time": 0,
+       "value": [
+        360,
+        0,
+        0
+       ]
+      },
+      {
+       "time": 0.375,
+       "value": [
+        270,
+        0,
+        0
+       ]
+      },
+      {
+       "time": 0.75,
+       "value": [
+        180,
+        0,
+        0
+       ]
+      },
+      {
+       "time": 1.125,
+       "value": [
+        90,
+        0,
+        0
+       ]
+      },
+      {
+       "time": 1.5,
+       "value": [
+        360,
+        0,
+        0
+       ],
+       "interpolation": "step"
+      }
+     ]
+    },
+    "g:8": {
+     "rotation": [
+      {
+       "time": 0,
+       "value": [
+        360,
+        0,
+        0
+       ]
+      },
+      {
+       "time": 0.375,
+       "value": [
+        270,
+        0,
+        0
+       ]
+      },
+      {
+       "time": 0.75,
+       "value": [
+        180,
+        0,
+        0
+       ]
+      },
+      {
+       "time": 1.125,
+       "value": [
+        90,
+        0,
+        0
+       ]
+      },
+      {
+       "time": 1.5,
+       "value": [
+        360,
+        0,
+        0
+       ],
+       "interpolation": "step"
+      }
+     ]
+    },
+    "g:11": {
+     "rotation": [
+      {
+       "time": 0,
+       "value": [
+        360,
+        0,
+        0
+       ]
+      },
+      {
+       "time": 0.375,
+       "value": [
+        270,
+        0,
+        0
+       ]
+      },
+      {
+       "time": 0.75,
+       "value": [
+        180,
+        0,
+        0
+       ]
+      },
+      {
+       "time": 1.125,
+       "value": [
+        90,
+        0,
+        0
+       ]
+      },
+      {
+       "time": 1.5,
+       "value": [
+        360,
+        0,
+        0
+       ],
+       "interpolation": "step"
+      }
+     ]
+    },
+    "g:13": {
+     "rotation": [
+      {
+       "time": 0,
+       "value": [
+        360,
+        0,
+        0
+       ]
+      },
+      {
+       "time": 0.375,
+       "value": [
+        270,
+        0,
+        0
+       ]
+      },
+      {
+       "time": 0.75,
+       "value": [
+        180,
+        0,
+        0
+       ]
+      },
+      {
+       "time": 1.125,
+       "value": [
+        90,
+        0,
+        0
+       ]
+      },
+      {
+       "time": 1.5,
+       "value": [
+        360,
+        0,
+        0
+       ],
+       "interpolation": "step"
+      }
+     ]
+    },
+    "g:12": {
+     "rotation": [
+      {
+       "time": 0,
+       "value": [
+        0,
+        0,
+        0
+       ]
+      },
+      {
+       "time": 0.125,
+       "value": [
+        0.7,
+        0,
+        0.4
+       ]
+      },
+      {
+       "time": 0.25,
+       "value": [
+        -0.7,
+        0,
+        -0.4
+       ]
+      },
+      {
+       "time": 0.375,
+       "value": [
+        0.7,
+        0,
+        0.4
+       ]
+      },
+      {
+       "time": 0.5,
+       "value": [
+        -0.7,
+        0,
+        -0.4
+       ]
+      },
+      {
+       "time": 0.625,
+       "value": [
+        0.7,
+        0,
+        0.4
+       ]
+      },
+      {
+       "time": 0.75,
+       "value": [
+        -0.7,
+        0,
+        -0.4
+       ]
+      },
+      {
+       "time": 0.875,
+       "value": [
+        0.7,
+        0,
+        0.4
+       ]
+      },
+      {
+       "time": 1,
+       "value": [
+        -0.7,
+        0,
+        -0.4
+       ]
+      },
+      {
+       "time": 1.125,
+       "value": [
+        0.7,
+        0,
+        0.4
+       ]
+      },
+      {
+       "time": 1.25,
+       "value": [
+        -0.7,
+        0,
+        -0.4
+       ]
+      },
+      {
+       "time": 1.375,
+       "value": [
+        0.7,
+        0,
+        0.4
+       ]
+      },
+      {
+       "time": 1.5,
+       "value": [
+        0,
+        0,
+        0
+       ]
+      }
+     ]
+    }
+   }
+  },
+  {
+   "name": "moving",
+   "length": 1.5,
+   "loop": true,
+   "triggers": [
+    {
+     "type": "loop"
+    }
+   ],
+   "animators": {
+    "g:6": {
+     "rotation": [
+      {
+       "time": 0,
+       "value": [
+        0,
+        0,
+        0
+       ]
+      },
+      {
+       "time": 1.5,
+       "value": [
+        360,
+        0,
+        0
+       ]
+      }
+     ]
+    },
+    "g:9": {
+     "rotation": [
+      {
+       "time": 0,
+       "value": [
+        0,
+        0,
+        0
+       ]
+      },
+      {
+       "time": 1.5,
+       "value": [
+        360,
+        0,
+        0
+       ]
+      }
+     ]
+    },
+    "g:8": {
+     "rotation": [
+      {
+       "time": 0,
+       "value": [
+        0,
+        0,
+        0
+       ]
+      },
+      {
+       "time": 1.5,
+       "value": [
+        360,
+        0,
+        0
+       ]
+      }
+     ]
+    },
+    "g:11": {
+     "rotation": [
+      {
+       "time": 0,
+       "value": [
+        0,
+        0,
+        0
+       ]
+      },
+      {
+       "time": 1.5,
+       "value": [
+        360,
+        0,
+        0
+       ]
+      }
+     ]
+    },
+    "g:13": {
+     "rotation": [
+      {
+       "time": 0,
+       "value": [
+        0,
+        0,
+        0
+       ]
+      },
+      {
+       "time": 1.5,
+       "value": [
+        360,
+        0,
+        0
+       ]
+      }
+     ]
+    },
+    "g:12": {
+     "rotation": [
+      {
+       "time": 0,
+       "value": [
+        0,
+        0,
+        0
+       ]
+      },
+      {
+       "time": 0.125,
+       "value": [
+        0.6,
+        0,
+        0.8
+       ]
+      },
+      {
+       "time": 0.25,
+       "value": [
+        -0.6,
+        0,
+        -0.8
+       ]
+      },
+      {
+       "time": 0.375,
+       "value": [
+        0.6,
+        0,
+        0.8
+       ]
+      },
+      {
+       "time": 0.5,
+       "value": [
+        -0.6,
+        0,
+        -0.8
+       ]
+      },
+      {
+       "time": 0.625,
+       "value": [
+        0.6,
+        0,
+        0.8
+       ]
+      },
+      {
+       "time": 0.75,
+       "value": [
+        -0.6,
+        0,
+        -0.8
+       ]
+      },
+      {
+       "time": 0.875,
+       "value": [
+        0.6,
+        0,
+        0.8
+       ]
+      },
+      {
+       "time": 1,
+       "value": [
+        -0.6,
+        0,
+        -0.8
+       ]
+      },
+      {
+       "time": 1.125,
+       "value": [
+        0.6,
+        0,
+        0.8
+       ]
+      },
+      {
+       "time": 1.25,
+       "value": [
+        -0.6,
+        0,
+        -0.8
+       ]
+      },
+      {
+       "time": 1.375,
+       "value": [
+        0.6,
+        0,
+        0.8
+       ]
+      },
+      {
+       "time": 1.5,
+       "value": [
+        0,
+        0,
+        0
+       ]
+      }
+     ]
+    }
+   }
+  },
+  {
+   "name": "idle",
+   "length": 2.4,
+   "loop": true,
+   "triggers": [
+    {
+     "type": "loop"
+    }
+   ],
+   "animators": {
+    "g:12": {
+     "rotation": [
+      {
+       "time": 0,
+       "value": [
+        0,
+        0,
+        0
+       ]
+      },
+      {
+       "time": 0.15,
+       "value": [
+        0.35,
+        0,
+        0.65
+       ]
+      },
+      {
+       "time": 0.3,
+       "value": [
+        -0.35,
+        0,
+        -0.65
+       ]
+      },
+      {
+       "time": 0.45,
+       "value": [
+        0.35,
+        0,
+        0.65
+       ]
+      },
+      {
+       "time": 0.6,
+       "value": [
+        -0.35,
+        0,
+        -0.65
+       ]
+      },
+      {
+       "time": 0.75,
+       "value": [
+        0.35,
+        0,
+        0.65
+       ]
+      },
+      {
+       "time": 0.9,
+       "value": [
+        -0.35,
+        0,
+        -0.65
+       ]
+      },
+      {
+       "time": 1.05,
+       "value": [
+        0.35,
+        0,
+        0.65
+       ]
+      },
+      {
+       "time": 1.2,
+       "value": [
+        -0.35,
+        0,
+        -0.65
+       ]
+      },
+      {
+       "time": 1.35,
+       "value": [
+        0.35,
+        0,
+        0.65
+       ]
+      },
+      {
+       "time": 1.5,
+       "value": [
+        -0.35,
+        0,
+        -0.65
+       ]
+      },
+      {
+       "time": 1.65,
+       "value": [
+        0.35,
+        0,
+        0.65
+       ]
+      },
+      {
+       "time": 1.8,
+       "value": [
+        -0.35,
+        0,
+        -0.65
+       ]
+      },
+      {
+       "time": 1.95,
+       "value": [
+        0.35,
+        0,
+        0.65
+       ]
+      },
+      {
+       "time": 2.1,
+       "value": [
+        -0.35,
+        0,
+        -0.65
+       ]
+      },
+      {
+       "time": 2.25,
+       "value": [
+        0.35,
+        0,
+        0.65
+       ]
+      },
+      {
+       "time": 2.4,
+       "value": [
+        0,
+        0,
+        0
+       ]
+      }
+     ]
+    },
+    "g:17": {
+     "rotation": [
+      {
+       "time": 0,
+       "value": [
+        0,
+        0,
+        0
+       ]
+      },
+      {
+       "time": 0.15,
+       "value": [
+        -0.7,
+        0,
+        0
+       ]
+      },
+      {
+       "time": 0.3,
+       "value": [
+        0.7,
+        0,
+        0
+       ]
+      },
+      {
+       "time": 0.45,
+       "value": [
+        -0.7,
+        0,
+        0
+       ]
+      },
+      {
+       "time": 0.6,
+       "value": [
+        0.7,
+        0,
+        0
+       ]
+      },
+      {
+       "time": 0.75,
+       "value": [
+        -0.7,
+        0,
+        0
+       ]
+      },
+      {
+       "time": 0.9,
+       "value": [
+        0.7,
+        0,
+        0
+       ]
+      },
+      {
+       "time": 1.05,
+       "value": [
+        -0.7,
+        0,
+        0
+       ]
+      },
+      {
+       "time": 1.2,
+       "value": [
+        0.7,
+        0,
+        0
+       ]
+      },
+      {
+       "time": 1.35,
+       "value": [
+        -0.7,
+        0,
+        0
+       ]
+      },
+      {
+       "time": 1.5,
+       "value": [
+        0.7,
+        0,
+        0
+       ]
+      },
+      {
+       "time": 1.65,
+       "value": [
+        -0.7,
+        0,
+        0
+       ]
+      },
+      {
+       "time": 1.8,
+       "value": [
+        0.7,
+        0,
+        0
+       ]
+      },
+      {
+       "time": 1.95,
+       "value": [
+        -0.7,
+        0,
+        0
+       ]
+      },
+      {
+       "time": 2.1,
+       "value": [
+        0.7,
+        0,
+        0
+       ]
+      },
+      {
+       "time": 2.25,
+       "value": [
+        -0.7,
+        0,
+        0
+       ]
+      },
+      {
+       "time": 2.4,
+       "value": [
+        0,
+        0,
+        0
+       ]
+      }
+     ]
+    }
+   }
+  }
+ ],
+ "display": {
+  "gui": {
+   "rotation": [
+    30,
+    225,
+    0
+   ],
+   "translation": [
+    0,
+    -1.5,
+    0
+   ],
+   "scale": [
+    0.38,
+    0.38,
+    0.38
+   ]
+  },
+  "ground": {
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "translation": [
+    0,
+    2,
+    0
+   ],
+   "scale": [
+    0.25,
+    0.25,
+    0.25
+   ]
+  },
+  "fixed": {
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "translation": [
+    0,
+    0,
+    0
+   ],
+   "scale": [
+    0.45,
+    0.45,
+    0.45
+   ]
+  },
+  "thirdperson_righthand": {
+   "rotation": [
+    75,
+    45,
+    0
+   ],
+   "translation": [
+    0,
+    2.5,
+    0
+   ],
+   "scale": [
+    0.25,
+    0.25,
+    0.25
+   ]
+  },
+  "firstperson_righthand": {
+   "rotation": [
+    0,
+    45,
+    0
+   ],
+   "translation": [
+    0,
+    0,
+    0
+   ],
+   "scale": [
+    0.3,
+    0.3,
+    0.3
+   ]
+  },
+  "head": {
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "translation": [
+    0,
+    14,
+    0
+   ],
+   "scale": [
+    0.6,
+    0.6,
+    0.6
+   ]
+  }
+ }
+}

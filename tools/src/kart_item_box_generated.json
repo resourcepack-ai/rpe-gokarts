@@ -1,0 +1,92 @@
+{
+  "parent": "block/block",
+  "textures": {
+    "atlas": "minecraft:block/kart_item_box_atlas",
+    "particle": "minecraft:block/kart_item_box_atlas"
+  },
+  "elements": [
+    {
+      "from": [
+        2,
+        0,
+        2
+      ],
+      "to": [
+        14,
+        12,
+        14
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            0,
+            0,
+            6,
+            6
+          ],
+          "texture": "#atlas"
+        },
+        "south": {
+          "uv": [
+            0,
+            0,
+            6,
+            6
+          ],
+          "texture": "#atlas"
+        },
+        "east": {
+          "uv": [
+            6,
+            0,
+            12,
+            6
+          ],
+          "texture": "#atlas"
+        },
+        "west": {
+          "uv": [
+            6,
+            0,
+            12,
+            6
+          ],
+          "texture": "#atlas"
+        },
+        "up": {
+          "uv": [
+            0,
+            0,
+            6,
+            6
+          ],
+          "texture": "#atlas"
+        },
+        "down": {
+          "uv": [
+            0,
+            6,
+            6,
+            12
+          ],
+          "texture": "#atlas"
+        }
+      },
+      "name": "mystery_cube"
+    }
+  ],
+  "groups": [
+    {
+      "name": "mystery_box",
+      "origin": [
+        8,
+        6,
+        8
+      ],
+      "children": [
+        0
+      ],
+      "parent": -1
+    }
+  ]
+}

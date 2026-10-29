@@ -1,0 +1,791 @@
+{
+  "parent": "block/block",
+  "textures": {
+    "atlas": "minecraft:block/kart_banana_atlas",
+    "particle": "minecraft:block/kart_banana_atlas"
+  },
+  "elements": [
+    {
+      "from": [
+        7,
+        1,
+        7
+      ],
+      "to": [
+        9,
+        2,
+        9
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            7,
+            3,
+            9,
+            4
+          ],
+          "texture": "#atlas"
+        },
+        "south": {
+          "uv": [
+            7,
+            3,
+            9,
+            4
+          ],
+          "texture": "#atlas"
+        },
+        "east": {
+          "uv": [
+            7,
+            3,
+            9,
+            4
+          ],
+          "texture": "#atlas"
+        },
+        "west": {
+          "uv": [
+            7,
+            3,
+            9,
+            4
+          ],
+          "texture": "#atlas"
+        },
+        "up": {
+          "uv": [
+            0,
+            3,
+            2,
+            5
+          ],
+          "texture": "#atlas"
+        },
+        "down": {
+          "uv": [
+            2,
+            3,
+            4,
+            5
+          ],
+          "texture": "#atlas"
+        }
+      },
+      "name": "central_fold"
+    },
+    {
+      "from": [
+        7.5,
+        2,
+        7.5
+      ],
+      "to": [
+        8.5,
+        2,
+        8.5
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            9,
+            3,
+            10,
+            4
+          ],
+          "texture": "#atlas"
+        },
+        "down": {
+          "uv": [
+            9,
+            3,
+            10,
+            4
+          ],
+          "texture": "#atlas"
+        }
+      },
+      "name": "brown_stem_tip",
+      "free_rotation": {
+        "origin": [
+          8,
+          2,
+          8.5
+        ],
+        "angles": [
+          20,
+          0,
+          0
+        ]
+      },
+      "rotation": {
+        "origin": [
+          8,
+          2,
+          8.5
+        ],
+        "axis": "x",
+        "angle": 22.5
+      }
+    },
+    {
+      "from": [
+        7,
+        2,
+        9
+      ],
+      "to": [
+        9,
+        3,
+        12
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            7,
+            3,
+            9,
+            4
+          ],
+          "texture": "#atlas"
+        },
+        "south": {
+          "uv": [
+            7,
+            3,
+            9,
+            4
+          ],
+          "texture": "#atlas"
+        },
+        "east": {
+          "uv": [
+            4,
+            3,
+            7,
+            4
+          ],
+          "texture": "#atlas"
+        },
+        "west": {
+          "uv": [
+            4,
+            3,
+            7,
+            4
+          ],
+          "texture": "#atlas"
+        },
+        "up": {
+          "uv": [
+            0,
+            0,
+            2,
+            3
+          ],
+          "texture": "#atlas"
+        },
+        "down": {
+          "uv": [
+            2,
+            0,
+            4,
+            3
+          ],
+          "texture": "#atlas"
+        }
+      },
+      "name": "front_petal",
+      "free_rotation": {
+        "origin": [
+          8,
+          2,
+          9
+        ],
+        "angles": [
+          36.87,
+          0,
+          0
+        ]
+      },
+      "rotation": {
+        "origin": [
+          8,
+          2,
+          9
+        ],
+        "axis": "x",
+        "angle": 45
+      }
+    },
+    {
+      "from": [
+        7,
+        2,
+        4
+      ],
+      "to": [
+        9,
+        3,
+        7
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            7,
+            3,
+            9,
+            4
+          ],
+          "texture": "#atlas"
+        },
+        "south": {
+          "uv": [
+            7,
+            3,
+            9,
+            4
+          ],
+          "texture": "#atlas"
+        },
+        "east": {
+          "uv": [
+            4,
+            3,
+            7,
+            4
+          ],
+          "texture": "#atlas"
+        },
+        "west": {
+          "uv": [
+            4,
+            3,
+            7,
+            4
+          ],
+          "texture": "#atlas"
+        },
+        "up": {
+          "uv": [
+            4,
+            0,
+            6,
+            3
+          ],
+          "texture": "#atlas"
+        },
+        "down": {
+          "uv": [
+            2,
+            0,
+            4,
+            3
+          ],
+          "texture": "#atlas"
+        }
+      },
+      "name": "back_petal",
+      "free_rotation": {
+        "origin": [
+          8,
+          2,
+          7
+        ],
+        "angles": [
+          -36.87,
+          0,
+          0
+        ]
+      },
+      "rotation": {
+        "origin": [
+          8,
+          2,
+          7
+        ],
+        "axis": "x",
+        "angle": -45
+      }
+    },
+    {
+      "from": [
+        9,
+        2,
+        7
+      ],
+      "to": [
+        12,
+        3,
+        9
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            4,
+            3,
+            7,
+            4
+          ],
+          "texture": "#atlas"
+        },
+        "south": {
+          "uv": [
+            4,
+            3,
+            7,
+            4
+          ],
+          "texture": "#atlas"
+        },
+        "east": {
+          "uv": [
+            7,
+            3,
+            9,
+            4
+          ],
+          "texture": "#atlas"
+        },
+        "west": {
+          "uv": [
+            7,
+            3,
+            9,
+            4
+          ],
+          "texture": "#atlas"
+        },
+        "up": {
+          "uv": [
+            6,
+            0,
+            9,
+            2
+          ],
+          "texture": "#atlas"
+        },
+        "down": {
+          "uv": [
+            9,
+            0,
+            12,
+            2
+          ],
+          "texture": "#atlas"
+        }
+      },
+      "name": "right_petal",
+      "free_rotation": {
+        "origin": [
+          9,
+          2,
+          8
+        ],
+        "angles": [
+          0,
+          0,
+          -36.87
+        ]
+      },
+      "rotation": {
+        "origin": [
+          9,
+          2,
+          8
+        ],
+        "axis": "z",
+        "angle": -45
+      }
+    },
+    {
+      "from": [
+        4,
+        2,
+        7
+      ],
+      "to": [
+        7,
+        3,
+        9
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            4,
+            3,
+            7,
+            4
+          ],
+          "texture": "#atlas"
+        },
+        "south": {
+          "uv": [
+            4,
+            3,
+            7,
+            4
+          ],
+          "texture": "#atlas"
+        },
+        "east": {
+          "uv": [
+            7,
+            3,
+            9,
+            4
+          ],
+          "texture": "#atlas"
+        },
+        "west": {
+          "uv": [
+            7,
+            3,
+            9,
+            4
+          ],
+          "texture": "#atlas"
+        },
+        "up": {
+          "uv": [
+            12,
+            0,
+            15,
+            2
+          ],
+          "texture": "#atlas"
+        },
+        "down": {
+          "uv": [
+            9,
+            0,
+            12,
+            2
+          ],
+          "texture": "#atlas"
+        }
+      },
+      "name": "left_petal",
+      "free_rotation": {
+        "origin": [
+          7,
+          2,
+          8
+        ],
+        "angles": [
+          0,
+          0,
+          36.87
+        ]
+      },
+      "rotation": {
+        "origin": [
+          7,
+          2,
+          8
+        ],
+        "axis": "z",
+        "angle": 45
+      }
+    },
+    {
+      "from": [
+        7.5,
+        0,
+        12
+      ],
+      "to": [
+        8.5,
+        1,
+        13
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            10,
+            3,
+            11,
+            4
+          ],
+          "texture": "#atlas"
+        },
+        "south": {
+          "uv": [
+            10,
+            3,
+            11,
+            4
+          ],
+          "texture": "#atlas"
+        },
+        "east": {
+          "uv": [
+            10,
+            3,
+            11,
+            4
+          ],
+          "texture": "#atlas"
+        },
+        "west": {
+          "uv": [
+            10,
+            3,
+            11,
+            4
+          ],
+          "texture": "#atlas"
+        },
+        "up": {
+          "uv": [
+            11,
+            3,
+            12,
+            4
+          ],
+          "texture": "#atlas"
+        },
+        "down": {
+          "uv": [
+            10,
+            3,
+            11,
+            4
+          ],
+          "texture": "#atlas"
+        }
+      },
+      "name": "front_petal_tip"
+    },
+    {
+      "from": [
+        7.5,
+        0,
+        3
+      ],
+      "to": [
+        8.5,
+        1,
+        4
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            10,
+            3,
+            11,
+            4
+          ],
+          "texture": "#atlas"
+        },
+        "south": {
+          "uv": [
+            10,
+            3,
+            11,
+            4
+          ],
+          "texture": "#atlas"
+        },
+        "east": {
+          "uv": [
+            10,
+            3,
+            11,
+            4
+          ],
+          "texture": "#atlas"
+        },
+        "west": {
+          "uv": [
+            10,
+            3,
+            11,
+            4
+          ],
+          "texture": "#atlas"
+        },
+        "up": {
+          "uv": [
+            11,
+            3,
+            12,
+            4
+          ],
+          "texture": "#atlas"
+        },
+        "down": {
+          "uv": [
+            10,
+            3,
+            11,
+            4
+          ],
+          "texture": "#atlas"
+        }
+      },
+      "name": "back_petal_tip"
+    },
+    {
+      "from": [
+        12,
+        0,
+        7.5
+      ],
+      "to": [
+        13,
+        1,
+        8.5
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            10,
+            3,
+            11,
+            4
+          ],
+          "texture": "#atlas"
+        },
+        "south": {
+          "uv": [
+            10,
+            3,
+            11,
+            4
+          ],
+          "texture": "#atlas"
+        },
+        "east": {
+          "uv": [
+            10,
+            3,
+            11,
+            4
+          ],
+          "texture": "#atlas"
+        },
+        "west": {
+          "uv": [
+            10,
+            3,
+            11,
+            4
+          ],
+          "texture": "#atlas"
+        },
+        "up": {
+          "uv": [
+            11,
+            3,
+            12,
+            4
+          ],
+          "texture": "#atlas"
+        },
+        "down": {
+          "uv": [
+            10,
+            3,
+            11,
+            4
+          ],
+          "texture": "#atlas"
+        }
+      },
+      "name": "right_petal_tip"
+    },
+    {
+      "from": [
+        3,
+        0,
+        7.5
+      ],
+      "to": [
+        4,
+        1,
+        8.5
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            10,
+            3,
+            11,
+            4
+          ],
+          "texture": "#atlas"
+        },
+        "south": {
+          "uv": [
+            10,
+            3,
+            11,
+            4
+          ],
+          "texture": "#atlas"
+        },
+        "east": {
+          "uv": [
+            10,
+            3,
+            11,
+            4
+          ],
+          "texture": "#atlas"
+        },
+        "west": {
+          "uv": [
+            10,
+            3,
+            11,
+            4
+          ],
+          "texture": "#atlas"
+        },
+        "up": {
+          "uv": [
+            11,
+            3,
+            12,
+            4
+          ],
+          "texture": "#atlas"
+        },
+        "down": {
+          "uv": [
+            10,
+            3,
+            11,
+            4
+          ],
+          "texture": "#atlas"
+        }
+      },
+      "name": "left_petal_tip"
+    }
+  ],
+  "groups": [
+    {
+      "name": "banana_peel",
+      "origin": [
+        8,
+        0,
+        8
+      ],
+      "children": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "parent": -1
+    }
+  ]
+}

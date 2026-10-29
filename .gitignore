@@ -1,0 +1,11 @@
+.gradle/
+build/
+out/
+.idea/
+*.iml
+.vscode/
+
+# tools/ is Python
+__pycache__/
+*.pyc
+.venv/

@@ -1,0 +1,81 @@
+# Generated in ResourcePack AI Studio; trimmed and levelled by tools/make_assets.py.
+
+engine:
+  file: engine
+  category: neutral
+  subtitle: "Kart engine revs"
+  volume: 0.55
+  length: 2.13
+
+idle:
+  file: idle
+  category: neutral
+  subtitle: "Kart engine idles"
+  volume: 0.45
+  length: 2.13
+
+boost:
+  file: boost
+  category: neutral
+  subtitle: "Boost"
+
+spark:
+  file: spark
+  category: neutral
+  subtitle: "Drift sparks"
+  volume: 0.7
+
+smash:
+  file: smash
+  category: neutral
+  subtitle: "Item box smashes"
+  volume: 0.9
+
+item_got:
+  file: item_got
+  category: neutral
+  subtitle: "Item ready"
+  volume: 0.9
+
+spinout:
+  file: spinout
+  category: neutral
+  subtitle: "Kart spins out"
+
+blast:
+  file: blast
+  category: neutral
+  subtitle: "Rocket explodes"
+
+launch:
+  file: launch
+  category: neutral
+  subtitle: "Rocket fired"
+  volume: 0.9
+
+beep:
+  file: beep
+  category: neutral
+  subtitle: "Start light"
+
+go:
+  file: go
+  category: neutral
+  subtitle: "Go!"
+
+lap:
+  file: lap
+  category: neutral
+  subtitle: "Lap complete"
+  volume: 0.9
+
+finish:
+  file: finish
+  category: neutral
+  subtitle: "Race finished"
+
+bump:
+  file: bump
+  category: neutral
+  subtitle: "Karts bump"
+  volume: 0.8
