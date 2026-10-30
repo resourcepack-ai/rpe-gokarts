@@ -74,6 +74,12 @@ final class Items {
 
     private final Race race;
     private final List<Box> boxes = new ArrayList<>();
+    /**
+     * Where Studio drew these two, in blocks ahead of whoever casts them, so
+     * that played on a kart they can be pulled back onto it: the box breaks
+     * round the kart that drove through it, the rocket explodes on its target.
+     */
+    static final double BOX_BREAK_AHEAD = -2.7, EXPLOSION_AHEAD = -5;
     private final List<Banana> bananas = new ArrayList<>();
     private final List<Rocket> rockets = new ArrayList<>();
     private long tick;
@@ -147,7 +153,7 @@ final class Items {
     /** A box driven through: it breaks, and the burst rides away with the kart that broke it. */
     private void smash(Box b, Racer by) {
         race.content().sound(b.at, "smash", 1f, 1f, Sound.BLOCK_GLASS_BREAK);
-        if (by != null && by.kart != null) race.content().vfx("gk_box_break", by.kart, by.player());
+        if (by != null && by.kart != null) race.content().vfx("gk_box_break", by.kart, by.player(), BOX_BREAK_AHEAD);
         else race.content().vfx("gk_box_break", b.at, null);
         b.at.getWorld().spawnParticle(Particle.FIREWORK, b.at, 14, 0.3, 0.3, 0.3, 0.12);
         b.display.remove();
@@ -204,7 +210,11 @@ final class Items {
         // On the road, wherever behind the kart that is.
         Block below = at.getBlock();
         for (int i = 0; i < 3 && below.isPassable(); i++) below = below.getRelative(0, -1, 0);
-        at.setY(below.getY() + 1 + 0.35);
+        // Lying on what is there, a slab's top included: the model is drawn
+        // round its centre, half a block above its own bottom, and it was
+        // half sunk into a full block and floating over a slab.
+        double surface = below.isPassable() ? below.getY() + 1 : below.getBoundingBox().getMaxY();
+        at.setY(surface + 0.5 + 0.01);
         at.setYaw(ThreadLocalRandom.current().nextFloat() * 360);
         ItemDisplay d = spawn(at, "banana", 1f);
         d.teleport(at);
@@ -314,7 +324,7 @@ final class Items {
     private void blast(Location at, Racer hit, Racer owner) {
         at.getWorld().spawnParticle(Particle.EXPLOSION, at, 1);
         // On the kart it hit, which is thrown and carries it; a miss stays put.
-        if (hit != null && hit.kart != null) race.content().vfx("gk_explosion", hit.kart, hit.player());
+        if (hit != null && hit.kart != null) race.content().vfx("gk_explosion", hit.kart, hit.player(), EXPLOSION_AHEAD);
         else race.content().vfx("gk_explosion", at, null);
         at.getWorld().spawnParticle(Particle.FLAME, at, 20, 0.4, 0.3, 0.4, 0.08);
         race.content().sound(at, "blast", 1f, 1f, Sound.ENTITY_GENERIC_EXPLODE);

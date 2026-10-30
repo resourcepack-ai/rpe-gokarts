@@ -86,20 +86,56 @@ public final class Content {
     }
 
     /**
+     * RP Engine 0.2.48's {@code VfxOptions.Builder.follow(Vehicle)}, or null on
+     * an older engine. Looked up rather than called, so this builds against
+     * 0.2.40's API and still runs on 0.2.45.
+     */
+    private static final java.lang.reflect.Method FOLLOW_VEHICLE = followVehicle();
+
+    private static java.lang.reflect.Method followVehicle() {
+        try {
+            return ai.resourcepack.engine.api.VfxOptions.Builder.class.getMethod("follow", ai.resourcepack.engine.api.Vehicle.class);
+        } catch (NoSuchMethodException older) {
+            return null;
+        }
+    }
+
+    /**
      * Plays an effect on a kart: it rides along with the kart and turns with
-     * it. It follows the chassis, the entity that holds the kart's heading,
-     * rather than the driver, whose yaw is wherever they are looking: an
-     * exhaust that follows the camera blows out of the side of the kart.
+     * its body, not with the driver, whose yaw is wherever they are looking (an
+     * exhaust that followed the camera blew out of the side of the kart).
      */
     public void vfx(String path, ai.resourcepack.engine.api.Vehicle kart, org.bukkit.entity.Player driver) {
+        vfx(path, kart, driver, 0);
+    }
+
+    /**
+     * The same, moved {@code ahead} blocks along the kart (negative is back).
+     * Studio draws an effect in front of whoever casts it, three blocks out
+     * for most of these, and one that belongs ON the kart (a box breaking, an
+     * explosion) is pulled back by as much.
+     */
+    public void vfx(String path, ai.resourcepack.engine.api.Vehicle kart, org.bukkit.entity.Player driver, double ahead) {
         org.bukkit.entity.Entity chassis = kart == null ? null : kart.chassis();
         if (chassis == null || !chassis.isValid()) {
             if (kart != null) vfx(path, kart.location(), driver);
             return;
         }
         try {
-            engine.vfx().play(id(path), kart.location(), driver,
-                    ai.resourcepack.engine.api.VfxOptions.builder().follow(chassis).build());
+            ai.resourcepack.engine.api.VfxOptions.Builder options = ai.resourcepack.engine.api.VfxOptions.builder()
+                    .offset(0, 0, ahead);
+            if (FOLLOW_VEHICLE != null) {
+                FOLLOW_VEHICLE.invoke(options, kart);
+            } else {
+                // Before 0.2.48 the chassis is the nearest thing, and turns with
+                // the kart only from that version on: older engines left it at yaw 0.
+                options.follow(chassis);
+            }
+            engine.vfx().play(id(path), kart.location(), driver, options.build());
+        } catch (ReflectiveOperationException e) {
+            if (missing.add("vfx-follow")) {
+                org.bukkit.Bukkit.getLogger().warning("[RPEGoKarts] Could not have a VFX follow a kart: " + e);
+            }
         } catch (RuntimeException e) {
             if (missing.add("vfx:" + path)) {
                 org.bukkit.Bukkit.getLogger().warning("[RPEGoKarts] Could not play the VFX " + NS + ":" + path + ": " + e.getMessage());
