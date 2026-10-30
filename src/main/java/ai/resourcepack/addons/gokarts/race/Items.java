@@ -132,7 +132,7 @@ final class Items {
             b.display.teleport(l);
             for (Racer r : race.order) {
                 if (r.kart == null || r.finished || !near(r.kart.location(), b.at, 1.8, 2.2)) continue;
-                smash(b);
+                smash(b, r);
                 if (r.item == null && r.roulette == 0) {
                     r.item = roll(r);
                     r.itemUses = r.item.uses;
@@ -144,9 +144,11 @@ final class Items {
         }
     }
 
-    private void smash(Box b) {
+    /** A box driven through: it breaks, and the burst rides away with the kart that broke it. */
+    private void smash(Box b, Racer by) {
         race.content().sound(b.at, "smash", 1f, 1f, Sound.BLOCK_GLASS_BREAK);
-        race.content().vfx("gk_box_break", b.at, null);
+        if (by != null && by.kart != null) race.content().vfx("gk_box_break", by.kart, by.player());
+        else race.content().vfx("gk_box_break", b.at, null);
         b.at.getWorld().spawnParticle(Particle.FIREWORK, b.at, 14, 0.3, 0.3, 0.3, 0.12);
         b.display.remove();
         b.display = null;
@@ -257,7 +259,7 @@ final class Items {
     private void daze(Racer r) {
         Player p = r.player();
         if (p == null || r.kart == null) return;
-        race.content().vfx("gk_dizzy", r.kart.location(), p);
+        race.content().vfx("gk_dizzy", r.kart, p);
         String emote = "gokarts_" + r.colour.id() + "_dazed";
         r.kart.dress(p, emote);
         org.bukkit.Bukkit.getScheduler().runTaskLater(race.plugin, () -> {
@@ -311,7 +313,9 @@ final class Items {
 
     private void blast(Location at, Racer hit, Racer owner) {
         at.getWorld().spawnParticle(Particle.EXPLOSION, at, 1);
-        race.content().vfx("gk_explosion", at, null);
+        // On the kart it hit, which is thrown and carries it; a miss stays put.
+        if (hit != null && hit.kart != null) race.content().vfx("gk_explosion", hit.kart, hit.player());
+        else race.content().vfx("gk_explosion", at, null);
         at.getWorld().spawnParticle(Particle.FLAME, at, 20, 0.4, 0.3, 0.4, 0.08);
         race.content().sound(at, "blast", 1f, 1f, Sound.ENTITY_GENERIC_EXPLODE);
         if (hit == null) return;

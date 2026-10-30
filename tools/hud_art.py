@@ -430,8 +430,22 @@ DOT_STEP = 2        # a dot glyph per two rows
 DOT = 6
 
 
-def minimap(roads, gaps, start, ss=2):
-    """roads: list of lists of (u, v) samples; gaps: per road, per sample, whether it is a gap."""
+MAP_ROAD = (244, 245, 247, 255)      # the lap
+MAP_BRANCH = (168, 172, 180, 255)    # a second way round
+MAP_EDGE = (6, 7, 9, 255)            # the outline every road is drawn inside
+MAP_SHADOW = (0, 0, 0, 120)          # what a road higher than the one under it casts
+
+
+def minimap(roads, feats, start, ss=4):
+    """
+    roads: per road, its (u, v) samples. feats: per road, per sample, a
+    (gap, height, tunnel) triple, or a bare gap flag.
+
+    Black and white, and drawn in three dimensions: every road once, then each
+    stretch that passes OVER another road again on top of it, with a shadow, so
+    a bridge reads as a bridge and not as a junction. A branch is grey, a
+    tunnel dashed, and the start a chequered flag.
+    """
     pts = [p for r in roads for p in r]
     u0, u1 = min(p[0] for p in pts), max(p[0] for p in pts)
     v0, v1 = min(p[1] for p in pts), max(p[1] for p in pts)
@@ -440,24 +454,97 @@ def minimap(roads, gaps, start, ss=2):
     oy = (MAP - (v1 - v0) * k) / 2
     frame = {"u0": u0, "v1": v1, "k": k, "ox": ox, "oy": oy}
 
-    def at(p):
-        return ((p[0] - u0) * k + ox) * ss, ((v1 - p[1]) * k + oy) * ss
+    def at(p, dx=0.0, dy=0.0):
+        return ((p[0] - u0) * k + ox + dx) * ss, ((v1 - p[1]) * k + oy + dy) * ss
+
+    def feat(ri, i):
+        f = feats[ri][i]
+        return f if isinstance(f, tuple) else (bool(f), 0.0, False)
 
     s = MAP * ss
     img = Image.new("RGBA", (s, s), (0, 0, 0, 0))
     d = ImageDraw.Draw(img)
-    d.rounded_rectangle((0, 0, s - 1, s - 1), radius=14 * ss, fill=(10, 14, 20, 150), outline=(255, 255, 255, 50), width=ss)
-    for width, colour in ((7, (10, 12, 16, 255)), (4, (235, 240, 248, 255))):
-        for ri, r in enumerate(roads):
-            col = colour if ri == 0 or colour[0] < 100 else (170, 230, 255, 255)
-            line = [at(p) for p in r]
-            for i in range(1, len(line)):
-                if gaps[ri][i]:
-                    continue
-                d.line((line[i - 1], line[i]), fill=col, width=width * ss)
+    d.rounded_rectangle((0, 0, s - 1, s - 1), radius=14 * ss, fill=(8, 9, 12, 175), outline=(255, 255, 255, 70), width=ss)
+    d.rounded_rectangle((ss * 2, ss * 2, s - 1 - ss * 2, s - 1 - ss * 2), radius=12 * ss, outline=(255, 255, 255, 18), width=ss)
+
+    def runs(ri, keep):
+        """The unbroken stretches of road `ri` whose samples `keep` says yes to, as index lists."""
+        out, cur = [], []
+        for i in range(len(roads[ri])):
+            if keep(i) and not feat(ri, i)[0]:
+                cur.append(i)
+            elif cur:
+                out.append(cur)
+                cur = []
+        if cur:
+            out.append(cur)
+        return [r for r in out if len(r) > 1]
+
+    def stroke(ri, run, width, colour, dx=0.0, dy=0.0):
+        line = [at(roads[ri][i], dx, dy) for i in run]
+        d.line(line, fill=colour, width=int(width * ss), joint="curve")
+        r = width * ss / 2
+        for x, y in (line[0], line[-1]):
+            d.ellipse((x - r, y - r, x + r, y + r), fill=colour)
+
+    def fill(ri, run, dx=0.0, dy=0.0):
+        col = MAP_ROAD if ri == 0 else MAP_BRANCH
+        tunnel = [i for i in run if feat(ri, i)[2]]
+        if not tunnel:
+            stroke(ri, run, 4, col, dx, dy)
+            return
+        # A tunnel is dashed, darker: road you cannot see.
+        dim = (col[0] * 3 // 5, col[1] * 3 // 5, col[2] * 3 // 5, 255)
+        for part in runs(ri, lambda i: i in run and not feat(ri, i)[2]):
+            stroke(ri, part, 4, col, dx, dy)
+        for part in runs(ri, lambda i: i in run and feat(ri, i)[2] and (i // 3) % 2 == 0):
+            stroke(ri, part, 3, dim, dx, dy)
+
+    everything = {ri: runs(ri, lambda i: True) for ri in range(len(roads))}
+    for ri, rs in everything.items():
+        for run in rs:
+            stroke(ri, run, 7, MAP_EDGE)
+    for ri in sorted(everything, reverse=True):  # the lap last, over its branches where they join
+        for run in everything[ri]:
+            fill(ri, run)
+
+    # Over: a sample three blocks or more above another road's, within a road's width.
+    reach = 9.0
+    flat = [(ri, i, roads[ri][i], feat(ri, i)[1]) for ri in range(len(roads)) for i in range(len(roads[ri]))]
+    over = {ri: set() for ri in range(len(roads))}
+    for ri, i, p, h in flat:
+        for rj, j, q, g in flat:
+            if h - g < 3 or abs(p[0] - q[0]) > reach or abs(p[1] - q[1]) > reach:
+                continue
+            if rj == ri and min(abs(i - j), len(roads[ri]) - abs(i - j)) < 30:
+                continue
+            if (p[0] - q[0]) ** 2 + (p[1] - q[1]) ** 2 <= reach * reach:
+                over[ri].update(range(max(0, i - 6), min(len(roads[ri]), i + 7)))
+                break
+    for ri in over:
+        bridge = runs(ri, lambda i: i in over[ri])
+        for run in bridge:
+            stroke(ri, run, 8, MAP_SHADOW, 1.0, 1.5)
+        for run in bridge:
+            stroke(ri, run, 7, MAP_EDGE)
+        for run in bridge:
+            fill(ri, run)
+
+    # The start: a chequered flag across the road, two squares deep.
     sx, sy = at(start[0])
     du, dv = start[1]
-    d.line((sx - dv * 5 * ss, sy - du * 5 * ss, sx + dv * 5 * ss, sy + du * 5 * ss), fill=(255, 70, 85, 255), width=2 * ss)
+    along = (du * ss, -dv * ss)          # the road's direction on the map (v runs up)
+    across = (dv * ss, du * ss)
+    sq = 1.6
+    for row in (-1, 0):
+        for col in range(-3, 3):
+            c = (sx + (col + 0.5) * sq * across[0] + (row + 0.5) * sq * along[0],
+                 sy + (col + 0.5) * sq * across[1] + (row + 0.5) * sq * along[1])
+            h = sq / 2
+            corners = [(c[0] + (x * across[0] + y * along[0]) * h, c[1] + (x * across[1] + y * along[1]) * h)
+                       for x, y in ((-1, -1), (1, -1), (1, 1), (-1, 1))]
+            d.polygon(corners, fill=(255, 255, 255, 255) if (row + col) % 2 == 0 else (0, 0, 0, 255))
+    img = img.resize((MAP * 2, MAP * 2), Image.LANCZOS)
     return ink_right(img), frame
 
 

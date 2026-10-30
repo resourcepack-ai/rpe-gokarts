@@ -382,6 +382,16 @@ def vfx():
             continue
         with open(os.path.join(OUT, "vfx", name), "w", encoding="utf-8", newline="\n") as f:
             json.dump(recipe, f, indent=1)
+    # Recipes written by hand rather than made in Studio, in place of Studio's:
+    # the boost, black and white and fixed to the kart, after the generated one
+    # (a long blue and orange flame) was too much and the wrong colours.
+    hand = os.path.join(ROOT, "vfx")
+    for name in sorted(os.listdir(hand)) if os.path.isdir(hand) else []:
+        if name.endswith(".json"):
+            with open(os.path.join(hand, name), encoding="utf-8") as f:
+                recipe = json.load(f)
+            with open(os.path.join(OUT, "vfx", name), "w", encoding="utf-8", newline="\n") as f:
+                json.dump(recipe, f, indent=1)
 
 
 # ---------------------------------------------------------------------------
@@ -453,7 +463,8 @@ def icons():
         pts, gaps = [], []
         for ri, r in enumerate(roads):
             pts.append([(x[0], x[1]) for x in r.samples[::4]])
-            gaps.append([prefabs.features(p, roads, ri, x)[1] for x in r.samples[::4]])
+            # (gap, height, tunnel): the minimap draws bridges over what they cross.
+            gaps.append([(lambda f: (f[1], f[0], bool(f[2])))(prefabs.features(p, roads, ri, x)) for x in r.samples[::4]])
         main = roads[0]
         s = main.at(p.get("start", 0) * main.length)
         maps[pid] = (pts, gaps, ((s[0], s[1]), (s[4], s[5])))

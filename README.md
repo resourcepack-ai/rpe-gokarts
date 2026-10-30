@@ -180,9 +180,11 @@ installs it into `plugins/RPEngine/content/gokarts/` on enable:
 - **The item box, banana, nitro and rocket** are Studio models; **the sounds**
   (engine, idle, boost, sparks, the lights, the finish...) are Studio's,
   trimmed, levelled and, for the two engine notes, looped by the tool.
-- **The effects** (`vfx/`) are Studio VFX: boost flames, drift sparks for each
-  level, pad bursts, item boxes breaking, explosions, dizzy stars, confetti at
-  the finish, the respawn.
+- **The effects** (`vfx/`) are Studio VFX (drift sparks for each level, pad
+  bursts, item boxes breaking, explosions, dizzy stars, confetti at the finish,
+  the respawn) and one written by hand, the black and white boost
+  (`tools/vfx/`). Each rides along with its kart: they follow the kart itself,
+  not the driver, so they turn with it whichever way its driver is looking.
 - **The HUD** is `huds/hud.json`, a full-screen shader object: the item window
   (with its roulette) and a live minimap with a dot for every racer top left,
   lap, clock and best lap top right, the standings down the right edge with a

@@ -85,6 +85,28 @@ public final class Content {
         }
     }
 
+    /**
+     * Plays an effect on a kart: it rides along with the kart and turns with
+     * it. It follows the chassis, the entity that holds the kart's heading,
+     * rather than the driver, whose yaw is wherever they are looking: an
+     * exhaust that follows the camera blows out of the side of the kart.
+     */
+    public void vfx(String path, ai.resourcepack.engine.api.Vehicle kart, org.bukkit.entity.Player driver) {
+        org.bukkit.entity.Entity chassis = kart == null ? null : kart.chassis();
+        if (chassis == null || !chassis.isValid()) {
+            if (kart != null) vfx(path, kart.location(), driver);
+            return;
+        }
+        try {
+            engine.vfx().play(id(path), kart.location(), driver,
+                    ai.resourcepack.engine.api.VfxOptions.builder().follow(chassis).build());
+        } catch (RuntimeException e) {
+            if (missing.add("vfx:" + path)) {
+                org.bukkit.Bukkit.getLogger().warning("[RPEGoKarts] Could not play the VFX " + NS + ":" + path + ": " + e.getMessage());
+            }
+        }
+    }
+
     public void sound(Location at, String path, float volume, float pitch, Sound fallback) {
         if (!engine.sounds().playAt(at, id(path), volume, pitch) && fallback != null) {
             at.getWorld().playSound(at, fallback, SoundCategory.PLAYERS, volume, pitch);

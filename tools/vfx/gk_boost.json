@@ -1,0 +1,42 @@
+{
+ "v": 1,
+ "duration": 24,
+ "palettes": {
+  "white": {"deep": "#8c8c8c", "mid": "#e6e6e6", "bright": "#ffffff"},
+  "ink": {"deep": "#000000", "mid": "#1e1e1e", "bright": "#4a4a4a"},
+  "smoke": {"deep": "#2a2a2a", "mid": "#6e6e6e", "bright": "#b4b4b4"}
+ },
+ "layers": [
+  {"type": "sprite", "name": "white flash", "start": 0, "end": 5, "palette": "white", "sprite": "glow", "billboard": true,
+   "pos": [0, 0.6, -1.2], "scale": [[0, 0.4], [1, 1.8, "out"], [5, 0.2]], "fade": [[0, 0], [5, 1]]},
+  {"type": "sprite", "name": "white exhaust ring", "start": 0, "end": 8, "palette": "white", "sprite": "shock",
+   "pos": [0, 0.7, -1.1], "rot": [90, 0, 0], "scale": [[0, 0.3], [3, 2.2, "out"], [8, 3.2]], "fade": [[0, 0], [3, 0.2], [8, 1]]},
+  {"type": "sprite", "name": "black exhaust ring", "start": 1, "end": 10, "palette": "ink", "sprite": "shock",
+   "pos": [[0, [0, 0.7, -1.4]], [9, [0, 0.7, -2.6]]], "rot": [90, 0, 0], "scale": [[0, 0.2], [4, 2.6, "out"], [9, 3.6]], "fade": [[0, 0.1], [9, 1]]},
+  {"type": "sprite", "name": "left white jet", "start": 0, "end": 22, "palette": "white", "sprite": "spike", "flicker": 0.12,
+   "pos": [0.32, 0.5, -1.1], "rot": [-90, 0, 0],
+   "scale": [[0, [0.2, 0.4, 0.2]], [2, [0.45, 2.4, 0.45], "out"], [6, [0.35, 1.9, 0.35]], [9, [0.45, 2.6, 0.45]], [13, [0.35, 2, 0.35]], [22, [0.05, 0.8, 0.05]]],
+   "fade": [[0, 0.05], [16, 0.1], [22, 1]]},
+  {"type": "sprite", "name": "right white jet", "start": 0, "end": 22, "palette": "white", "sprite": "spike", "flicker": 0.12,
+   "pos": [-0.32, 0.5, -1.1], "rot": [-90, 0, 0],
+   "scale": [[0, [0.2, 0.4, 0.2]], [2, [0.45, 2.2, 0.45], "out"], [5, [0.4, 2.6, 0.4]], [10, [0.35, 1.9, 0.35]], [14, [0.45, 2.3, 0.45]], [22, [0.05, 0.8, 0.05]]],
+   "fade": [[0, 0.05], [16, 0.1], [22, 1]]},
+  {"type": "sprite", "name": "left black core", "start": 1, "end": 20, "palette": "ink", "sprite": "spike",
+   "pos": [0.32, 0.5, -1.15], "rot": [-90, 0, 0],
+   "scale": [[0, [0.1, 0.2, 0.1]], [2, [0.2, 1.3, 0.2], "out"], [12, [0.18, 1.1, 0.18]], [20, [0.02, 0.4, 0.02]]],
+   "fade": [[0, 0.1], [14, 0.2], [20, 1]]},
+  {"type": "sprite", "name": "right black core", "start": 1, "end": 20, "palette": "ink", "sprite": "spike",
+   "pos": [-0.32, 0.5, -1.15], "rot": [-90, 0, 0],
+   "scale": [[0, [0.1, 0.2, 0.1]], [2, [0.2, 1.3, 0.2], "out"], [12, [0.18, 1.1, 0.18]], [20, [0.02, 0.4, 0.02]]],
+   "fade": [[0, 0.1], [14, 0.2], [20, 1]]},
+  {"type": "motes", "name": "white speed lines", "start": 0, "end": 22, "palette": "white", "kind": "streak",
+   "burst": 10, "rate": 5, "at": [0, 0.9, 2.5], "shape": "box", "size": [1.8, 0.7, 1.5], "dir": [0, 0, -1], "spread": 0.03,
+   "speed": [0.9, 1.4], "drag": 0.97, "scale": [0.03, 0.06], "length": 2.4, "life": [4, 7]},
+  {"type": "motes", "name": "black speed lines", "start": 1, "end": 22, "palette": "ink", "kind": "streak",
+   "burst": 4, "rate": 2, "at": [0, 0.8, 2.2], "shape": "box", "size": [2, 0.8, 1.5], "dir": [0, 0, -1], "spread": 0.03,
+   "speed": [0.8, 1.2], "drag": 0.97, "scale": [0.04, 0.07], "length": 1.6, "life": [4, 7]},
+  {"type": "motes", "name": "grey exhaust smoke", "start": 2, "end": 24, "palette": "smoke", "kind": "glow",
+   "rate": 1.5, "at": [0, 0.5, -1.6], "shape": "sphere", "size": 0.2, "dir": [0, 0.2, -1], "spread": 0.35,
+   "speed": [0.12, 0.25], "drag": 0.86, "gravity": -0.008, "scale": [0.35, 0.7], "life": [8, 13]}
+ ]
+}

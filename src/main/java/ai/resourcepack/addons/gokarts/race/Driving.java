@@ -172,7 +172,7 @@ public final class Driving {
             if (!airborne && under == s.boostPad && st.padCooldown == 0) {
                 st.padCooldown = 12;
                 boost(v, s.padBoost);
-                content().vfx("gk_pad", v.location(), driver);
+                content().vfx("gk_pad", v, driver);
             }
             if (st.jumpCooldown == 0 && speed > 3 && onJumpPad(v, s.jumpPad)) launch(v, driver, st);
             trick(v, driver, st, in, airborne);
@@ -232,7 +232,7 @@ public final class Driving {
         if (level > st.driftLevel) {
             st.driftLevel = level;
             content().sound(driver, "spark", 0.8f, 0.9f + 0.2f * level, Sound.BLOCK_AMETHYST_BLOCK_CHIME);
-            content().vfx("gk_miniturbo_" + Math.min(3, level), v.location(), driver);
+            content().vfx("gk_miniturbo_" + Math.min(3, level), v, driver);
         }
         if (st.driftTicks % 2 == 0) sparks(v, st.driftLevel);
     }
@@ -276,7 +276,7 @@ public final class Driving {
         Vector now = v.velocity();
         v.applyImpulse(new Vector(throwV.getX() - now.getX(), lift, throwV.getZ() - now.getZ()), 0);
         content().sound(v.location(), "boost", 0.8f, 1.3f, Sound.ENTITY_FIREWORK_ROCKET_LAUNCH);
-        content().vfx("gk_pad", v.location(), driver);
+        content().vfx("gk_pad", v, driver);
     }
 
     /** Seconds in the air for a throw up at {@code lift} that lands {@code drop} blocks lower. */
@@ -384,7 +384,7 @@ public final class Driving {
         v.nudge(b.kick());
         content().sound(v.location(), "boost", 1f, 1f, Sound.ENTITY_FIREWORK_ROCKET_LAUNCH);
         Player driver = v.driver().orElse(null);
-        content().vfx("gk_boost", v.location(), driver);
+        content().vfx("gk_boost", v, driver);
         play(v, st, Act.BOOST, b.ticks());
     }
 

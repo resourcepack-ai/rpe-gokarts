@@ -325,7 +325,7 @@ public final class Race {
                     }
                 }
                 content().sound(p, "go", 1f, 1f, Sound.BLOCK_NOTE_BLOCK_BELL);
-                content().vfx("gk_go", r.kart.location(), null);
+                content().vfx("gk_go", r.kart, p);
                 r.subline("", 0);
             }
         }
@@ -425,7 +425,7 @@ public final class Race {
                 finish(r, p);
             } else {
                 content().sound(p, "lap", 1f, 1f, Sound.ENTITY_EXPERIENCE_ORB_PICKUP);
-                content().vfx("gk_lap", r.kart.location(), p);
+                content().vfx("gk_lap", r.kart, p);
                 if (r.lap == laps) r.banner("banner_final", 50);
                 else if (personalBest) r.banner("banner_best", 40);
                 else r.banner("banner_lap", 30);
@@ -449,7 +449,7 @@ public final class Race {
         r.item = null;
         r.roulette = 0;
         content().sound(p, "finish", 1f, 1f, Sound.UI_TOAST_CHALLENGE_COMPLETE);
-        content().vfx("gk_confetti", r.kart.location(), null);
+        content().vfx("gk_confetti", r.kart, p);
         r.kart.dress(p, "gokarts_" + r.colour.id() + "_victory");
         feed(messages().plain("feed-finish", "name", r.name, "place", Hud.ordinal(r.place)));
         r.banner("banner_finish", 80);
@@ -489,7 +489,7 @@ public final class Race {
         r.lastGateTick = clock;
         r.subline(messages().plain("hud-respawning"), 20);
         p.getWorld().spawnParticle(Particle.CLOUD, at.clone().add(0, 0.6, 0), 20, 0.5, 0.3, 0.5, 0.02);
-        content().vfx("gk_respawn", at, null);
+        content().vfx("gk_respawn", v, p);
         Text.send(p, messages().component("respawned"));
     }
 
