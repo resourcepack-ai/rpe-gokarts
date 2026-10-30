@@ -41,7 +41,8 @@ import java.util.Locale;
  *
  * <ul>
  *   <li><b>F</b>, a left click or a right click use your item.</li>
- *   <li><b>Q</b> puts you back on the track at the last gate.</li>
+ *   <li><b>Q</b> scraps your item; with empty hands it puts you back on the
+ *   track at the last gate, if you are off it or stuck.</li>
  *   <li>Nobody can climb into somebody else's race kart.</li>
  *   <li>Two karts that touch make a noise about it, raced or not.</li>
  * </ul>
@@ -114,14 +115,14 @@ public final class RaceListener implements Listener {
         if (r != null && r.racer(e.getPlayer()) != null && r.racer(e.getPlayer()).racing) e.setCancelled(true);
     }
 
-    /** Q: back on the track. */
+    /** Q: scrap the item, or with empty hands, back on the track if off it. */
     @EventHandler(priority = EventPriority.LOW)
     public void onDrop(PlayerDropItemEvent e) {
         Race race = race(e.getPlayer());
         if (race == null) return;
         e.setCancelled(true);
         Racer r = race.racer(e.getPlayer());
-        if (r != null && r.racing) race.askRespawn(r);
+        if (r != null && r.racing) race.dropKey(r);
     }
 
     /** F: use the item. */

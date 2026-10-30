@@ -46,7 +46,7 @@ is ordinary RP Engine content shipped inside the jar.
 | **A / D** | Steer |
 | **Space** | The handbrake. Held through a corner at speed it is a **drift**: blue sparks, then orange, then purple, and letting go is a boost worth the level reached |
 | **F** or a click | Use your item |
-| **Q** | Back on the track at the last checkpoint |
+| **Q** | Scrap the item you are holding, for the next box's. With empty hands, back on the track at the last checkpoint, if you are off the road or stuck |
 | `/kart join [track]` | Into the lobby (the glass box over the infield), where you stay until the grid: step or fall off it and you are put back |
 | `/kart colour <colour>` | The kart you'd like: red, blue, green, yellow, orange, purple, pink or cyan. Everybody in a race has a different one, and wears a helmet to match |
 | `/kart leave` | Out, with your inventory and position back |

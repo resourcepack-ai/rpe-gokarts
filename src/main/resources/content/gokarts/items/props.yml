@@ -90,6 +90,94 @@ decoy_box:
   lore:
     - "&7Looks like an item box. Is not one."
 
+held_banana:
+  material: PAPER
+  texture: item/blank
+  gui: {texture: icon_banana}
+  name: "&e&lBanana"
+  lore:
+    - "&7Drop it behind you. Whoever hits it spins out."
+
+held_nitro:
+  material: PAPER
+  texture: item/blank
+  gui: {texture: icon_nitro}
+  name: "&9&lNitro"
+  lore:
+    - "&7A boost, whenever you like."
+
+held_rocket:
+  material: PAPER
+  texture: item/blank
+  gui: {texture: icon_rocket}
+  name: "&c&lRocket"
+  lore:
+    - "&7Fired at the kart ahead of you."
+
+held_orb:
+  material: PAPER
+  texture: item/blank
+  gui: {texture: icon_orb}
+  name: "&3&lBumper Orb"
+  lore:
+    - "&7Rolls along the road, off the walls, into somebody."
+
+held_drone:
+  material: PAPER
+  texture: item/blank
+  gui: {texture: icon_drone}
+  name: "&5&lStorm Drone"
+  lore:
+    - "&7Flies to the leader and strikes."
+
+held_overdrive:
+  material: PAPER
+  texture: item/blank
+  gui: {texture: icon_overdrive}
+  name: "&6&lOverdrive"
+  lore:
+    - "&7A boost every press, for a few seconds."
+
+held_shield:
+  material: PAPER
+  texture: item/blank
+  gui: {texture: icon_shield}
+  name: "&d&lHyper Shield"
+  lore:
+    - "&7Untouchable for a few seconds."
+
+held_smoke_bomb:
+  material: PAPER
+  texture: item/blank
+  gui: {texture: icon_smoke}
+  name: "&8&lSmoke Bomb"
+  lore:
+    - "&7Blinds everybody ahead of you."
+
+held_horn:
+  material: PAPER
+  texture: item/blank
+  gui: {texture: icon_horn}
+  name: "&e&lShockwave Horn"
+  lore:
+    - "&7Blows everything round you away."
+
+held_surge:
+  material: PAPER
+  texture: item/blank
+  gui: {texture: icon_surge}
+  name: "&b&lStatic Surge"
+  lore:
+    - "&7Everybody else loses their item and slows down."
+
+held_decoy_box:
+  material: PAPER
+  texture: item/blank
+  gui: {texture: icon_decoy}
+  name: "&c&lDecoy Box"
+  lore:
+    - "&7Looks like an item box. Is not one."
+
 no_item:
   material: PAPER
   name: "&7No item"

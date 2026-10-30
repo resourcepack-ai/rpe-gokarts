@@ -395,6 +395,16 @@ def props(helmet_lines):
         icon(icon_name)
         lines += [f"{iid}:", "  material: PAPER", f"  texture: item/icon_{icon_name}", f'  name: "{name}"', "  lore:"]
         lines += [f'    - "{line}"' for line in lore] + [""]
+    # What a racer holds: each item again as held_<id>, drawn as nothing in the
+    # hand (an item in it covered the track in first person) and as its icon in
+    # the slot, through the item's gui: (RP Engine 0.2.47). The plain items stay
+    # what the track's boxes, bananas and orbs are drawn with.
+    held = [(pid, PROP_ICONS[pid], PROPS[pid][1], PROPS[pid][2]) for pid in ("banana", "nitro", "rocket")]
+    held += [(iid, icon_name, name, lore) for iid, (icon_name, name, lore) in FLAT_ITEMS.items()]
+    for iid, icon_name, name, lore in held:
+        lines += [f"held_{iid}:", "  material: PAPER", "  texture: item/blank", f"  gui: {{texture: icon_{icon_name}}}",
+                  f'  name: "{name}"', "  lore:"]
+        lines += [f'    - "{line}"' for line in lore] + [""]
     # Nothing in hand: an invisible item, so the hotbar slot a racer's item lives
     # in always holds SOMETHING, which is what makes Q and the clicks reach the plugin.
     blank = Image.new("RGBA", (16, 16), (0, 0, 0, 0))

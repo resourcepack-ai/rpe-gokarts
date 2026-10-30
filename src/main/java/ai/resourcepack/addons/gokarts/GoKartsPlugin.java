@@ -215,9 +215,37 @@ public final class GoKartsPlugin extends JavaPlugin {
         return true;
     }
 
-    /** Writes any option a newer build added into the server's config.yml, with its default. */
+    /**
+     * Messages a newer build reworded, by what they used to say. A server
+     * whose config.yml still says exactly that gets the new wording; one
+     * somebody edited is left as it is. (Q scrapping an item, 0.2.5.)
+     */
+    private static final java.util.Map<String, String> REWORDED = java.util.Map.ofEntries(
+            java.util.Map.entry("messages.how-to", "{prefix} <#E8EAED><#FFD23F>W</#FFD23F>/<#FFD23F>S</#FFD23F> to drive, <#FFD23F>A</#FFD23F>/<#FFD23F>D</#FFD23F> to steer, hold <#FFD23F>Space</#FFD23F> in a corner to drift (let go for a boost), <#FFD23F>F</#FFD23F> or a click to use an item, <#FFD23F>Q</#FFD23F> if you're stuck."),
+            java.util.Map.entry("messages.item-banana", "Banana - F to drop it"),
+            java.util.Map.entry("messages.item-nitro", "Nitro - F to boost"),
+            java.util.Map.entry("messages.item-triple-nitro", "Triple Nitro - {left} left"),
+            java.util.Map.entry("messages.item-rocket", "Rocket - F to fire"),
+            java.util.Map.entry("messages.item-banana-bunch", "Banana Bunch - {left} left"),
+            java.util.Map.entry("messages.item-decoy", "Decoy Box - F to drop it"),
+            java.util.Map.entry("messages.item-orb", "Bumper Orb - F to roll it"),
+            java.util.Map.entry("messages.item-drone", "Storm Drone - F to send it at the leader"),
+            java.util.Map.entry("messages.item-overdrive", "Overdrive - F as often as you like"),
+            java.util.Map.entry("messages.item-shield", "Hyper Shield - F to switch it on"),
+            java.util.Map.entry("messages.item-smoke", "Smoke Bomb - F to blind the leaders"),
+            java.util.Map.entry("messages.item-horn", "Shockwave Horn - F to blow"),
+            java.util.Map.entry("messages.item-surge", "Static Surge - F to zap everybody")
+    );
+
+    /** Writes any option a newer build added into the server's config.yml, with its default, and rewords unedited old ones. */
     private void addNewOptions() {
         getConfig().options().copyDefaults(true);
+        org.bukkit.configuration.Configuration defaults = getConfig().getDefaults();
+        for (java.util.Map.Entry<String, String> e : REWORDED.entrySet()) {
+            if (defaults != null && e.getValue().equals(getConfig().getString(e.getKey()))) {
+                getConfig().set(e.getKey(), defaults.getString(e.getKey()));
+            }
+        }
         saveConfig();
     }
 

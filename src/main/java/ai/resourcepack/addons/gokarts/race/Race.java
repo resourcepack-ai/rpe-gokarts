@@ -10,6 +10,7 @@ import ai.resourcepack.addons.gokarts.track.Track;
 import ai.resourcepack.engine.api.Vehicle;
 import org.bukkit.GameMode;
 import org.bukkit.Location;
+import org.bukkit.Material;
 import org.bukkit.Particle;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
@@ -405,6 +406,7 @@ public final class Race {
                 continue;
             }
             keepSeated(r, p);
+            r.stillTicks = Math.abs(r.kart.groundSpeed()) < 1 ? r.stillTicks + 1 : 0;
             if (r.frozen > 0 && --r.frozen == 0 && !r.finished) r.kart.setEnabled(true);
             plugin.driving().tick(r.kart, p, false);
             if (r.finished) continue;
@@ -515,6 +517,42 @@ public final class Race {
     }
 
     /** Off the track, in water, or stuck: a moment's pause and then back on at the last gate. */
+    /**
+     * Q. With an item, it is scrapped: somebody who would rather have the next
+     * box's. With empty hands it puts the kart back on the track, but only
+     * when it is off it (on the grass, sand and the like) or stuck (all but
+     * stopped for a while): pressed while driving along the road, it put
+     * people back at the last gate, which was never what they wanted.
+     */
+    void dropKey(Racer r) {
+        if (r.finished || phase != Phase.RACING) return;
+        if (r.item != null && r.roulette == 0) {
+            scrap(r);
+            return;
+        }
+        if (r.roulette > 0 || r.kart == null || !r.kart.isValid()) return;
+        Material under = r.kart.location().subtract(0, 0.2, 0).getBlock().getType();
+        if (settings().offroad.contains(under) || r.stillTicks >= STUCK_STILL) {
+            askRespawn(r);
+        } else {
+            r.subline(messages().plain("hud-on-track"), 40);
+        }
+    }
+
+    /** How long a kart has to have been all but stopped before Q counts it as stuck: 1.5 s. */
+    static final int STUCK_STILL = 30;
+
+    /** An item thrown away, overdrive and all. */
+    void scrap(Racer r) {
+        r.item = null;
+        r.itemUses = 0;
+        r.overdriveUntil = 0;
+        showItem(r);
+        r.subline(messages().plain("hud-scrapped"), 30);
+        Player p = r.player();
+        if (p != null) p.playSound(p.getLocation(), Sound.ENTITY_ITEM_BREAK, 0.7f, 1.3f);
+    }
+
     void askRespawn(Racer r) {
         if (r.finished || r.respawnIn > 0 || phase != Phase.RACING) return;
         r.respawnIn = 20;
@@ -791,7 +829,9 @@ public final class Race {
     void showItem(Racer r) {
         Player p = r.player();
         if (p == null) return;
-        String id = r.item == null || r.roulette > 0 ? "no_item" : r.item.look;
+        // Held, it is drawn as nothing (an item in the driver's hand covered the
+        // track); in the slot, as its icon. See tools/make_assets.py, held_*.
+        String id = r.item == null || r.roulette > 0 ? "no_item" : "held_" + r.item.look;
         ItemStack stack = content().item(id);
         if (r.item != null && r.item.uses > 1 && r.roulette == 0) stack.setAmount(Math.max(1, r.itemUses));
         p.getInventory().setItem(0, stack);
