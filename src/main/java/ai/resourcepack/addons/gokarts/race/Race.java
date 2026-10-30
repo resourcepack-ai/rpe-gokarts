@@ -361,7 +361,7 @@ public final class Race {
             if (gate.contains(at)) passGate(r, p);
             wrongWay(r, gate, at);
             boolean lost = at.getY() < track.floor() || r.kart.submersion() > 0.4
-                    || clock - r.lastGateTick > settings().stuckTicks;
+                    || clock - r.lastGateTick > stuckAllowance(r, gates);
             if (lost) askRespawn(r);
         }
         items.tick();
@@ -380,6 +380,19 @@ public final class Race {
     }
 
     private long lastFinish;
+
+    /**
+     * How long a racer may go without a gate before they are put back: the
+     * configured time, plus the time a slow kart takes to cover the stretch to
+     * the next gate. Gates are left out wherever a branch stands in for the
+     * loop, so one stretch can be ninety blocks, which a flat twelve seconds
+     * called "stuck" for anybody taking it at a cautious pace.
+     */
+    private long stuckAllowance(Racer r, List<Track.Checkpoint> gates) {
+        Track.Checkpoint from = gates.get(r.last), to = gates.get(r.next);
+        double gap = Math.hypot(to.x() - from.x(), to.z() - from.z());
+        return settings().stuckTicks + Math.round(gap / 5.0 * 20);
+    }
 
     private long lastFinishTick() {
         return lastFinish;
@@ -459,7 +472,7 @@ public final class Race {
         List<Track.Checkpoint> gates = track.checkpoints();
         Track.Checkpoint from = gates.get(r.last);
         Track.Checkpoint to = gates.get((r.last + 1) % gates.size());
-        Location at = from.at(track.world());
+        Location at = onGround(from.at(track.world()));
         Vector dir = new Vector(to.x() - from.x(), 0, to.z() - from.z());
         if (dir.lengthSquared() > 1e-6) at.setDirection(dir);
         at.setPitch(0);
@@ -478,6 +491,30 @@ public final class Race {
         p.getWorld().spawnParticle(Particle.CLOUD, at.clone().add(0, 0.6, 0), 20, 0.5, 0.3, 0.5, 0.02);
         content().vfx("gk_respawn", at, null);
         Text.send(p, messages().component("respawned"));
+    }
+
+    /**
+     * A gate's position stood on whatever is really there: the top of the
+     * highest solid block from a block and a half over it to two under.
+     *
+     * <p>A gate's height is where the racing line is, and the road under it was
+     * built to the nearest half block, so it can be a little ABOVE the gate. A
+     * kart put down there started inside the road, fell through it, landed
+     * under the track's floor and was put back at the same gate: round and
+     * round, never racing again.
+     */
+    static Location onGround(Location at) {
+        if (at.getWorld() == null) return at;
+        int bx = at.getBlockX(), bz = at.getBlockZ();
+        for (int y = (int) Math.floor(at.getY() + 1.5); y >= (int) Math.floor(at.getY() - 2); y--) {
+            org.bukkit.block.Block b = at.getWorld().getBlockAt(bx, y, bz);
+            if (b.getType().isSolid()) {
+                Location out = at.clone();
+                out.setY(b.getBoundingBox().getMaxY() + 0.02);
+                return out;
+            }
+        }
+        return at;
     }
 
     private void dropKart(Racer r) {

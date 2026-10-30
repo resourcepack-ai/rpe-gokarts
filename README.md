@@ -2,9 +2,11 @@
 
 Go-kart racing for Minecraft servers, built on
 [RP Engine](https://github.com/resourcepack-ai/rp-engine). Eight karts on a
-grid, three red lights and green, and three laps of a circuit the plugin builds
-for you: drift through the corners for a boost, drive through item boxes for
-bananas, nitro and homing rockets, and try to be first over the line.
+grid, three red lights and green, and three laps of one of four circuits the
+plugin builds for you, from a sunny meadow to a neon city at night: drift
+through the corners for a boost, fly off the ramps and trick in the air, take
+the shortcuts, drive through item boxes for bananas, nitro and homing rockets,
+and try to be first over the line.
 
 It is an RP Engine addon, and it uses nothing but the engine's public API
 (`ai.resourcepack.engine.api`). **Every kart is an RP Engine vehicle**, so the
@@ -17,9 +19,9 @@ is ordinary RP Engine content shipped inside the jar.
 
 - **Paper 1.21.4 or newer** for A/D steering (Spigot works too, steering by
   looking), on Java 21.
-- **[RP Engine](https://resourcepack.ai/rp-engine) 0.2.40 or newer.** Go Karts
-  checks the engine's version as it starts, and on anything older says so in the
-  console and disables itself.
+- **[RP Engine](https://resourcepack.ai/rp-engine) 0.2.45 or newer**, the first
+  whose vehicles jump off a jump pad. Go Karts checks the engine's version as it
+  starts, and on anything older says so in the console and disables itself.
 
 ## Installing
 
@@ -29,8 +31,9 @@ is ordinary RP Engine content shipped inside the jar.
    reloads the engine once, so the resource pack the engine serves now carries
    it.
 3. As an op, run `/kart track generate main`. It makes a new world for the
-   track (`gokarts_main`), builds the circuit there in a few seconds and takes
-   you to it.
+   track (`gokarts_main`), builds the Sunny Meadows circuit there in a few
+   seconds and takes you to it. `/kart track generate night neon` builds the
+   city one instead; see [Tracks](#tracks-staff).
 4. `/kart join`, then `/kart start`. Alone is fine.
 
 ## Racing
@@ -43,7 +46,7 @@ is ordinary RP Engine content shipped inside the jar.
 | **F** or a click | Use your item |
 | **Q** | Back on the track at the last checkpoint |
 | `/kart join [track]` | Into the lobby (the glass box over the infield) |
-| `/kart colour <colour>` | The kart you'd like: red, blue, green, yellow, orange, purple, pink or cyan |
+| `/kart colour <colour>` | The kart you'd like: red, blue, green, yellow, orange, purple, pink or cyan. Everybody in a race has a different one, and wears a helmet to match |
 | `/kart leave` | Out, with your inventory and position back |
 | `/kart results` | The last race's results |
 
@@ -51,11 +54,17 @@ is ordinary RP Engine content shipped inside the jar.
 second light comes on and you stall; hold it as the lights go green, and not
 before, and it is a rocket start.
 
-**The circuit.** Asphalt with red and white kerbs and a tyre wall both sides,
-boost pads on the two straightest stretches, two rows of item boxes. Off the
-road is grass, which holds a kart to walking pace: cutting a corner is a choice,
-and it costs. Laps are counted checkpoint by checkpoint, so cutting across the
-infield gets you nowhere.
+**The circuit.** Kerbs and walls both sides, boost pads (magenta) on the
+straights, rows of item boxes. Off the road holds a kart to walking pace:
+cutting a corner is a choice, and it costs. Laps are counted checkpoint by
+checkpoint, so cutting across the infield gets you nowhere.
+
+**Jumps and shortcuts.** Every track has a ramp with a jump pad (lime) at its
+lip, over a river, a canyon, a crevasse or a drop between buildings. Press space
+in the air for a **trick**, and landing it is a boost. Every track also has a
+second way round for part of the lap: a tunnel through a hill, the canyon floor,
+a frozen lake (ice: the kart slides wide of where it is pointed) or a back
+alley. Either way counts.
 
 **Items.** Drive through a box for a spin of the roulette. What comes out
 depends on your place: the leader gets bananas to defend with, the back of the
@@ -69,7 +78,7 @@ field nitro and rockets to catch up with.
 | Rocket | Flies over the walls at the kart one place ahead and throws it in the air. The leader's flies straight on |
 
 Falling off, ending up in water, or not passing a checkpoint for twelve seconds
-puts you back on the track. When the winner is home everybody else has thirty
+(more where the next one is far away) puts you back on the track. When the winner is home everybody else has thirty
 seconds to finish, then the results come up with every driver's time, best lap
 and face, and the track's lap record.
 
@@ -79,17 +88,30 @@ speed line above your hotbar all work anywhere.
 
 ## Tracks (staff)
 
-`/kart track generate <id> [name]` builds a whole circuit, about 330 blocks a
-lap, **in a new world of its own** (`gokarts_<id>`: superflat, peaceful, always
-midday), so it replaces nothing. The plugin loads that world again every time
-the server starts. Generating the same track again makes a fresh world
-(`gokarts_<id>_2`...) and leaves the old one alone.
+`/kart track generate <id> [prefab] [name]` builds a whole circuit **in a new
+world of its own** (`gokarts_<id>`: superflat, peaceful, its ground and time of
+day the theme's), so it replaces nothing. The plugin loads that world again
+every time the server starts. Generating the same track again makes a fresh
+world (`gokarts_<id>_2`...) and leaves the old one alone.
 
-`/kart track generate <id> here confirm [name]` builds it where you stand
-instead, starting under your feet and running forward and to your right,
-replacing every block in a box about 80 by 130 from two below your feet to
-fourteen above. From the console: `/kart track generate <id> at <world> <x>
-<y> <z> <yaw> [name]`.
+| Prefab | | Lap | |
+|---|---|---|---|
+| `meadow` (default) | Sunny Meadows | 458 blocks | A jump over a river, a tunnel through a hill |
+| `desert` | Dune Canyon | 528 | A jump over a canyon, a lower road along its floor, mesas |
+| `frost` | Frostbite Peak | 544 | A figure of eight that crosses itself on a bridge, a frozen-lake shortcut |
+| `neon` | Neon Nights | 742, two laps | Midnight, an elevated road over the streets, a tunnel, a back alley |
+
+Each is a racing line in three dimensions with its branches, ramps, gaps,
+tunnels, pads and item boxes, built in half-block steps with walls, kerbs, a
+gantry over the start, a grandstand, scenery and the viewing deck the lobby
+waits on. The prefabs are JSON in the jar (`src/main/resources/prefabs/`), so a
+fork can add its own; `tools/prefabs.py` previews and checks one.
+
+`/kart track generate <id> here confirm [prefab] [name]` builds it where you
+stand instead, starting under your feet and running forward and to your right
+and replacing every block in the way; the reply first says how big a box. From
+the console: `/kart track generate <id> at <world> <x> <y> <z> <yaw> [prefab]
+[name]`.
 
 **`/kart track undo <id> confirm` takes the last generate back.** A track in its
 own world deletes that world; one built in place puts back every block it
@@ -148,20 +170,27 @@ The jar carries a content folder (`src/main/resources/content/gokarts/`) and
 installs it into `plugins/RPEngine/content/gokarts/` on enable:
 
 - **The kart** is one model made in [ResourcePack AI Studio](https://resourcepack.ai)
-  and rigged there in the vehicle editor's "Animate with AI": its wheels roll
-  and steer, and its driver's four emotes (`emotes/gokarts.json`) sit them low
-  in the seat with their hands on the wheel. `tools/make_assets.py` paints it in
-  eight colours, each its own item and its own vehicle (`vehicles/karts.yml`).
+  and rigged there in the vehicle editor: its wheels roll and steer, and it has
+  a trick, a spin-out and a boost the plugin plays. Its driver's emotes
+  (`emotes/`) sit them low in the seat with their hands on the wheel, and carry
+  a racing **helmet** in the kart's colour as a prop; there are emotes for
+  winning and for being dazed too. `tools/make_assets.py` paints the kart and the
+  helmet in eight colours, each its own item and its own vehicle
+  (`vehicles/karts.yml`).
 - **The item box, banana, nitro and rocket** are Studio models; **the sounds**
   (engine, idle, boost, sparks, the lights, the finish...) are Studio's,
   trimmed, levelled and, for the two engine notes, looped by the tool.
-- **The HUD** is `huds/hud.json`, a full-screen shader object: the item card top
-  left, lap, clock and best lap top right, the standings down the right edge
-  with your own line in yellow, speed, drift charge and your place bottom right,
-  and the start lights and the big words in the middle. The plugin only sets its
-  values (`race/Hud.java`); the pictures in them (the lettering, the lights, the
-  item cards, drawn from Studio's own thumbnails of the models) are
-  `tools/hud_art.py`'s.
+- **The effects** (`vfx/`) are Studio VFX: boost flames, drift sparks for each
+  level, pad bursts, item boxes breaking, explosions, dizzy stars, confetti at
+  the finish, the respawn.
+- **The HUD** is `huds/hud.json`, a full-screen shader object: the item window
+  (with its roulette) and a live minimap with a dot for every racer top left,
+  lap, clock and best lap top right, the standings down the right edge with a
+  chip of each kart's colour and your own line in yellow, a speed gauge that
+  glows with the drift charge and your place bottom right, and the start
+  lights, countdown and banners (final lap, wrong way, best lap, finish) in the
+  middle, with speed lines while you boost. The plugin only sets its values
+  (`race/Hud.java`); the pictures in them are `tools/hud_art.py`'s.
 - **The results** are `dialogs/results.json`, a Studio dialog: every driver's
   place, face, time and best lap, and the lap record.
 
@@ -180,21 +209,26 @@ itself targets Java 21 through a toolchain Gradle downloads on its own.
 RP Engine is compile-only (the server already has it). The build uses, in order,
 `ENGINE_JAR`, an engine built beside this project in `../../rp-engine/build/libs`,
 or RP Engine 0.2.40, downloaded once from cdn.resourcepack.ai and checked
-against its SHA-256.
+against its SHA-256. Compiling needs only 0.2.40's API; running needs 0.2.45.
 
 ### The art
 
-`tools/` rebuilds the models, textures, glyphs, sounds, emotes and the item and
-vehicle YAML from what Studio made (`tools/src/`). It needs Python 3 with
+`tools/` rebuilds the models, textures, glyphs, sounds, emotes, VFX and the item
+and vehicle YAML from what Studio made (`tools/src/`). It needs Python 3 with
 Pillow, NumPy and soundfile, and nothing else.
 
 ```
-python tools/make_assets.py
+python tools/make_assets.py      # the content folder, from tools/src/
+python tools/hud_art.py          # the HUD's pictures
+python tools/prefabs.py check    # every prefab: lap length, how close its roads come
+python tools/prefabs.py preview  # tools/previews/<id>.png, from above
 ```
 
 The HUD and the results screen are kept as Studio documents in `dialogs-src/`
 (`hud.json`, the shader object; `dialogs.json`, the Dialog-style document) and
-built into the content folder with ResourcePack AI Studio's exporter.
+built into the content folder by `rpe-addons/link-huds.mjs`, which runs
+ResourcePack AI Studio's exporter so that every addon here ships the same text
+shader.
 
 ## Licence
 

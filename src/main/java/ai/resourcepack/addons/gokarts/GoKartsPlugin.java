@@ -48,8 +48,13 @@ import java.util.UUID;
  * values.
  */
 public final class GoKartsPlugin extends JavaPlugin {
-    /** The oldest engine with everything this plugin calls. */
-    static final String MIN_ENGINE = "0.2.40";
+    /**
+     * The oldest engine with everything this plugin calls, and the first whose
+     * vehicles leave the ground when a jump pad throws them: before 0.2.45 a
+     * grounded kart dropped an upward impulse, and every prefab has a jump it
+     * cannot be raced without.
+     */
+    static final String MIN_ENGINE = "0.2.45";
 
     private RPEnginePlugin engine;
     private Content content;

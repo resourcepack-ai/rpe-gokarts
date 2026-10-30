@@ -269,6 +269,43 @@ public final class PrefabBuilder {
             return out;
         }
 
+        /**
+         * The nearest sample of road {@code r} to (u, v) from a different part
+         * of the lap than {@code best}, within reach; null when there is none.
+         *
+         * <p>A road that crosses itself (the city's elevated road over its own
+         * tunnel, the figure of eight's bridge) is one road, so {@link #nearest}
+         * sees only whichever pass is closer, and the other was never built at
+         * that column: its deck and its headroom went missing in an X across
+         * the crossing, with the tunnel's mound standing in the road.
+         */
+        Road.Sample crossing(double u, double v, double reach, int r, Road.Sample best, double[] dist) {
+            Road road = prefab.roads.get(r);
+            double apart = 2 * (outer + 18);
+            int span = (int) Math.ceil(reach / CELL);
+            int cu = Math.floorDiv((int) Math.floor(u), CELL), cv = Math.floorDiv((int) Math.floor(v), CELL);
+            Map<Long, List<Road.Sample>> cells = index.get(r);
+            double bestD = reach * reach;
+            Road.Sample out = null;
+            for (int a = -span; a <= span; a++) {
+                for (int b = -span; b <= span; b++) {
+                    List<Road.Sample> list = cells.get(((long) (cu + a) << 32) ^ ((cv + b) & 0xffffffffL));
+                    if (list == null) continue;
+                    for (Road.Sample p : list) {
+                        if (Math.abs(road.offset(best.s(), p.s())) < apart) continue;
+                        double du = p.u() - u, dv = p.v() - v;
+                        double d = du * du + dv * dv;
+                        if (d < bestD) {
+                            bestD = d;
+                            out = p;
+                        }
+                    }
+                }
+            }
+            dist[0] = out == null ? Double.MAX_VALUE : Math.sqrt(bestD);
+            return out;
+        }
+
         /** Rolling hills, from a few sine waves: no seed to keep, and the same every time. */
         double hill(double u, double v) {
             double a = Math.sin(u * 0.045 + phases[0]) * Math.cos(v * 0.038 + phases[1]);
@@ -298,14 +335,21 @@ public final class PrefabBuilder {
             // The roads at this column, as they really are.
             List<Hit> hits = new ArrayList<>();
             double tunnelRoof = Double.NaN, tunnelD = Double.MAX_VALUE;
+            double[] across = new double[1];
             for (int r = 0; r < near.length; r++) {
                 if (near[r] == null) continue;
-                Prefab.Point pt = prefab.point(r, near[r]);
-                if (pt.tunnel() && dist[r] < outer + 6 && dist[r] < tunnelD) {
-                    tunnelD = dist[r];
-                    tunnelRoof = Math.ceil(Math.round(y(pt.h()) * 2) / 2.0) + HEADROOM;
+                Road.Sample other = crossing(u, v, outer + 6, r, near[r], across);
+                for (int pass = 0; pass < 2; pass++) {
+                    Road.Sample p = pass == 0 ? near[r] : other;
+                    double d = pass == 0 ? dist[r] : across[0];
+                    if (p == null) continue;
+                    Prefab.Point pt = prefab.point(r, p);
+                    if (pt.tunnel() && d < outer + 6 && d < tunnelD) {
+                        tunnelD = d;
+                        tunnelRoof = Math.ceil(Math.round(y(pt.h()) * 2) / 2.0) + HEADROOM;
+                    }
+                    if (d <= outer) hits.add(new Hit(r, p, d, pt, y(pt.h())));
                 }
-                if (dist[r] <= outer) hits.add(new Hit(r, near[r], dist[r], pt, y(pt.h())));
             }
 
             // ---- the ground.
@@ -480,12 +524,10 @@ public final class PrefabBuilder {
             } else {
                 int clearTo = Math.max(roof - 1, Math.min(groundTop, roof + 20));
                 if (tunnel) clearTo = roof - 1;
+                // From the first block over the deck: on a half step that is the
+                // one over the slab, and in a cutting it is earth until cleared.
                 for (int y = above; y <= clearTo; y++) {
-                    if (y == above && halfStep) continue;
                     if (!isReserved(reserved, y)) set(x, y, z, Material.AIR, null);
-                }
-                if (halfStep) {
-                    for (int y = above + 1; y <= clearTo; y++) if (!isReserved(reserved, y)) set(x, y, z, Material.AIR, null);
                 }
                 if (tunnel) {
                     set(x, roof, z, theme.tunnelRoof, null);
@@ -589,7 +631,9 @@ public final class PrefabBuilder {
                 Prefab.Point pt = prefab.point(0, p);
                 if (s > 0 && (prefab.coveredByBranch(frac) || nearGap(p))) continue;
                 double[] xz = frame.world(p.u(), p.v());
-                track.checkpoints().add(new Track.Checkpoint(xz[0], y(pt.h()), xz[1], prefab.half + KERB + 0.5));
+                // At the deck as built, which is the line's height to the nearest half block.
+                track.checkpoints().add(new Track.Checkpoint(xz[0], Math.round(y(pt.h()) * 2) / 2.0, xz[1],
+                        prefab.half + KERB + 0.5));
             }
             for (Prefab.Spot spot : prefab.boxes) {
                 Road.Sample p = prefab.spot(spot);
@@ -639,6 +683,7 @@ public final class PrefabBuilder {
         private void stands(Road.Sample line, int y) {
             Material[] seats = {Material.RED_WOOL, Material.WHITE_WOOL, Material.BLUE_WOOL, Material.YELLOW_WOOL};
             for (double along = -28; along <= 8; along += 0.5) {
+                if (standBlocked(line, along)) continue;
                 for (double t = 0; t < 12; t += 0.5) {
                     double lat = (outer + 2 + t) * standSide;
                     double u = line.u() + line.du() * along + line.dv() * lat;
@@ -656,6 +701,26 @@ public final class PrefabBuilder {
                     if (t > 7.5) set(bx, y + 12, bz, theme.tunnelRoof, null);
                 }
             }
+        }
+
+        /**
+         * Whether a slice of the grandstand would stand on, or under, another
+         * road: the city's elevated road crosses beside its start straight, and
+         * a stand built through it walled the road off. The stand stops there
+         * and carries on past it.
+         */
+        private boolean standBlocked(Road.Sample line, double along) {
+            double[] dist = new double[index.size()];
+            for (double t = 0; t <= 14; t += 2) {
+                double side = outer + 2 + t;
+                double lat = side * standSide;
+                double u = line.u() + line.du() * along + line.dv() * lat;
+                double v = line.v() + line.dv() * along - line.du() * lat;
+                nearest(u, v, outer + 4, dist);
+                // The start straight is always exactly a stand's offset away; anything nearer is another road.
+                for (double d : dist) if (d < outer + 3 && d < side - 1.5) return true;
+            }
+            return false;
         }
 
         /** The viewing deck the lobby waits on, facing the start line. */

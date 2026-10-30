@@ -38,7 +38,7 @@ public final class Settings {
     public final Material jumpPad;
     public final Set<Material> ice;
     /** A jump pad's throw: up and forward, blocks a second. */
-    public final double jumpUp, jumpForward;
+    public final double jumpUp, jumpForward, jumpSpeed, jumpMargin;
     public final Boost trickBoost;
     public final boolean tricksOutside;
 
@@ -90,8 +90,10 @@ public final class Settings {
             Material m = Material.matchMaterial(name);
             if (m != null && m.isBlock()) ice.add(m);
         }
-        jumpUp = clamp(c.getDouble("karts.jump.up", 7.5), 0, 30);
+        jumpUp = clamp(c.getDouble("karts.jump.lift", 12), 0, 30);
         jumpForward = clamp(c.getDouble("karts.jump.forward", 3), 0, 30);
+        jumpSpeed = clamp(c.getDouble("karts.jump.max-speed", 22), 0, 40);
+        jumpMargin = clamp(c.getDouble("karts.jump.margin", 3), 0, 20);
 
         padBoost = boost(c, "boost.pad", 5, 1.0);
         nitroBoost = boost(c, "boost.nitro", 7, 1.6);

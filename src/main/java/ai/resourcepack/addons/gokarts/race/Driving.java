@@ -174,7 +174,7 @@ public final class Driving {
                 boost(v, s.padBoost);
                 content().vfx("gk_pad", v.location(), driver);
             }
-            if (!airborne && under == s.jumpPad && st.jumpCooldown == 0 && speed > 3) launch(v, driver, st);
+            if (st.jumpCooldown == 0 && speed > 3 && onJumpPad(v, s.jumpPad)) launch(v, driver, st);
             trick(v, driver, st, in, airborne);
         }
         st.wasAirborne = airborne;
@@ -242,11 +242,97 @@ public final class Driving {
         st.jumpCooldown = 20;
         st.launched = 0;
         st.tricked = false;
+        Settings s = settings();
         double yaw = Math.toRadians(v.heading());
         Vector forward = new Vector(-Math.sin(yaw), 0, Math.cos(yaw));
-        v.applyImpulse(forward.multiply(settings().jumpForward).setY(settings().jumpUp), 0);
+        double speed = v.groundSpeed();
+        // Thrown just far enough to land a little past the far side: a kart
+        // crawls up a ramp and at that pace drops short into the hazard, and
+        // one thrown at a fixed speed overshoots a short jump into the bend
+        // after it. A pad on flat ground is a hop and a kick.
+        double lift = s.jumpUp;
+        Location at = v.location();
+        Vector throwV = forward.clone().multiply(speed + s.jumpForward);
+        double[] land = landingOf(at);
+        double[] gap = land == null ? gapAhead(at, forward) : null;
+        if (land != null) {
+            // On a prefab's ramp: aimed at the road beyond, however the kart
+            // came up the ramp. Not turned to face it: a turn put on in the air
+            // carries on after the landing and puts the kart into the wall.
+            Vector aim = new Vector(land[0] - at.getX(), 0, land[2] - at.getZ());
+            double air = airTime(lift, at.getY() - land[1]);
+            double reach = aim.length();
+            if (reach > 1e-3) {
+                throwV = aim.multiply(1 / reach).multiply(Math.max(MIN_THROW, Math.min(s.jumpSpeed, reach / air)));
+            }
+        } else if (gap != null) {
+            double air = airTime(lift, gap[1]);
+            throwV = forward.clone().multiply(Math.max(MIN_THROW, Math.min(s.jumpSpeed, (gap[0] + s.jumpMargin) / air)));
+        }
+        // And no speed limit until it is down, or the limit would eat the throw.
+        st.boostTicks = Math.max(st.boostTicks, 24);
+        st.limit = Double.NaN;
+        v.setSpeedLimit(0);
+        Vector now = v.velocity();
+        v.applyImpulse(new Vector(throwV.getX() - now.getX(), lift, throwV.getZ() - now.getZ()), 0);
         content().sound(v.location(), "boost", 0.8f, 1.3f, Sound.ENTITY_FIREWORK_ROCKET_LAUNCH);
         content().vfx("gk_pad", v.location(), driver);
+    }
+
+    /** Seconds in the air for a throw up at {@code lift} that lands {@code drop} blocks lower. */
+    private static double airTime(double lift, double drop) {
+        return (lift + Math.sqrt(lift * lift + 2 * GRAVITY * Math.max(0, drop))) / GRAVITY;
+    }
+
+    /** The landing of the prefab ramp a kart at {@code at} is on, from any track in its world. */
+    private double[] landingOf(Location at) {
+        for (ai.resourcepack.addons.gokarts.track.Track t : plugin.tracks().all()) {
+            if (t.prefab() == null || t.world() == null || !t.world().equals(at.getWorld())) continue;
+            double[] land = t.landing(at.getX(), at.getZ(), settings().jumpMargin);
+            if (land != null) return land;
+        }
+        return null;
+    }
+
+    /** What a land vehicle falls at, blocks a second squared: RP Engine's own number. */
+    private static final double GRAVITY = 28;
+    /** The slowest a jump pad throws a kart over a gap, whatever the arithmetic says. */
+    private static final double MIN_THROW = 8;
+    /** How far ahead a jump pad looks for the far side, blocks. */
+    private static final double PROBE = 32;
+
+    /**
+     * The jump in front of a kart on a pad: how far along {@code forward} the
+     * ground comes back after the gap, and how far below the kart it is.
+     * Null when there is no gap within a few blocks (a pad on flat ground) or
+     * no far side within reach.
+     */
+    static double[] gapAhead(Location at, Vector forward) {
+        double y0 = at.getY();
+        boolean gone = false;
+        for (double d = 0.5; d <= PROBE; d += 0.5) {
+            double top = groundTop(at.getWorld(), at.getX() + forward.getX() * d, y0, at.getZ() + forward.getZ() * d);
+            if (!gone) {
+                if (Double.isNaN(top)) {
+                    if (d > 6) return null;
+                    gone = true;
+                }
+            } else if (!Double.isNaN(top)) {
+                return new double[]{d, y0 - top};
+            }
+        }
+        return null;
+    }
+
+    /** The top of the highest solid block in a column from a block over y0 to six under it; NaN if none. */
+    private static double groundTop(org.bukkit.World w, double x, double y0, double z) {
+        int bx = (int) Math.floor(x), bz = (int) Math.floor(z);
+        for (int y = (int) Math.floor(y0 + 0.9); y >= (int) Math.floor(y0 - 6); y--) {
+            org.bukkit.block.Block b = w.getBlockAt(bx, y, bz);
+            if (b.getType().isSolid()) return b.getBoundingBox().getMaxY();
+            if (b.isLiquid()) return Double.NaN;
+        }
+        return Double.NaN;
     }
 
     /**
@@ -341,6 +427,26 @@ public final class Driving {
     /** Forgets a kart, which is about to go: removed, or replaced on a respawn. */
     public void forget(Vehicle v) {
         states.remove(v.uniqueId());
+    }
+
+    /**
+     * Whether the kart is on a jump pad, or stepping onto one. A ramp climbs in
+     * half-block steps and the pad sits a half block proud at its lip, so at
+     * speed a kart crosses it on the very ticks it counts as airborne: asking
+     * only "grounded, on a pad" missed most jumps. So this looks a little above
+     * and below the kart, and a block ahead of it.
+     */
+    private static boolean onJumpPad(Vehicle v, Material pad) {
+        Location l = v.location();
+        double yaw = Math.toRadians(v.heading());
+        double ax = -Math.sin(yaw) * 0.8, az = Math.cos(yaw) * 0.8;
+        for (double[] at : new double[][]{{0, 0}, {ax, az}}) {
+            int bx = (int) Math.floor(l.getX() + at[0]), bz = (int) Math.floor(l.getZ() + at[1]);
+            for (double dy : new double[]{0.3, -0.2, -0.8}) {
+                if (l.getWorld().getBlockAt(bx, (int) Math.floor(l.getY() + dy), bz).getType() == pad) return true;
+            }
+        }
+        return false;
     }
 
     private static Material under(Vehicle v) {

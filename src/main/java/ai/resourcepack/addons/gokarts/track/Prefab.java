@@ -136,7 +136,7 @@ public final class Prefab {
             double ahead = r.offset(ramp.lip() * r.length(), p.s());
             if (ahead >= -ramp.length() && ahead <= 0) {
                 h += ramp.rise() * smoothstep((ahead + ramp.length()) / ramp.length());
-                if (ahead >= -1.75) lip = true;
+                if (ahead >= -2.75) lip = true;
             } else if (ahead > 0 && ahead <= ramp.gap()) {
                 gap = true;
                 under = ramp.under();

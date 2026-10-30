@@ -34,7 +34,11 @@ karts:
   # at the lip of every ramp). Space in the air is a trick, and landing one is
   # a boost. Put them anywhere on a track of your own.
   jump-pad-block: LIME_GLAZED_TERRACOTTA
-  jump: {up: 7.5, forward: 3}
+  # A jump pad throws the kart up at `lift` blocks a second. In front of a gap
+  # it looks for the far side and throws the kart just fast enough to land
+  # `margin` blocks past it, at `max-speed` at most; on flat ground it is a hop
+  # with `forward` added.
+  jump: {lift: 12, forward: 3, max-speed: 22, margin: 3}
   # A kart turns less on these: it slides wide of where it is pointed.
   ice-blocks: [ICE, PACKED_ICE, BLUE_ICE]
   # The driving tricks (drift boosts, boost pads) on karts parked and driven

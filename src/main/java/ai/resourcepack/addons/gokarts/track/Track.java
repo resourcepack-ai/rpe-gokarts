@@ -146,6 +146,51 @@ public final class Track {
         this.mapStartH = startH;
     }
 
+    /** The prefab this track was built from, read once; null for a track built by hand. */
+    private transient Prefab prefabData;
+    private transient boolean prefabRead;
+
+    private Prefab prefabData() {
+        if (!prefabRead) {
+            prefabRead = true;
+            try {
+                prefabData = prefab == null ? null : Prefab.load(prefab);
+            } catch (java.io.IOException e) {
+                prefabData = null;
+            }
+        }
+        return prefabData;
+    }
+
+    /**
+     * Where a kart on one of this track's ramps should come down: the road
+     * {@code past} blocks beyond the far side of the gap, as world x, y, z.
+     * Null when (x, z) is not on a ramp's lip, or the track has no prefab.
+     *
+     * <p>A ramp can sit in a bend (the desert's spans the canyon its other
+     * route runs along), and a kart leaves the lip pointing wherever it was
+     * pointing, so a jump pad that only threw it forward put it into the wall
+     * beyond. Knowing where the road lands lets the pad aim.
+     */
+    public double[] landing(double x, double z, double past) {
+        Prefab p = prefabData();
+        if (p == null || mapFrame == null) return null;
+        Frame f = Frame.load(mapFrame, mapBaseY);
+        double[] uv = f.local(x, z);
+        for (Prefab.Ramp ramp : p.ramps) {
+            Road r = p.roads.get(ramp.on());
+            double lip = ramp.lip() * r.length();
+            for (double back = -4; back <= 1; back += 0.5) {
+                Road.Sample s = r.at(lip + back);
+                if (Math.hypot(s.u() - uv[0], s.v() - uv[1]) > p.half + 1.5) continue;
+                Road.Sample land = r.at(lip + ramp.gap() + past);
+                double[] w = f.world(land.u(), land.v());
+                return new double[]{w[0], mapBaseY + (p.point(ramp.on(), land).h() - mapStartH), w[1]};
+            }
+        }
+        return null;
+    }
+
     /** A world position as the prefab's (u, v), for the minimap; null for a track with no prefab. */
     public double[] mapPosition(double x, double z) {
         if (mapFrame == null) return null;
