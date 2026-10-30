@@ -194,6 +194,12 @@ def panel(w, h, radius=7, fill=(12, 16, 22, 190), edge=(255, 255, 255, 40), ss=4
 
 def thumb(path, size):
     src = Image.open(path).convert("RGBA")
+    if max(src.size) <= 32:
+        # Pixel art (an icon): a whole number of times bigger, each pixel
+        # square, or it smears. Cropped after, so its pixels keep their grid.
+        k = max(1, size // max(src.size))
+        big = src.resize((src.width * k, src.height * k), Image.NEAREST)
+        return big.crop(big.getbbox() or (0, 0, big.width, big.height))
     box = src.getbbox() or (0, 0, src.width, src.height)
     src = src.crop(box)
     k = size / max(src.width, src.height)
@@ -616,13 +622,17 @@ def build(font_dir, thumbs, maps):
 
     out += ["# The item window: empty, each item, the roulette's frames.", ""]
     picture("item_empty", item_window(), ITEM)
-    for name, path in (("banana", thumbs["banana"]), ("nitro", thumbs["nitro"]), ("rocket", thumbs["rocket"])):
-        picture(f"item_{name}", item_window(path), ITEM)
-    picture("item_triple_3", item_window(thumbs["nitro"], 3), ITEM)
-    picture("item_triple_2", item_window(thumbs["nitro"], 2), ITEM)
-    spin = [thumbs["item_box"], thumbs["banana"], thumbs["nitro"], thumbs["rocket"]]
+    # One window per item, named item_<the item's look> (race/Item.java), and
+    # for a three-use one a window for three and for two left as well.
+    for name in ("banana", "nitro", "rocket", "orb", "drone", "overdrive", "shield", "smoke_bomb", "horn", "surge", "decoy_box"):
+        picture(f"item_{name}", item_window(thumbs[name]), ITEM)
+    for name in ("nitro", "banana"):
+        picture(f"item_{name}_3", item_window(thumbs[name], 3), ITEM)
+        picture(f"item_{name}_2", item_window(thumbs[name], 2), ITEM)
+    spin = [thumbs["item_box"], thumbs["banana"], thumbs["orb"], thumbs["nitro"], thumbs["rocket"], thumbs["shield"],
+            thumbs["drone"], thumbs["horn"]]
     for i in range(8):
-        picture(f"item_roll_{i}", item_window(spin[i % 4], offset=(i % 2) * 6 - 3, blur=True, key=False), ITEM)
+        picture(f"item_roll_{i}", item_window(spin[i % len(spin)], offset=(i % 2) * 6 - 3, blur=True, key=False), ITEM)
 
     out += ["# The place, bottom right: 1ST to 8TH.", ""]
     for n in range(1, 9):

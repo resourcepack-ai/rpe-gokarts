@@ -71,6 +71,12 @@ public final class Driving {
         int driftLevel;
         int boostTicks;
         int stunTicks;
+        /** A hyper shield: ticks left, and how far over cruising it lets the kart go. */
+        int shieldTicks;
+        double shieldSpeed;
+        /** A static surge: ticks left held to {@code slowShare} of the speed it would have. */
+        int slowTicks;
+        double slowShare = 1;
         int padCooldown;
         int jumpCooldown;
         double limit = Double.NaN;
@@ -195,16 +201,25 @@ public final class Driving {
         }
 
         double limit;
+        if (st.shieldTicks > 0) st.shieldTicks--;
+        if (st.slowTicks > 0) st.slowTicks--;
         if (st.stunTicks > 0) {
             limit = 1.5;
         } else if (st.boostTicks > 0) {
             st.boostTicks--;
             limit = 0;
             exhaust(v);
+        } else if (st.shieldTicks > 0) {
+            // Shielded, the grass does not hold it back either.
+            limit = s.cruiseSpeed + st.shieldSpeed;
         } else if (!airborne && s.offroad.contains(under)) {
             limit = s.offroadSpeed;
         } else {
             limit = s.cruiseSpeed;
+        }
+        if (st.slowTicks > 0 && st.stunTicks == 0) {
+            // 0 is "no limit" (a boost): a surged kart's boost is held down too.
+            limit = (limit == 0 ? s.cruiseSpeed * 1.5 : limit) * st.slowShare;
         }
         if (!(limit == st.limit)) {
             st.limit = limit;
@@ -408,6 +423,27 @@ public final class Driving {
         st.launched = -1;
         st.tricked = false;
         play(v, st, Act.SPINOUT, Math.max(SPINOUT_TICKS, ticks));
+    }
+
+    /** A hyper shield for {@code ticks}: no hit lands, and the kart may go {@code extra} over cruising. */
+    public void shield(Vehicle v, int ticks, double extra) {
+        State st = state(v);
+        st.shieldTicks = Math.max(st.shieldTicks, ticks);
+        st.shieldSpeed = extra;
+        st.stunTicks = 0;
+        st.slowTicks = 0;
+    }
+
+    public boolean shielded(Vehicle v) {
+        State st = states.get(v.uniqueId());
+        return st != null && st.shieldTicks > 0;
+    }
+
+    /** Held to {@code share} of its speed for {@code ticks}: a static surge. */
+    public void slow(Vehicle v, int ticks, double share) {
+        State st = state(v);
+        st.slowTicks = Math.max(st.slowTicks, ticks);
+        st.slowShare = share;
     }
 
     public boolean stunned(Vehicle v) {

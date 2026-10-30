@@ -68,6 +68,7 @@ public final class KartCommand implements TabExecutor {
             case "start" -> start(sender, rest);
             case "stop" -> stop(sender, rest);
             case "give" -> give(sender, rest);
+            case "item" -> item(sender, rest);
             case "reload" -> reload(sender);
             case "as" -> as(sender, rest);
             case "track", "tracks" -> track(sender, rest);
@@ -183,6 +184,27 @@ public final class KartCommand implements TabExecutor {
         }
         plugin.races().stop(r);
         Text.send(s, Text.msg("Stopped."));
+    }
+
+    /** /kart item <item> [player]: hands a racer an item, as a box would. */
+    private void item(CommandSender s, String[] a) {
+        if (!allowed(s, Perms.ITEM)) return;
+        if (a.length < 1) {
+            Text.send(s, Text.error("/kart item <" + String.join("|", Race.itemKeys()) + "> [player]"));
+            return;
+        }
+        Player to = a.length > 1 ? Bukkit.getPlayerExact(a[1]) : player(s);
+        if (to == null) {
+            if (a.length > 1) Text.send(s, Text.error("Nobody called " + Text.MM.escapeTags(a[1]) + " is online."));
+            return;
+        }
+        Race race = plugin.races().of(to);
+        if (race == null || !race.giveItem(to, a[0].toLowerCase(Locale.ROOT))) {
+            Text.send(s, Text.error(Race.itemKeys().contains(a[0].toLowerCase(Locale.ROOT))
+                    ? to.getName() + " is not racing right now." : "No item called " + Text.MM.escapeTags(a[0]) + "."));
+            return;
+        }
+        Text.send(s, Text.msg("Gave " + to.getName() + " " + a[0].toLowerCase(Locale.ROOT) + "."));
     }
 
     private void give(CommandSender s, String[] a) {
@@ -615,6 +637,7 @@ public final class KartCommand implements TabExecutor {
         if (s.hasPermission(Perms.START)) lines.add("<#FFD23F>/kart start</#FFD23F> [track] <#9AA0A6>- start now, alone is fine</#9AA0A6>");
         if (s.hasPermission(Perms.STOP)) lines.add("<#FFD23F>/kart stop</#FFD23F> [track]");
         if (s.hasPermission(Perms.GIVE)) lines.add("<#FFD23F>/kart give</#FFD23F> [colour] [player] <#9AA0A6>- a kart to drive anywhere</#9AA0A6>");
+        if (s.hasPermission(Perms.ITEM)) lines.add("<#FFD23F>/kart item</#FFD23F> <item> [player] <#9AA0A6>- hand a racer an item</#9AA0A6>");
         if (s.hasPermission(Perms.TRACK_GENERATE)) lines.add("<#FFD23F>/kart track generate</#FFD23F> <id> [here confirm] [meadow|desert|frost|neon] [name] <#9AA0A6>- build a circuit, in a new world unless here</#9AA0A6>");
         if (s.hasPermission(Perms.TRACK_UNDO)) lines.add("<#FFD23F>/kart track undo</#FFD23F> <id> confirm <#9AA0A6>- take the last generate back</#9AA0A6>");
         if (s.hasPermission(Perms.TRACK)) lines.add("<#FFD23F>/kart track</#FFD23F> list|create|setlobby|addgrid|cleargrid|addcheckpoint|clearcheckpoints|addbox|clearboxes|laps|enable|disable|tp|name|delete");
@@ -635,6 +658,7 @@ public final class KartCommand implements TabExecutor {
             if (s.hasPermission(Perms.START)) out.add("start");
             if (s.hasPermission(Perms.STOP)) out.add("stop");
             if (s.hasPermission(Perms.GIVE)) out.add("give");
+            if (s.hasPermission(Perms.ITEM)) out.add("item");
             if (s.hasPermission(Perms.RELOAD)) out.add("reload");
             if (s.hasPermission(Perms.AS)) out.add("as");
             if (s.hasPermission(Perms.TRACK) || s.hasPermission(Perms.TRACK_GENERATE)) out.add("track");
@@ -650,11 +674,16 @@ public final class KartCommand implements TabExecutor {
                     }
                 }
                 case "as" -> Bukkit.getOnlinePlayers().forEach(p -> out.add(p.getName()));
+                case "item" -> {
+                    if (s.hasPermission(Perms.ITEM)) out.addAll(Race.itemKeys());
+                }
                 default -> {
                 }
             }
         } else if (args.length == 3 && args[0].equalsIgnoreCase("track") && !args[1].equalsIgnoreCase("list")) {
             plugin.tracks().all().forEach(t -> out.add(t.id()));
+        } else if (args.length == 3 && args[0].equalsIgnoreCase("item") && s.hasPermission(Perms.ITEM)) {
+            Bukkit.getOnlinePlayers().forEach(p -> out.add(p.getName()));
         } else if (args.length == 3 && args[0].equalsIgnoreCase("give") && s.hasPermission(Perms.GIVE_OTHERS)) {
             Bukkit.getOnlinePlayers().forEach(p -> out.add(p.getName()));
         } else if (args.length == 4 && args[0].equalsIgnoreCase("track")

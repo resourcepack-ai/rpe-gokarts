@@ -356,6 +356,20 @@ def helmets():
 # Each prop's inventory icon, in tools/src/icons.
 PROP_ICONS = {"item_box": "box", "banana": "banana", "nitro": "nitro", "rocket": "rocket"}
 
+# The items drawn flat: in a hand, in a slot and as a thing on the track (a
+# sprite that always faces you), from their icon in tools/src/icons, which
+# Studio's 16x16 item model drew. Item id: (icon, name, lore).
+FLAT_ITEMS = {
+    "orb": ("orb", "&3&lBumper Orb", ["&7Rolls along the road, off the walls, into somebody."]),
+    "drone": ("drone", "&5&lStorm Drone", ["&7Flies to the leader and strikes."]),
+    "overdrive": ("overdrive", "&6&lOverdrive", ["&7A boost every press, for a few seconds."]),
+    "shield": ("shield", "&d&lHyper Shield", ["&7Untouchable for a few seconds."]),
+    "smoke_bomb": ("smoke", "&8&lSmoke Bomb", ["&7Blinds everybody ahead of you."]),
+    "horn": ("horn", "&e&lShockwave Horn", ["&7Blows everything round you away."]),
+    "surge": ("surge", "&b&lStatic Surge", ["&7Everybody else loses their item and slows down."]),
+    "decoy_box": ("decoy", "&c&lDecoy Box", ["&7Looks like an item box. Is not one."]),
+}
+
 PROPS = {
     "item_box": ("kart_item_box", "&d&lItem Box", ["&7Drive through it for an item."]),
     "banana": ("kart_banana", "&e&lBanana", ["&7Drop it behind you. Whoever hits it spins out."]),
@@ -376,6 +390,10 @@ def props(helmet_lines):
         m.pop("groups", None)
         save_json(m, "models", f"{pid}.json")
         lines += [f"{pid}:", "  material: PAPER", f"  model: {pid}", icon(PROP_ICONS[pid]), f'  name: "{name}"', "  lore:"]
+        lines += [f'    - "{line}"' for line in lore] + [""]
+    for iid, (icon_name, name, lore) in FLAT_ITEMS.items():
+        icon(icon_name)
+        lines += [f"{iid}:", "  material: PAPER", f"  texture: item/icon_{icon_name}", f'  name: "{name}"', "  lore:"]
         lines += [f'    - "{line}"' for line in lore] + [""]
     # Nothing in hand: an invisible item, so the hotbar slot a racer's item lives
     # in always holds SOMETHING, which is what makes Q and the clicks reach the plugin.
@@ -530,6 +548,9 @@ def sounds():
 
 def icons():
     thumbs = {pid: os.path.join(SRC, "thumbs", f"{src}.png") for pid, (src, _, _) in PROPS.items()}
+    # The flat items' windows show their icon, by the item id the HUD names them by.
+    for iid, (icon_name, _, _) in FLAT_ITEMS.items():
+        thumbs[iid] = os.path.join(SRC, "icons", f"{icon_name}.png")
     maps = {}
     for pid in sorted(f[:-5] for f in os.listdir(prefabs.PREFABS) if f.endswith(".json") and f != "minimap.json"):
         p, roads = prefabs.load(pid)

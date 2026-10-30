@@ -69,15 +69,29 @@ a frozen lake (ice: the kart slides wide of where it is pointed) or a back
 alley. Either way counts.
 
 **Items.** Drive through a box for a spin of the roulette. What comes out
-depends on your place: the leader gets bananas to defend with, the back of the
-field nitro and rockets to catch up with.
+depends on your place: the front of the field gets things to defend with
+(bananas, decoys, orbs, the horn), the back things to catch up with (nitro,
+overdrive, rockets, the shield, the storm drone, the surge).
 
 | | |
 |---|---|
 | Nitro | A boost |
 | Triple nitro | Three |
+| Overdrive | For six seconds, every press is a boost |
 | Banana | Dropped behind you. Whoever drives over it spins out |
+| Banana bunch | Three |
+| Decoy box | Dropped behind you, at an item box's height. It looks like one, except that it does not turn, and whoever drives into it spins out |
+| Bumper orb | Rolls along the road ahead of you, up ramps and off walls (five of them), and spins out whoever it meets. You too, once it has left you |
 | Rocket | Flies over the walls at the kart one place ahead and throws it in the air. The leader's flies straight on |
+| Storm drone | Climbs over everything and flies at the leader (never at you), hovers over them for a second, and strikes everybody within four blocks of them |
+| Hyper shield | Six seconds in which nothing can hit you, the grass does not slow you, you run a little faster, and anybody you touch spins out |
+| Smoke bomb | Blinds everybody ahead of you for three seconds |
+| Shockwave horn | Throws back every kart within seven blocks, and clears the bananas, decoys, orbs and rockets round you, and a storm drone coming for you |
+| Static surge | Everybody else loses their item and drives at two thirds of their speed for three seconds |
+
+`items.odds` in config.yml sets how likely each is by place, and every one's
+numbers are under `items:`. An item a newer version adds drops on a server
+with odds of its own at its default weight, until that server's odds name it.
 
 Falling off, ending up in water, or not passing a checkpoint for twelve seconds
 (more where the next one is far away) puts you back on the track. When the winner is home everybody else has thirty
@@ -162,6 +176,7 @@ each grants every node listed under it, and nothing checks them directly.
 | `gokarts.reload` | op | `/kart reload` |
 | `gokarts.give` | op | `/kart give [colour]` |
 | `gokarts.give.others` | op | `/kart give <colour> <player>` |
+| `gokarts.item` | op | `/kart item <item> [player]`: hand a racer an item, as a box would, for testing or an event |
 | `gokarts.as` | op | `/kart as <player> ...`; what they run is checked against *their* permissions |
 | `gokarts.track` | op | Track setup |
 | `gokarts.track.generate` | op | `/kart track generate`, in a new world, or with `here` in place, replacing every block in a box up to about 200 by 230, from fifteen below to fourteen above |
@@ -183,7 +198,9 @@ installs it into `plugins/RPEngine/content/gokarts/` on enable:
   helmet in eight colours, each its own item and its own vehicle
   (`vehicles/karts.yml`). The helmet's visor is tinted glass, so a driver in
   first person sees the track through it.
-- **The item box, banana, nitro and rocket** are Studio models. **In an
+- **The item box, banana, nitro and rocket** are Studio models; **the other
+  items** are drawn flat, in the hand, in a slot and on the track, from 16x16
+  icons drawn by Studio's item model (`tools/src/icons/`). **In an
   inventory** every one of them, the karts and the helmets is a 16x16 icon
   (`tools/src/icons/`, drawn by Studio's item model; the kart and the helmet are
   repainted in each colour), named by the item's `gui:`. **The sounds**

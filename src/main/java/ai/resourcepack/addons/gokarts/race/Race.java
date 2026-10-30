@@ -730,6 +730,7 @@ public final class Race {
             r.position = 0;
             r.item = null;
             r.itemUses = 0;
+            r.overdriveUntil = 0;
             r.roulette = 0;
             r.frozen = 0;
             r.respawnIn = 0;
@@ -763,17 +764,36 @@ public final class Race {
         items.use(r);
     }
 
+    /**
+     * /kart item: a racer's item set by hand, as if a box had just given it.
+     * False when {@code key} is no item or the player is not racing here.
+     */
+    public boolean giveItem(Player p, String key) {
+        Item item = Item.parse(key);
+        Racer r = racer(p);
+        if (item == null || r == null || !r.racing || r.finished) return false;
+        r.item = item;
+        r.itemUses = item.uses;
+        r.roulette = 0;
+        r.overdriveUntil = 0;
+        showItem(r);
+        return true;
+    }
+
+    /** Every item's name, as /kart item and items.odds take it. */
+    public static List<String> itemKeys() {
+        List<String> out = new ArrayList<>();
+        for (Item i : Item.values()) out.add(i.key);
+        return out;
+    }
+
     /** The hotbar slot a racer's item is shown in. */
     void showItem(Racer r) {
         Player p = r.player();
         if (p == null) return;
-        String id = r.item == null || r.roulette > 0 ? "no_item" : switch (r.item) {
-            case BANANA -> "banana";
-            case NITRO, TRIPLE_NITRO -> "nitro";
-            case ROCKET -> "rocket";
-        };
+        String id = r.item == null || r.roulette > 0 ? "no_item" : r.item.look;
         ItemStack stack = content().item(id);
-        if (r.item == Item.TRIPLE_NITRO && r.roulette == 0) stack.setAmount(Math.max(1, r.itemUses));
+        if (r.item != null && r.item.uses > 1 && r.roulette == 0) stack.setAmount(Math.max(1, r.itemUses));
         p.getInventory().setItem(0, stack);
     }
 }

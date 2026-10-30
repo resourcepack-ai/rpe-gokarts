@@ -58,6 +58,25 @@ public final class Settings {
     public final int rocketStunTicks;
     public final double rocketSpeed;
     public final int rocketTicks;
+    /** A bumper orb: blocks a tick, how long it rolls, how many walls it takes, and its hit. */
+    public final double orbSpeed;
+    public final int orbTicks, orbBounces, orbStunTicks;
+    /** A storm drone: blocks a tick, its hit, and how far round its target the strike reaches. */
+    public final double droneSpeed, droneRadius;
+    public final int droneStunTicks;
+    /** How long overdrive lasts. */
+    public final int overdriveTicks;
+    /** How long a hyper shield lasts, and how much faster than cruising it lets a kart go (blocks a second). */
+    public final int shieldTicks;
+    public final double shieldSpeed;
+    /** How long a smoke bomb blinds whoever is ahead. */
+    public final int smokeTicks;
+    /** How far a shockwave horn reaches, and its hit. */
+    public final double hornRadius;
+    public final int hornStunTicks;
+    /** How long a static surge slows everybody else, and to what share of their speed. */
+    public final int surgeTicks;
+    public final double surgeSlow;
     /** Item weights, leader first. */
     public final List<Map<String, Integer>> odds;
 
@@ -125,8 +144,52 @@ public final class Settings {
         rocketStunTicks = ticks(c, "items.rocket-stun", 1.8);
         rocketSpeed = clamp(c.getDouble("items.rocket-speed", 34), 4, 80) / 20.0;
         rocketTicks = ticks(c, "items.rocket-seconds", 10);
+        orbSpeed = clamp(c.getDouble("items.orb.speed", 24), 4, 60) / 20.0;
+        orbTicks = ticks(c, "items.orb.seconds", 8);
+        orbBounces = clamp(c.getInt("items.orb.bounces", 5), 0, 50);
+        orbStunTicks = ticks(c, "items.orb.stun", 1.2);
+        droneSpeed = clamp(c.getDouble("items.drone.speed", 40), 4, 120) / 20.0;
+        droneRadius = clamp(c.getDouble("items.drone.radius", 4), 0.5, 20);
+        droneStunTicks = ticks(c, "items.drone.stun", 2.0);
+        overdriveTicks = ticks(c, "items.overdrive-seconds", 6);
+        shieldTicks = ticks(c, "items.shield.seconds", 6);
+        shieldSpeed = clamp(c.getDouble("items.shield.speed", 3), 0, 30);
+        smokeTicks = ticks(c, "items.smoke-seconds", 3);
+        hornRadius = clamp(c.getDouble("items.horn.radius", 7), 1, 30);
+        hornStunTicks = ticks(c, "items.horn.stun", 0.8);
+        surgeTicks = ticks(c, "items.surge.seconds", 3);
+        surgeSlow = clamp(c.getDouble("items.surge.slow", 0.65), 0.1, 1);
+        List<Map<String, Integer>> o = rows(c.getMapList("items.odds"));
+        if (o.isEmpty()) o.add(new LinkedHashMap<>(Map.of("banana", 1, "nitro", 1, "rocket", 1)));
+        // An item a newer version adds, named in none of this server's rows,
+        // joins at its default weight (from the jar's config.yml), so it drops
+        // without anybody editing their odds. Naming it with 0 leaves it out.
+        List<Map<String, Integer>> defaults = c.getDefaults() == null ? List.of() : rows(c.getDefaults().getMapList("items.odds"));
+        if (!defaults.isEmpty()) {
+            java.util.Set<String> named = new java.util.HashSet<>();
+            for (Map<?, ?> m : c.getMapList("items.odds")) for (Object k : m.keySet()) named.add(String.valueOf(k).toLowerCase(Locale.ROOT));
+            for (int i = 0; i < o.size(); i++) {
+                int d = o.size() == 1 ? defaults.size() / 2 : (int) Math.round(i * (defaults.size() - 1) / (double) (o.size() - 1));
+                for (Map.Entry<String, Integer> e : defaults.get(d).entrySet()) {
+                    if (!named.contains(e.getKey())) o.get(i).put(e.getKey(), e.getValue());
+                }
+            }
+        }
+        List<Map<String, Integer>> frozen = new ArrayList<>();
+        for (Map<String, Integer> row : o) frozen.add(java.util.Collections.unmodifiableMap(row));
+        odds = List.copyOf(frozen);
+
+        Set<String> allowed = new java.util.HashSet<>();
+        for (String s : c.getStringList("allowed-commands")) allowed.add(s.toLowerCase(Locale.ROOT).replace("/", ""));
+        allowedCommands = Set.copyOf(allowed);
+        hud = c.getString("ui.hud", "gokarts:hud");
+        results = c.getString("ui.results", "gokarts:results");
+    }
+
+    /** Odds rows as written: weights above zero, names lower-cased. */
+    private static List<Map<String, Integer>> rows(List<Map<?, ?>> list) {
         List<Map<String, Integer>> o = new ArrayList<>();
-        for (Map<?, ?> m : c.getMapList("items.odds")) {
+        for (Map<?, ?> m : list) {
             Map<String, Integer> row = new LinkedHashMap<>();
             for (Map.Entry<?, ?> e : m.entrySet()) {
                 int w = (int) Math.round(number(e.getValue(), 0));
@@ -134,14 +197,7 @@ public final class Settings {
             }
             if (!row.isEmpty()) o.add(row);
         }
-        if (o.isEmpty()) o.add(Map.of("banana", 1, "nitro", 1, "rocket", 1));
-        odds = List.copyOf(o);
-
-        Set<String> allowed = new java.util.HashSet<>();
-        for (String s : c.getStringList("allowed-commands")) allowed.add(s.toLowerCase(Locale.ROOT).replace("/", ""));
-        allowedCommands = Set.copyOf(allowed);
-        hud = c.getString("ui.hud", "gokarts:hud");
-        results = c.getString("ui.results", "gokarts:results");
+        return o;
     }
 
     private static Boost boost(FileConfiguration c, String path, double kick, double seconds) {

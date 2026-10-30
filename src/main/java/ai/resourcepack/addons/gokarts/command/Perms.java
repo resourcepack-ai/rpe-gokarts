@@ -38,6 +38,8 @@ public final class Perms {
     public static final String GIVE = "gokarts.give";
     /** {@code /kart give <colour> <player>}: one for somebody else. */
     public static final String GIVE_OTHERS = "gokarts.give.others";
+    /** {@code /kart item <item> [player]}: a racer's item, by hand, for testing and events. */
+    public static final String ITEM = "gokarts.item";
     /** {@code /kart as <player> ...}: run a subcommand as somebody else. */
     public static final String AS = "gokarts.as";
     /** {@code /kart track} setup (list, create, lobby, grid, checkpoints, boxes, laps, open/close, tp, rename). */
@@ -54,6 +56,6 @@ public final class Perms {
     /** What {@code gokarts.play} grants. */
     public static final List<String> PLAY = List.of(JOIN, COLOUR, RESULTS, RIDE);
     /** What {@code gokarts.admin} grants. */
-    public static final List<String> ADMIN = List.of(START, STOP, RELOAD, GIVE, GIVE_OTHERS, AS, TRACK, TRACK_GENERATE,
+    public static final List<String> ADMIN = List.of(START, STOP, RELOAD, GIVE, GIVE_OTHERS, ITEM, AS, TRACK, TRACK_GENERATE,
             TRACK_UNDO, TRACK_DELETE, BYPASS_COMMANDS);
 }

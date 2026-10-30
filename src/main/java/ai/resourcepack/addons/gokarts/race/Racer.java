@@ -38,6 +38,8 @@ final class Racer {
 
     Item item;
     int itemUses;
+    /** When this racer's overdrive runs out, in the items' ticks; 0 when it is not running. */
+    long overdriveUntil;
     /** Ticks left of the roulette; the item is theirs once it reaches 0. */
     int roulette;
 

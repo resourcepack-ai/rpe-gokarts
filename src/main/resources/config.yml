@@ -81,14 +81,42 @@ items:
   # How fast a rocket flies, in blocks a second, and the longest it looks for its target.
   rocket-speed: 34
   rocket-seconds: 10
+  # A bumper orb rolls along the road at this speed (blocks a second) and
+  # ricochets off walls, for this long or this many walls; whoever it hits,
+  # you too once it is away, spins out for `stun` seconds.
+  orb: {speed: 24, seconds: 8, bounces: 5, stun: 1.2}
+  # A storm drone climbs over everything, flies at the leader (never at whoever
+  # fired it) at this speed, hovers over them for a second and strikes:
+  # everybody within `radius` blocks of them is thrown for `stun` seconds.
+  drone: {speed: 40, radius: 4, stun: 2.0}
+  # Overdrive: for this long, every press is a nitro.
+  overdrive-seconds: 6
+  # A hyper shield: this long immune to every hit, up to `speed` blocks a
+  # second over cruising, and any kart it touches spins out.
+  shield: {seconds: 6, speed: 3}
+  # A smoke bomb blinds everybody ahead of you for this long.
+  smoke-seconds: 3
+  # A shockwave horn throws back every kart within `radius` blocks (stunned for
+  # `stun` seconds), and clears bananas, orbs, decoys and rockets near you, and
+  # a storm drone coming for you.
+  horn: {radius: 7, stun: 0.8}
+  # A static surge: everybody else loses their item and drives at `slow` of
+  # their speed for this long.
+  surge: {seconds: 3, slow: 0.65}
   # How likely each item is, by place: the first list is for the leader, the
   # last for whoever is last, and everybody between gets the list nearest
   # their share of the field. Weights, not percentages.
+  # An item missing from every row joins at the weights below, so a newer
+  # version's items drop on a server with odds of its own; give it 0 to leave
+  # it out. banana-bunch is three bananas, decoy a box that is not one, orb
+  # a ricocheting ball, drone the leader's problem, overdrive a boost every
+  # press, shield a few seconds untouchable, smoke blinds whoever is ahead,
+  # horn clears the air round you, surge slows everybody else.
   odds:
-    - {banana: 6, nitro: 3, triple-nitro: 0, rocket: 1}
-    - {banana: 3, nitro: 4, triple-nitro: 1, rocket: 2}
-    - {banana: 2, nitro: 3, triple-nitro: 2, rocket: 3}
-    - {banana: 1, nitro: 2, triple-nitro: 3, rocket: 4}
+    - {banana: 5, banana-bunch: 2, decoy: 3, orb: 3, horn: 2, nitro: 2, triple-nitro: 0, rocket: 1, smoke: 0, overdrive: 0, shield: 0, drone: 0, surge: 0}
+    - {banana: 2, banana-bunch: 1, decoy: 1, orb: 3, horn: 1, nitro: 3, triple-nitro: 1, rocket: 2, smoke: 1, overdrive: 0, shield: 0, drone: 0, surge: 0}
+    - {banana: 1, banana-bunch: 0, decoy: 0, orb: 1, horn: 1, nitro: 3, triple-nitro: 2, rocket: 3, smoke: 2, overdrive: 1, shield: 1, drone: 1, surge: 0}
+    - {banana: 0, banana-bunch: 0, decoy: 0, orb: 0, horn: 0, nitro: 1, triple-nitro: 3, rocket: 3, smoke: 1, overdrive: 3, shield: 2, drone: 1, surge: 1}
 
 # Commands a racer may run during a race (staff with gokarts.bypass.commands
 # may run any). /kart is always allowed.
@@ -134,6 +162,16 @@ messages:
   stopped: "{prefix} <#FF5C5C>The race was stopped.</#FF5C5C>"
   race-abandoned: "{prefix} <#9AA0A6>Everybody racing left, so that race is over. Back to the lobby."
   hit-banana: "{prefix} <#FFD23F>Banana!</#FFD23F>"
+  hit-decoy: "{prefix} <#FF5C5C>That box was {owner}'s decoy.</#FF5C5C>"
+  hit-orb: "{prefix} <#FF5C5C>{owner}'s bumper orb got you.</#FF5C5C>"
+  hit-drone: "{prefix} <#FF5C5C>{owner}'s storm drone struck.</#FF5C5C>"
+  drone-coming: "{prefix} <#FF5C5C>A storm drone is coming for you!</#FF5C5C> <#9AA0A6>A shockwave horn stops it.</#9AA0A6>"
+  hit-smoke: "{prefix} <#9AA0A6>{owner} threw a smoke bomb.</#9AA0A6>"
+  hit-horn: "{prefix} <#FF5C5C>{owner}'s horn blew you back.</#FF5C5C>"
+  hit-surge: "{prefix} <#FF5C5C>{owner}'s static surge. Your item is gone.</#FF5C5C>"
+  hit-shield: "{prefix} <#FF5C5C>You touched {owner}'s hyper shield.</#FF5C5C>"
+  blocked: "{prefix} <#5BE37D>Your shield took it.</#5BE37D>"
+  no-target: "{prefix} <#9AA0A6>There is nobody ahead of you to send it at. Keep it for later.</#9AA0A6>"
   hit-rocket: "{prefix} <#FF5C5C>{name} got you with a rocket.</#FF5C5C>"
   got-rocket: "{prefix} <#5BE37D>Your rocket got {name}.</#5BE37D>"
   command-blocked: "{prefix} <#FF5C5C>You can't use that during a race. <#9AA0A6>/kart leave</#9AA0A6> to leave."
@@ -164,6 +202,13 @@ messages:
   # The line across the top of the screen when something happens to somebody.
   feed-rocket: "{shooter} ▸ rocket ▸ {victim}"
   feed-banana: "{victim} slipped on {owner}'s banana"
+  feed-decoy: "{victim} hit {owner}'s decoy box"
+  feed-orb: "{owner} ▸ bumper orb ▸ {victim}"
+  feed-drone: "{owner} ▸ storm drone ▸ {victim}"
+  feed-smoke: "{owner} smoked out the leaders"
+  feed-horn: "{owner} ▸ horn ▸ {victim}"
+  feed-surge: "{owner} surged the whole field"
+  feed-shield: "{owner}'s shield ▸ {victim}"
   feed-finish: "{name} finished {place}"
 
   # Item names, under the item card.
@@ -173,6 +218,15 @@ messages:
   item-nitro: "Nitro - F to boost"
   item-triple-nitro: "Triple Nitro - {left} left"
   item-rocket: "Rocket - F to fire"
+  item-banana-bunch: "Banana Bunch - {left} left"
+  item-decoy: "Decoy Box - F to drop it"
+  item-orb: "Bumper Orb - F to roll it"
+  item-drone: "Storm Drone - F to send it at the leader"
+  item-overdrive: "Overdrive - F as often as you like"
+  item-shield: "Hyper Shield - F to switch it on"
+  item-smoke: "Smoke Bomb - F to blind the leaders"
+  item-horn: "Shockwave Horn - F to blow"
+  item-surge: "Static Surge - F to zap everybody"
 
   # The results screen (dialogs/results.json).
   results-title: "RACE RESULTS"

@@ -34,6 +34,62 @@ rocket:
   lore:
     - "&7Fired at the kart ahead of you."
 
+orb:
+  material: PAPER
+  texture: item/icon_orb
+  name: "&3&lBumper Orb"
+  lore:
+    - "&7Rolls along the road, off the walls, into somebody."
+
+drone:
+  material: PAPER
+  texture: item/icon_drone
+  name: "&5&lStorm Drone"
+  lore:
+    - "&7Flies to the leader and strikes."
+
+overdrive:
+  material: PAPER
+  texture: item/icon_overdrive
+  name: "&6&lOverdrive"
+  lore:
+    - "&7A boost every press, for a few seconds."
+
+shield:
+  material: PAPER
+  texture: item/icon_shield
+  name: "&d&lHyper Shield"
+  lore:
+    - "&7Untouchable for a few seconds."
+
+smoke_bomb:
+  material: PAPER
+  texture: item/icon_smoke
+  name: "&8&lSmoke Bomb"
+  lore:
+    - "&7Blinds everybody ahead of you."
+
+horn:
+  material: PAPER
+  texture: item/icon_horn
+  name: "&e&lShockwave Horn"
+  lore:
+    - "&7Blows everything round you away."
+
+surge:
+  material: PAPER
+  texture: item/icon_surge
+  name: "&b&lStatic Surge"
+  lore:
+    - "&7Everybody else loses their item and slows down."
+
+decoy_box:
+  material: PAPER
+  texture: item/icon_decoy
+  name: "&c&lDecoy Box"
+  lore:
+    - "&7Looks like an item box. Is not one."
+
 no_item:
   material: PAPER
   name: "&7No item"

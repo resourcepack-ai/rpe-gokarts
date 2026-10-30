@@ -2295,13 +2295,63 @@ item_rocket:
   height: 48
   ascent: 7
 
-item_triple_3:
-  file: item_triple_3
+item_orb:
+  file: item_orb
   height: 48
   ascent: 7
 
-item_triple_2:
-  file: item_triple_2
+item_drone:
+  file: item_drone
+  height: 48
+  ascent: 7
+
+item_overdrive:
+  file: item_overdrive
+  height: 48
+  ascent: 7
+
+item_shield:
+  file: item_shield
+  height: 48
+  ascent: 7
+
+item_smoke_bomb:
+  file: item_smoke_bomb
+  height: 48
+  ascent: 7
+
+item_horn:
+  file: item_horn
+  height: 48
+  ascent: 7
+
+item_surge:
+  file: item_surge
+  height: 48
+  ascent: 7
+
+item_decoy_box:
+  file: item_decoy_box
+  height: 48
+  ascent: 7
+
+item_nitro_3:
+  file: item_nitro_3
+  height: 48
+  ascent: 7
+
+item_nitro_2:
+  file: item_nitro_2
+  height: 48
+  ascent: 7
+
+item_banana_3:
+  file: item_banana_3
+  height: 48
+  ascent: 7
+
+item_banana_2:
+  file: item_banana_2
   height: 48
   ascent: 7
 

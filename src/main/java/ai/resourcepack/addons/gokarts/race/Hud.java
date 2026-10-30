@@ -145,12 +145,10 @@ final class Hud {
             v.put("gk_item", icon("item_empty"));
             v.put("gk_item_name", m.plain("item-none"));
         } else {
-            String window = switch (r.item) {
-                case BANANA -> "item_banana";
-                case NITRO -> "item_nitro";
-                case ROCKET -> "item_rocket";
-                case TRIPLE_NITRO -> r.itemUses >= 3 ? "item_triple_3" : r.itemUses == 2 ? "item_triple_2" : "item_nitro";
-            };
+            // A three-use item has a window for three and for two left, and the
+            // plain one for its last; everything else, its own.
+            String window = r.item.uses > 1 && r.itemUses >= 2
+                    ? "item_" + r.item.look + "_" + Math.min(3, r.itemUses) : "item_" + r.item.look;
             v.put("gk_item", icon(window));
             v.put("gk_item_name", m.plain("item-" + r.item.key, "left", String.valueOf(r.itemUses)));
         }

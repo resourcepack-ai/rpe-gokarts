@@ -50,6 +50,7 @@ permissions:
       gokarts.reload: true
       gokarts.give: true
       gokarts.give.others: true
+      gokarts.item: true
       gokarts.as: true
       gokarts.track: true
       gokarts.track.generate: true
@@ -67,6 +68,9 @@ permissions:
     default: op
   gokarts.give:
     description: /kart give [colour] - a kart of your own to park and drive anywhere.
+    default: op
+  gokarts.item:
+    description: /kart item <item> [player] - hand a racer an item, as if from a box, for testing or an event.
     default: op
   gokarts.give.others:
     description: /kart give <colour> <player> - a kart for somebody else.
