@@ -28,6 +28,8 @@ kart_red:
   speedometer: false
   # The wheels turn because the kart moved: at a standstill they stop.
   animation-follows-speed: true
+  # The front wheels and the steering wheel follow the steering (RP Engine 0.2.49).
+  steering: steer
   hitbox:
     width: 1.5
     height: 1.25
@@ -81,6 +83,8 @@ kart_blue:
   speedometer: false
   # The wheels turn because the kart moved: at a standstill they stop.
   animation-follows-speed: true
+  # The front wheels and the steering wheel follow the steering (RP Engine 0.2.49).
+  steering: steer
   hitbox:
     width: 1.5
     height: 1.25
@@ -134,6 +138,8 @@ kart_green:
   speedometer: false
   # The wheels turn because the kart moved: at a standstill they stop.
   animation-follows-speed: true
+  # The front wheels and the steering wheel follow the steering (RP Engine 0.2.49).
+  steering: steer
   hitbox:
     width: 1.5
     height: 1.25
@@ -187,6 +193,8 @@ kart_yellow:
   speedometer: false
   # The wheels turn because the kart moved: at a standstill they stop.
   animation-follows-speed: true
+  # The front wheels and the steering wheel follow the steering (RP Engine 0.2.49).
+  steering: steer
   hitbox:
     width: 1.5
     height: 1.25
@@ -240,6 +248,8 @@ kart_orange:
   speedometer: false
   # The wheels turn because the kart moved: at a standstill they stop.
   animation-follows-speed: true
+  # The front wheels and the steering wheel follow the steering (RP Engine 0.2.49).
+  steering: steer
   hitbox:
     width: 1.5
     height: 1.25
@@ -293,6 +303,8 @@ kart_purple:
   speedometer: false
   # The wheels turn because the kart moved: at a standstill they stop.
   animation-follows-speed: true
+  # The front wheels and the steering wheel follow the steering (RP Engine 0.2.49).
+  steering: steer
   hitbox:
     width: 1.5
     height: 1.25
@@ -346,6 +358,8 @@ kart_pink:
   speedometer: false
   # The wheels turn because the kart moved: at a standstill they stop.
   animation-follows-speed: true
+  # The front wheels and the steering wheel follow the steering (RP Engine 0.2.49).
+  steering: steer
   hitbox:
     width: 1.5
     height: 1.25
@@ -399,6 +413,8 @@ kart_cyan:
   speedometer: false
   # The wheels turn because the kart moved: at a standstill they stop.
   animation-follows-speed: true
+  # The front wheels and the steering wheel follow the steering (RP Engine 0.2.49).
+  steering: steer
   hitbox:
     width: 1.5
     height: 1.25

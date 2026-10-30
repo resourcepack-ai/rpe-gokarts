@@ -23,7 +23,9 @@ is ordinary RP Engine content shipped inside the jar.
   whose vehicles jump off a jump pad. Go Karts checks the engine's version as it
   starts, and on anything older says so in the console and disables itself.
   0.2.47 or newer draws the karts, helmets and items as icons in an inventory;
-  on 0.2.45 and 0.2.46 a slot shows the 3D model, shrunk.
+  on 0.2.45 and 0.2.46 a slot shows the 3D model, shrunk. 0.2.49 or newer turns
+  the front wheels and the steering wheel with the steering; before it they stay
+  straight.
 
 ## Installing
 

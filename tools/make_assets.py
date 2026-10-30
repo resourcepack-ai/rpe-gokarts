@@ -118,6 +118,37 @@ def roll(turns, direction):
     return {"rotation": keys}
 
 
+# ---- the steering ---------------------------------------------------------------
+# RP Engine 0.2.49's `steering:` poses one animation at the front wheels' angle
+# instead of playing it: its start full lock left, its middle straight, its end
+# full lock right. Full lock is the engine's 38 degrees, so the wheels are drawn
+# at exactly the angle the kart turns with. Model +x is the kart's left, and a
+# positive turn about y swings a wheel that faces +z toward +x: left is positive.
+# The steering wheel turns further, and the other way round about its column:
+# for the driver, anticlockwise to the left.
+STEER_LOCK = 38
+STEER_BONES = ("left_front_steer", "right_front_steer", "left_front_wheel", "left_front_wheel_copy")
+STEERING_WHEEL = ("steering", 45)
+
+
+def add_steering(model):
+    index = {g.get("name"): i for i, g in enumerate(model["groups"])}
+
+    def track(axis, angle):
+        def at(sign):
+            v = [0, 0, 0]
+            v[axis] = sign * angle
+            return v
+        return {"rotation": [{"time": 0, "value": at(1)}, {"time": 0.5, "value": [0, 0, 0]}, {"time": 1, "value": at(-1)}]}
+
+    animators = {f"g:{index[name]}": track(1, STEER_LOCK) for name in STEER_BONES}
+    name, angle = STEERING_WHEEL
+    animators[f"g:{index[name]}"] = track(2, -angle)
+    model["animations"] = [a for a in model["animations"] if a["name"] != "steer"]
+    model["animations"].append({"name": "steer", "length": 1, "loop": False, "triggers": [], "animators": animators})
+    return model
+
+
 def calibrate_wheels(model):
     index = {g.get("name"): i for i, g in enumerate(model["groups"])}
     radius = {name: wheel_radius(model, index[name]) for name in WHEELS}
@@ -247,7 +278,7 @@ def icon(name, rgb=None):
 
 
 def karts():
-    model = calibrate_wheels(load("kart_mk2_generated.json"))
+    model = add_steering(calibrate_wheels(load("kart_mk2_generated.json")))
     atlas = Image.open(os.path.join(SRC, "kart_mk2_atlas.png")).convert("RGBA")
     items, vehicles = [], []
     for colour, rgb in COLOURS.items():
@@ -297,6 +328,8 @@ def vehicle_yaml(colour, name):
   speedometer: false
   # The wheels turn because the kart moved: at a standstill they stop.
   animation-follows-speed: true
+  # The front wheels and the steering wheel follow the steering (RP Engine 0.2.49).
+  steering: steer
   hitbox:
     width: {w}
     height: {h}
