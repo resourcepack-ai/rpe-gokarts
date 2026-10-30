@@ -80,15 +80,19 @@ BODY_STATES = ["airborne", "reversing", "moving", "idle"]
 # RP Engine advances a speed-linked vehicle's animation by distance: at the
 # vehicle's `speed` (19) one second of animation a second, slower in proportion.
 # Studio's cycles turned the wheels 240 degrees in 1.5 s and then held them for
-# the last half second before snapping back, which is one turn every 28 blocks
-# and a stall in every cycle. These are rewritten: one loop of WHEEL_LOOP
-# seconds, the front wheels turning WHEEL_FRONT_TURNS whole times in it and the
-# rear ones in proportion to their size (8 and 10 pixels across), keyed every 90
-# degrees so nothing in between is ambiguous. At top speed that is 150 degrees a
-# tick for the front wheels: a real wheel would turn about 220, which at twenty
-# frames a second reads as turning backwards, so this is the fastest that still
-# reads forwards. Positive X rolls a wheel toward +z, the kart's front.
-WHEEL_LOOP = 0.6
+# the last half second before snapping back. These are rewritten: one loop of
+# WHEEL_LOOP seconds, the front wheels turning WHEEL_FRONT_TURNS whole times in
+# it and the rear ones in proportion to their size (8 and 10 pixels across), so
+# the loop closes on itself; keyed every 90 degrees.
+#
+# How fast is set by what a wheel LOOKS like, not by how far it rolls. A tyre is
+# four bars at 0, 45, 90 and -45 degrees, a star that looks the same every 45
+# degrees, so a turn of more than about 22 degrees between frames reads as a
+# slower turn the other way: at a true roll (some 220 degrees a tick) or even at
+# 95 the wheels crawl, and the rear ones went backwards. So at top speed the
+# front wheels turn 18 degrees a tick and the rear 14.4, which read as forwards
+# at any frame rate. Positive X rolls a wheel toward +z, the kart's front.
+WHEEL_LOOP = 5.0
 WHEEL_FRONT_TURNS = 5
 WHEELS = ("left_front_wheel", "left_front_wheel_copy", "left_rear_wheel", "right_rear_wheel")
 ROLLING = {"moving": 1, "turning": 1, "airborne": 1, "boost": 1, "reversing": -1}
