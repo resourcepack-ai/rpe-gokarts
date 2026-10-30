@@ -283,6 +283,33 @@ def turn_half(model):
 VISOR_ALPHA = 80
 
 
+# Where the visor's lower edge is, in the helmet's pixels. A seated driver's
+# camera is about 2.4 up the helmet (eye height 25.9px over a head that starts
+# at 24, the helmet's 0 half a pixel below it), and Studio drew the visor from
+# 4: looking ahead, a driver looked through the chin bar. Brought down to here,
+# the eye line and a little below it are glass, and the chin is what is left.
+VISOR_BOTTOM = 1.5
+VISOR_PARTS = ("visor_seal", "tinted_visor", "visor_left_wrap", "visor_right_wrap")
+CHIN_PARTS = ("lower_face", "chin_guard", "chin_left_wrap", "chin_right_wrap")
+
+
+def shorter_chin(model):
+    """The visor brought down to VISOR_BOTTOM and the chin squeezed under it, keeping every face's art."""
+    for e in model["elements"]:
+        name = e.get("name", "")
+        if name in VISOR_PARTS:
+            e["from"][1] = VISOR_BOTTOM
+        elif name in CHIN_PARTS:
+            e["from"][1] = min(e["from"][1], 0)
+            e["to"][1] = VISOR_BOTTOM
+        else:
+            continue
+        rot = e.get("rotation")
+        if rot and "origin" in rot:
+            rot["origin"][1] = (e["from"][1] + e["to"][1]) / 2
+    return model
+
+
 def visor_pixels(model, atlas):
     """Every atlas texel a face of a visor element samples (the seal, the visor and its wraps)."""
     w, h = atlas.size
@@ -301,7 +328,7 @@ def visor_pixels(model, atlas):
 
 
 def helmets():
-    base = turn_half(load("kart_helmet_generated.json"))
+    base = shorter_chin(turn_half(load("kart_helmet_generated.json")))
     glass = visor_pixels(base, Image.open(os.path.join(SRC, "kart_helmet_atlas.png")))
     base.pop("groups", None)
     atlas = Image.open(os.path.join(SRC, "kart_helmet_atlas.png")).convert("RGBA")
