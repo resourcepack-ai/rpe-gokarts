@@ -200,6 +200,8 @@ messages:
   hud-scrapped: "Item scrapped"
   hud-on-track: "On the road - Q puts you back only off it"
   hud-best: "Best {time}"
+  # Before a lap is done.
+  hud-best-none: "Best -:--.--"
   hud-finished-place: "You finished {place}"
   # The line across the top of the screen when something happens to somebody.
   feed-rocket: "{shooter} ▸ rocket ▸ {victim}"

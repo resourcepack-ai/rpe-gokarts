@@ -1,0 +1,23 @@
+{
+ "v": 1,
+ "duration": 8,
+ "palettes": {
+  "white": {"deep": "#8c8c8c", "mid": "#e6e6e6", "bright": "#ffffff"},
+  "smoke": {"deep": "#2a2a2a", "mid": "#6e6e6e", "bright": "#b4b4b4"}
+ },
+ "layers": [
+  {"type": "sprite", "name": "left pipe glow", "start": 0, "end": 6, "palette": "white", "sprite": "glow", "billboard": true, "flicker": 0.2,
+   "pos": [0.375, 0.56, -1.15], "scale": [[0, 0.45], [6, 0.1]], "fade": [[0, 0], [6, 1]]},
+  {"type": "sprite", "name": "right pipe glow", "start": 0, "end": 6, "palette": "white", "sprite": "glow", "billboard": true, "flicker": 0.2,
+   "pos": [-0.375, 0.56, -1.15], "scale": [[0, 0.45], [6, 0.1]], "fade": [[0, 0], [6, 1]]},
+  {"type": "motes", "name": "left pipe streaks", "start": 0, "end": 6, "palette": "white", "kind": "streak",
+   "rate": 1.5, "at": [0.375, 0.56, -1.2], "shape": "point", "dir": [0, 0.05, -1], "spread": 0.08,
+   "speed": [0.4, 0.6], "drag": 0.9, "scale": [0.03, 0.05], "length": 0.7, "life": [3, 5]},
+  {"type": "motes", "name": "right pipe streaks", "start": 0, "end": 6, "palette": "white", "kind": "streak",
+   "rate": 1.5, "at": [-0.375, 0.56, -1.2], "shape": "point", "dir": [0, 0.05, -1], "spread": 0.08,
+   "speed": [0.4, 0.6], "drag": 0.9, "scale": [0.03, 0.05], "length": 0.7, "life": [3, 5]},
+  {"type": "motes", "name": "grey puffs", "start": 0, "end": 6, "palette": "smoke", "kind": "glow",
+   "rate": 0.7, "at": [0, 0.56, -1.3], "shape": "box", "size": [0.4, 0.05, 0.1], "dir": [0, 0.25, -1], "spread": 0.3,
+   "speed": [0.1, 0.2], "drag": 0.85, "gravity": -0.01, "scale": [0.25, 0.5], "life": [6, 10]}
+ ]
+}

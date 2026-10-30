@@ -46,7 +46,6 @@ kart_red:
         idle: gokarts_red_idle
   animations:
     airborne: airborne
-    turning: turning
     reversing: reversing
     moving: moving
     idle: idle
@@ -100,7 +99,6 @@ kart_blue:
         idle: gokarts_blue_idle
   animations:
     airborne: airborne
-    turning: turning
     reversing: reversing
     moving: moving
     idle: idle
@@ -154,7 +152,6 @@ kart_green:
         idle: gokarts_green_idle
   animations:
     airborne: airborne
-    turning: turning
     reversing: reversing
     moving: moving
     idle: idle
@@ -208,7 +205,6 @@ kart_yellow:
         idle: gokarts_yellow_idle
   animations:
     airborne: airborne
-    turning: turning
     reversing: reversing
     moving: moving
     idle: idle
@@ -262,7 +258,6 @@ kart_orange:
         idle: gokarts_orange_idle
   animations:
     airborne: airborne
-    turning: turning
     reversing: reversing
     moving: moving
     idle: idle
@@ -316,7 +311,6 @@ kart_purple:
         idle: gokarts_purple_idle
   animations:
     airborne: airborne
-    turning: turning
     reversing: reversing
     moving: moving
     idle: idle
@@ -370,7 +364,6 @@ kart_pink:
         idle: gokarts_pink_idle
   animations:
     airborne: airborne
-    turning: turning
     reversing: reversing
     moving: moving
     idle: idle
@@ -424,7 +417,6 @@ kart_cyan:
         idle: gokarts_cyan_idle
   animations:
     airborne: airborne
-    turning: turning
     reversing: reversing
     moving: moving
     idle: idle

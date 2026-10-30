@@ -160,7 +160,8 @@ final class Hud {
                 : letters(m.plain("hud-lap") + " ", "grey", 2) + letters(lap + "/" + race.laps, "white", 3));
         long shown = r.finished ? r.finishTicks : race.clock;
         v.put("gk_time", Text.raceClock(phase == Race.Phase.RACING ? shown : 0));
-        v.put("gk_best", r.bestLap < 0 ? "" : m.plain("hud-best", "time", Text.raceClock(r.bestLap)));
+        // Never empty: the panel behind it is drawn for two lines.
+        v.put("gk_best", r.bestLap < 0 ? m.plain("hud-best-none") : m.plain("hud-best", "time", Text.raceClock(r.bestLap)));
         v.put("gk_feed", race.feedTicks > 0 ? race.feed : "");
 
         // ---- the standings.

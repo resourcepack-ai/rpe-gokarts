@@ -69,6 +69,90 @@ SEAT = (0.0, 10 / 16, (6 - 8) / 16)          # the seat at model pixel (8, 10, 6
 EXHAUST = (-(14 - 8) / 16, 9 / 16, (-9.5 - 8) / 16)
 HITBOX = (1.5, 1.25, 2.25)
 STATES = ["airborne", "turning", "reversing", "moving", "idle"]
+# The kart's own animations by state. Not `turning`: a vehicle has one turning
+# state for both ways, so the kart's turning pose steered its front wheels the
+# same way whichever way it turned, and it outranks reversing, so its forward
+# wheel spin played while backing out of a wall. Without it a corner plays
+# moving or reversing, which roll the right way. (The driver keeps theirs.)
+BODY_STATES = ["airborne", "reversing", "moving", "idle"]
+
+# ---- the wheels ----------------------------------------------------------------
+# RP Engine advances a speed-linked vehicle's animation by distance: at the
+# vehicle's `speed` (19) one second of animation a second, slower in proportion.
+# Studio's cycles turned the wheels 240 degrees in 1.5 s and then held them for
+# the last half second before snapping back, which is one turn every 28 blocks
+# and a stall in every cycle. These are rewritten: one loop of WHEEL_LOOP
+# seconds, the front wheels turning WHEEL_FRONT_TURNS whole times in it and the
+# rear ones in proportion to their size (8 and 10 pixels across), keyed every 90
+# degrees so nothing in between is ambiguous. At top speed that is 150 degrees a
+# tick for the front wheels: a real wheel would turn about 220, which at twenty
+# frames a second reads as turning backwards, so this is the fastest that still
+# reads forwards. Positive X rolls a wheel toward +z, the kart's front.
+WHEEL_LOOP = 0.6
+WHEEL_FRONT_TURNS = 5
+WHEELS = ("left_front_wheel", "left_front_wheel_copy", "left_rear_wheel", "right_rear_wheel")
+ROLLING = {"moving": 1, "turning": 1, "airborne": 1, "boost": 1, "reversing": -1}
+
+
+def wheel_radius(model, gi):
+    """Half the height of a group's elements, in model pixels."""
+    els = model["elements"]
+    ids = []
+
+    def walk(g):
+        for c in g.get("children", []):
+            if isinstance(c, int):
+                ids.append(c)
+            else:
+                walk(c)
+    walk(model["groups"][gi])
+    lo = min(els[i]["from"][1] for i in ids)
+    hi = max(els[i]["to"][1] for i in ids)
+    return (hi - lo) / 2
+
+
+def roll(turns, direction):
+    keys = []
+    for k in range(4 * turns + 1):
+        keys.append({"time": round(WHEEL_LOOP * k / (4 * turns), 5), "value": [direction * 90 * k, 0, 0]})
+    return {"rotation": keys}
+
+
+def calibrate_wheels(model):
+    index = {g.get("name"): i for i, g in enumerate(model["groups"])}
+    radius = {name: wheel_radius(model, index[name]) for name in WHEELS}
+    front = min(radius.values())
+    turns = {}
+    for name, r in radius.items():
+        exact = WHEEL_FRONT_TURNS * front / r
+        assert abs(exact - round(exact)) < 1e-6, (name, exact)
+        turns[name] = round(exact)
+    for anim in model["animations"]:
+        direction = ROLLING.get(anim["name"])
+        if direction is None:
+            continue
+        old = anim["length"]
+        scale = WHEEL_LOOP / old
+        for bone, channels in anim["animators"].items():
+            if anim["name"] == "boost":
+                # The boost's shake repeats every 0.1 s: carried on to the new length.
+                for kind, keys in channels.items():
+                    if len(keys) == 2 and keys[0]["value"] == keys[1]["value"]:
+                        channels[kind] = [keys[0], {**keys[1], "time": WHEEL_LOOP}]
+                        continue
+                    period = [k for k in keys if k["time"] < 0.1 - 1e-9]
+                    out = [{**k, "time": round(k["time"] + 0.1 * rep, 5)}
+                           for rep in range(int(round(WHEEL_LOOP / 0.1))) for k in period]
+                    channels[kind] = out + [{**keys[0], "time": WHEEL_LOOP}]
+            else:
+                for kind, keys in channels.items():
+                    channels[kind] = [{**k, "time": round(k["time"] * scale, 5)} for k in keys]
+        anim["length"] = WHEEL_LOOP
+        for name in WHEELS:
+            bone = f"g:{index[name]}"
+            rest = {k: v for k, v in anim["animators"].get(bone, {}).items() if k != "rotation"}
+            anim["animators"][bone] = {**rest, **roll(turns[name], direction)}
+    return model
 
 
 def path(*p):
@@ -163,7 +247,7 @@ def icon(name, rgb=None):
 
 
 def karts():
-    model = load("kart_mk2_generated.json")
+    model = calibrate_wheels(load("kart_mk2_generated.json"))
     atlas = Image.open(os.path.join(SRC, "kart_mk2_atlas.png")).convert("RGBA")
     items, vehicles = [], []
     for colour, rgb in COLOURS.items():
@@ -194,7 +278,7 @@ def vehicle_yaml(colour, name):
     ex, ey, ez = EXHAUST
     w, h, l = HITBOX
     seat = "\n".join(f"        {s}: gokarts_{colour}_{s}" for s in STATES)
-    body = "\n".join(f"    {s}: {s}" for s in STATES)
+    body = "\n".join(f"    {s}: {s}" for s in BODY_STATES)
     return f"""kart_{colour}:
   model: {NS}:kart_{colour}_item
   name: "&{CODES[colour]}{name} Kart"

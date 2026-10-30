@@ -208,7 +208,7 @@ public final class Driving {
         } else if (st.boostTicks > 0) {
             st.boostTicks--;
             limit = 0;
-            exhaust(v);
+            exhaust(v, st, driver);
         } else if (st.shieldTicks > 0) {
             // Shielded, the grass does not hold it back either.
             limit = s.cruiseSpeed + st.shieldSpeed;
@@ -518,10 +518,13 @@ public final class Driving {
         }
     }
 
-    private static void exhaust(Vehicle v) {
-        // The exhaust tips, where Studio's vehicle editor put the kart's smoke.
-        Location at = v.pointOn(-0.375, 0.56, -1.1);
-        at.getWorld().spawnParticle(Particle.FLAME, at, 2, 0.06, 0.04, 0.06, 0.01);
-        at.getWorld().spawnParticle(Particle.FLAME, v.pointOn(0.375, 0.56, -1.1), 2, 0.06, 0.04, 0.06, 0.01);
+    /**
+     * While boosting: the black and white exhaust (vfx/gk_exhaust.json) at both
+     * pipes, riding the kart. Eight ticks long and played every five, so it
+     * runs unbroken for however long the boost lasts; vanilla flames did this
+     * until 0.2.6 and were the one orange thing left on a boosting kart.
+     */
+    private void exhaust(Vehicle v, State st, Player driver) {
+        if (st.boostTicks % 5 == 0) content().vfx("gk_exhaust", v, driver);
     }
 }
