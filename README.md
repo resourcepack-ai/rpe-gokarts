@@ -22,6 +22,8 @@ is ordinary RP Engine content shipped inside the jar.
 - **[RP Engine](https://resourcepack.ai/rp-engine) 0.2.45 or newer**, the first
   whose vehicles jump off a jump pad. Go Karts checks the engine's version as it
   starts, and on anything older says so in the console and disables itself.
+  0.2.47 or newer draws the karts, helmets and items as icons in an inventory;
+  on 0.2.45 and 0.2.46 a slot shows the 3D model, shrunk.
 
 ## Installing
 
@@ -45,7 +47,7 @@ is ordinary RP Engine content shipped inside the jar.
 | **Space** | The handbrake. Held through a corner at speed it is a **drift**: blue sparks, then orange, then purple, and letting go is a boost worth the level reached |
 | **F** or a click | Use your item |
 | **Q** | Back on the track at the last checkpoint |
-| `/kart join [track]` | Into the lobby (the glass box over the infield) |
+| `/kart join [track]` | Into the lobby (the glass box over the infield), where you stay until the grid: step or fall off it and you are put back |
 | `/kart colour <colour>` | The kart you'd like: red, blue, green, yellow, orange, purple, pink or cyan. Everybody in a race has a different one, and wears a helmet to match |
 | `/kart leave` | Out, with your inventory and position back |
 | `/kart results` | The last race's results |
@@ -89,8 +91,10 @@ speed line above your hotbar all work anywhere.
 ## Tracks (staff)
 
 `/kart track generate <id> [prefab] [name]` builds a whole circuit **in a new
-world of its own** (`gokarts_<id>`: superflat, peaceful, its ground and time of
-day the theme's), so it replaces nothing. The plugin loads that world again
+world of its own** (`gokarts_<id>`: empty, peaceful, its biome and time of
+day the theme's), so it replaces nothing. The circuit is an island in that
+world: its whole infield and a margin round every road, the lobby and the
+grandstand, and nothing beyond. The plugin loads that world again
 every time the server starts. Generating the same track again makes a fresh
 world (`gokarts_<id>_2`...) and leaves the old one alone.
 
@@ -176,8 +180,12 @@ installs it into `plugins/RPEngine/content/gokarts/` on enable:
   a racing **helmet** in the kart's colour as a prop; there are emotes for
   winning and for being dazed too. `tools/make_assets.py` paints the kart and the
   helmet in eight colours, each its own item and its own vehicle
-  (`vehicles/karts.yml`).
-- **The item box, banana, nitro and rocket** are Studio models; **the sounds**
+  (`vehicles/karts.yml`). The helmet's visor is tinted glass, so a driver in
+  first person sees the track through it.
+- **The item box, banana, nitro and rocket** are Studio models. **In an
+  inventory** every one of them, the karts and the helmets is a 16x16 icon
+  (`tools/src/icons/`, drawn by Studio's item model; the kart and the helmet are
+  repainted in each colour), named by the item's `gui:`. **The sounds**
   (engine, idle, boost, sparks, the lights, the finish...) are Studio's,
   trimmed, levelled and, for the two engine notes, looped by the tool.
 - **The effects** (`vfx/`) are Studio VFX (drift sparks for each level, pad

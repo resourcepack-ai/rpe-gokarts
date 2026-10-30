@@ -15,25 +15,25 @@ import java.util.Random;
  * real height.
  */
 public enum Theme {
-    MEADOW("Meadow", 6000, "plains", "minecraft:stone", "minecraft:dirt", "minecraft:grass_block",
+    MEADOW("Meadow", 6000, "plains",
             Material.POLISHED_ANDESITE, Material.POLISHED_ANDESITE_SLAB, Material.WHITE_CONCRETE, Material.SMOOTH_QUARTZ_SLAB,
             Material.RED_CONCRETE, Material.RED_NETHER_BRICK_SLAB, Material.WHITE_CONCRETE, Material.SMOOTH_QUARTZ_SLAB,
             Material.BLACK_CONCRETE, Material.RED_CONCRETE, Material.WHITE_CONCRETE,
             Material.GRASS_BLOCK, Material.STONE_BRICKS, Material.STONE_BRICKS, Material.MOSSY_STONE_BRICKS, Material.STONE_BRICKS,
             Material.LANTERN, 6),
-    DESERT("Desert", 6000, "desert", "minecraft:stone", "minecraft:sandstone", "minecraft:sand",
+    DESERT("Desert", 6000, "desert",
             Material.SMOOTH_RED_SANDSTONE, Material.SMOOTH_RED_SANDSTONE_SLAB, Material.SMOOTH_SANDSTONE, Material.SMOOTH_SANDSTONE_SLAB,
             Material.ORANGE_CONCRETE, Material.CUT_RED_SANDSTONE_SLAB, Material.WHITE_CONCRETE, Material.SMOOTH_QUARTZ_SLAB,
             Material.CHISELED_SANDSTONE, Material.ORANGE_TERRACOTTA, Material.WHITE_TERRACOTTA,
             Material.SAND, Material.SANDSTONE, Material.CUT_SANDSTONE, Material.SANDSTONE, Material.CUT_SANDSTONE,
             Material.LANTERN, 3),
-    FROST("Frost", 6000, "snowy_plains", "minecraft:stone", "minecraft:dirt", "minecraft:snow_block",
+    FROST("Frost", 6000, "snowy_plains",
             Material.POLISHED_DEEPSLATE, Material.POLISHED_DEEPSLATE_SLAB, Material.WHITE_CONCRETE, Material.SMOOTH_QUARTZ_SLAB,
             Material.LIGHT_BLUE_CONCRETE, Material.PRISMARINE_BRICK_SLAB, Material.WHITE_CONCRETE, Material.SMOOTH_QUARTZ_SLAB,
             Material.PACKED_ICE, Material.BLUE_ICE, Material.SNOW_BLOCK,
             Material.SNOW_BLOCK, Material.SNOW_BLOCK, Material.PACKED_ICE, Material.PACKED_ICE, Material.SNOW_BLOCK,
             Material.SEA_LANTERN, 8),
-    NEON("Neon", 18000, "plains", "minecraft:stone", "minecraft:stone", "minecraft:gray_concrete",
+    NEON("Neon", 18000, "plains",
             Material.POLISHED_BLACKSTONE, Material.POLISHED_BLACKSTONE_SLAB, Material.YELLOW_CONCRETE, Material.SMOOTH_SANDSTONE_SLAB,
             Material.SEA_LANTERN, Material.PRISMARINE_SLAB, Material.MAGENTA_CONCRETE, Material.PURPUR_SLAB,
             Material.BLACK_CONCRETE, Material.SEA_LANTERN, Material.MAGENTA_STAINED_GLASS,
@@ -43,15 +43,15 @@ public enum Theme {
     public final String title;
     /** The time of day its own world is held at: noon, or midnight for the city. */
     public final long time;
-    /** Its own world's biome, and the flat world's layers under the ground: the ground's colour, and its weather. */
-    public final String biome, deepLayer, fillLayer, topLayer;
+    /** Its own world's biome: the grass and water colours, and its weather. */
+    public final String biome;
     public final Material road, roadSlab, line, lineSlab, kerbA, kerbASlab, kerbB, kerbBSlab;
     public final Material wallBase, wallTopA, wallTopB;
     public final Material ground, fill, pillar, tunnelWall, tunnelRoof, light;
     /** How high its hills grow away from the road, in blocks. */
     public final int hills;
 
-    Theme(String title, long time, String biome, String deepLayer, String fillLayer, String topLayer,
+    Theme(String title, long time, String biome,
           Material road, Material roadSlab, Material line, Material lineSlab,
           Material kerbA, Material kerbASlab, Material kerbB, Material kerbBSlab,
           Material wallBase, Material wallTopA, Material wallTopB,
@@ -59,9 +59,6 @@ public enum Theme {
         this.title = title;
         this.time = time;
         this.biome = biome;
-        this.deepLayer = deepLayer;
-        this.fillLayer = fillLayer;
-        this.topLayer = topLayer;
         this.road = road;
         this.roadSlab = roadSlab;
         this.line = line;
@@ -83,13 +80,13 @@ public enum Theme {
     }
 
     /**
-     * A superflat world's settings for this theme: deep enough for a canyon to
-     * be cut, and topped with the theme's ground, so the land beyond the track
-     * already looks like it belongs.
+     * A superflat world's settings for this theme: empty, in the theme's
+     * biome. The track's own ground is all there is, an island built round
+     * the circuit by {@link PrefabBuilder}; an endless plain of the theme's
+     * ground used to run off to the horizon on every side.
      */
     public String flatSettings() {
-        return "{\"layers\":[{\"block\":\"minecraft:bedrock\",\"height\":1},{\"block\":\"" + deepLayer + "\",\"height\":40},"
-                + "{\"block\":\"" + fillLayer + "\",\"height\":3},{\"block\":\"" + topLayer + "\",\"height\":1}],"
+        return "{\"layers\":[{\"block\":\"minecraft:air\",\"height\":1}],"
                 + "\"biome\":\"minecraft:" + biome + "\",\"lakes\":false,\"features\":false,\"structure_overrides\":[]}";
     }
 

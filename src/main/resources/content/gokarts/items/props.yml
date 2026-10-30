@@ -5,6 +5,7 @@
 item_box:
   material: PAPER
   model: item_box
+  gui: {texture: icon_box}
   name: "&d&lItem Box"
   lore:
     - "&7Drive through it for an item."
@@ -12,6 +13,7 @@ item_box:
 banana:
   material: PAPER
   model: banana
+  gui: {texture: icon_banana}
   name: "&e&lBanana"
   lore:
     - "&7Drop it behind you. Whoever hits it spins out."
@@ -19,6 +21,7 @@ banana:
 nitro:
   material: PAPER
   model: nitro
+  gui: {texture: icon_nitro}
   name: "&9&lNitro"
   lore:
     - "&7A boost, whenever you like."
@@ -26,6 +29,7 @@ nitro:
 rocket:
   material: PAPER
   model: rocket
+  gui: {texture: icon_rocket}
   name: "&c&lRocket"
   lore:
     - "&7Fired at the kart ahead of you."
@@ -40,39 +44,47 @@ no_item:
 helmet_red:
   material: PAPER
   model: helmet_red
+  gui: {texture: icon_helmet_red}
   name: "&c&lRed Racing Helmet"
 
 helmet_blue:
   material: PAPER
   model: helmet_blue
+  gui: {texture: icon_helmet_blue}
   name: "&9&lBlue Racing Helmet"
 
 helmet_green:
   material: PAPER
   model: helmet_green
+  gui: {texture: icon_helmet_green}
   name: "&a&lGreen Racing Helmet"
 
 helmet_yellow:
   material: PAPER
   model: helmet_yellow
+  gui: {texture: icon_helmet_yellow}
   name: "&e&lYellow Racing Helmet"
 
 helmet_orange:
   material: PAPER
   model: helmet_orange
+  gui: {texture: icon_helmet_orange}
   name: "&6&lOrange Racing Helmet"
 
 helmet_purple:
   material: PAPER
   model: helmet_purple
+  gui: {texture: icon_helmet_purple}
   name: "&5&lPurple Racing Helmet"
 
 helmet_pink:
   material: PAPER
   model: helmet_pink
+  gui: {texture: icon_helmet_pink}
   name: "&d&lPink Racing Helmet"
 
 helmet_cyan:
   material: PAPER
   model: helmet_cyan
+  gui: {texture: icon_helmet_cyan}
   name: "&b&lCyan Racing Helmet"

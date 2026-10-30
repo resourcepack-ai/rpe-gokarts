@@ -42,6 +42,15 @@ public final class PrefabBuilder {
     static final int DECOR_PER_TICK = 80;
     /** How far across the road a jump's hazard (river, canyon...) runs either way. */
     static final double HAZARD_WIDTH = 34;
+    /**
+     * In a world of its own a track is an island: ground this far beyond a
+     * road's wall and no further (and round the lobby and the grandstand),
+     * void past it. The last {@link #ISLAND_RIM} blocks are flat, so its edge
+     * is a clean cliff rather than half a hill.
+     */
+    static final double ISLAND = 16, ISLAND_RIM = 6;
+    /** How deep under the line the island goes beside a jump's hazard: below a canyon's floor. */
+    static final int ISLAND_DEEP = 19;
     /** The grid of samples each road is indexed on, in blocks. */
     static final int CELL = 6;
 
@@ -211,6 +220,8 @@ public final class PrefabBuilder {
         final Scenery.Placer placer;
         /** Which side of the start straight the grandstand is on: away from the infield. */
         final int standSide;
+        /** The lap's line, (u, v) pairs: what is inside it is infield, and part of the island. */
+        final double[] loop;
 
         Context(World w, Prefab prefab, Theme theme, Frame frame, int baseY, double hStart, double outer,
                 List<Map<Long, List<Road.Sample>>> index, BlockUndo undo, boolean fresh, double[] phases) {
@@ -236,6 +247,26 @@ public final class PrefabBuilder {
             Road.Sample line = main.at(prefab.start * main.length());
             double lat = (prefab.lobby[0] - line.u()) * line.dv() - (prefab.lobby[1] - line.v()) * line.du();
             this.standSide = lat > 0 ? -1 : 1;
+            List<Road.Sample> samples = main.samples();
+            this.loop = new double[samples.size() * 2];
+            for (int k = 0; k < samples.size(); k++) {
+                loop[2 * k] = samples.get(k).u();
+                loop[2 * k + 1] = samples.get(k).v();
+            }
+        }
+
+        /**
+         * Whether (u, v) is enclosed by the lap, by the even-odd rule: the infield
+         * of a loop, and both lobes of a figure of eight.
+         */
+        boolean infield(double u, double v) {
+            boolean in = false;
+            int n = loop.length / 2;
+            for (int a = 0, b = n - 1; a < n; b = a++) {
+                double ua = loop[2 * a], va = loop[2 * a + 1], ub = loop[2 * b], vb = loop[2 * b + 1];
+                if ((va > v) != (vb > v) && u < (ub - ua) * (v - va) / (vb - va) + ua) in = !in;
+            }
+            return in;
         }
 
         double y(double h) {
@@ -352,18 +383,33 @@ public final class PrefabBuilder {
                 }
             }
 
+            // ---- the island, in a world of the track's own: nothing past its edge.
+            double edge = islandEdge(u, v, nearestAny);
+            if (fresh && edge < 0) {
+                ground[i] = baseY - 1;
+                room[i] = -1;
+                hazardOut[i] = true;
+                return;
+            }
+
             // ---- the ground.
             int groundTop = baseY - 1;
             if (theme.hills > 0) {
                 double blend = Prefab.smoothstep((nearestAny - (outer + 3)) / 16);
+                if (fresh) blend *= Prefab.smoothstep((edge - 1) / ISLAND_RIM);
                 groundTop += (int) Math.round(hill(u, v) * theme.hills * blend);
             }
             Theme.Under under = null;
+            boolean nearHazard = false;
             for (Prefab.Ramp ramp : prefab.ramps) {
                 Road r = prefab.roads.get(ramp.on());
                 Road.Sample lip = r.at(ramp.lip() * r.length());
                 double along = (u - lip.u()) * lip.du() + (v - lip.v()) * lip.dv();
                 double lat = (u - lip.u()) * lip.dv() - (v - lip.v()) * lip.du();
+                if (along > -4.5 && along < ramp.gap() + 4.5 && Math.abs(lat) < HAZARD_WIDTH + 4) nearHazard = true;
+                // On an island the hazard stops two blocks short of the edge, which
+                // is the bank that keeps a river's water from pouring off it.
+                if (fresh && edge < 2) continue;
                 if (along > -0.5 && along < ramp.gap() + 0.5 && Math.abs(lat) < HAZARD_WIDTH) {
                     under = Theme.under(ramp.under());
                     groundTop = baseY - switch (under) {
@@ -391,10 +437,18 @@ public final class PrefabBuilder {
 
             int top = Math.max(groundTop, baseY - 1);
             Random rnd = new Random(x * 3129871L ^ z * 116129781L);
+            if (fresh) {
+                // The island's underside: thickest in the middle, thinning to its
+                // edge, and below a canyon's floor round a jump.
+                int bottom = baseY - 3 - (int) Math.round(Math.min(9, edge * 0.6));
+                if (nearHazard) bottom = Math.min(bottom, baseY - ISLAND_DEEP);
+                int solidTo = groundTop >= baseY - 1 ? baseY - 3 : groundTop - 1;
+                for (int y = bottom; y <= solidTo; y++) set(x, y, z, under(y), null);
+            }
             if (groundTop >= baseY - 1) {
                 for (int y = baseY - 2; y <= groundTop; y++) {
                     Material m = y == groundTop ? (lake ? Material.ICE : theme.surface(rnd, y, baseY)) : theme.body(y, baseY);
-                    if (!fresh || y >= baseY) set(x, y, z, m, null);
+                    set(x, y, z, m, null);
                 }
             } else {
                 for (int y = groundTop + 1; y <= baseY - 1; y++) set(x, y, z, Material.AIR, null);
@@ -421,6 +475,25 @@ public final class PrefabBuilder {
             hits.sort(Comparator.comparingDouble(Hit::surface));
             List<int[]> reserved = new ArrayList<>();
             for (Hit h : hits) road(x, z, u, v, h, groundTop, reserved);
+        }
+
+        /**
+         * How far inside the island a column is, in blocks: negative outside it.
+         * The island is the whole infield and everything within {@link #ISLAND}
+         * of a road's wall, of the lobby, or of the grandstand.
+         */
+        double islandEdge(double u, double v, double nearestRoad) {
+            double edge = outer + ISLAND - nearestRoad;
+            if (edge < ISLAND && infield(u, v)) return ISLAND;
+            double[] lobby = prefab.lobby;
+            edge = Math.max(edge, 12 - Math.hypot(u - lobby[0], v - lobby[1]));
+            if (nearStands(u, v)) edge = Math.max(edge, 3);
+            return edge;
+        }
+
+        /** What the island is made of under its ground: the theme's earth near the top, stone below. */
+        Material under(int y) {
+            return theme == Theme.DESERT || y >= baseY - 5 ? theme.body(y, baseY) : Material.STONE;
         }
 
         /** 0 on the road, 1 on its kerb, 2 on its wall. */
@@ -566,8 +639,10 @@ public final class PrefabBuilder {
             BlockData data = m.createBlockData();
             if (data instanceof Directional dir) {
                 double[] d = frame.direction(p.du(), p.dv());
-                // A glazed terracotta's arrow points the opposite way to its facing.
-                dir.setFacing(TrackBuilder.cardinalOf(-d[0], -d[1]));
+                // A glazed terracotta's arrow points the way it faces (toward
+                // whoever placed it), so a pad faces the way the race runs.
+                // Facing it the other way pointed every boost pad backwards.
+                dir.setFacing(TrackBuilder.cardinalOf(d[0], d[1]));
             }
             return data;
         }

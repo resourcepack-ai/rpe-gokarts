@@ -339,18 +339,28 @@ def lights(lit, green=False, ss=2):
 
 def ribbon(text, colour, text_top, text_bottom, ss=2, chequer=False):
     words = big_text(text, text_top, text_bottom, 3 * ss, outline=2 * ss, shadow=2 * ss)
-    w, h = words.width + 40 * ss, words.height + 14 * ss
+    slant = 10 * ss
+    c = 6 * ss
+    # A chequered ribbon keeps three squares of flag at each end, and the words
+    # clear both the flag and the slant: they used to run over the squares.
+    flag = 3 * c if chequer else 0
+    pad = slant + flag + 4 * ss if chequer else 20 * ss
+    w, h = words.width + 2 * pad, words.height + 14 * ss
     w = min(w, 254)
     img = Image.new("RGBA", (w, h), (0, 0, 0, 0))
     d = ImageDraw.Draw(img)
-    slant = 10 * ss
     d.polygon([(slant, 0), (w - 1, 0), (w - 1 - slant, h - 1), (0, h - 1)], fill=colour + (235,))
     if chequer:
-        c = 6 * ss
         for y in range(0, h, c):
-            for x in range(0, w, c):
-                if ((x // c) + (y // c)) % 2 == 0 and (x < 28 * ss or x > w - 28 * ss):
-                    d.rectangle((x, y, x + c - 1, y + c - 1), fill=(20, 20, 20, 200))
+            for k in range(3):
+                for x in (k * c, w - flag + k * c):
+                    if (k + y // c) % 2 == 0:
+                        d.rectangle((x, y, x + c - 1, y + c - 1), fill=(20, 20, 20, 200))
+        # Squares outside the slanted ends are cut back to the ribbon.
+        mask = Image.new("L", (w, h), 0)
+        ImageDraw.Draw(mask).polygon([(slant, 0), (w - 1, 0), (w - 1 - slant, h - 1), (0, h - 1)], fill=255)
+        img.putalpha(ImageChops.darker(img.getchannel("A"), mask))
+        d = ImageDraw.Draw(img)
     d.line([(slant, 0), (w - 1, 0)], fill=(255, 255, 255, 200), width=ss)
     if words.width > w - 8:
         k = (w - 8) / words.width
@@ -636,8 +646,11 @@ def build(font_dir, thumbs, maps):
             ("banner_wrong", "WRONG WAY", (230, 60, 30), (255, 255, 255), (255, 220, 200), False),
             ("banner_lap", "NEW LAP", (40, 120, 230), (255, 255, 255), (210, 230, 255), False),
             ("banner_best", "BEST LAP!", (240, 180, 20), (255, 255, 255), (255, 240, 200), False)):
-        img = ribbon(text, colour, top, bottom, chequer=chequer)
-        picture(name, img, img.height // 2)
+        # FINISH! is drawn at 1x, shown at 1x: at 2x the 254-texel cap squeezed
+        # its words onto the chequered ends. Twice as wide on screen, too.
+        ss = 1 if chequer else 2
+        img = ribbon(text, colour, top, bottom, ss=ss, chequer=chequer)
+        picture(name, img, img.height // ss)
     for text, top, bottom in (("3", (255, 120, 120), (220, 30, 40)), ("2", (255, 200, 120), (230, 120, 20)),
                               ("1", (255, 240, 140), (230, 190, 20)), ("GO!", (180, 255, 190), (40, 190, 80))):
         for k, scale in enumerate((10, 8, 7)):

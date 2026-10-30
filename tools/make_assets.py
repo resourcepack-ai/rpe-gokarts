@@ -149,6 +149,19 @@ VEHICLES_HEADER = """# Go karts: one vehicle per paint, every one the same Studi
 """
 
 
+def icon(name, rgb=None):
+    """
+    An inventory icon (tools/src/icons/<name>.png, Studio's 16x16 item model,
+    drawn red where it has a colour) into textures/item, repainted in `rgb`.
+    The items name it as `gui:`, so a slot shows it rather than the 3D model
+    shrunk to a smudge; held, placed or worn, the model is still drawn.
+    """
+    img = Image.open(os.path.join(SRC, "icons", f"{name}.png")).convert("RGBA")
+    file = name if rgb is None else f"{name}_{next(c for c, v in COLOURS.items() if v == rgb)}"
+    (img if rgb is None else paint(img, rgb)).save(path("textures", "item", f"icon_{file}.png"))
+    return f"  gui: {{texture: icon_{file}}}"
+
+
 def karts():
     model = load("kart_mk2_generated.json")
     atlas = Image.open(os.path.join(SRC, "kart_mk2_atlas.png")).convert("RGBA")
@@ -163,6 +176,7 @@ def karts():
         items.append(f"""kart_{colour}_item:
   material: PAPER
   model: kart_{colour}
+{icon("kart", rgb)}
   name: "&{CODES[colour]}&l{name} Kart"
   lore:
     - "&7Right-click the ground to park it,"
@@ -263,18 +277,47 @@ def turn_half(model):
     return model
 
 
+# How opaque the visor is: tinted glass. The driver's eye is inside the helmet,
+# and a solid visor filled the first-person view; through this one the track is
+# there, a shade darker, and from outside the driver's face shows behind it.
+VISOR_ALPHA = 80
+
+
+def visor_pixels(model, atlas):
+    """Every atlas texel a face of a visor element samples (the seal, the visor and its wraps)."""
+    w, h = atlas.size
+    out = set()
+    for e in model["elements"]:
+        if "visor" not in e.get("name", ""):
+            continue
+        for face in e.get("faces", {}).values():
+            u0, v0, u1, v1 = face["uv"]
+            x0, x1 = sorted((u0 * w / 16, u1 * w / 16))
+            y0, y1 = sorted((v0 * h / 16, v1 * h / 16))
+            for x in range(int(x0), max(int(x0) + 1, round(x1))):
+                for y in range(int(y0), max(int(y0) + 1, round(y1))):
+                    out.add((x, y))
+    return out
+
+
 def helmets():
     base = turn_half(load("kart_helmet_generated.json"))
+    glass = visor_pixels(base, Image.open(os.path.join(SRC, "kart_helmet_atlas.png")))
     base.pop("groups", None)
     atlas = Image.open(os.path.join(SRC, "kart_helmet_atlas.png")).convert("RGBA")
     lines = []
     for colour, rgb in COLOURS.items():
-        paint(atlas, rgb).save(path("textures", "block", f"helmet_{colour}.png"))
+        painted = paint(atlas, rgb)
+        for x, y in glass:
+            r, g, b, a = painted.getpixel((x, y))
+            if a:
+                painted.putpixel((x, y), (r, g, b, min(a, VISOR_ALPHA)))
+        painted.save(path("textures", "block", f"helmet_{colour}.png"))
         m = json.loads(json.dumps(base))
         m["textures"] = {"atlas": f"{NS}:block/helmet_{colour}", "particle": f"{NS}:block/helmet_{colour}"}
         m["display"] = PROP_DISPLAY
         save_json(m, "models", f"helmet_{colour}.json")
-        lines += [f"helmet_{colour}:", "  material: PAPER", f"  model: helmet_{colour}",
+        lines += [f"helmet_{colour}:", "  material: PAPER", f"  model: helmet_{colour}", icon("helmet", rgb),
                   f'  name: "&{CODES[colour]}&l{colour.capitalize()} Racing Helmet"', ""]
     return lines
 
@@ -282,6 +325,9 @@ def helmets():
 # ---------------------------------------------------------------------------
 # The props
 # ---------------------------------------------------------------------------
+
+# Each prop's inventory icon, in tools/src/icons.
+PROP_ICONS = {"item_box": "box", "banana": "banana", "nitro": "nitro", "rocket": "rocket"}
 
 PROPS = {
     "item_box": ("kart_item_box", "&d&lItem Box", ["&7Drive through it for an item."]),
@@ -302,7 +348,7 @@ def props(helmet_lines):
         m["display"] = PROP_DISPLAY
         m.pop("groups", None)
         save_json(m, "models", f"{pid}.json")
-        lines += [f"{pid}:", "  material: PAPER", f"  model: {pid}", f'  name: "{name}"', "  lore:"]
+        lines += [f"{pid}:", "  material: PAPER", f"  model: {pid}", icon(PROP_ICONS[pid]), f'  name: "{name}"', "  lore:"]
         lines += [f'    - "{line}"' for line in lore] + [""]
     # Nothing in hand: an invisible item, so the hotbar slot a racer's item lives
     # in always holds SOMETHING, which is what makes Q and the clicks reach the plugin.

@@ -5,6 +5,7 @@
 kart_red_item:
   material: PAPER
   model: kart_red
+  gui: {texture: icon_kart_red}
   name: "&c&lRed Kart"
   lore:
     - "&7Right-click the ground to park it,"
@@ -13,6 +14,7 @@ kart_red_item:
 kart_blue_item:
   material: PAPER
   model: kart_blue
+  gui: {texture: icon_kart_blue}
   name: "&9&lBlue Kart"
   lore:
     - "&7Right-click the ground to park it,"
@@ -21,6 +23,7 @@ kart_blue_item:
 kart_green_item:
   material: PAPER
   model: kart_green
+  gui: {texture: icon_kart_green}
   name: "&a&lGreen Kart"
   lore:
     - "&7Right-click the ground to park it,"
@@ -29,6 +32,7 @@ kart_green_item:
 kart_yellow_item:
   material: PAPER
   model: kart_yellow
+  gui: {texture: icon_kart_yellow}
   name: "&e&lYellow Kart"
   lore:
     - "&7Right-click the ground to park it,"
@@ -37,6 +41,7 @@ kart_yellow_item:
 kart_orange_item:
   material: PAPER
   model: kart_orange
+  gui: {texture: icon_kart_orange}
   name: "&6&lOrange Kart"
   lore:
     - "&7Right-click the ground to park it,"
@@ -45,6 +50,7 @@ kart_orange_item:
 kart_purple_item:
   material: PAPER
   model: kart_purple
+  gui: {texture: icon_kart_purple}
   name: "&5&lPurple Kart"
   lore:
     - "&7Right-click the ground to park it,"
@@ -53,6 +59,7 @@ kart_purple_item:
 kart_pink_item:
   material: PAPER
   model: kart_pink
+  gui: {texture: icon_kart_pink}
   name: "&d&lPink Kart"
   lore:
     - "&7Right-click the ground to park it,"
@@ -61,6 +68,7 @@ kart_pink_item:
 kart_cyan_item:
   material: PAPER
   model: kart_cyan
+  gui: {texture: icon_kart_cyan}
   name: "&b&lCyan Kart"
   lore:
     - "&7Right-click the ground to park it,"

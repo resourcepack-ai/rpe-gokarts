@@ -279,6 +279,34 @@ public final class Race {
             }
         }
         if (phase == Phase.GRID || phase == Phase.RACING) hud.tick();
+        if (phase != Phase.RESULTS) holdInLobby();
+    }
+
+    /**
+     * Nobody waiting wanders off the viewing deck: whoever is in the race but
+     * not in a kart (everybody before the grid, and anybody the grid had no
+     * slot for) and steps or falls more than {@code race.lobby-radius} from the
+     * lobby is put back on it, still looking where they were.
+     */
+    private void holdInLobby() {
+        Location lobby = track.lobby();
+        if (lobby == null || lobby.getWorld() == null) return;
+        double radius = settings().lobbyRadius;
+        for (Racer r : members.values()) {
+            if (r.kart != null) continue;
+            Player p = r.player();
+            if (p == null) continue;
+            Location at = p.getLocation();
+            boolean out = at.getWorld() != lobby.getWorld()
+                    || Math.hypot(at.getX() - lobby.getX(), at.getZ() - lobby.getZ()) > radius
+                    || at.getY() < lobby.getY() - 1.5 || at.getY() > lobby.getY() + 6;
+            if (!out) continue;
+            Location back = lobby.clone();
+            back.setYaw(at.getYaw());
+            back.setPitch(at.getPitch());
+            p.setFallDistance(0);
+            p.teleport(back);
+        }
     }
 
     private void lobbyBar(int seconds) {

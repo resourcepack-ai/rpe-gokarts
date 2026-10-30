@@ -24,6 +24,7 @@ import org.bukkit.event.inventory.InventoryDragEvent;
 import org.bukkit.event.player.PlayerAnimationEvent;
 import org.bukkit.event.player.PlayerCommandPreprocessEvent;
 import org.bukkit.event.player.PlayerDropItemEvent;
+import org.bukkit.event.player.PlayerInteractAtEntityEvent;
 import org.bukkit.event.player.PlayerInteractEntityEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.player.PlayerItemHeldEvent;
@@ -149,6 +150,24 @@ public final class RaceListener implements Listener {
         if (race == null) return;
         e.setCancelled(true);
         if (e.getHand() == EquipmentSlot.HAND) race.useItem(e.getPlayer());
+    }
+
+    /**
+     * A click on a kart from inside one is not asking for a seat. RP Engine
+     * answers a click on a full vehicle with "... is full." (before 0.2.47 even
+     * when the clicker is its driver), so every item used with a right click
+     * printed it. The use itself comes in as the plain interact event above.
+     */
+    @EventHandler(priority = EventPriority.LOWEST)
+    public void onInteractAt(PlayerInteractAtEntityEvent e) {
+        Player p = e.getPlayer();
+        if (race(p) != null) {
+            e.setCancelled(true);
+            return;
+        }
+        plugin.content().engine().vehicles().of(p).ifPresent(v -> {
+            if (Driving.isKart(v)) e.setCancelled(true);
+        });
     }
 
     /** A left click in the air arrives only as an arm swing. */

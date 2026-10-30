@@ -30,6 +30,8 @@ public final class Settings {
     public final int maxSeconds;
     public final int resultsSeconds;
     public final int stuckTicks;
+    /** How far from the lobby somebody waiting may go before they are put back on it, in blocks. */
+    public final double lobbyRadius;
 
     public final double cruiseSpeed;
     public final double offroadSpeed;
@@ -71,6 +73,7 @@ public final class Settings {
         maxSeconds = clamp(c.getInt("race.max-seconds", 600), 30, 7200);
         resultsSeconds = clamp(c.getInt("race.results-seconds", 12), 3, 120);
         stuckTicks = clamp((int) Math.round(c.getDouble("race.stuck-seconds", 12) * 20), 60, 1200);
+        lobbyRadius = clamp(c.getDouble("race.lobby-radius", 4.8), 1.5, 200);
 
         cruiseSpeed = clamp(c.getDouble("karts.cruise-speed", 13), 2, 60);
         offroadSpeed = clamp(c.getDouble("karts.offroad-speed", 6), 1, 60);

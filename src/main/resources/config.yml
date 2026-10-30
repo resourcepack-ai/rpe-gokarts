@@ -18,6 +18,10 @@ race:
   # A racer who has not passed a gate for this long is put back on the track
   # at the last one they passed, in seconds. Q does it at once.
   stuck-seconds: 12
+  # Until the grid, everybody waits in the lobby: step or fall further than this
+  # from it (in blocks) and you are put back. The prefab tracks' viewing deck is
+  # nine blocks across; widen it for a lobby of your own that is bigger.
+  lobby-radius: 4.8
 
 karts:
   # How fast a kart goes flat out, in blocks a second. The vehicle's own

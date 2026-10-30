@@ -20,8 +20,8 @@ public final class TrackBuilder {
     }
 
     /**
-     * A track's own world, loaded or made: superflat in its theme's ground,
-     * no structures, peaceful, held at its theme's time of day and dry, so the
+     * A track's own world, loaded or made: empty (the track brings its own
+     * ground, an island round the circuit), in its theme's biome, peaceful, held at its theme's time of day and dry, so the
      * circuit is the only thing in it. Called
      * again on every start for each track that has one, because the server
      * only loads the worlds it knows about by itself.
@@ -30,7 +30,7 @@ public final class TrackBuilder {
         World w = Bukkit.getWorld(name);
         if (w != null) return w;
         org.bukkit.WorldCreator creator = new org.bukkit.WorldCreator(name).type(org.bukkit.WorldType.FLAT).generateStructures(false);
-        // Deep enough under the ground for a canyon to be cut, and the theme's own ground and sky on top.
+        // Nothing but the theme's biome: the track is built as an island in it.
         if (theme != null) creator.generatorSettings(theme.flatSettings());
         w = creator.createWorld();
         if (w == null) return null;
@@ -71,9 +71,18 @@ public final class TrackBuilder {
         return dimension.isDirectory() ? dimension : null;
     }
 
-    /** Where a track goes in its own world: on the surface at the origin, the straight running south. */
+    /** Where an island track's start line is in an empty world. */
+    static final int ISLAND_Y = 64;
+
+    /**
+     * Where a track goes in its own world: at the origin, the straight running
+     * south. On the surface of a world that has one (made before tracks were
+     * islands), and at {@link #ISLAND_Y} in an empty one.
+     */
     public static Location ownWorldOrigin(World w) {
-        return new Location(w, 0.5, w.getHighestBlockYAt(0, 0) + 1, 0.5, 0, 0);
+        int top = w.getHighestBlockYAt(0, 0);
+        int y = top <= w.getMinHeight() ? ISLAND_Y : top + 1;
+        return new Location(w, 0.5, y, 0.5, 0, 0);
     }
 
     static BlockFace cardinal(float yaw) {
