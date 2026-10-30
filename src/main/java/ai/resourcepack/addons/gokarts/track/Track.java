@@ -138,9 +138,14 @@ public final class Track {
 
     public void prefab(String id) {
         this.prefab = id;
+        // Generated again from another prefab: its ramps, not the old one's.
+        this.prefabRead = false;
+        this.prefabData = null;
     }
 
     void mapFrame(double[] frame, int baseY, double startH) {
+        this.prefabRead = false;
+        this.prefabData = null;
         this.mapFrame = frame;
         this.mapBaseY = baseY;
         this.mapStartH = startH;

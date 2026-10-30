@@ -17,6 +17,8 @@ public final class RaceManager {
     private final GoKartsPlugin plugin;
     private final Map<String, Race> races = new LinkedHashMap<>();
     private final Map<UUID, Race> byPlayer = new HashMap<>();
+    /** The race that finished last, kept for /kart results after its lobby has emptied. */
+    private Race lastFinished;
 
     public RaceManager(GoKartsPlugin plugin) {
         this.plugin = plugin;
@@ -24,6 +26,15 @@ public final class RaceManager {
 
     public Race race(Track track) {
         return races.computeIfAbsent(track.id(), id -> new Race(plugin, this, track));
+    }
+
+    /** The most recent race with results, which may have closed since. */
+    public Race lastFinished() {
+        return lastFinished;
+    }
+
+    void finished(Race race) {
+        lastFinished = race;
     }
 
     public Race existing(String trackId) {
@@ -81,7 +92,11 @@ public final class RaceManager {
         // In a vehicle of their own: out first, or the lobby teleport drags it along.
         plugin.content().engine().vehicles().of(p).ifPresent(v -> v.eject(p));
         byPlayer.put(p.getUniqueId(), race);
-        race.join(p);
+        if (!race.join(p)) {
+            byPlayer.remove(p.getUniqueId());
+            Text.send(p, Text.error("Your inventory could not be saved, so you were not let in. Tell staff."));
+            return false;
+        }
         return true;
     }
 

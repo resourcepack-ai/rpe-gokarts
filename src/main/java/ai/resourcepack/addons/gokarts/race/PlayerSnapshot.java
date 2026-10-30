@@ -46,7 +46,11 @@ public final class PlayerSnapshot {
         return file(id).exists();
     }
 
-    public void take(Player p) {
+    /**
+     * Writes the player's things to disk. False when it could not, and then the
+     * caller must not clear them: the snapshot is the only copy.
+     */
+    public boolean take(Player p) {
         YamlConfiguration y = new YamlConfiguration();
         y.set("items", java.util.Arrays.asList(p.getInventory().getContents()));
         Location l = p.getLocation();
@@ -64,8 +68,10 @@ public final class PlayerSnapshot {
         y.set("effects", effects);
         try {
             y.save(file(p.getUniqueId()));
+            return true;
         } catch (IOException e) {
             log.severe("Could not save " + p.getName() + "'s inventory snapshot: " + e.getMessage());
+            return false;
         }
     }
 

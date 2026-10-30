@@ -135,36 +135,45 @@ public final class Race {
 
     // ---- joining and leaving ---------------------------------------------------------
 
-    void join(Player p) {
-        plugin.snapshots().take(p);
+    /** Into the lobby. False, and nothing touched, when their things could not be saved first. */
+    boolean join(Player p) {
+        if (!plugin.snapshots().take(p)) return false;
         PlayerSnapshot.reset(p);
         Racer r = new Racer(p);
         r.wanted = plugin.colours().get(p.getUniqueId());
         members.put(p.getUniqueId(), r);
         p.setGameMode(GameMode.ADVENTURE);
         p.teleport(track.lobby());
-        String hint = p.hasPermission(Perms.START) ? messages().raw("hint-start")
+        boolean running = phase == Phase.GRID || phase == Phase.RACING;
+        String hint = running ? "" : p.hasPermission(Perms.START) ? messages().raw("hint-start")
                 : messages().raw("hint-wait").replace("{min}", String.valueOf(settings().minPlayers));
         Text.send(p, Text.mm(messages().raw("joined").replace("{prefix}", messages().raw("prefix"))
                 .replace("{track}", Text.MM.escapeTags(track.name())).replace("{hint}", hint)));
-        if (phase == Phase.GRID || phase == Phase.RACING) {
+        if (running) {
             Text.send(p, messages().component("race-running", "track", track.name()));
         }
+        return true;
     }
 
     /** Somebody leaving on their own (/kart leave, quitting): out of their kart, home, with their things. */
     void leave(Player p) {
         Racer r = members.remove(p.getUniqueId());
         if (r == null) return;
+        // Somebody home already keeps their place in the results.
+        if (r.finished && order.contains(r)) departed.add(r);
         order.remove(r);
         dropKart(r);
         hud.leave(p);
         if (!plugin.snapshots().restore(p)) p.teleport(p.getWorld().getSpawnLocation());
         if (members.isEmpty()) {
+            items.clear();
             reset();
             manager.closed(this);
         }
     }
+
+    /** Finishers who left before the results: still in them, in their place. */
+    private final List<Racer> departed = new ArrayList<>();
 
     /** /kart colour: from the next race (a kart already on the grid keeps its paint). */
     public void wantColour(Player p, KartColour c) {
@@ -187,17 +196,26 @@ public final class Race {
         laps = track.laps() > 0 ? track.laps() : settings().laps;
         List<Racer> in = new ArrayList<>(members.values());
         int slots = Math.min(track.grid().size(), KartColour.values().length);
+        // More waiting than the grid holds: whoever sat out last time goes
+        // first, then in the order they joined. Without it the same eight raced
+        // every time and the ninth never did.
+        in.sort(Comparator.comparingInt((Racer r) -> -r.satOut));
+        List<Racer> chosen = new ArrayList<>(in.subList(0, Math.min(slots, in.size())));
+        for (Racer r : in.subList(chosen.size(), in.size())) {
+            r.satOut++;
+            Player p = r.player();
+            if (p != null) Text.send(p, messages().component("grid-full"));
+        }
         Set<KartColour> free = EnumSet.allOf(KartColour.class);
         List<Racer> placed = new ArrayList<>();
-        for (Racer r : in) {
-            if (placed.size() >= slots) break;
+        for (Racer r : chosen) {
+            r.satOut = 0;
             if (r.wanted != null && free.remove(r.wanted)) {
                 r.colour = r.wanted;
                 placed.add(r);
             }
         }
-        for (Racer r : in) {
-            if (placed.size() >= slots) break;
+        for (Racer r : chosen) {
             if (r.colour != null) continue;
             KartColour c = free.iterator().next();
             free.remove(c);
@@ -276,6 +294,17 @@ public final class Race {
             case RACING -> tickRacing();
             case RESULTS -> {
                 if (phaseTicks >= settings().resultsSeconds * 20) backToLobby();
+            }
+        }
+        if ((phase == Phase.GRID || phase == Phase.RACING) && order.isEmpty()) {
+            // Everybody racing has left (the lobby may not have): the results if
+            // anybody got home, else straight back to the lobby.
+            if (!departed.isEmpty()) {
+                end(false);
+            } else {
+                items.clear();
+                broadcast(messages().component("race-abandoned"));
+                backToLobby();
             }
         }
         if (phase == Phase.GRID || phase == Phase.RACING) hud.tick();
@@ -598,11 +627,20 @@ public final class Race {
         if (phase != Phase.RACING && phase != Phase.GRID) return;
         if (stopped) broadcast(messages().component("stopped"));
         rank();
+        List<Racer> all = new ArrayList<>(order);
+        all.addAll(departed);
+        // Finishers by the place they finished in (chat already told them it),
+        // then everybody still out there in the order they were running.
+        List<Racer> home = new ArrayList<>(all.stream().filter(r -> r.finished).toList());
+        home.sort(Comparator.comparingInt(r -> r.place));
+        List<Racer> ranked = new ArrayList<>(home);
+        for (Racer r : all) if (!r.finished) ranked.add(r);
         List<Result> results = new ArrayList<>();
         int place = 0;
-        for (Racer r : order) {
+        for (Racer r : ranked) {
             place++;
-            results.add(new Result(r.id, r.name, r.colour, place, r.finished ? r.finishTicks : -1, r.bestLap, !r.finished));
+            results.add(new Result(r.id, r.name, r.colour, r.finished ? r.place : place,
+                    r.finished ? r.finishTicks : -1, r.bestLap, !r.finished));
         }
         lastResults = List.copyOf(results);
         if (fastestName != null && !stopped) {
@@ -615,7 +653,9 @@ public final class Race {
             if (p != null) hud.leave(p);
         }
         Records.Entry lapBefore = plugin.records().lap(track.id());
-        plugin.records().record(track, lastResults, fastestName, fastestLap);
+        // A race somebody stopped proves nothing about anybody's pace.
+        if (!stopped) plugin.records().record(track, lastResults, fastestName, fastestLap);
+        manager.finished(this);
         if (fastestName != null && !stopped && (lapBefore == null || fastestLap < lapBefore.ticks())) {
             broadcast(messages().component("record", "name", fastestName, "time", Text.raceClock(fastestLap)));
         }
@@ -657,6 +697,7 @@ public final class Race {
             dropKart(r);
             Player p = r.player();
             if (p != null) {
+                Text.send(p, messages().component("race-closed", "track", track.name()));
                 hud.leave(p);
                 manager.forget(p);
                 if (!plugin.snapshots().restore(p)) p.teleport(p.getWorld().getSpawnLocation());
@@ -669,6 +710,7 @@ public final class Race {
 
     private void resetRace() {
         order.clear();
+        departed.clear();
         finishers = 0;
         firstFinish = -1;
         lastFinish = 0;

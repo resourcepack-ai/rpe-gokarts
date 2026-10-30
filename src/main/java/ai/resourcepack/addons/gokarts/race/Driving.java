@@ -3,6 +3,7 @@ package ai.resourcepack.addons.gokarts.race;
 import ai.resourcepack.addons.gokarts.GoKartsPlugin;
 import ai.resourcepack.addons.gokarts.config.Settings;
 import ai.resourcepack.addons.gokarts.content.Content;
+import ai.resourcepack.addons.gokarts.track.PrefabBuilder;
 import ai.resourcepack.engine.api.ContentId;
 import ai.resourcepack.engine.api.Vehicle;
 import ai.resourcepack.engine.api.VehicleInput;
@@ -73,7 +74,8 @@ public final class Driving {
         int padCooldown;
         int jumpCooldown;
         double limit = Double.NaN;
-        boolean icy;
+        /** Null until this state has set the kart's handling once: a kart can come to it still turned for ice. */
+        Boolean icy;
         /** Ticks since a jump pad threw it; -1 when it has not been thrown. */
         int launched = -1;
         boolean tricked;
@@ -123,7 +125,9 @@ public final class Driving {
      */
     public void tickLoose() {
         if (!settings().tricksOutside) {
-            states.clear();
+            // Only the loose karts: clearing everything here reset every race
+            // kart's drift, boosts and stuns every tick.
+            states.keySet().removeIf(id -> !plugin.races().drives(id));
             return;
         }
         java.util.Set<UUID> seen = new java.util.HashSet<>();
@@ -169,19 +173,23 @@ public final class Driving {
             cancelDrift(st);
         } else if (v.isEnabled()) {
             drift(v, driver, st, in, airborne, speed);
-            if (!airborne && under == s.boostPad && st.padCooldown == 0) {
+            if (!airborne && (under == s.boostPad || under == PrefabBuilder.PAD) && st.padCooldown == 0) {
                 st.padCooldown = 12;
                 boost(v, s.padBoost);
                 content().vfx("gk_pad", v, driver);
             }
-            if (st.jumpCooldown == 0 && speed > 3 && onJumpPad(v, s.jumpPad)) launch(v, driver, st);
+            // The prefab tracks are built with PrefabBuilder's pads, whatever
+            // config.yml names for a track built by hand.
+            if (st.jumpCooldown == 0 && speed > 3 && (onJumpPad(v, s.jumpPad) || onJumpPad(v, PrefabBuilder.JUMP))) {
+                launch(v, driver, st);
+            }
             trick(v, driver, st, in, airborne);
         }
         st.wasAirborne = airborne;
 
         // Ice turns less: the kart carries on wider than it is pointed.
         boolean icy = !airborne && s.ice.contains(under);
-        if (icy != st.icy) {
+        if (st.icy == null || icy != st.icy) {
             st.icy = icy;
             v.setHandling(1.0, icy ? 0.55 : 1.0);
         }
@@ -218,7 +226,8 @@ public final class Driving {
             return;
         }
         if (!holding) {
-            if (st.driftLevel > 0) boost(v, s.driftLevels.get(st.driftLevel - 1).boost());
+            int level = Math.min(st.driftLevel, s.driftLevels.size());
+            if (level > 0) boost(v, s.driftLevels.get(level - 1).boost());
             cancelDrift(st);
             return;
         }
@@ -394,6 +403,10 @@ public final class Driving {
         st.stunTicks = Math.max(st.stunTicks, ticks);
         st.boostTicks = 0;
         cancelDrift(st);
+        // Hit mid-jump: the landing is never looked for while stunned, and a
+        // kart left "launched" could not drift for five seconds after.
+        st.launched = -1;
+        st.tricked = false;
         play(v, st, Act.SPINOUT, Math.max(SPINOUT_TICKS, ticks));
     }
 

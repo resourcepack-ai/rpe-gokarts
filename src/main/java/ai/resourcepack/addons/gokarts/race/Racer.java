@@ -12,6 +12,8 @@ final class Racer {
     final String name;
     /** The colour they asked for with /kart colour, or null for any. */
     KartColour wanted;
+    /** Races in a row this one sat out because the grid was full: they go first next time. */
+    int satOut;
 
     // ---- this race (all reset by Race.resetRace) --------------------------------
 

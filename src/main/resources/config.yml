@@ -113,6 +113,8 @@ messages:
   track-closed: "{prefix} <#FF5C5C>{track} is closed."
   track-not-ready: "{prefix} <#FF5C5C>{track} isn't ready: it still needs {missing}."
   race-running: "{prefix} <#FF5C5C>A race is already on at {track}. You'll be in the next one."
+  grid-full: "{prefix} <#9AA0A6>The grid is full this time. You're first in line for the next race."
+  race-closed: "{prefix} <#9AA0A6>{track} was closed, so you're back where you were."
   full: "{prefix} <#FF5C5C>{track} is full."
   colour-set: "{prefix} <#E8EAED>You'll drive the <{hex}>{colour}</{hex}> kart if it's free."
   colour-unknown: "{prefix} <#FF5C5C>No kart is {colour}. Try {list}."
@@ -130,6 +132,7 @@ messages:
   record: "{prefix} <#FFD23F><bold>LAP RECORD!</bold></#FFD23F> <#E8EAED>{name} - <#FFD23F>{time}</#FFD23F>"
   timeout: "{prefix} <#9AA0A6>Time's up for everybody still out there.</#9AA0A6>"
   stopped: "{prefix} <#FF5C5C>The race was stopped.</#FF5C5C>"
+  race-abandoned: "{prefix} <#9AA0A6>Everybody racing left, so that race is over. Back to the lobby."
   hit-banana: "{prefix} <#FFD23F>Banana!</#FFD23F>"
   hit-rocket: "{prefix} <#FF5C5C>{name} got you with a rocket.</#FF5C5C>"
   got-rocket: "{prefix} <#5BE37D>Your rocket got {name}.</#5BE37D>"
@@ -150,24 +153,18 @@ messages:
   free-drift-3: "  <#C86BFF>▮▮▮</#C86BFF>"
   free-boost: "  <#FFD23F><bold>BOOST</bold></#FFD23F>"
 
-  # The HUD's words. Only these letters can be drawn big: A-Z, 0-9, ! - ' / : . and spaces.
-  hud-go: "GO!"
-  hud-final-lap: "FINAL LAP"
-  hud-finish: "FINISH!"
+  # The HUD's words. hud-lap is drawn big, so it may use only A-Z, 0-9, ! - ' / : .
+  # and spaces. The banners (GO!, FINAL LAP, FINISH!, WRONG WAY...) are pictures,
+  # drawn by tools/hud_art.py, and are not set here.
   hud-lap: "LAP"
   hud-waiting: "Wait for the lights"
-  hud-wrong-way: "Missed a checkpoint - turn back"
   hud-respawning: "Hold on..."
   hud-best: "Best {time}"
-  hud-speed: "{speed} km/h"
   hud-finished-place: "You finished {place}"
-  hud-dnf: "Did not finish"
   # The line across the top of the screen when something happens to somebody.
   feed-rocket: "{shooter} ▸ rocket ▸ {victim}"
   feed-banana: "{victim} slipped on {owner}'s banana"
   feed-finish: "{name} finished {place}"
-  feed-record: "{name} set a lap record: {time}"
-  hud-you: "»"
 
   # Item names, under the item card.
   item-none: ""
@@ -186,4 +183,3 @@ messages:
   results-dnf: "DNF"
   results-laps: "{laps} laps"
   results-record: "Lap record {time} - {name}"
-  results-close: "Close"

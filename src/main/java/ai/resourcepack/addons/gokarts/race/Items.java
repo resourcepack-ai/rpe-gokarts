@@ -132,6 +132,13 @@ final class Items {
                 }
                 continue;
             }
+            if (!b.display.isValid()) {
+                // Its chunk unloaded with nobody near, which takes a display
+                // with it: drawn again once the chunk is back, or it was an
+                // invisible box that still handed out items.
+                if (!loaded(b.at)) continue;
+                b.display = spawn(b.at, "item_box", 0.8f);
+            }
             // Turning and bobbing: the display interpolates between these.
             Location l = b.at.clone().add(0, Math.sin(tick * 0.12) * 0.12, 0);
             l.setYaw((tick * 6) % 360);
@@ -198,18 +205,24 @@ final class Items {
         Item item = r.item;
         switch (item) {
             case NITRO, TRIPLE_NITRO -> race.plugin.driving().boost(r.kart, settings().nitroBoost);
-            case BANANA -> dropBanana(r);
+            case BANANA -> {
+                // Nowhere to put it (over a gap, off the edge): kept for later.
+                if (!dropBanana(r)) return;
+            }
             case ROCKET -> fireRocket(r);
         }
         if (--r.itemUses <= 0) r.item = null;
         race.showItem(r);
     }
 
-    private void dropBanana(Racer r) {
+    private boolean dropBanana(Racer r) {
         Location at = r.kart.pointOn(0, 0, -1.4);
-        // On the road, wherever behind the kart that is.
+        // On the road, wherever behind the kart that is: down to the track's
+        // floor, so one dropped in the air off a jump lands rather than hangs.
         Block below = at.getBlock();
-        for (int i = 0; i < 3 && below.isPassable(); i++) below = below.getRelative(0, -1, 0);
+        int floor = (int) Math.floor(race.track.floor());
+        while (below.isPassable() && !below.isLiquid() && below.getY() > floor) below = below.getRelative(0, -1, 0);
+        if (below.isPassable() || below.isLiquid()) return false;
         // Lying on what is there, a slab's top included: the model is drawn
         // round its centre, half a block above its own bottom, and it was
         // half sunk into a full block and floating over a slab.
@@ -220,6 +233,11 @@ final class Items {
         d.teleport(at);
         bananas.add(new Banana(d, at, r, tick));
         at.getWorld().playSound(at, Sound.ENTITY_ITEM_PICKUP, 0.6f, 0.7f);
+        return true;
+    }
+
+    private static boolean loaded(Location at) {
+        return at.getWorld() != null && at.getWorld().isChunkLoaded(at.getBlockX() >> 4, at.getBlockZ() >> 4);
     }
 
     private void fireRocket(Racer r) {
@@ -240,8 +258,15 @@ final class Items {
     // ---- hazards in flight -------------------------------------------------------------
 
     private void tickBananas() {
-        for (Iterator<Banana> it = bananas.iterator(); it.hasNext(); ) {
+        for (java.util.ListIterator<Banana> it = bananas.listIterator(); it.hasNext(); ) {
             Banana b = it.next();
+            if (!b.display.isValid() && loaded(b.at)) {
+                // The same as a box: a banana nobody could see still spun karts out.
+                ItemDisplay d = spawn(b.at, "banana", 1f);
+                d.teleport(b.at);
+                b = new Banana(d, b.at, b.owner, b.dropped);
+                it.set(b);
+            }
             for (Racer r : race.order) {
                 if (r.kart == null || r.finished) continue;
                 if (r == b.owner && tick - b.dropped < 25) continue;

@@ -205,6 +205,21 @@ public final class RaceListener implements Listener {
         at.getWorld().spawnParticle(Particle.CRIT, at.clone().add(0, 0.5, 0), 8, 0.2, 0.2, 0.2, 0.2);
     }
 
+    /**
+     * A click in an RP Engine dialog, which reaches the server as a command:
+     * the results screen's Close is {@code /rp page close}. Blocking it did not
+     * stop the click (RP Engine answers it first) and only printed "you can't
+     * use that during a race". The engine checks every such click against the
+     * dialog the player was shown, so these four are safe to let through.
+     */
+    private static boolean dialogClick(String label, String message) {
+        if (!label.equals("rp") && !label.equals("rpe") && !label.equals("rpengine")) return false;
+        String[] words = message.trim().split("\\s+", 3);
+        if (words.length < 2) return false;
+        String sub = words[1].toLowerCase(Locale.ROOT);
+        return sub.equals("page") || sub.equals("click") || sub.equals("var") || sub.equals("slot");
+    }
+
     @EventHandler(ignoreCancelled = true)
     public void onCommand(PlayerCommandPreprocessEvent e) {
         Player p = e.getPlayer();
@@ -213,6 +228,7 @@ public final class RaceListener implements Listener {
         int colon = label.indexOf(':');
         if (colon >= 0) label = label.substring(colon + 1);
         if (label.equals("kart") || label.equals("gokart") || label.equals("karts") || label.equals("gk")) return;
+        if (dialogClick(label, e.getMessage())) return;
         if (plugin.settings().allowedCommands.contains(label)) return;
         e.setCancelled(true);
         Text.send(p, plugin.messages().component("command-blocked"));

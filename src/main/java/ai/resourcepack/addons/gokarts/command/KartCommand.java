@@ -38,6 +38,19 @@ public final class KartCommand implements TabExecutor {
             "addcheckpoint", "clearcheckpoints", "addbox", "clearboxes", "laps", "enable", "disable", "tp", "name", "delete");
 
     private final GoKartsPlugin plugin;
+    /**
+     * Tracks being generated or undone right now. Either takes seconds, and a
+     * second one on the same track, or a reload, while the first is still going
+     * wrote two builds into one track, or a finished build into a track a reload
+     * had already thrown away.
+     */
+    private final java.util.Set<String> busy = new java.util.HashSet<>();
+
+    private boolean busy(CommandSender s, String id) {
+        if (!busy.contains(id)) return false;
+        Text.send(s, Text.error(id + " is still being built or undone. Wait for it to finish."));
+        return true;
+    }
 
     public KartCommand(GoKartsPlugin plugin) {
         this.plugin = plugin;
@@ -119,10 +132,7 @@ public final class KartCommand implements TabExecutor {
         Player p = player(s);
         if (p == null || !allowed(p, Perms.RESULTS)) return;
         Race r = plugin.races().of(p);
-        if (r == null) {
-            Track t = plugin.races().defaultTrack();
-            r = t == null ? null : plugin.races().existing(t.id());
-        }
+        if (r == null || r.lastResults().isEmpty()) r = plugin.races().lastFinished();
         if (r == null || r.lastResults().isEmpty()) {
             Text.send(p, Text.error("There are no results yet."));
             return;
@@ -207,6 +217,10 @@ public final class KartCommand implements TabExecutor {
 
     private void reload(CommandSender s) {
         if (!allowed(s, Perms.RELOAD)) return;
+        if (!busy.isEmpty()) {
+            Text.send(s, Text.error("A track is still being built or undone (" + String.join(", ", busy) + "). Reload once it is done."));
+            return;
+        }
         boolean tracks = plugin.reloadSettings();
         Text.send(s, plugin.messages().component("reloaded", "tracks",
                 plugin.messages().raw(tracks ? "reloaded-tracks" : "reloaded-not-tracks")));
@@ -295,7 +309,12 @@ public final class KartCommand implements TabExecutor {
             }
             case "addcheckpoint" -> {
                 if (here == null) { player(s); return; }
-                double radius = a.length > 2 ? parse(a[2], 6) : 6;
+                double radius = a.length > 2 ? parse(a[2], Double.NaN) : 6;
+                // A gate nobody can pass sends every racer back to the one before it, for ever.
+                if (!(radius >= 1 && radius <= 64)) {
+                    Text.send(s, Text.error("A checkpoint's radius is a number of blocks from 1 to 64; " + Text.MM.escapeTags(a[2]) + " is not."));
+                    return;
+                }
                 t.checkpoints().add(new Track.Checkpoint(here.getX(), here.getY(), here.getZ(), radius));
                 int n = t.checkpoints().size() - 1;
                 done(s, "Checkpoint " + n + (n == 0 ? " (the start/finish line)" : "") + " added, radius " + radius + ".");
@@ -314,7 +333,12 @@ public final class KartCommand implements TabExecutor {
                 done(s, "Item boxes cleared.");
             }
             case "laps" -> {
-                int laps = a.length > 2 ? (int) parse(a[2], 0) : 0;
+                double asked = a.length > 2 ? parse(a[2], Double.NaN) : 0;
+                if (Double.isNaN(asked) || asked < 0 || asked > 50) {
+                    Text.send(s, Text.error("Laps is a whole number from 1 to 50, or 0 for config.yml's; " + Text.MM.escapeTags(a[2]) + " is not."));
+                    return;
+                }
+                int laps = (int) asked;
                 t.laps(laps);
                 done(s, laps <= 0 ? "Laps back to config.yml's." : "Laps: " + laps + ".");
             }
@@ -394,6 +418,7 @@ public final class KartCommand implements TabExecutor {
      * /kart track undo.
      */
     private void generate(CommandSender s, String id, String[] a) {
+        if (busy(s, id)) return;
         Location where = null;
         int rest;
         boolean ownWorld = false;
@@ -410,8 +435,8 @@ public final class KartCommand implements TabExecutor {
             if (p == null) return;
             if (a.length < 2 || !a[1].equalsIgnoreCase("confirm")) {
                 Text.send(s, Text.msg("This builds the circuit where you stand, its start straight running the way you face, "
-                        + "and replaces every block in a box about 220 by 220 blocks round it, from fifteen below your feet to twenty "
-                        + "above (<#FFD23F>/kart track undo " + id + "</#FFD23F> puts them back, though not what chests and signs "
+                        + "and replaces every block in a box up to about 200 by 230 blocks round it, from fifteen below your feet "
+                        + "to fourteen above (<#FFD23F>/kart track undo " + id + "</#FFD23F> puts them back, though not what chests and signs "
                         + "held). Run <#FFD23F>/kart track generate " + id + " here confirm [prefab] [name]</#FFD23F> to build it. "
                         + "Without <#FFD23F>here</#FFD23F> it gets a world of its own."));
                 return;
@@ -455,9 +480,11 @@ public final class KartCommand implements TabExecutor {
         boolean own = ownWorld;
         Location at = where;
         Text.send(s, Text.msg("Building <#FFD23F>" + Text.MM.escapeTags(prefab.name) + "</#FFD23F> as " + id + "..."));
+        busy.add(id);
         PrefabBuilder.build(plugin, t, prefab, at, own, undo,
                 percent -> Text.send(s, Text.msg("<#9AA0A6>" + percent + "%</#9AA0A6>")),
                 () -> {
+                    busy.remove(id);
                     plugin.tracks().save();
                     plugin.undo().remember(id, own, at.getWorld().getName(), before, undo);
                     Text.send(s, Text.msg("<#5BE37D>" + id + " is built and open.</#5BE37D> <#FFD23F>/kart join " + id
@@ -490,6 +517,7 @@ public final class KartCommand implements TabExecutor {
      * every block it replaced. The track is then what it was before, or gone.
      */
     private void undo(CommandSender s, String id, String[] a) {
+        if (busy(s, id)) return;
         TrackUndo.Entry e = plugin.undo().get(id);
         if (e == null) {
             Text.send(s, Text.error("Nothing to undo for " + id + ": only the last /kart track generate can be taken back."));
@@ -505,8 +533,13 @@ public final class KartCommand implements TabExecutor {
             return;
         }
         Track t = plugin.tracks().get(id);
-        if (t != null) plugin.races().shut(t);
+        if (t != null) {
+            plugin.races().shut(t);
+            // Closed while it is put back: nobody races a half-restored track.
+            t.enabled(false);
+        }
         Runnable finish = () -> {
+            busy.remove(id);
             if (e.previous() != null) plugin.tracks().put(e.previous());
             else plugin.tracks().delete(id);
             plugin.tracks().save();
@@ -525,6 +558,7 @@ public final class KartCommand implements TabExecutor {
             return;
         }
         Text.send(s, Text.msg("Putting back " + blocks.size() + " blocks..."));
+        busy.add(id);
         blocks.restore(plugin, percent -> Text.send(s, Text.msg("<#9AA0A6>" + percent + "%</#9AA0A6>")), restored -> finish.run());
     }
 
@@ -583,7 +617,7 @@ public final class KartCommand implements TabExecutor {
         if (s.hasPermission(Perms.GIVE)) lines.add("<#FFD23F>/kart give</#FFD23F> [colour] [player] <#9AA0A6>- a kart to drive anywhere</#9AA0A6>");
         if (s.hasPermission(Perms.TRACK_GENERATE)) lines.add("<#FFD23F>/kart track generate</#FFD23F> <id> [here confirm] [meadow|desert|frost|neon] [name] <#9AA0A6>- build a circuit, in a new world unless here</#9AA0A6>");
         if (s.hasPermission(Perms.TRACK_UNDO)) lines.add("<#FFD23F>/kart track undo</#FFD23F> <id> confirm <#9AA0A6>- take the last generate back</#9AA0A6>");
-        if (s.hasPermission(Perms.TRACK)) lines.add("<#FFD23F>/kart track</#FFD23F> list|create|setlobby|addgrid|addcheckpoint|addbox|laps|enable|disable|tp|name");
+        if (s.hasPermission(Perms.TRACK)) lines.add("<#FFD23F>/kart track</#FFD23F> list|create|setlobby|addgrid|cleargrid|addcheckpoint|clearcheckpoints|addbox|clearboxes|laps|enable|disable|tp|name|delete");
         if (s.hasPermission(Perms.RELOAD)) lines.add("<#FFD23F>/kart reload</#FFD23F>");
         if (s.hasPermission(Perms.AS)) lines.add("<#FFD23F>/kart as</#FFD23F> <player> <subcommand...>");
         for (String line : lines) Text.send(s, Text.msg(line));

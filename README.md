@@ -112,8 +112,9 @@ waits on. The prefabs are JSON in the jar (`src/main/resources/prefabs/`), so a
 fork can add its own; `tools/prefabs.py` previews and checks one.
 
 `/kart track generate <id> here confirm [prefab] [name]` builds it where you
-stand instead, starting under your feet and running forward and to your right
-and replacing every block in the way; the reply first says how big a box. From
+stand instead, its start line under your feet and its straight running the way
+you face, with the rest of the circuit round you, replacing every block in the
+way; the reply first says how big a box. From
 the console: `/kart track generate <id> at <world> <x> <y> <z> <yaw> [prefab]
 [name]`.
 
@@ -163,7 +164,7 @@ each grants every node listed under it, and nothing checks them directly.
 | `gokarts.give.others` | op | `/kart give <colour> <player>` |
 | `gokarts.as` | op | `/kart as <player> ...`; what they run is checked against *their* permissions |
 | `gokarts.track` | op | Track setup |
-| `gokarts.track.generate` | op | `/kart track generate`, in a new world, or with `here` in place, replacing every block in a box about 80 by 130 |
+| `gokarts.track.generate` | op | `/kart track generate`, in a new world, or with `here` in place, replacing every block in a box up to about 200 by 230, from fifteen below to fourteen above |
 | `gokarts.track.undo` | op | `/kart track undo`, which deletes the world a generate made, or puts back the blocks it replaced |
 | `gokarts.track.delete` | op | `/kart track delete` |
 | `gokarts.bypass.commands` | op | Run any command during a race |
