@@ -165,7 +165,7 @@ public final class KartCommand implements TabExecutor {
         }
         if (bots != 0 && !allowed(s, Perms.START_BOTS)) return;
         if (bots != 0 && !plugin.botsSupported()) {
-            Text.send(s, Text.error("Bots need RP Engine 0.2.50 or newer. Update it from resourcepack.ai/rp-engine."));
+            Text.send(s, Text.error("Bots need RP Engine 0.2.51 or newer. Update it from resourcepack.ai/rp-engine."));
             return;
         }
         a = kept.toArray(new String[0]);

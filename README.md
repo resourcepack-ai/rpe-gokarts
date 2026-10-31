@@ -23,7 +23,7 @@ is ordinary RP Engine content shipped inside the jar.
   whose vehicles jump off a jump pad. Go Karts checks the engine's version as it
   starts, and on anything older says so in the console and disables itself.
   0.2.47 or newer draws the karts, helmets and items as icons in an inventory;
-  on 0.2.45 and 0.2.46 a slot shows the 3D model, shrunk. 0.2.49 or newer turns
+  on 0.2.45 and 0.2.46 a slot shows the 3D model, shrunk. 0.2.51 or newer turns
   the front wheels and the steering wheel with the steering; before it they stay
   straight.
 
@@ -108,7 +108,7 @@ show on the map and in the standings and take hits like anybody, and they're in
 the results but never in the track's records. Each is a mannequin in one of
 Minecraft's own skins wearing the helmet in its kart's colour (Minecraft 1.21.9
 and newer; before that the karts drive with nobody to see in them). It needs RP
-Engine 0.2.50. Their names are `bots.names` in `config.yml`.
+Engine 0.2.51. Their names are `bots.names` in `config.yml`.
 
 **Outside a race** a kart is still a kart: `/kart give [colour]`, right-click
 the ground to park it, right-click it to get in, and drift, boost pads and the

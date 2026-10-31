@@ -78,7 +78,7 @@ public final class GoKartsPlugin extends JavaPlugin {
      * numbers passes.
      */
     /** The oldest engine that can drive a kart with nobody in it, and seat a mannequin: /kart start --withBots. */
-    static final String BOTS_ENGINE = "0.2.50";
+    static final String BOTS_ENGINE = "0.2.51";
 
     /** Whether this server's RP Engine can run bots. See {@link #BOTS_ENGINE}. */
     public boolean botsSupported() {

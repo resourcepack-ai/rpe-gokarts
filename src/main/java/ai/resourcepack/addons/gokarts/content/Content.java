@@ -86,7 +86,7 @@ public final class Content {
     }
 
     /**
-     * RP Engine 0.2.48's {@code VfxOptions.Builder.follow(Vehicle)}, or null on
+     * RP Engine 0.2.51's {@code VfxOptions.Builder.follow(Vehicle)}, or null on
      * an older engine. Looked up rather than called, so this builds against
      * 0.2.40's API and still runs on 0.2.45.
      */
@@ -127,7 +127,7 @@ public final class Content {
             if (FOLLOW_VEHICLE != null) {
                 FOLLOW_VEHICLE.invoke(options, kart);
             } else {
-                // Before 0.2.48 the chassis is the nearest thing, and turns with
+                // Before 0.2.51 the chassis is the nearest thing, and turns with
                 // the kart only from that version on: older engines left it at yaw 0.
                 options.follow(chassis);
             }
