@@ -4,10 +4,11 @@
 race:
   # Laps a race is, unless the track sets its own (/kart track laps).
   laps: 3
-  # With this many waiting, the lobby counts down and starts on its own. An op
-  # can always /kart start sooner, alone included.
+  # Off, every race is started by staff with /kart start. On, a lobby with
+  # min-players waiting counts down lobby-countdown seconds and starts on its
+  # own; staff can still /kart start sooner, alone included.
+  auto-start: false
   min-players: 2
-  # How long the lobby counts down once enough are waiting, in seconds.
   lobby-countdown: 20
   # Once the winner is home, how long everybody else has to finish, in seconds.
   finish-timeout: 30
@@ -141,6 +142,8 @@ messages:
   joined: "{prefix} <#E8EAED>You're in the lobby for <#FFD23F>{track}</#FFD23F>. {hint}"
   hint-start: "<#9AA0A6>Run <#FFD23F>/kart start</#FFD23F> whenever you like.</#9AA0A6>"
   hint-wait: "<#9AA0A6>The race starts once {min} are waiting.</#9AA0A6>"
+  # With race.auto-start off: staff start every race.
+  hint-staff: "<#9AA0A6>The race starts when staff start it.</#9AA0A6>"
   left: "{prefix} <#E8EAED>You left the race."
   not-in: "{prefix} <#FF5C5C>You're not in a race."
   already-in: "{prefix} <#FF5C5C>You're already in a race. <#9AA0A6>/kart leave</#9AA0A6> first."
@@ -156,6 +159,7 @@ messages:
   lobby-count: "<#E8EAED>{track} <#5F6368>·</#5F6368> <#FFD23F>{n}</#FFD23F> waiting <#5F6368>·</#5F6368> starting in <#FFD23F>{seconds}</#FFD23F>"
   lobby-wait: "<#E8EAED>{track} <#5F6368>·</#5F6368> <#FFD23F>{n}</#FFD23F> waiting <#5F6368>·</#5F6368> <#9AA0A6>{need}</#9AA0A6>"
   lobby-need: "waiting for {more} more"
+  lobby-staff: "waiting for staff to start it"
   lobby-op: "/kart start when you're ready"
   how-to: "{prefix} <#E8EAED><#FFD23F>W</#FFD23F>/<#FFD23F>S</#FFD23F> to drive, <#FFD23F>A</#FFD23F>/<#FFD23F>D</#FFD23F> to steer, hold <#FFD23F>Space</#FFD23F> in a corner to drift (let go for a boost), <#FFD23F>F</#FFD23F> or a click to use an item, <#FFD23F>Q</#FFD23F> to scrap one you don't want. Off the road or stuck? <#FFD23F>Q</#FFD23F> with empty hands puts you back."
   rocket-start: "{prefix} <#5BE37D>Rocket start!</#5BE37D>"

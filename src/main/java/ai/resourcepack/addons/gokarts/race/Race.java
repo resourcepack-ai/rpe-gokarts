@@ -31,9 +31,9 @@ import java.util.UUID;
  * One track's race: its lobby, and the race run on it.
  *
  * <ol>
- *   <li><b>Waiting</b> in the lobby. Once {@code min-players} are there it
- *   counts down on its own; an op can {@code /kart start} at any time, alone
- *   included.</li>
+ *   <li><b>Waiting</b> in the lobby until staff {@code /kart start} it, alone
+ *   included. With {@code race.auto-start} on, once {@code min-players} are
+ *   there it also counts down and starts on its own.</li>
  *   <li><b>The grid.</b> Everybody is put in a kart on a grid slot, engines
  *   off. Three red lights a second apart, then green: GO. W held when the
  *   second light comes on stalls you; W held as it goes green and not before
@@ -154,6 +154,7 @@ public final class Race {
         p.teleport(track.lobby());
         boolean running = phase == Phase.GRID || phase == Phase.RACING;
         String hint = running ? "" : p.hasPermission(Perms.START) ? messages().raw("hint-start")
+                : !settings().autoStart ? messages().raw("hint-staff")
                 : messages().raw("hint-wait").replace("{min}", String.valueOf(settings().minPlayers));
         Text.send(p, Text.mm(messages().raw("joined").replace("{prefix}", messages().raw("prefix"))
                 .replace("{track}", Text.MM.escapeTags(track.name())).replace("{hint}", hint)));
@@ -316,7 +317,7 @@ public final class Race {
         phaseTicks++;
         switch (phase) {
             case WAITING -> {
-                if (members.size() >= settings().minPlayers) {
+                if (settings().autoStart && members.size() >= settings().minPlayers) {
                     phase = Phase.STARTING;
                     phaseTicks = 0;
                 }
@@ -324,7 +325,7 @@ public final class Race {
             }
             case STARTING -> {
                 int left = settings().lobbyCountdown * 20 - phaseTicks;
-                if (members.size() < settings().minPlayers && !forced) {
+                if ((!settings().autoStart || members.size() < settings().minPlayers) && !forced) {
                     phase = Phase.WAITING;
                     phaseTicks = 0;
                 } else if (left <= 0) {
@@ -393,6 +394,7 @@ public final class Race {
             Player p = r.player();
             if (p == null) continue;
             String need = p.hasPermission(Perms.START) ? messages().raw("lobby-op")
+                    : !settings().autoStart ? messages().raw("lobby-staff")
                     : messages().raw("lobby-need").replace("{more}", String.valueOf(Math.max(0, settings().minPlayers - members.size())));
             Text.actionBar(p, Text.mm(line.replace("{need}", need)));
         }
@@ -645,6 +647,10 @@ public final class Race {
         }
         r.frozen = 20;
         r.lastGateTick = clock;
+        // Put down somewhere else: what it was measured against a second ago is no comparison.
+        r.lastGap = Double.NaN;
+        r.lastGapGate = -1;
+        r.wrongTicks = 0;
         r.subline(messages().plain("hud-respawning"), 20);
         at.getWorld().spawnParticle(Particle.CLOUD, at.clone().add(0, 0.6, 0), 20, 0.5, 0.3, 0.5, 0.02);
         content().vfx("gk_respawn", v, p);
@@ -699,8 +705,14 @@ public final class Race {
     private void wrongWay(Racer r, Track.Checkpoint gate, Location at) {
         if (clock % 20 != 0) return;
         double gap = gate.distance(at);
-        boolean away = !Double.isNaN(r.lastGap) && gap > r.lastGap + 3 && r.kart.groundSpeed() > 3;
+        // Against the same gate as a second ago, and only that. Passing a gate
+        // makes the next one the gate measured, a whole gate further on, and
+        // that is progress: a rocket start that passed a gate a second read as
+        // going away twice running, and flashed WRONG WAY off the grid.
+        boolean same = r.lastGapGate == r.next;
+        boolean away = same && !Double.isNaN(r.lastGap) && gap > r.lastGap + 3 && r.kart.groundSpeed() > 3;
         r.lastGap = gap;
+        r.lastGapGate = r.next;
         r.wrongTicks = away ? r.wrongTicks + 20 : 0;
         if (r.wrongTicks >= 40) r.banner("banner_wrong", 22);
     }
@@ -869,6 +881,9 @@ public final class Race {
             r.frozen = 0;
             r.respawnIn = 0;
             r.jumped = false;
+            r.lastGap = Double.NaN;
+            r.lastGapGate = -1;
+            r.wrongTicks = 0;
             r.bannerTicks = 0;
             r.sublineTicks = 0;
         }

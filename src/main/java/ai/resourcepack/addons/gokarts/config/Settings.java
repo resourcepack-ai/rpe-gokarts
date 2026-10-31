@@ -25,6 +25,8 @@ public final class Settings {
 
     public final int laps;
     public final int minPlayers;
+    /** Whether a lobby with min-players waiting counts down and starts on its own. Off: staff start every race. */
+    public final boolean autoStart;
     public final int lobbyCountdown;
     public final int finishTimeout;
     public final int maxSeconds;
@@ -89,6 +91,7 @@ public final class Settings {
     public Settings(FileConfiguration c, Logger log) {
         laps = clamp(c.getInt("race.laps", 3), 1, 50);
         minPlayers = clamp(c.getInt("race.min-players", 2), 1, 8);
+        autoStart = c.getBoolean("race.auto-start", false);
         lobbyCountdown = clamp(c.getInt("race.lobby-countdown", 20), 3, 600);
         finishTimeout = clamp(c.getInt("race.finish-timeout", 30), 5, 600);
         maxSeconds = clamp(c.getInt("race.max-seconds", 600), 30, 7200);

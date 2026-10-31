@@ -65,6 +65,8 @@ final class Racer {
     int bannerTicks;
     /** For WRONG WAY: how far from the next gate, a second ago. */
     double lastGap = Double.NaN;
+    /** The gate {@link #lastGap} was measured to: a gap to a different gate is no comparison. */
+    int lastGapGate = -1;
     int wrongTicks;
     String subline = "";
     int sublineTicks;

@@ -159,11 +159,15 @@ it still needs; `disable`, `tp`, `name` and `delete` do what they say.
 
 ## Configuration
 
-`plugins/RPEGoKarts/config.yml` has the numbers (laps, how many it takes to
-start, cruise and off-road speed, every boost, the drift levels, the item odds
-by place, how fast a rocket flies) and every word a player reads, in MiniMessage
-under `messages:`. `/kart reload` re-reads it. Options a newer version adds are
-written into your existing file on start.
+`plugins/RPEGoKarts/config.yml` has the numbers (laps, cruise and off-road
+speed, every boost, the drift levels, the item odds by place, how fast a rocket
+flies) and every word a player reads, in MiniMessage under `messages:`.
+`/kart reload` re-reads it. Options a newer version adds are written into your
+existing file on start.
+
+Races start when staff run `/kart start`. Set `race.auto-start: true` and a
+lobby with `min-players` waiting also counts down `lobby-countdown` seconds and
+starts on its own.
 
 A kart's vehicle `speed:` (`vehicles/karts.yml`) is the most a boost can take it
 to; `karts.cruise-speed` is what it does flat out the rest of the time. Change
