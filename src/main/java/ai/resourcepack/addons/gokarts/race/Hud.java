@@ -21,9 +21,9 @@ import java.util.UUID;
 /**
  * Everything on a racer's screen: the content folder's {@code huds/hud.json},
  * a full-screen shader object kept as a Studio document in
- * {@code dialogs-src/hud.json} and built by Studio's exporter (linked with the
- * other addons' HUDs, see {@code rpe-addons/link-huds.mjs}). This class only
- * writes its values, and only the ones that changed.
+ * {@code dialogs-src/hud.json} and built by Studio's exporter, which gives it
+ * a text shader shared with our other addons' HUDs so that several can run on
+ * one server. This class only writes its values, and only the ones that changed.
  *
  * <p>A run is one colour, and that colour is its address in the HUD's shader,
  * so everything in more than one colour is a picture that arrives coloured, in

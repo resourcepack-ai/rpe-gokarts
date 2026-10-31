@@ -234,11 +234,12 @@ python tools/prefabs.py check    # every prefab: lap length, how close its roads
 python tools/prefabs.py preview  # tools/previews/<id>.png, from above
 ```
 
-The HUD and the results screen are kept as Studio documents in `dialogs-src/`
-(`hud.json`, the shader object; `dialogs.json`, the Dialog-style document) and
-built into the content folder by `rpe-addons/link-huds.mjs`, which runs
-ResourcePack AI Studio's exporter so that every addon here ships the same text
-shader.
+The HUD and the results screen were made and exported in
+[ResourcePack AI Studio](https://resourcepack.ai). `dialogs-src/` keeps what was
+exported (`hud.json`, the HUD's shader object; `dialogs.json`, the results
+screen's Dialog-style document), and the content folder's `dialogs/`, `huds/`
+and `resourcepack/` are the export. To change either, edit it in Studio and
+export it again over those folders, or edit the exported JSON by hand.
 
 ## Licence
 
