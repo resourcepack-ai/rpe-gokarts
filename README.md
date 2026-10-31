@@ -100,6 +100,16 @@ Falling off, ending up in water, or not passing a checkpoint for twelve seconds
 seconds to finish, then the results come up with every driver's time, best lap
 and face, and the track's lap record.
 
+**Bots.** `/kart start --withBots` fills the rest of the grid with computer
+drivers, and `--withBots=3` adds three. They drive the same karts with the same
+keys you have: they follow the road, drift through the bends for the boost,
+trick off the jumps, use their items and back out of whatever they hit. They
+show on the map and in the standings and take hits like anybody, and they're in
+the results but never in the track's records. Each is a mannequin in one of
+Minecraft's own skins wearing the helmet in its kart's colour (Minecraft 1.21.9
+and newer; before that the karts drive with nobody to see in them). It needs RP
+Engine 0.2.50. Their names are `bots.names` in `config.yml`.
+
 **Outside a race** a kart is still a kart: `/kart give [colour]`, right-click
 the ground to park it, right-click it to get in, and drift, boost pads and the
 speed line above your hotbar all work anywhere.
@@ -174,6 +184,7 @@ each grants every node listed under it, and nothing checks them directly.
 | `gokarts.ride` | everyone | Getting into a kart at all, a parked one included |
 | `gokarts.admin` | op | Every node below |
 | `gokarts.start` | op | `/kart start` |
+| `gokarts.start.bots` | op | `/kart start --withBots`, computer drivers on the grid |
 | `gokarts.stop` | op | `/kart stop` |
 | `gokarts.reload` | op | `/kart reload` |
 | `gokarts.give` | op | `/kart give [colour]` |

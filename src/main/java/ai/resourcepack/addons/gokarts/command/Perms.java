@@ -30,6 +30,8 @@ public final class Perms {
 
     /** {@code /kart start}, and being told in the lobby that you can. */
     public static final String START = "gokarts.start";
+    /** {@code /kart start --withBots}: computer drivers on the grid beside the players. */
+    public static final String START_BOTS = "gokarts.start.bots";
     /** {@code /kart stop}. */
     public static final String STOP = "gokarts.stop";
     /** {@code /kart reload}. */
@@ -56,6 +58,6 @@ public final class Perms {
     /** What {@code gokarts.play} grants. */
     public static final List<String> PLAY = List.of(JOIN, COLOUR, RESULTS, RIDE);
     /** What {@code gokarts.admin} grants. */
-    public static final List<String> ADMIN = List.of(START, STOP, RELOAD, GIVE, GIVE_OTHERS, ITEM, AS, TRACK, TRACK_GENERATE,
+    public static final List<String> ADMIN = List.of(START, START_BOTS, STOP, RELOAD, GIVE, GIVE_OTHERS, ITEM, AS, TRACK, TRACK_GENERATE,
             TRACK_UNDO, TRACK_DELETE, BYPASS_COMMANDS);
 }

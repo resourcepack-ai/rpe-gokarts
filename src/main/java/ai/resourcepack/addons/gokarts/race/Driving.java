@@ -370,7 +370,7 @@ public final class Driving {
             st.tricked = true;
             play(v, st, Act.TRICK, TRICK_TICKS);
             content().sound(driver, "spark", 1f, 1.6f, Sound.ENTITY_PLAYER_ATTACK_SWEEP);
-            driver.getWorld().spawnParticle(Particle.FIREWORK, v.pointOn(0, 1, 0), 12, 0.4, 0.3, 0.4, 0.05);
+            v.location().getWorld().spawnParticle(Particle.FIREWORK, v.pointOn(0, 1, 0), 12, 0.4, 0.3, 0.4, 0.05);
         }
         if (st.wasAirborne && !airborne && st.launched > 4) {
             if (st.tricked) {

@@ -32,6 +32,8 @@ public final class Settings {
     public final int stuckTicks;
     /** How far from the lobby somebody waiting may go before they are put back on it, in blocks. */
     public final double lobbyRadius;
+    /** What the bots are called, in no order: /kart start --withBots. */
+    public final java.util.List<String> botNames;
 
     public final double cruiseSpeed;
     public final double offroadSpeed;
@@ -93,6 +95,11 @@ public final class Settings {
         resultsSeconds = clamp(c.getInt("race.results-seconds", 12), 3, 120);
         stuckTicks = clamp((int) Math.round(c.getDouble("race.stuck-seconds", 12) * 20), 60, 1200);
         lobbyRadius = clamp(c.getDouble("race.lobby-radius", 4.8), 1.5, 200);
+        java.util.List<String> names = new java.util.ArrayList<>();
+        for (String name : c.getStringList("bots.names")) {
+            if (name != null && !name.isBlank()) names.add(name.length() > 16 ? name.substring(0, 16) : name);
+        }
+        botNames = java.util.List.copyOf(names);
 
         cruiseSpeed = clamp(c.getDouble("karts.cruise-speed", 13), 2, 60);
         offroadSpeed = clamp(c.getDouble("karts.offroad-speed", 6), 1, 60);

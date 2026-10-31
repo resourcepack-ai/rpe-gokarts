@@ -60,6 +60,12 @@ public final class RaceManager {
         return drives(chassis);
     }
 
+    /** Whether this entity is the mannequin of a bot in a race now. */
+    public boolean isBotFigure(UUID entity) {
+        for (Race r : races()) if (r.hasBotFigure(entity)) return true;
+        return false;
+    }
+
     /** The track people race on when nobody names one: the first open one that is set up. */
     public Track defaultTrack() {
         for (Track t : plugin.tracks().enabled()) if (t.missing().isEmpty()) return t;

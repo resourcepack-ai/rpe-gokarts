@@ -373,6 +373,13 @@ def vehicle_yaml(colour, name):
 # the head sits in it centred at y 4.5; the model's own centre is (8, 8, 8).
 HELMET_OFFSET = [0, 12 + (8 - 4.5), 0]
 
+# Worn in a helmet slot, by a bot's mannequin. The game draws a head item at
+# 0.625 scale about the model's centre on the head's; scaled back up 1.6 the
+# hollow (8 across) fits the head (8 across), and lifted 5.6 (3.5 pixels, at
+# 0.625) the hollow's centre, 3.5 below the model's, is the head's. The props
+# draw with no display context at all, so this changes nothing for players.
+HELMET_DISPLAY = {**PROP_DISPLAY, "head": {"rotation": [0, 0, 0], "translation": [0, 5.6, 0], "scale": [1.6, 1.6, 1.6]}}
+
 
 def turn_half(model):
     """The model turned 180 degrees about the vertical: Studio drew the visor on +z, and a rig faces -z."""
@@ -463,7 +470,7 @@ def helmets():
         painted.save(path("textures", "block", f"helmet_{colour}.png"))
         m = json.loads(json.dumps(base))
         m["textures"] = {"atlas": f"{NS}:block/helmet_{colour}", "particle": f"{NS}:block/helmet_{colour}"}
-        m["display"] = PROP_DISPLAY
+        m["display"] = HELMET_DISPLAY
         save_json(m, "models", f"helmet_{colour}.json")
         lines += [f"helmet_{colour}:", "  material: PAPER", f"  model: helmet_{colour}", icon("helmet", rgb),
                   f'  name: "&{CODES[colour]}&l{colour.capitalize()} Racing Helmet"', ""]

@@ -50,6 +50,19 @@ import java.util.Locale;
 public final class RaceListener implements Listener {
     private final GoKartsPlugin plugin;
 
+    /**
+     * A bot's mannequin that no race has (a crash's, or a stop mid-race) is taken
+     * down when its chunk loads: the sweep on start only reaches what is loaded.
+     */
+    @EventHandler
+    public void onEntitiesLoad(org.bukkit.event.world.EntitiesLoadEvent e) {
+        for (org.bukkit.entity.Entity entity : e.getEntities()) {
+            if (entity.getScoreboardTags().contains("gokarts_bot") && !plugin.races().isBotFigure(entity.getUniqueId())) {
+                entity.remove();
+            }
+        }
+    }
+
     public RaceListener(GoKartsPlugin plugin) {
         this.plugin = plugin;
     }

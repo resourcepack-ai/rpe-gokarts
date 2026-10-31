@@ -403,6 +403,7 @@ final class Items {
     /** Stars round the driver's head and the driver reeling for a moment. */
     private void daze(Racer r) {
         Player p = r.player();
+        if (r.kart != null && r.isBot()) race.content().vfx("gk_dizzy", r.kart, null);
         if (p == null || r.kart == null) return;
         race.content().vfx("gk_dizzy", r.kart, p);
         String emote = "gokarts_" + r.colour.id() + "_dazed";

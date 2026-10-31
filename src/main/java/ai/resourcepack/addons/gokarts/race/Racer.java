@@ -6,10 +6,16 @@ import org.bukkit.entity.Player;
 
 import java.util.UUID;
 
-/** One player in a race's lobby, and, while a race is on, their kart and how far round they are. */
+/**
+ * One player in a race's lobby, and, while a race is on, their kart and how far
+ * round they are. Or a computer driver, which is in the race only: {@link #bot}
+ * is set and {@link #player} is null.
+ */
 final class Racer {
     final UUID id;
     final String name;
+    /** The computer driving, for a bot; null for a player. */
+    final Bot bot;
     /** The colour they asked for with /kart colour, or null for any. */
     KartColour wanted;
     /** Races in a row this one sat out because the grid was full: they go first next time. */
@@ -64,12 +70,22 @@ final class Racer {
     int sublineTicks;
 
     Racer(Player p) {
-        this.id = p.getUniqueId();
-        this.name = p.getName();
+        this(p.getUniqueId(), p.getName(), null);
     }
 
+    Racer(UUID id, String name, Bot bot) {
+        this.id = id;
+        this.name = name;
+        this.bot = bot;
+    }
+
+    /** The player, if this is one and they are online. Always null for a bot. */
     Player player() {
-        return Bukkit.getPlayer(id);
+        return bot == null ? Bukkit.getPlayer(id) : null;
+    }
+
+    boolean isBot() {
+        return bot != null;
     }
 
     void banner(String glyph, int ticks) {

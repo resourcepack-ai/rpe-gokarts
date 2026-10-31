@@ -150,6 +150,8 @@ public final class Content {
     }
 
     public void sound(Player to, String path, float volume, float pitch, Sound fallback) {
+        // Nobody to play it to: a bot's own sounds are heard through the world's.
+        if (to == null) return;
         if (!engine.sounds().play(to, id(path), volume, pitch) && fallback != null) {
             to.playSound(to.getLocation(), fallback, SoundCategory.PLAYERS, volume, pitch);
         }

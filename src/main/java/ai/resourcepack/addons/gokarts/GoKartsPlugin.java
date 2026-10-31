@@ -77,6 +77,14 @@ public final class GoKartsPlugin extends JavaPlugin {
      * number; anything after a dash is ignored, and a version that is not
      * numbers passes.
      */
+    /** The oldest engine that can drive a kart with nobody in it, and seat a mannequin: /kart start --withBots. */
+    static final String BOTS_ENGINE = "0.2.50";
+
+    /** Whether this server's RP Engine can run bots. See {@link #BOTS_ENGINE}. */
+    public boolean botsSupported() {
+        return engine != null && atLeast(engine.getDescription().getVersion(), BOTS_ENGINE);
+    }
+
     static boolean atLeast(String have, String need) {
         String[] a = have.split("-", 2)[0].split("\\.");
         String[] b = need.split("\\.");
@@ -198,8 +206,15 @@ public final class GoKartsPlugin extends JavaPlugin {
                     n++;
                 }
             }
+            // And any bot's mannequin: they are in the world only while their race is.
+            for (Entity e : w.getEntities()) {
+                if (e.getScoreboardTags().contains("gokarts_bot")) {
+                    e.remove();
+                    n++;
+                }
+            }
         }
-        if (n > 0) getLogger().info("Removed " + n + " stray item display(s).");
+        if (n > 0) getLogger().info("Removed " + n + " stray item display(s) and bot(s).");
     }
 
     /** Re-reads config.yml, and tracks.yml too unless a race is using it. Answers whether tracks were read. */

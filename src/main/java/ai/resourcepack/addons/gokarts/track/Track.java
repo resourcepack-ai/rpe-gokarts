@@ -196,6 +196,37 @@ public final class Track {
         return null;
     }
 
+    /**
+     * The road round a lap as world points (x, y, z) about {@code step} blocks
+     * apart, in the race's direction: the prefab's main road along its middle,
+     * or, for a track built by hand, its gates joined up. What a bot follows.
+     */
+    public List<double[]> racingLine(double step) {
+        List<double[]> out = new ArrayList<>();
+        Prefab p = prefabData();
+        if (p != null && mapFrame != null) {
+            Frame f = Frame.load(mapFrame, mapBaseY);
+            Road r = p.roads.get(0);
+            for (double s = 0; s < r.length(); s += step) {
+                Road.Sample q = r.at(s);
+                double[] w = f.world(q.u(), q.v());
+                out.add(new double[]{w[0], mapBaseY + (p.point(0, q).h() - mapStartH), w[1]});
+            }
+            return out;
+        }
+        int n = checkpoints.size();
+        for (int i = 0; i < n; i++) {
+            Checkpoint a = checkpoints.get(i), b = checkpoints.get((i + 1) % n);
+            double d = Math.hypot(b.x() - a.x(), b.z() - a.z());
+            int k = Math.max(1, (int) Math.ceil(d / step));
+            for (int j = 0; j < k; j++) {
+                double f = j / (double) k;
+                out.add(new double[]{a.x() + (b.x() - a.x()) * f, a.y() + (b.y() - a.y()) * f, a.z() + (b.z() - a.z()) * f});
+            }
+        }
+        return out;
+    }
+
     /** A world position as the prefab's (u, v), for the minimap; null for a track with no prefab. */
     public double[] mapPosition(double x, double z) {
         if (mapFrame == null) return null;

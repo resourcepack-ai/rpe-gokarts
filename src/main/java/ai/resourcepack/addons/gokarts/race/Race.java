@@ -52,7 +52,8 @@ public final class Race {
     static final int LIGHT_1 = 20, LIGHT_2 = 40, LIGHT_3 = 60, GO = 80;
 
     /** One line of the results: who, where, and how fast. */
-    public record Result(UUID id, String name, KartColour colour, int place, long ticks, long bestLap, boolean dnf) {
+    public record Result(UUID id, String name, KartColour colour, int place, long ticks, long bestLap, boolean dnf,
+                         boolean bot) {
     }
 
     final GoKartsPlugin plugin;
@@ -77,6 +78,12 @@ public final class Race {
     private List<Result> lastResults = List.of();
     private String fastestName;
     private long fastestLap = -1;
+    /** How many bots /kart start asked for: -1 to fill the grid, 0 for none. */
+    private int botsWanted;
+    /** The bots in this race; members too, until it is over. */
+    private final List<Racer> bots = new ArrayList<>();
+    /** The road the bots follow, worked out once a race. See Track.racingLine. */
+    private List<double[]> line = List.of();
 
     Race(GoKartsPlugin plugin, RaceManager manager, Track track) {
         this.plugin = plugin;
@@ -166,8 +173,10 @@ public final class Race {
         dropKart(r);
         hud.leave(p);
         if (!plugin.snapshots().restore(p)) p.teleport(p.getWorld().getSpawnLocation());
-        if (members.isEmpty()) {
+        if (members.values().stream().allMatch(Racer::isBot)) {
             items.clear();
+            dropBots();
+            members.clear();
             reset();
             manager.closed(this);
         }
@@ -186,8 +195,18 @@ public final class Race {
 
     /** /kart start: the grid now, whoever is waiting. */
     public boolean start() {
+        return start(0);
+    }
+
+    /**
+     * /kart start --withBots: the grid now, with computer drivers. {@code bots}
+     * is how many, or -1 for as many as the grid has room for beside the
+     * players. See {@link Bots}.
+     */
+    public boolean start(int bots) {
         if (phase == Phase.GRID || phase == Phase.RACING || phase == Phase.RESULTS || members.isEmpty()) return false;
         forced = true;
+        botsWanted = bots;
         grid();
         return true;
     }
@@ -206,6 +225,17 @@ public final class Race {
             r.satOut++;
             Player p = r.player();
             if (p != null) Text.send(p, messages().component("grid-full"));
+        }
+        // The bots take whatever room the players left, as many as were asked for.
+        int room = slots - chosen.size();
+        int botCount = botsWanted < 0 ? room : Math.min(botsWanted, room);
+        if (botCount > 0) {
+            line = track.racingLine(Bots.STEP);
+            for (Racer b : Bots.make(this, botCount)) {
+                members.put(b.id, b);
+                bots.add(b);
+                chosen.add(b);
+            }
         }
         Set<KartColour> free = EnumSet.allOf(KartColour.class);
         List<Racer> placed = new ArrayList<>();
@@ -227,7 +257,7 @@ public final class Race {
         for (int i = 0; i < placed.size(); i++) {
             Racer r = placed.get(i);
             Player p = r.player();
-            if (p == null) continue;
+            if (p == null && !r.isBot()) continue;
             Location slot = track.grid().get(i).clone();
             slot.setWorld(track.world());
             Optional<Vehicle> made = content().engine().vehicles().spawn(slot, Content.id(r.colour.vehicle()));
@@ -241,6 +271,18 @@ public final class Race {
             v.setEnabled(false);
             // Theirs before they sit in it: RaceListener lets a racer into their own kart only.
             r.kart = v;
+            if (r.isBot()) {
+                r.racing = true;
+                r.lap = 1;
+                r.next = 1 % track.checkpoints().size();
+                r.last = 0;
+                r.lastGateTick = 0;
+                r.lapStartTick = 0;
+                v.drive(Bots.NOTHING);
+                Bots.seat(this, r);
+                order.add(r);
+                continue;
+            }
             p.teleport(slot);
             v.seat(p);
             v.holdOccupant(p, true);
@@ -365,6 +407,18 @@ public final class Race {
             }
         }
         for (Racer r : order) {
+            if (r.isBot() && r.kart != null) {
+                Bots.seat(this, r);
+                if (t == GO) {
+                    r.kart.setEnabled(true);
+                    // A rocket start, as often as a good driver gets one.
+                    if (java.util.concurrent.ThreadLocalRandom.current().nextDouble() < (r.bot.skill - 0.8) * 2) {
+                        plugin.driving().boost(r.kart, settings().rocketStart);
+                    }
+                    content().vfx("gk_go", r.kart, null);
+                }
+                continue;
+            }
             Player p = r.player();
             if (p == null || r.kart == null) continue;
             keepSeated(r, p);
@@ -400,14 +454,16 @@ public final class Race {
         List<Track.Checkpoint> gates = track.checkpoints();
         for (Racer r : new ArrayList<>(order)) {
             Player p = r.player();
-            if (p == null) continue;
+            if (p == null && !r.isBot()) continue;
             if (r.kart == null || !r.kart.isValid()) {
                 respawn(r);
                 continue;
             }
-            keepSeated(r, p);
+            if (r.isBot()) Bots.seat(this, r);
+            else keepSeated(r, p);
             r.stillTicks = Math.abs(r.kart.groundSpeed()) < 1 ? r.stillTicks + 1 : 0;
             if (r.frozen > 0 && --r.frozen == 0 && !r.finished) r.kart.setEnabled(true);
+            if (r.isBot() && !r.finished) Bots.drive(this, r, line);
             plugin.driving().tick(r.kart, p, false);
             if (r.finished) continue;
 
@@ -483,7 +539,7 @@ public final class Race {
             if (r.lap > laps) {
                 finish(r, p);
             } else {
-                content().sound(p, "lap", 1f, 1f, Sound.ENTITY_EXPERIENCE_ORB_PICKUP);
+                if (p != null) content().sound(p, "lap", 1f, 1f, Sound.ENTITY_EXPERIENCE_ORB_PICKUP);
                 content().vfx("gk_lap", r.kart, p);
                 if (r.lap == laps) r.banner("banner_final", 50);
                 else if (personalBest) r.banner("banner_best", 40);
@@ -505,15 +561,16 @@ public final class Race {
             broadcast(messages().component("finished", "name", r.name, "place", Hud.ordinal(r.place), "time", Text.raceClock(clock)));
         }
         r.kart.setEnabled(false);
+        if (r.isBot()) r.kart.drive(null);
         r.item = null;
         r.roulette = 0;
-        content().sound(p, "finish", 1f, 1f, Sound.UI_TOAST_CHALLENGE_COMPLETE);
+        if (p != null) content().sound(p, "finish", 1f, 1f, Sound.UI_TOAST_CHALLENGE_COMPLETE);
         content().vfx("gk_confetti", r.kart, p);
-        r.kart.dress(p, "gokarts_" + r.colour.id() + "_victory");
+        if (p != null) r.kart.dress(p, "gokarts_" + r.colour.id() + "_victory");
         feed(messages().plain("feed-finish", "name", r.name, "place", Hud.ordinal(r.place)));
         r.banner("banner_finish", 80);
         r.subline(messages().plain("hud-finished-place", "place", Hud.ordinal(r.place)), 400);
-        p.getWorld().spawnParticle(Particle.FIREWORK, r.kart.pointOn(0, 1.2, 0), 40, 0.6, 0.6, 0.6, 0.08);
+        r.kart.location().getWorld().spawnParticle(Particle.FIREWORK, r.kart.pointOn(0, 1.2, 0), 40, 0.6, 0.6, 0.6, 0.08);
     }
 
     /** Off the track, in water, or stuck: a moment's pause and then back on at the last gate. */
@@ -563,7 +620,7 @@ public final class Race {
     /** Puts a racer's kart down again at the last gate they passed, facing the next one. */
     void respawn(Racer r) {
         Player p = r.player();
-        if (p == null) return;
+        if (p == null && !r.isBot()) return;
         List<Track.Checkpoint> gates = track.checkpoints();
         Track.Checkpoint from = gates.get(r.last);
         Track.Checkpoint to = gates.get((r.last + 1) % gates.size());
@@ -577,15 +634,21 @@ public final class Race {
         Vehicle v = made.get();
         v.setEnabled(false);
         r.kart = v;
-        p.teleport(at);
-        v.seat(p);
-        v.holdOccupant(p, true);
+        if (r.isBot()) {
+            r.bot.reset();
+            v.drive(Bots.NOTHING);
+            Bots.seat(this, r);
+        } else {
+            p.teleport(at);
+            v.seat(p);
+            v.holdOccupant(p, true);
+        }
         r.frozen = 20;
         r.lastGateTick = clock;
         r.subline(messages().plain("hud-respawning"), 20);
-        p.getWorld().spawnParticle(Particle.CLOUD, at.clone().add(0, 0.6, 0), 20, 0.5, 0.3, 0.5, 0.02);
+        at.getWorld().spawnParticle(Particle.CLOUD, at.clone().add(0, 0.6, 0), 20, 0.5, 0.3, 0.5, 0.02);
         content().vfx("gk_respawn", v, p);
-        Text.send(p, messages().component("respawned"));
+        if (p != null) Text.send(p, messages().component("respawned"));
     }
 
     /**
@@ -678,9 +741,21 @@ public final class Race {
         for (Racer r : ranked) {
             place++;
             results.add(new Result(r.id, r.name, r.colour, r.finished ? r.place : place,
-                    r.finished ? r.finishTicks : -1, r.bestLap, !r.finished));
+                    r.finished ? r.finishTicks : -1, r.bestLap, !r.finished, r.isBot()));
         }
         lastResults = List.copyOf(results);
+        // A track's records are what PLAYERS have done on it: a bot's lap is in
+        // the results and never in the records.
+        String recordName = null;
+        long recordLap = -1;
+        for (Racer r : all) {
+            if (r.isBot() || r.bestLap < 0) continue;
+            if (recordLap < 0 || r.bestLap < recordLap) {
+                recordLap = r.bestLap;
+                recordName = r.name;
+            }
+        }
+        List<Result> humans = results.stream().filter(x -> !x.bot()).toList();
         if (fastestName != null && !stopped) {
             broadcast(messages().component("fastest-lap", "name", fastestName, "time", Text.raceClock(fastestLap)));
         }
@@ -690,12 +765,15 @@ public final class Race {
             Player p = r.player();
             if (p != null) hud.leave(p);
         }
+        for (Racer b : bots) {
+            if (b.kart != null && b.kart.isValid()) b.kart.drive(null);
+        }
         Records.Entry lapBefore = plugin.records().lap(track.id());
         // A race somebody stopped proves nothing about anybody's pace.
-        if (!stopped) plugin.records().record(track, lastResults, fastestName, fastestLap);
+        if (!stopped) plugin.records().record(track, humans, recordName, recordLap);
         manager.finished(this);
-        if (fastestName != null && !stopped && (lapBefore == null || fastestLap < lapBefore.ticks())) {
-            broadcast(messages().component("record", "name", fastestName, "time", Text.raceClock(fastestLap)));
+        if (recordName != null && !stopped && (lapBefore == null || recordLap < lapBefore.ticks())) {
+            broadcast(messages().component("record", "name", recordName, "time", Text.raceClock(recordLap)));
         }
         phase = Phase.RESULTS;
         phaseTicks = 0;
@@ -706,6 +784,7 @@ public final class Race {
     }
 
     private void backToLobby() {
+        dropBots();
         for (Racer r : new ArrayList<>(members.values())) {
             dropKart(r);
             Player p = r.player();
@@ -731,6 +810,7 @@ public final class Race {
     /** Everybody home, now: an arena closing, the server stopping. */
     void close() {
         items.clear();
+        dropBots();
         for (Racer r : new ArrayList<>(members.values())) {
             dropKart(r);
             Player p = r.player();
@@ -744,6 +824,22 @@ public final class Race {
         members.clear();
         reset();
         manager.closed(this);
+    }
+
+    boolean hasBotFigure(UUID entity) {
+        for (Racer b : bots) if (b.bot.figure != null && b.bot.figure.equals(entity)) return true;
+        return false;
+    }
+
+    /** The race's bots out of it: their karts, their mannequins, and them. */
+    private void dropBots() {
+        for (Racer b : bots) {
+            dropKart(b);
+            Bots.remove(b);
+            members.remove(b.id);
+        }
+        bots.clear();
+        botsWanted = 0;
     }
 
     private void resetRace() {
@@ -794,7 +890,11 @@ public final class Race {
 
     /** A racer's item, used: F, a click, or anything else that means "now". */
     void useItem(Player p) {
-        Racer r = racer(p);
+        useItem(racer(p));
+    }
+
+    /** The same for any racer, a bot included. */
+    void useItem(Racer r) {
         if (r == null || !r.racing || r.finished || phase != Phase.RACING) return;
         // A click on a block is an interact AND an arm swing: one press, one use.
         if (plugin.ticks() - r.lastUse < 6) return;

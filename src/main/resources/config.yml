@@ -23,6 +23,13 @@ race:
   # nine blocks across; widen it for a lobby of your own that is bigger.
   lobby-radius: 4.8
 
+# Computer drivers, for /kart start --withBots (fill the grid) or --withBots=N.
+# They drive the same karts as everybody, with the same keys, and are never in
+# the track's records. One of these names each, none twice; past the end of the
+# list they are Bot 1, Bot 2...
+bots:
+  names: [Blaze, Nova, Turbo, Pixel, Comet, Dash, Viper, Echo, Bolt, Ziggy, Sprocket, Pepper]
+
 karts:
   # How fast a kart goes flat out, in blocks a second. The vehicle's own
   # `speed:` (vehicles/karts.yml) is the ceiling a boost may reach; this is

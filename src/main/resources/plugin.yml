@@ -46,6 +46,7 @@ permissions:
     default: op
     children:
       gokarts.start: true
+      gokarts.start.bots: true
       gokarts.stop: true
       gokarts.reload: true
       gokarts.give: true
@@ -59,6 +60,9 @@ permissions:
       gokarts.bypass.commands: true
   gokarts.start:
     description: /kart start [track] - start a race now (it joins you first if you are not in).
+    default: op
+  gokarts.start.bots:
+    description: /kart start [track] --withBots[=N] - computer drivers on the grid too, filling it or N of them.
     default: op
   gokarts.stop:
     description: /kart stop - end a race, or empty a lobby.

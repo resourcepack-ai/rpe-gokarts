@@ -145,6 +145,30 @@ public final class KartCommand implements TabExecutor {
 
     private void start(CommandSender s, String[] a) {
         if (!allowed(s, Perms.START)) return;
+        // --withBots fills the grid with computer drivers, --withBots=N adds N.
+        int bots = 0;
+        List<String> kept = new ArrayList<>();
+        for (String arg : a) {
+            String low = arg.toLowerCase(Locale.ROOT);
+            if (low.equals("--withbots") || low.equals("--bots")) {
+                bots = -1;
+            } else if (low.startsWith("--withbots=") || low.startsWith("--bots=")) {
+                try {
+                    bots = Math.max(0, Integer.parseInt(arg.substring(arg.indexOf('=') + 1)));
+                } catch (NumberFormatException e) {
+                    Text.send(s, Text.error("--withBots takes a number of bots: --withBots=5."));
+                    return;
+                }
+            } else {
+                kept.add(arg);
+            }
+        }
+        if (bots != 0 && !allowed(s, Perms.START_BOTS)) return;
+        if (bots != 0 && !plugin.botsSupported()) {
+            Text.send(s, Text.error("Bots need RP Engine 0.2.50 or newer. Update it from resourcepack.ai/rp-engine."));
+            return;
+        }
+        a = kept.toArray(new String[0]);
         Race r = null;
         if (s instanceof Player p) r = plugin.races().of(p);
         if (a.length > 0) {
@@ -166,7 +190,7 @@ public final class KartCommand implements TabExecutor {
             Text.send(s, Text.error("Nobody is waiting to race. /kart start <track> from in its lobby."));
             return;
         }
-        if (!r.start()) Text.send(s, Text.error("That race can't start now (" + r.phase().name().toLowerCase(Locale.ROOT) + ")."));
+        if (!r.start(bots)) Text.send(s, Text.error("That race can't start now (" + r.phase().name().toLowerCase(Locale.ROOT) + ")."));
     }
 
     private void stop(CommandSender s, String[] a) {
@@ -635,6 +659,7 @@ public final class KartCommand implements TabExecutor {
         if (s.hasPermission(Perms.COLOUR)) lines.add("<#FFD23F>/kart colour</#FFD23F> <colour> <#9AA0A6>- the kart you'd like</#9AA0A6>");
         if (s.hasPermission(Perms.RESULTS)) lines.add("<#FFD23F>/kart results</#FFD23F> <#9AA0A6>- the last race's results</#9AA0A6>");
         if (s.hasPermission(Perms.START)) lines.add("<#FFD23F>/kart start</#FFD23F> [track] <#9AA0A6>- start now, alone is fine</#9AA0A6>");
+        if (s.hasPermission(Perms.START_BOTS)) lines.add("<#FFD23F>/kart start</#FFD23F> [track] --withBots[=N] <#9AA0A6>- with computer drivers, filling the grid or N of them</#9AA0A6>");
         if (s.hasPermission(Perms.STOP)) lines.add("<#FFD23F>/kart stop</#FFD23F> [track]");
         if (s.hasPermission(Perms.GIVE)) lines.add("<#FFD23F>/kart give</#FFD23F> [colour] [player] <#9AA0A6>- a kart to drive anywhere</#9AA0A6>");
         if (s.hasPermission(Perms.ITEM)) lines.add("<#FFD23F>/kart item</#FFD23F> <item> [player] <#9AA0A6>- hand a racer an item</#9AA0A6>");
@@ -664,7 +689,11 @@ public final class KartCommand implements TabExecutor {
             if (s.hasPermission(Perms.TRACK) || s.hasPermission(Perms.TRACK_GENERATE)) out.add("track");
         } else if (args.length == 2) {
             switch (args[0].toLowerCase(Locale.ROOT)) {
-                case "join", "start", "stop" -> plugin.tracks().all().forEach(t -> out.add(t.id()));
+                case "join", "stop" -> plugin.tracks().all().forEach(t -> out.add(t.id()));
+                case "start" -> {
+                    plugin.tracks().all().forEach(t -> out.add(t.id()));
+                    if (s.hasPermission(Perms.START_BOTS)) out.add("--withBots");
+                }
                 case "colour", "color", "give" -> Arrays.stream(KartColour.values()).forEach(c -> out.add(c.id()));
                 case "track" -> {
                     for (String sub : TRACK_SUBS) {
