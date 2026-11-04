@@ -173,6 +173,9 @@ A kart's vehicle `speed:` (`vehicles/karts.yml`) is the most a boost can take it
 to; `karts.cruise-speed` is what it does flat out the rest of the time. Change
 that one to make karts faster.
 
+`update-check: true` tells the console, and anybody with `gokarts.update`, when
+a newer Go Karts is on SpigotMC. Set it to `false` to turn that off.
+
 ## Permissions
 
 One node per command. `gokarts.play` and `gokarts.admin` are only shorthand:
@@ -200,6 +203,7 @@ each grants every node listed under it, and nothing checks them directly.
 | `gokarts.track.undo` | op | `/kart track undo`, which deletes the world a generate made, or puts back the blocks it replaced |
 | `gokarts.track.delete` | op | `/kart track delete` |
 | `gokarts.bypass.commands` | op | Run any command during a race |
+| `gokarts.update` | op | Told when a newer version is out (not part of `gokarts.admin`) |
 
 ## Everything you see is RP Engine content
 

@@ -55,6 +55,11 @@ public final class Perms {
     /** Running any command during a race, not only the short list a racer may. */
     public static final String BYPASS_COMMANDS = "gokarts.bypass.commands";
 
+    // ---- on its own (op by default, in neither parent) ---------------------------
+
+    /** Being told when a newer Go Karts is on SpigotMC. */
+    public static final String UPDATE = "gokarts.update";
+
     /** What {@code gokarts.play} grants. */
     public static final List<String> PLAY = List.of(JOIN, COLOUR, RESULTS, RIDE);
     /** What {@code gokarts.admin} grants. */

@@ -18,10 +18,17 @@ import ai.resourcepack.addons.gokarts.track.TrackUndo;
 import ai.resourcepack.addons.gokarts.ui.Results;
 import ai.resourcepack.engine.RPEnginePlugin;
 import ai.resourcepack.engine.api.AddonContent;
+import ai.resourcepack.addons.gokarts.command.Perms;
+import ai.resourcepack.addons.gokarts.text.Text;
+import ai.resourcepack.common.update.UpdateCheck;
+import net.md_5.bungee.api.chat.BaseComponent;
+import net.md_5.bungee.api.chat.ClickEvent;
+import net.md_5.bungee.api.chat.HoverEvent;
 import org.bukkit.World;
 import org.bukkit.command.PluginCommand;
 import org.bukkit.entity.Display;
 import org.bukkit.entity.Entity;
+import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -55,6 +62,11 @@ public final class GoKartsPlugin extends JavaPlugin {
      * cannot be raced without.
      */
     static final String MIN_ENGINE = "0.2.45";
+
+    /** This plugin's SpigotMC resource id: the number in its page's URL. */
+    private static final int SPIGOT_RESOURCE = 140138;
+
+    private UpdateCheck updates;
 
     private RPEnginePlugin engine;
     private Content content;
@@ -101,12 +113,25 @@ public final class GoKartsPlugin extends JavaPlugin {
     }
 
     @Override
+    public void onLoad() {
+        // Asked before the worlds load, so the answer is back for the startup banner.
+        UpdateCheck.early(this, SPIGOT_RESOURCE);
+    }
+
+    @Override
     public void onEnable() {
+        if (updates != null) updates.stop();
+        updates = UpdateCheck.spigot(this, SPIGOT_RESOURCE)
+                .name("Go Karts")
+                .permission(Perms.UPDATE)
+                .enabledWhen(() -> getConfig().getBoolean("update-check", true))
+                .player(this::tellUpdate);
         ai.resourcepack.common.banner.StartupBanner banner = ai.resourcepack.common.banner.StartupBanner.begin(this)
                 .name("Go Karts")
                 .addonOf("RP Engine")
                 .tagline("Go-kart racing: drift, boost, bananas and rockets.")
-                .docs("https://resourcepack.ai/docs/rp-engine");
+                .docs("https://resourcepack.ai/docs/rp-engine")
+                .updates(updates);
         Plugin found = getServer().getPluginManager().getPlugin("RPEngine");
         if (!(found instanceof RPEnginePlugin rp)) {
             getLogger().severe("RP Engine isn't here, and every kart is one of its vehicles. Disabling.");
@@ -164,7 +189,20 @@ public final class GoKartsPlugin extends JavaPlugin {
         int n = tracks.all().size();
         banner.ok("Tracks", n == 0 ? "None yet. /kart track generate main builds one, in a world of its own"
                 : n + (n == 1 ? " track" : " tracks") + ". /kart join, then /kart start");
+        updates.start();
         banner.print();
+    }
+
+    /** The nudge: the sentence, then the link as one clickable piece. */
+    private void tellUpdate(Player player, UpdateCheck.Update update) {
+        BaseComponent line = Text.bungee(messages.component("update",
+                "latest", update.latest(), "running", update.running()));
+        BaseComponent link = Text.bungee(messages.component("update-link"));
+        link.setClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, update.url()));
+        link.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT,
+                new net.md_5.bungee.api.chat.hover.content.Text(update.url())));
+        // A deserialised component's extras can't be added to, so both go in a fresh one.
+        player.spigot().sendMessage(new net.md_5.bungee.api.chat.TextComponent(line, link));
     }
 
     @Override

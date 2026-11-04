@@ -130,6 +130,9 @@ items:
 # may run any). /kart is always allowed.
 allowed-commands: [msg, tell, w, r, reply, me, list]
 
+# Tells you in the console, and ops in chat, when a newer Go Karts is on SpigotMC.
+update-check: true
+
 ui:
   # The HUD and the results screen: RP Engine content ids. Point either at
   # your own; a replacement has to print the same values (see the README).
@@ -194,6 +197,8 @@ messages:
   reloaded: "{prefix} <#E8EAED>Reloaded config.yml{tracks}."
   reloaded-tracks: " and tracks.yml"
   reloaded-not-tracks: " (tracks.yml is in use by a race, and will be read after it)"
+  update: "{prefix} <#E8EAED>Go Karts <white>{latest}</white> is out <#9AA0A6>(you have {running}).</#9AA0A6> "
+  update-link: "<#FFD23F><underlined>Get it on SpigotMC"
 
   # A kart driven outside a race: the line above the hotbar.
   free-speed: "<#E8EAED>{speed}</#E8EAED> <#9AA0A6>km/h</#9AA0A6>"

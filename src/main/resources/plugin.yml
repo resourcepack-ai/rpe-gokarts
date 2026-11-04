@@ -97,3 +97,6 @@ permissions:
   gokarts.bypass.commands:
     description: Run any command during a race, not only the few a racer may (/kart, /msg, /r, /me, /list...).
     default: op
+  gokarts.update:
+    description: Be told when a newer Go Karts is on SpigotMC.
+    default: op
